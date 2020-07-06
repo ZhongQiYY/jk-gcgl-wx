@@ -30,7 +30,7 @@
 
 		<view class="weui-cells__title">项目名称</view>
 		<view class="weui-cells weui-cells_after-title">
-			<navigator wx:for="{{projectList}}" wx:key="index" url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			<navigator wx:for="{{projectList}}" wx:key="index" url="../project/projectInfo/projectInfo?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 				<view class="weui-cell__bd">{{item.projectName}}</view>
 				<view class="weui-cell__ft weui-cell__ft_in-access">{{item.explain}}</view>
 			</navigator>

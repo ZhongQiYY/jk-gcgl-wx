@@ -5,7 +5,8 @@
     "pages/tableData/tableData",
     "pages/control/control",
     "pages/searchbar/searchbar",
-    "pages/tableData/datapages/annualplan/annualplan"
+    "pages/tableData/datapages/annualplan/annualplan",
+    "pages/project/projectInfo/projectInfo"
   ],
   "window": {
     "backgroundTextStyle": "dark",
