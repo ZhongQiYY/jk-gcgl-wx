@@ -1,0 +1,7 @@
+/**app.wxss**/
+/* 导入WEUI的样式 */
+@import './dist/app.wxss';
+@import './dist/style/weui.wxss';
+
+/* 底部固定栏的样式 */
+.weui-tabbar{position:fixed;bottom:0;left:0;right:0}

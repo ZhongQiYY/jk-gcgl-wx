@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/leaderboard/leaderboard",
+    "pages/project/project",
+    "pages/tableData/tableData",
+    "pages/control/control",
+    "pages/searchbar/searchbar",
+    "pages/tableData/datapages/annualplan/annualplan"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0089dd",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#eeeeee"
+  },
+  "tabBar": {
+    "selectedColor": "#0089dd",
+    "list": [
+      {
+        "pagePath": "pages/leaderboard/leaderboard",
+        "text": "龙虎榜",
+        "iconPath": "assets/tabBar/charts.png",
+        "selectedIconPath": "assets/tabBar/charts_active.png"
+      },
+      {
+        "pagePath": "pages/project/project",
+        "text": "项目库",
+        "iconPath": "assets/tabBar/project.png",
+        "selectedIconPath": "assets/tabBar/project_active.png"
+      },
+      {
+        "pagePath": "pages/tableData/tableData",
+        "text": "数据表",
+        "iconPath": "assets/tabBar/dataTable.png",
+        "selectedIconPath": "assets/tabBar/dataTable_active.png"
+      },
+      {
+        "pagePath": "pages/control/control",
+        "text": "操作台",
+        "iconPath": "assets/tabBar/controller.png",
+        "selectedIconPath": "assets/tabBar/controller_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
