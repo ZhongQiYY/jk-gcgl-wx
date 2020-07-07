@@ -10,8 +10,8 @@
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"coverView": true,
 		"autoAudits": false,
+		"coverView": true,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
 		"checkInvalidKey": true,
@@ -27,8 +27,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.2",
-	"appid": "wxdb66f0dc44743747",
-	"projectname": "jk-gcgl",
+	"appid": "wx2dea9f74dd2f93cf",
+	"projectname": "jk-gcgl-wx",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
