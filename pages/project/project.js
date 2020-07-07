@@ -19,7 +19,10 @@ Page({
       {id: "8", projectName: "秋月科技园标准厂房", explain: "新建项目"},
       {id: "9", projectName: "春花科技园", explain: "续建项目"},
       {id: "10", projectName: "横江产业园标准厂房", explain: "新建项目"},
-    ]
+    ],
+
+    projectListShow: true,
+    projectInfoShow: false
   },
 
   // 选择建设单位
@@ -35,10 +38,26 @@ Page({
     })
   },
 
+  //显示项目详情
+  showProjectInfo: function(e) {
+    this.setData({
+      projectListShow: false,
+      projectInfoShow: true
+    })
+  },
+
+  //显示项目列表
+  showProjectList: function(e) {
+    this.setData({
+      projectListShow: true,
+      projectInfoShow: false
+    })
+  },
+
 //--------------------------生命周期函数------------------------------
 
 
-  onLoad: function(){
+  onLoad: function(options){
       this.setData({
           icon: base64.icon20
       });

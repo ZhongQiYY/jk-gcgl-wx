@@ -61,6 +61,6 @@
 }
 
 /* 项目库集合整体page样式 */
-.project-list {
+.project-list-info {
   padding-top: 80rpx;
 }

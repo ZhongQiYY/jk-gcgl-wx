@@ -25,16 +25,31 @@
 	</view>
 </view>
 
-<view class="page project-list" data-weui-theme="{{theme}}">
-	<view class="page__bd">
+<!-- 
+<navigator wx:for="{{projectList}}" wx:key="index" url="../project/projectInfo/projectInfo?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+	<view class="weui-cell__bd">{{item.projectName}}</view>
+	<view class="weui-cell__ft weui-cell__ft_in-access">{{item.explain}}</view>
+</navigator> -->
 
-		<view class="weui-cells__title">项目名称</view>
+<view class="page project-list-info" data-weui-theme="{{theme}}">
+
+	<!-- 项目列表页 -->
+	<view class="page__bd" wx:if="{{projectListShow}}">
+
+		<view class="weui-cells__title">项目名称i</view>
 		<view class="weui-cells weui-cells_after-title">
-			<navigator wx:for="{{projectList}}" wx:key="index" url="../project/projectInfo/projectInfo?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			<view bindtap="showProjectInfo" class="weui-cell weui-cell_example "  wx:for="{{projectList}}" wx:key="index" hover-class="weui-cell_active">
 				<view class="weui-cell__bd">{{item.projectName}}</view>
-				<view class="weui-cell__ft weui-cell__ft_in-access">{{item.explain}}</view>
-			</navigator>
+				<view class="weui-cell__ft">{{item.explain}}</view>
+			</view>
 		</view>
+
+	</view>
+
+	<!-- 项目详情页 -->
+	<view class="page__bd" wx:if="{{projectInfoShow}}">
+
+
 
 	</view>
 </view>
