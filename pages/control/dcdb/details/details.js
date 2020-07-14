@@ -1,39 +1,13 @@
+// pages/control/dcdb/details/details.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    records:[
-      {
-        id:'1',
-        content:'哈哈哈哈哈哈',
-        finalTime:'2020-07-14',
-        zb:'喜子软件1',
-        xb:'计划统计部1'
-      },
-      {
-        id:'2',
-        content:'xixi',
-        finalTime:'2020-07-15',
-        zb:'喜子软件2',
-        xb:'计划统计部2'
-      },
-      {
-        id:'3',
-        content:'hehe',
-        finalTime:'2020-07-16',
-        zb:'喜子软件3',
-        xb:'计划统计部3'
-      }
-    ],
+
   },
 
-  toDetails: function() {
-    wx.navigateTo({
-      url: '/pages/dcdb/details/details',
-    })
-  },
- 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -50,10 +24,9 @@ Page({
 
   /**
    * 生命周期函数--监听页面显示
-   * 搜索日期给初值
    */
   onShow: function () {
-    
+
   },
 
   /**

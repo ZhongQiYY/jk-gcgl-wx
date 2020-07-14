@@ -1,2 +1,31 @@
-<!--pages/control/dcdb/dcdb.wxml-->
-<text>pages/control/dcdb/dcdb.wxml</text>
+<view class="page__bd chekc-record-list">
+		<view class="weui-form-preview" wx:for="{{records}}" wx:key="index" wx:for-item="item">
+			<view class="weui-form-preview__hd" bindtap="toDetails">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >
+						<view class="application-name" wx:if="{{item.id}}">序号:{{item.id}}</view>
+					</label>
+				</view>
+        <view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >
+						<view class="application-name" wx:if="{{item.content}}">工作内容:{{item.content}}</view>
+					</label>
+				</view>
+        <view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >
+						<view class="application-name" wx:if="{{item.finalTime}}">完成时限:{{item.finalTime}}</view>
+					</label>
+				</view>
+        <view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >
+						<view class="application-name" wx:if="{{item.zb}}">主办:{{item.zb}}</view>
+					</label>
+				</view>
+        <view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >
+						<view class="application-name" wx:if="{{item.xb}}">协办:{{item.xb}}</view>
+					</label>
+				</view>
+			</view>
+    </view>
+  </view>
