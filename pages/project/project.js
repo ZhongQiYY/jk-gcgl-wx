@@ -1,4 +1,5 @@
 var base64 = require("../../dist/example/images/base64");
+var app = getApp();
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
@@ -22,7 +23,8 @@ Page({
     ],
 
     projectListShow: true,
-    projectInfoShow: false
+    projectInfoShow: false,
+    projectName: ""
   },
 
   // 选择建设单位
@@ -42,8 +44,17 @@ Page({
   showProjectInfo: function(e) {
     this.setData({
       projectListShow: false,
-      projectInfoShow: true
+      projectInfoShow: true,
+      projectName: e.currentTarget.dataset.text
     })
+  },
+
+  //跳转到数据表界面
+  toTableData: function() {
+    app.globalData.pName = this.data.projectName;
+    wx.switchTab({
+      url: '/pages/tableData/tableData'
+    });
   },
 
   //显示项目列表
