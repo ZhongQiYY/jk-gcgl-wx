@@ -1,52 +1,63 @@
 /* 搜索框固定在上部的样式 */
-.search{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
+.search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
-  background-color:white;
+  background-color: white;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
 }
+
 /* 按时间搜索和筛选框的样式 */
-.search-date,.search-type {
+.search-date,
+.search-type {
   text-align: center;
   height: 60rpx;
   padding-top: 20rpx;
 }
-.search-date image,.search-type image{
+
+.search-date image,
+.search-type image {
   height: 40rpx;
   width: 40rpx;
   margin-right: 20rpx;
   vertical-align: text-bottom;
 }
+
 .middle {
-  border:1rpx solid rgb(233, 222, 222);
+  border: 1rpx solid rgb(233, 222, 222);
   height: 65rpx;
   margin-top: 15rpx;
 }
+
 /* 审核列表的样式，主要是为了让上下两个固定框不遮挡列表内容 */
 .chekc-record-list {
   margin-top: 105rpx;
   margin-bottom: 20rpx;
 }
+
 .application-name {
   width: 170rpx;
 }
+
 .application-date {
   font-size: x-small;
   line-height: 15rpx;
 }
+
 .application-state {
   font-size: x-small;
   line-height: 20rpx;
 }
+
 .application-name image {
   width: 30rpx;
   height: 30rpx;
   /* vertical-align: middle; */
 }
+
 /* .reject {
   background-color: red;
   color: white;
@@ -62,5 +73,48 @@
 
 /* 项目库集合整体page样式 */
 .project-list-info {
-  padding-top: 80rpx;
+  padding-top: 100rpx;
+}
+
+.placeholder {
+  /* margin: 5px; */
+  /* padding: 0 10px; */
+  text-align: center;
+  background-color: #EBEBEB;
+  height: 2.3em;
+  line-height: 2.3em;
+  color: #cfcfcf;
+}
+
+
+/* 详情表格样式 */
+.table,
+.table div {
+  margin: 0 auto;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
+.table-tr {
+  display: table-row;
+  /* height: 92rpx; */
+}
+
+.table-td {
+  color: black;
+  display: table-cell;
+  border: 1rpx solid gray;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#projectImage {
+  width: 100%;
+  text-align: center;
+  
 }
