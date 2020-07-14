@@ -58,7 +58,7 @@
 
 	<!-- <view class="weui-grids" wx:if="{{userInfo.role != '普通职员'}}"> -->
 	<view class="weui-grids">
-		<a class="weui-grid" bindtap="toCheck">
+		<a class="weui-grid" bindtap="toDb">
 			<view class="weui-grid__icon">
 				<image src="/images/dbsx.png" alt></image>
 			</view>

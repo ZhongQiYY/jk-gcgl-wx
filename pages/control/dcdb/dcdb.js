@@ -1,40 +1,13 @@
-// pages/tableData/tableData.js
+// pages/control/dcdb/dcdb.js
 Page({
-
-  mixins: [require('../../dist/mixin/themeChanged')],
 
   /**
    * 页面的初始数据
    */
   data: {
-    projectName: "aa"
+
   },
 
-  toPlan: function() {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/annualplan/annualplan',
-    })
-  },
-
-  toDb: function() {
-    wx.navigateTo({
-      url: '/pages/control/dcdb/dcdb',
-    })
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // -------生命周期函数---------
   /**
    * 生命周期函数--监听页面加载
    */
