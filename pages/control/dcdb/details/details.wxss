@@ -1,1 +1,2 @@
 /* pages/control/dcdb/details/details.wxss */
+@import '/pages/control/dcdb/dcdb.wxss'

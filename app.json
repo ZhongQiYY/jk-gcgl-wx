@@ -8,7 +8,8 @@
     "pages/tableData/datapages/annualplan/annualplan",
     "pages/project/projectInfo/projectInfo",
     "pages/control/dcdb/dcdb",
-    "pages/control/dcdb/details/details"
+    "pages/control/dcdb/details/details",
+    "pages/control/dcdb/add/add"
   ],
   "window": {
     "backgroundTextStyle": "dark",

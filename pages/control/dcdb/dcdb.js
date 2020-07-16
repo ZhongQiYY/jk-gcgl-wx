@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -6,14 +7,14 @@ Page({
     records:[
       {
         id:'1',
-        content:'哈哈哈哈哈哈',
+        content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
         finalTime:'2020-07-14',
         zb:'喜子软件1',
         xb:'计划统计部1'
       },
       {
         id:'2',
-        content:'xixi',
+        content:'xix哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈i',
         finalTime:'2020-07-15',
         zb:'喜子软件2',
         xb:'计划统计部2'
@@ -28,9 +29,10 @@ Page({
     ],
   },
 
-  toDetails: function() {
+  toDetails: function(obj) {
+    let content = obj.currentTarget.dataset.content
     wx.navigateTo({
-      url: '/pages/dcdb/details/details',
+      url: '/pages/control/dcdb/details/details?content=' + content,
     })
   },
  
@@ -53,13 +55,53 @@ Page({
    * 搜索日期给初值
    */
   onShow: function () {
-    
+    // this.getRecords();
   },
 
+  getRecords: function(){
+    // wx.request({
+    //   url: "http://localhost:16000/jk-gcgl/gcgl/pmDb/list", //请求路径
+    //   method: 'post',
+    //   data: {
+
+    //   },
+    //   header: {
+    //     'content-type': 'application/json', // 默认值
+    //   },
+    //   success (res) {
+    //     if (res.statusCode == 200) {
+    //       console.log(res.data);
+    //       if (res.data.code == 200) {
+    //         that.setData({
+    //           records: res.data.data,
+    //         })
+    //       }else{
+    //         wx.showToast({
+    //           title: res.data.msg,
+    //           icon: 'success',
+    //           duration: 2000
+    //         });
+    //         console.log("dcdb.js getRecords() error res:----->>>>");
+    //         console.log(res);
+    //       }
+    //     }
+    //   }
+    // });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+
+  },
+
+  add: function(obj){
+    wx.navigateTo({
+      url: '/pages/control/dcdb/add/add',
+    })
+  },
+
+  del: function(obj){
 
   },
 

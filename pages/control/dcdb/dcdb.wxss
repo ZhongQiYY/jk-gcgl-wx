@@ -10,8 +10,11 @@
   margin-bottom: 20rpx;
 }
 .application-name {
-  width: 100%;
-  overflow: auto;
+  width: 675rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  text-align: left;
 }
 .application-date {
   font-size: x-small;
@@ -26,14 +29,6 @@
   height: 30rpx;
   /* vertical-align: middle; */
 }
-.reject {
-  background-color: red;
-  color: white;
-}
-.pass {
-  background-color: #07C160;
-  color: white;
-}
 .weui-btn {
   width: 100%;
   padding: 25rpx 0rpx;
@@ -41,4 +36,13 @@
 .weui-form-preview__item {
   border: 1px solid #0089dd;
 
+}
+
+.add {
+  background-color: #07c12f;
+  color: white;
+}
+.del {
+  background-color: red;
+  color: white;
 }

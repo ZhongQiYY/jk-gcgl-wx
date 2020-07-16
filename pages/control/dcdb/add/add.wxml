@@ -1,0 +1,24 @@
+<form bindsubmit='formSubmit'>
+  <view>序号：
+    <input type='text' name="id" value='' placeholder='请输入序号'/>
+  </view>
+  <view>工作内容：
+    <input type='text' name="content" value='' placeholder='请输入工作内容' />
+  </view>
+  <view class="tui-picker-content">
+    <picker mode="date" value="{{date}}" start="2017-10-01" end="2017-10-08" bindchange="changeDate">
+      <view class="tui-picker-detail">
+        完成时限: {{date}}
+      </view>
+    </picker>
+  </view>
+  <view>
+    主办：
+    <input type='text' name="zb" value='' placeholder='请输入主办' />
+  </view>
+  <view>
+    协办：
+    <input type='text' name="xb" value='' placeholder='请输入协办' />
+  </view>
+  <button form-type='submit'>保存</button>
+</form>
