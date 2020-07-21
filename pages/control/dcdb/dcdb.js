@@ -131,5 +131,28 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  del: function(event){
+      console.log(event);
+      let id = event.target.dataset;
+      console.log(id);
+      // 调用接口数据
+    wx.request({
+      //后台接口
+      url: 'http://localhost:16000/jk-gcgl/api/db/gcgl/pmDb/delete',
+      method: 'POST',
+      data: id,
+      success: function(res) {
+        if (res && res.code == 200) {
+          wx.navigateBack()
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: res.msg,
+          })
+        }
+      }
+    });
   }
 })

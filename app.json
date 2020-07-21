@@ -3,6 +3,7 @@
     "pages/leaderboard/leaderboard",
     "pages/project/project",
     "pages/tableData/tableData",
+    "pages/self/self",
     "pages/control/control",
     "pages/searchbar/searchbar",
     "pages/tableData/datapages/annualplan/annualplan",
@@ -45,6 +46,12 @@
         "text": "操作台",
         "iconPath": "assets/tabBar/controller.png",
         "selectedIconPath": "assets/tabBar/controller_active.png"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "text": "我",
+        "iconPath": "images/myinfo1.png",
+        "selectedIconPath": "images/myinfo.png"
       }
     ]
   },

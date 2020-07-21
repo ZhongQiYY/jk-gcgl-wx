@@ -1,5 +1,3 @@
-// pages/control/dcdb/add/add.js
-// var dateTimePicker = require('../../utils/dateTimePicker.js');
 Page({
 
   /**
@@ -74,8 +72,9 @@ Page({
     let requestData = event.detail.value
     // 调用接口数据
     wx.request({
-      url: 'url',
-      method: 'GET',
+      //后台接口
+      url: 'http://localhost:16000/jk-gcgl/api/db/gcgl/pmDb/insert',
+      method: 'POST',
       data: requestData,
       success: function(res) {
         if (res && res.code == 200) {
@@ -87,7 +86,7 @@ Page({
           })
         }
       }
-    })
+    });
     //
   }
 })
