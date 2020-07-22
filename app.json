@@ -4,6 +4,7 @@
     "pages/project/project",
     "pages/tableData/tableData",
     "pages/self/self",
+    "pages/self/info/info",
     "pages/control/control",
     "pages/searchbar/searchbar",
     "pages/tableData/datapages/annualplan/annualplan",

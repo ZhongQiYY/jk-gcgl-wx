@@ -82,7 +82,7 @@ Page({
   },
 
   getUserInfo: function (e) {
-    // console.log(e)
+    console.log(e)
     const page = this;
     if (e.detail.userInfo) {
       console.log(e.detail.userInfo);
@@ -95,9 +95,7 @@ Page({
           userInfo: app.globalData.userInfo,
           hasUserInfo: app.globalData.hasUserInfo
         });
-        if (page.data.userInfo.name == null || page.data.userInfo.name == '' ||
-          page.data.userInfo.organ == null || page.data.userInfo.organ == ''
-        ) {
+        if (page.data.userInfo.name == null || page.data.userInfo.name == '') {
           wx.navigateTo({
             url: 'info/info',
           })

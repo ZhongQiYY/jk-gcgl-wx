@@ -18,12 +18,12 @@
       <block wx:else>
         <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
         <div class="weui-cells" style="width:100%;margin-top:80rpx;">
-            <a class="weui-cell weui-cell_access weui-cell_example" href="javascript:" catchtap="selfInfo">
+            <!-- <a class="weui-cell weui-cell_access weui-cell_example" href="javascript:" catchtap="selfInfo">
                 <div class="weui-cell__bd">
                     <p>部门</p>
                 </div>
-                <div class="weui-cell__ft">{{userInfo.organ}}</div>
-            </a>
+                 <div class="weui-cell__ft">{{userInfo.organ}}</div>
+            </a> -->
             <a class="weui-cell weui-cell_access weui-cell_example" href="javascript:" catchtap="selfInfo">
                 <div class="weui-cell__bd">
                     <p>姓名</p>
