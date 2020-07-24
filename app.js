@@ -11,6 +11,7 @@ globalData: {
   canIUse: wx.canIUse('button.open-type.getUserInfo'),
   thirdSession: null,
   userKey: "third_session",
+  company:[],
 
   url: {
     userInfo:  RootPath+"/api/wechat/userInfo",
@@ -118,6 +119,8 @@ userInfoSetInSQL: function (userInfo, callback) {
   const page = this;
   var obj = wx.getStorageSync(page.globalData.userKey)
   console.log(obj)
+  var a = page.globalData.userKey;
+  console.log(a)
   wx.getStorage({
     key: page.globalData.userKey,
     success: function (res) {
@@ -132,7 +135,8 @@ userInfoSetInSQL: function (userInfo, callback) {
           province: userInfo.province,
           city: userInfo.city,
           country: userInfo.country,
-          language: userInfo.language
+          language: userInfo.language,
+          company: userInfo.company,
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded',
@@ -142,8 +146,11 @@ userInfoSetInSQL: function (userInfo, callback) {
           if (res.statusCode == 200) {
             if (res.data.code == 200) {
               console.log('userinfo更新成功');
+              console.log(res.data);
               page.globalData.userInfo = userInfo;
               page.globalData.userInfo.name = res.data.data.name;
+              page.globalData.userInfo.company = res.data.data.company;
+              page.globalData.company  = res.data.data.company;
               page.globalData.userInfo.state = res.data.data.state;
               page.globalData.userInfo.stateText = res.data.data.stateText;
               page.globalData.hasUserInfo = true;

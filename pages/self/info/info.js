@@ -9,7 +9,8 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    name: ''
+    name: '',
+    company: []
   },
 
   /**
@@ -20,11 +21,15 @@ Page({
       userInfo: app.globalData.userInfo,
       hasUserInfo: app.globalData.hasUserInfo,
       name: app.globalData.userInfo.name,
+      company: app.globalData.company,
     });
     console.log(this.data.userInfo);
+    console.log(app.globalData.company);
   },
 
   saveInfo: function () {
+    console.log("aaa")
+    console.log(this.data.company)
     if (this.checkInput()) {
       const page = this;
       wx.showLoading({
@@ -35,7 +40,8 @@ Page({
         url: app.globalData.url.userData,
         method: 'POST',
         data: {
-          name: this.data.name
+          name: this.data.name,
+          company: this.data.company.name
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded',
@@ -46,6 +52,7 @@ Page({
           if (res.statusCode == 200) {
             if (res.data.code == 200) {
               page.data.userInfo.name = page.data.name;
+              page.data.userInfo.company = page.data.company;
               app.globalData.userInfo = page.data.userInfo;
               wx.navigateBack({
                 delta: 1
@@ -70,17 +77,13 @@ Page({
         }
       })
     }
-  },
-  bindOrganChange: function (e) {
+  }, 
+  bindCompanyChange: function(e) {
+    console.log(e.detail)
+    console.log(e+"AA")
+    console.log(this.data.company[e.detail.value])
     this.setData({
-      organId: this.data.userInfo.organs[e.detail.value].id,
-      organ: this.data.userInfo.organs[e.detail.value].name
-    });
-  },
-  bindPositionChange: function(e) {
-    this.setData({
-      roleId: this.data.userInfo.roles[e.detail.value].id,
-      role: this.data.userInfo.roles[e.detail.value].name
+      company: this.data.company[e.detail.value]
     });
   },
   inputName: function (e) {
@@ -89,10 +92,11 @@ Page({
     });
   },
   checkInput: function () {
-    // if (this.data.organId == '' || this.data.organ == '') {
-    //   app.showToast('请选择部门');
-    //   return false;
-    // }
+    console.log(this.data.company)
+    if (this.data.company == '' || this.data.company == '') {
+      app.showToast('请选择公司');
+      return false;
+    }
     if (this.data.name == '') {
       app.showToast('请输入姓名');
       return false;
