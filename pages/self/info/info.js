@@ -29,7 +29,7 @@ Page({
 
   saveInfo: function () {
     console.log("aaa")
-    console.log(this.data.company)
+    console.log(this.data.company.name)
     if (this.checkInput()) {
       const page = this;
       wx.showLoading({
@@ -43,16 +43,18 @@ Page({
           name: this.data.name,
           company: this.data.company.name
         },
+
         header: {
           'content-type': 'application/x-www-form-urlencoded',
           'thirdSession': app.globalData.thirdSession
         },
         success(res) {
+          console.log(page.data.company.name+"MM")
           wx.hideLoading();
           if (res.statusCode == 200) {
             if (res.data.code == 200) {
               page.data.userInfo.name = page.data.name;
-              page.data.userInfo.company = page.data.company;
+              page.data.userInfo.company = page.data.company.name;
               app.globalData.userInfo = page.data.userInfo;
               wx.navigateBack({
                 delta: 1

@@ -11,8 +11,7 @@ globalData: {
   canIUse: wx.canIUse('button.open-type.getUserInfo'),
   thirdSession: null,
   userKey: "third_session",
-  company:[],
-
+  
   url: {
     userInfo:  RootPath+"/api/wechat/userInfo",
     userData:  RootPath+"/api/wechat/userData",
@@ -136,7 +135,6 @@ userInfoSetInSQL: function (userInfo, callback) {
           city: userInfo.city,
           country: userInfo.country,
           language: userInfo.language,
-          company: userInfo.company,
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded',
@@ -146,10 +144,11 @@ userInfoSetInSQL: function (userInfo, callback) {
           if (res.statusCode == 200) {
             if (res.data.code == 200) {
               console.log('userinfo更新成功');
+              console.log(userInfo)
               console.log(res.data);
               page.globalData.userInfo = userInfo;
               page.globalData.userInfo.name = res.data.data.name;
-              page.globalData.userInfo.company = res.data.data.company;
+              page.globalData.userInfo.company = userInfo.company;
               page.globalData.company  = res.data.data.company;
               page.globalData.userInfo.state = res.data.data.state;
               page.globalData.userInfo.stateText = res.data.data.stateText;
