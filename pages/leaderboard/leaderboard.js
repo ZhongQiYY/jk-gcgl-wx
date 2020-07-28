@@ -1,4 +1,5 @@
 // pages/charts/charts.js
+const app = getApp();
 Page({
 
 // -------------------- 数据区域 --------------------
@@ -13,10 +14,18 @@ Page({
       {integrated: "工建", projectNum: "", standardsNum: "", standardsRate: "", buildArea: "", totalInvestment: "", projectInvestment: "", monthOutput: ""},
       {integrated: "磊昇", projectNum: "", standardsNum: "", standardsRate: "", buildArea: "", totalInvestment: "", projectInvestment: "", monthOutput: ""}
     ]
-  }
+  },
 
 // -------------------- 监听wxml文件事件区域 --------------------
 
 
 // -------------------- 生命周期函数区域 --------------------
+
+onLoad: function() {
+  app.userLogin(function(){
+    page.setData({
+      hasUserInfo: app.globalData.hasUserInfo
+    });
+  });
+},
 })

@@ -10,7 +10,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     name: '',
-    company: []
+    company: '',
+    companies: [],
   },
 
   /**
@@ -21,15 +22,16 @@ Page({
       userInfo: app.globalData.userInfo,
       hasUserInfo: app.globalData.hasUserInfo,
       name: app.globalData.userInfo.name,
-      company: app.globalData.company,
+      company: app.globalData.userInfo.company,
+      companies: app.globalData.companies,
     });
     console.log(this.data.userInfo);
-    console.log(app.globalData.company);
+    console.log("zxczxc")
+    console.log(this.data)
+    console.log(app.globalData.companies);
   },
 
   saveInfo: function () {
-    console.log("aaa")
-    console.log(this.data.company.name)
     if (this.checkInput()) {
       const page = this;
       wx.showLoading({
@@ -41,7 +43,7 @@ Page({
         method: 'POST',
         data: {
           name: this.data.name,
-          company: this.data.company.name
+          company: this.data.company.name,
         },
 
         header: {
@@ -50,12 +52,14 @@ Page({
         },
         success(res) {
           console.log(page.data.company.name+"MM")
+          console.log(page.data.userInfo)
           wx.hideLoading();
           if (res.statusCode == 200) {
             if (res.data.code == 200) {
               page.data.userInfo.name = page.data.name;
               page.data.userInfo.company = page.data.company.name;
               app.globalData.userInfo = page.data.userInfo;
+              console.log(app.globalData.userInfo);
               wx.navigateBack({
                 delta: 1
               })
@@ -83,9 +87,12 @@ Page({
   bindCompanyChange: function(e) {
     console.log(e.detail)
     console.log(e+"AA")
-    console.log(this.data.company[e.detail.value])
+    console.log(this.data.companies[e.detail.value])
+    let company = this.data.companies[e.detail.value];
+    this.data.userInfo.company = company.name;
+    console.log(this.data.userInfo.company)
     this.setData({
-      company: this.data.company[e.detail.value]
+      company: company
     });
   },
   inputName: function (e) {

@@ -11,12 +11,13 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function (options) {
-    app.userLogin()
+   
     this.setData({
       scrollViewHeight: wx.getSystemInfoSync().windowHeight,
       userInfo: app.globalData.userInfo,
       hasUserInfo: app.globalData.hasUserInfo
     });
+
   },
 
   /**
@@ -30,6 +31,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('---------------------------')
+    console.log(app.globalData.userInfo)
     this.setData({
       scrollViewHeight: wx.getSystemInfoSync().windowHeight,
       userInfo: app.globalData.userInfo,

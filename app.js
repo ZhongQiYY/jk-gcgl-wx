@@ -11,7 +11,7 @@ globalData: {
   canIUse: wx.canIUse('button.open-type.getUserInfo'),
   thirdSession: null,
   userKey: "third_session",
-  
+  companies: [],
   url: {
     userInfo:  RootPath+"/api/wechat/userInfo",
     userData:  RootPath+"/api/wechat/userData",
@@ -135,6 +135,7 @@ userInfoSetInSQL: function (userInfo, callback) {
           city: userInfo.city,
           country: userInfo.country,
           language: userInfo.language,
+          company: userInfo.company
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded',
@@ -149,9 +150,9 @@ userInfoSetInSQL: function (userInfo, callback) {
               page.globalData.userInfo = userInfo;
               page.globalData.userInfo.name = res.data.data.name;
               page.globalData.userInfo.company = userInfo.company;
-              page.globalData.company  = res.data.data.company;
               page.globalData.userInfo.state = res.data.data.state;
               page.globalData.userInfo.stateText = res.data.data.stateText;
+              page.globalData.companies = res.data.data.companies;
               page.globalData.hasUserInfo = true;
               // page.loadData(false, callback);
               typeof callback == 'function' && callback();
@@ -182,13 +183,4 @@ showToast: function (msg, icon, complete) {
     }
   });
 },
-
-
-
-// -------------------- 小程序进入场景处理(一般与生命周期函数共同使用) --------------------
-
-
-// -------------------- 监听生命周期区域 --------------------
-
-
 })
