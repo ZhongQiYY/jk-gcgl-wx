@@ -106,7 +106,7 @@ getUserInfo: function (callback, fail) {
           }
         })
       } else {
-        console.log(fail);
+        // console.log(fail);
         typeof fail == 'function' && fail();
         console.log('getUserInfo用户未授权');
       }
@@ -149,7 +149,7 @@ userInfoSetInSQL: function (userInfo, callback) {
               console.log(res.data);
               page.globalData.userInfo = userInfo;
               page.globalData.userInfo.name = res.data.data.name;
-              page.globalData.userInfo.company = userInfo.company;
+              page.globalData.userInfo.company = res.data.data.company;
               page.globalData.userInfo.state = res.data.data.state;
               page.globalData.userInfo.stateText = res.data.data.stateText;
               page.globalData.companies = res.data.data.companies;

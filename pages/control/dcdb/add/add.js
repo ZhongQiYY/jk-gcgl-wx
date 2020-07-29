@@ -1,23 +1,45 @@
+const app = getApp();
+var dateTimePicker = require('../../../../utils/dateTimePicker.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    date: '2020-7-15',
+    dateTimeArray: null,
+    dateTime: null,
     startYear: 2000,
     endYear: 2050
   },
 
-  changeDate(e){
-     this.setData({ date:e.detail.value});
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取完整的年月日 时分秒，以及默认显示的数组
+    var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
+    this.setData({
+      dateTime: obj.dateTime,
+      dateTimeArray: obj.dateTimeArray,
+    });
   },
 
+  changeDateTime(e){
+    console.log(e)
+    this.setData({ dateTime: e.detail.value });
+  },
+
+  changeDateTimeColumn(e){
+    var arr = this.data.dateTime,
+    dateArr = this.data.dateTimeArray;
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+
+    this.setData({
+      dateTimeArray: dateArr,
+      dateTime: arr
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -73,16 +95,21 @@ Page({
     // 调用接口数据
     wx.request({
       //后台接口
-      url: 'http://localhost:16000/jk-gcgl/api/db/gcgl/pmDb/insert',
+      url: 'http://localhost:16000/jk-gcgl/api/db/pmDb/insert',
       method: 'POST',
       data: requestData,
+      header:{
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
       success: function(res) {
-        if (res && res.code == 200) {
+        console.log(res)
+        if (res && res.data.code == 200) {
           wx.navigateBack()
         } else {
           wx.showToast({
             icon: 'none',
-            title: res.msg,
+            title: res.data.msg,
           })
         }
       }

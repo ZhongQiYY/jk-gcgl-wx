@@ -40,7 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getRecords();
   },
 
   /**
@@ -52,21 +52,21 @@ Page({
 
   /**
    * 生命周期函数--监听页面显示
-   * 搜索日期给初值
    */
   onShow: function () {
-    this.getRecords();
   },
 
   getRecords: function(){
+    var that = this;
     wx.request({
-      url: "http://localhost:16000/jk-gcgl/api/db/gcgl/pmDb/list", //请求路径
+      url: "http://localhost:16000/jk-gcgl/api/db/pmDb/list", //请求路径
       method: 'post',
       data: {
 
       },
       header: {
         'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
       },
       success (res) {
         if (res.statusCode == 200) {
@@ -131,21 +131,29 @@ Page({
 
   del: function(event){
       console.log(event);
-      let id = event.target.dataset;
+      let id = event.target.dataset.id;
       console.log(id);
+    var that = this;
       // 调用接口数据
     wx.request({
       //后台接口
-      url: 'http://localhost:16000/jk-gcgl/api/db/gcgl/pmDb/delete',
+      url: 'http://localhost:16000/jk-gcgl/api/db/pmDb/delete?id='+id,
       method: 'POST',
-      data: id,
+      data: {
+        id : id
+      },
+      header:{
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
       success: function(res) {
-        if (res && res.code == 200) {
-          wx.navigateBack()
+        console.log(res);
+        if (res && res.data.code == 200) {
+          that.getRecords();
         } else {
           wx.showToast({
             icon: 'none',
-            title: res.msg,
+            title: res.data.msg,
           })
         }
       }

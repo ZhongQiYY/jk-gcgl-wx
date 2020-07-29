@@ -1,1 +1,2 @@
 /* pages/control/dcdb/add/add.wxss */
+/* @import "../picker/picker.wxss"; */

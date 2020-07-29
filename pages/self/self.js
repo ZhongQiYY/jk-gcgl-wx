@@ -99,7 +99,7 @@ Page({
           userInfo: app.globalData.userInfo,
           hasUserInfo: app.globalData.hasUserInfo
         });
-        if (page.data.userInfo.name == null || page.data.userInfo.name == '') {
+        if (page.data.userInfo.name == null || page.data.userInfo.name == ''||page.data.userInfo.company == null || page.data.userInfo.company == '') {
           wx.navigateTo({
             url: 'info/info',
           })
