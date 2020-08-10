@@ -72,5 +72,11 @@ Page({
       this.setData({
           icon: base64.icon20
       });
+      app.userLogin(function(){
+        page.setData({
+          hasUserInfo: app.globalData.hasUserInfo
+        });
+      });
+
   }
 })

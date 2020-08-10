@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/leaderboard/leaderboard",
     "pages/project/project",
+    "pages/leaderboard/leaderboard",
     "pages/tableData/tableData",
     "pages/self/self",
     "pages/self/info/info",
