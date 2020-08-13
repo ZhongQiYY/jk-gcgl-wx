@@ -1,5 +1,6 @@
 const app = getApp();
 var dateTimePicker = require('../../../../utils/dateTimePicker.js');
+const RootPath = "http://localhost:16000/jk-gcgl";
 Page({
 
   /**
@@ -95,7 +96,7 @@ Page({
     // 调用接口数据
     wx.request({
       //后台接口
-      url: 'http://localhost:16000/jk-gcgl/api/db/pmDb/insert',
+      url: RootPath + '/api/db/pmDb/insert',
       method: 'POST',
       data: requestData,
       header:{

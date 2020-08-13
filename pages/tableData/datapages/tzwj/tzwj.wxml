@@ -1,0 +1,24 @@
+<!--pages/tableData/datapages/tzwj/tzwj.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJzsgt" >
+				<view class="application-name"><image src="/images/jzsg.png"/>建筑施工图</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJgsgt">
+				<view class="application-name" ><image src="/images/jgsg.png"/>结构施工图</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndTsbb">
+				<view class="application-name"><image src="/images/tsbb.png"/>图审报告</view>
+			</label>
+		</view>
+	</view>
+</view>

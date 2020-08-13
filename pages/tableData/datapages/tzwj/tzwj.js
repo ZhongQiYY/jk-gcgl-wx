@@ -1,52 +1,18 @@
-// pages/tableData/tableData.js
-var app = getApp();
+// pages/tableData/datapages/tzwj/tzwj.js
 Page({
-
-  mixins: [require('../../dist/mixin/themeChanged')],
 
   /**
    * 页面的初始数据
    */
   data: {
-    projectName: ""
+
   },
 
-  toPlan: function() {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/annualplan/annualplan',
-    })
-  },
-
-  toDb: function() {
-    wx.navigateTo({
-      url: '/pages/control/dcdb/dcdb',
-    })
-  },
-
-  toSwInstruction: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tzwj/tzwj',
-    })
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // -------生命周期函数---------
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -60,9 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      projectName: app.globalData.pName
-    })
+
   },
 
   /**
@@ -98,5 +62,35 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  /**
+   * 建筑施工图
+   */
+  toDetailsAndJzsgt: function () {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tzwj/jzsgt/jzsgt'
+    })
+  },
+
+  /**
+   * 结构施工图
+   */
+  toDetailsAndJgsgt: function () {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tzwj/jgsgt/jgsgt'
+    })
+  },
+
+   /**
+   * 图审报告
+   */
+  toDetailsAndTsbb: function () {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tzwj/tsbb/tsbb'
+    })
+  },
+
+
+
 })

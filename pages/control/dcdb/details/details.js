@@ -1,4 +1,6 @@
 // pages/control/dcdb/details/details.js
+const RootPath = "http://localhost:16000/jk-gcgl";
+const app = getApp();
 Page({
 
   /**

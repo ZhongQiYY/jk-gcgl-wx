@@ -1,32 +1,11 @@
 const app = getApp();
+const RootPath = "http://localhost:16000/jk-gcgl";
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    records:[
-      // {
-      //   id:'1',
-      //   content:'哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
-      //   finalTime:'2020-07-14',
-      //   zb:'喜子软件1',
-      //   xb:'计划统计部1'
-      // },
-      // {
-      //   id:'2',
-      //   content:'xix哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈i',
-      //   finalTime:'2020-07-15',
-      //   zb:'喜子软件2',
-      //   xb:'计划统计部2'
-      // },
-      // {
-      //   id:'3',
-      //   content:'hehe',
-      //   finalTime:'2020-07-16',
-      //   zb:'喜子软件3',
-      //   xb:'计划统计部3'
-      // }
-    ],
+    records:[],
   },
 
   toDetails: function(obj) {
@@ -59,7 +38,7 @@ Page({
   getRecords: function(){
     var that = this;
     wx.request({
-      url: "http://localhost:16000/jk-gcgl/api/db/pmDb/list", //请求路径
+      url: RootPath + "/api/db/pmDb/list", //请求路径
       method: 'post',
       data: {
 
@@ -137,7 +116,7 @@ Page({
       // 调用接口数据
     wx.request({
       //后台接口
-      url: 'http://localhost:16000/jk-gcgl/api/db/pmDb/delete?id='+id,
+      url: RootPath + '/api/db/pmDb/delete?id='+id,
       method: 'POST',
       data: {
         id : id

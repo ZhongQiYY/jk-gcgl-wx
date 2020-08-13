@@ -1,0 +1,3 @@
+  <view wx:for="{{jzsgt}}" wx:key="item">
+    <image src= "{{RootPath}}{{item}}"/>
+  </view>

@@ -1,0 +1,3 @@
+  <view wx:for="{{tsbb}}" wx:key="item">
+    <image src= "{{RootPath}}{{item}}"/>
+  </view>

@@ -11,7 +11,11 @@
     "pages/project/projectInfo/projectInfo",
     "pages/control/dcdb/dcdb",
     "pages/control/dcdb/details/details",
-    "pages/control/dcdb/add/add"
+    "pages/control/dcdb/add/add",
+    "pages/tableData/datapages/tzwj/tzwj",
+    "pages/tableData/datapages/tzwj/jzsgt/jzsgt",
+    "pages/tableData/datapages/tzwj/jgsgt/jgsgt",
+    "pages/tableData/datapages/tzwj/tsbb/tsbb"
   ],
   "window": {
     "backgroundTextStyle": "dark",

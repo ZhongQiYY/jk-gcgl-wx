@@ -68,7 +68,9 @@ Page({
 //--------------------------生命周期函数------------------------------
 
 
+
   onLoad: function(options){
+      let page = this
       this.setData({
           icon: base64.icon20
       });
