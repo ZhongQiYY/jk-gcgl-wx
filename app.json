@@ -15,7 +15,10 @@
     "pages/tableData/datapages/tzwj/tzwj",
     "pages/tableData/datapages/tzwj/jzsgt/jzsgt",
     "pages/tableData/datapages/tzwj/jgsgt/jgsgt",
-    "pages/tableData/datapages/tzwj/tsbb/tsbb"
+    "pages/tableData/datapages/tzwj/tsbb/tsbb",
+    "pages/tableData/datapages/htgl/htgl",
+    "pages/tableData/datapages/htgl/sght/sght",
+    "pages/tableData/datapages/htgl/jlht/jlht"
   ],
   "window": {
     "backgroundTextStyle": "dark",

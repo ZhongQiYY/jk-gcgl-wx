@@ -72,7 +72,7 @@
 			<view class="weui-grid__label">签证审批</view>
 		</a>
 
-		<a class="weui-grid" bindtap="toDcdb">
+		<a class="weui-grid" bindtap="toHtgl">
 			<view class="weui-grid__icon">
 				<image src="/images/htgl.png" alt></image>
 			</view>
