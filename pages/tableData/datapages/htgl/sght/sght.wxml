@@ -1,1 +1,6 @@
-
+  
+  <view >
+    <view wx:for="{{fileName}}" wx:key="item" >
+      <view bindtap="preview" data-title="{{item}}">{{item}}</view>
+    </view>
+</view>

@@ -1,2 +1,6 @@
-<!--pages/tableData/datapages/htgl/jlht/jlht.wxml-->
-<text>pages/tableData/datapages/htgl/jlht/jlht.wxml</text>
+  
+  <view >
+    <view wx:for="{{fileName}}" wx:key="item" >
+      <view bindtap="preview" data-title="{{item}}">{{item}}</view>
+    </view>
+</view>

@@ -1,11 +1,14 @@
-// pages/tableData/datapages/htgl/sght/sght.js
+const app = getApp();
+const RootPath = "http://localhost:16000";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    fileName:[],
+    sght:[],
+    RootPath: RootPath
   },
 
   /**
@@ -22,11 +25,59 @@ Page({
 
   },
 
+  //查询接口，onshow中调用
+  getSght: function(){
+    console.log("调用getSght");
+    var that = this;
+    wx.request({
+      url: RootPath + "/jk-gcgl/api/htgl/pmHtgl/sght?pId="+12, //请求路径
+      method: 'post',
+      data: {
+        
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if (res.statusCode == 200) {
+          console.log(res.data);
+          if (res.data.code == 200) {
+            let arr = res.data.data.split(',');
+            let length = arr.length;
+            let sght = [];
+            let fileName = [];
+            for(let i = 0;i<length/2;i++){
+              sght[i] = arr[i];
+            }
+            let j = 0;
+            for(let i = length/2;i<length;i++){
+              fileName[j++] = arr[i]
+            }
+            that.setData({
+              sght: sght,
+              fileName: fileName
+            })
+            console.log(sght)
+            console.log(fileName)
+          }else{
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'success',
+              duration: 2000
+            });
+            console.log(res);
+          }
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.getSght();
   },
 
   /**
@@ -62,5 +113,69 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  //打开文件
+  preview: function (e) {
+    //app.showToast('文件加载中..');
+    wx.showLoading({
+      title: '加载中..',
+      mask: true
+    });
+    this.downloadFile(e);
+  },
+
+  downloadFile: function(e){
+    var that = this;
+    console.log(that);
+    var fileName = that.data.fileName
+    var index = 0;
+    var title = e.currentTarget.dataset.title
+    for(let k = 0;k<fileName.length;k++){
+        if(fileName[k]==title){
+          index = k;
+        }
+    }
+    console.log(that.data)
+    wx.downloadFile({
+      url: RootPath + that.data.sght[index],
+      header: {
+        // 'Accept': '*/*',
+        'content-type': '*/*', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success: function (res) {
+        var filePath = res.tempFilePath
+        console.log(filePath)
+        wx.openDocument({
+          filePath: filePath,
+          fileType: that.data.type,
+          success: function (res) {
+            console.log("打开文档成功")
+            console.log(res);
+          },
+          fail: function (res) {
+            console.log("fail");
+            app.showToast('文件显示失败');
+            console.log(res)
+          },
+          complete: function (res) {
+            wx.hideLoading();
+            console.log("complete");
+            console.log(res)
+          }
+        })
+      },
+      fail: function (res) {
+        console.log('fail')
+        app.showToast('文件下载失败');
+        console.log(res)
+      },
+      complete: function (res) {
+        wx.hideLoading();
+        console.log('complete')
+        console.log(res)
+      }
+    })
+  },
 })
