@@ -86,7 +86,7 @@
 			<view class="weui-grid__label">图纸文件</view>
 		</a>
 
-  	<a class="weui-grid" bindtap="toLoan">
+  	<a class="weui-grid" bindtap="toTptx">
 			<view class="weui-grid__icon">
 				<image src="/images/tptx.png" alt></image>
 			</view>

@@ -1,65 +1,18 @@
-// pages/tableData/tableData.js
-var app = getApp();
+// pages/tableData/datapages/tptx/szql/jpsgc/jpsgc.js
 Page({
-
-  mixins: [require('../../dist/mixin/themeChanged')],
 
   /**
    * 页面的初始数据
    */
   data: {
-    projectName: ""
+
   },
 
-  toPlan: function() {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/annualplan/annualplan',
-    })
-  },
-
-  toDb: function() {
-    wx.navigateTo({
-      url: '/pages/control/dcdb/dcdb',
-    })
-  },
-
-  toSwInstruction: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tzwj/tzwj',
-    })
-  },
-
-  toHtgl: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/htgl/htgl',
-    })
-  },
-
-  toTptx: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/tptx',
-    })
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // -------生命周期函数---------
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -73,9 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      projectName: app.globalData.pName
-    })
+
   },
 
   /**

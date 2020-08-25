@@ -1,0 +1,31 @@
+<!--pages/tableData/datapages/tzwj/tzwj.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndYqgc" >
+				<view class="application-name"><image src="/images/yqgc.png"/>园区工程</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndLcgc">
+				<view class="application-name" ><image src="/images/lcgc.png"/>路场工程</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndPtyf">
+				<view class="application-name"><image src="/images/ptyf.png"/>配套用房</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndWhjg">
+				<view class="application-name"><image src="/images/whjg.png"/>文化景观</view>
+			</label>
+		</view>
+	</view>
+</view>
