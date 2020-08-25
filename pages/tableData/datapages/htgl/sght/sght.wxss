@@ -1,1 +1,3 @@
-/* pages/tableData/datapages/htgl/sght/sght.wxss */
+.fileName{
+  text-decoration:underline;
+}
