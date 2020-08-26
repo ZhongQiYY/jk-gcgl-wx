@@ -1,0 +1,11 @@
+
+.application-name {
+  width: 100%;
+  height: 100%;
+}
+
+.application-name image {
+  width: 40rpx;
+  height: 40rpx;
+  /* vertical-align: middle; */
+}

@@ -35,6 +35,12 @@ Page({
     })
   },
 
+  toTptx: function () {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tptx/tptx',
+    })
+  },
+
 
 
 

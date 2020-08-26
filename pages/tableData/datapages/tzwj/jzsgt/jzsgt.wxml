@@ -1,3 +1,3 @@
-  <view wx:for="{{jzsgt}}" wx:key="item">
-    <image src= "{{RootPath}}{{item}}"/>
+  <view wx:for="{{jzsgt}}" wx:key="item" class ='imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
   </view>

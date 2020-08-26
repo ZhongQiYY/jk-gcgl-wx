@@ -1,0 +1,34 @@
+  <!-- <view wx:for="{{gylhl}}" wx:key="item" class ='imagesize'> -->
+  <image src= "{{RootPath}}{{pmGylhl.yqgcDxzxBeforeImgUrl}}"/>
+  <view>
+        地形造型前时间：{{pmGylhl.yqgcDxzxBeforeTime}}
+  </view>
+  <!-- </view> -->
+
+
+
+         <!-- <view wx:if="{{pmGylhl.yqgcDxzxBeforeImgUrl != '' }}">
+          <view wx:for="{{pmGylhl}}" wx:key="item" class = 'imagesize'>
+            地形造型前图片：<image src= "{{RootPath}}{{item.yqgcDxzxBeforeImgUrl}}" class="in-image"/>
+          </view>
+          <view>
+            地形造型前时间：{{item.yqgcDxzxBeforeTime}}
+          </view>
+        </view>
+        <view wx:if="{{pmGylhl.yqgcDxzxMidImgUrl != '' }}">
+          <view wx:for="{{pmGylhl}}" wx:key="item" class = 'imagesize'>
+            地形造型中图片：<image src= "{{RootPath}}{{item.yqgcDxzxMidImgUrl}}" class="in-image"/>
+          </view>
+          <view>
+            地形造型中时间：{{item.yqgcDxzxMidTime}}
+          </view>
+        </view>
+        <view wx:if="{{pmGylhl.yqgcDxzxAfterImgUrl != '' }}">
+          <view wx:for="{{pmGylhl}}" wx:key="item" class = 'imagesize'>
+            地形造型后图片：<image src= "{{RootPath}}{{item.yqgcDxzxAfterImgUrl}}" class="in-image"/>
+          </view>
+          <view>
+            地形造型后时间：{{item.yqgcDxzxAfterTime}}
+          </view>
+        </view>
+      -->

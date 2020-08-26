@@ -1,0 +1,17 @@
+
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndGylhl" >
+				<view class="application-name"><image src="/images/gylh.png"/>公园绿化类</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndSzqll">
+				<view class="application-name" ><image src="/images/jgsg.png"/>市政桥梁类</view>
+			</label>
+		</view>
+	</view>
+</view>

@@ -66,7 +66,7 @@ Page({
   /**
    * 施工合同
    */
-  toDetailsAndJzsgt: function () {
+  toDetailsAndSght: function () {
     wx.navigateTo({
       url: '/pages/tableData/datapages/htgl/sght/sght'
     })
@@ -75,7 +75,7 @@ Page({
   /**
    * 监理合同
    */
-  toDetailsAndJzsgt: function () {
+  toDetailsAndJlht: function () {
     wx.navigateTo({
       url: '/pages/tableData/datapages/htgl/jlht/jlht'
     })

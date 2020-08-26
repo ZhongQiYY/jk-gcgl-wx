@@ -1,1 +1,10 @@
 /* pages/tableData/datapages/tzwj/jzsgt/jzsgt.wxss */
+.imagesize{
+  display:flex;
+  justify-content: center;
+  padding: 5px;         
+ }
+ .in-image{
+  height: 300px;
+  width: 350px;
+}

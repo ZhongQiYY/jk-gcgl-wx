@@ -18,7 +18,19 @@
     "pages/tableData/datapages/tzwj/tsbb/tsbb",
     "pages/tableData/datapages/htgl/htgl",
     "pages/tableData/datapages/htgl/sght/sght",
-    "pages/tableData/datapages/htgl/jlht/jlht"
+    "pages/tableData/datapages/htgl/jlht/jlht",
+    "pages/tableData/datapages/tptx/tptx",
+    "pages/tableData/datapages/tptx/gylh/gylh",
+    "pages/tableData/datapages/tptx/gylh/yqgc/yqgc",
+    "pages/tableData/datapages/tptx/gylh/lcgc/lcgc",
+    "pages/tableData/datapages/tptx/gylh/ptyf/ptyf",
+    "pages/tableData/datapages/tptx/gylh/whjg/whjg",
+    "pages/tableData/datapages/tptx/szql/szql",
+    "pages/tableData/datapages/tptx/szql/qhgc/qhgc",
+    "pages/tableData/datapages/tptx/szql/dlgc/dlgc",
+    "pages/tableData/datapages/tptx/szql/jpsgc/jpsgc",
+    "pages/tableData/datapages/tptx/szql/ptgc/ptgc"
+
   ],
   "window": {
     "backgroundTextStyle": "dark",
