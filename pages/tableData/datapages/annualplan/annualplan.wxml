@@ -1,2 +1,2 @@
 <!--pages/tableData/datapages/annualplan.wxml-->
-<text>pages/tableData/datapages/annualplan.wxml</text>
+<web-view src="{{wvUrl}}"></web-view>

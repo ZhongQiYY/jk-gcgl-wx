@@ -1,18 +1,18 @@
-// pages/tableData/datapages/annualplan.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    wvUrl: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      
   },
 
   /**
@@ -26,7 +26,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      wvUrl: "http://localhost:16000/jk-gcgl/api/chartData/gantetu?thirdSession="+app.globalData.thirdSession
+    })
+    console.log(this.data.wvUrl);
   },
 
   /**
