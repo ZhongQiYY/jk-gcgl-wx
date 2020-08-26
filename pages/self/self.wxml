@@ -35,10 +35,10 @@
       </block>
     </view>
     <view class="copyright">
-      <view class="company">物联网大数据 · 研发项目</view>
-      <view class="company">综合管理部门 · 业务支持</view>
+      <!-- <view class="company">物联网大数据 · 研发项目</view>
+      <view class="company">综合管理部门 · 业务支持</view> -->
       <view class="company">赣州喜子软件 · 技术支持</view>
-      <view class="company">赣州建控集团 · 版权所有</view>
+      <!-- <view class="company">赣州建控集团 · 版权所有</view> -->
     </view>
   </view>
 </scroll-view>
