@@ -1,34 +1,231 @@
-  <!-- <view wx:for="{{gylhl}}" wx:key="item" class ='imagesize'> -->
-  <image src= "{{RootPath}}{{pmGylhl.yqgcDxzxBeforeImgUrl}}"/>
-  <view>
-        地形造型前时间：{{pmGylhl.yqgcDxzxBeforeTime}}
+
+  <view wx:if="{{pmGylhl.yqgcDxzxBeforeImgUrl != '' }}" >
+    <text>地形造型前图片:</text>
+  <view wx:for="{{yqgcDxzxBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
   </view>
-  <!-- </view> -->
+  <view>
+    地形造型前时间：{{pmGylhl.yqgcDxzxBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
 
+  <view wx:if="{{pmGylhl.yqgcDxzxMidImgUrl != '' }}" >
+    <text>地形造型中图片:</text>
+  <view wx:for="{{yqgcDxzxMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    地形造型中时间：{{pmGylhl.yqgcDxzxMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
 
+<view wx:if="{{pmGylhl.yqgcDxzxAfterImgUrl != '' }}">
+    <text>地形造型后图片:</text>
+  <view wx:for="{{yqgcDxzxAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    地形造型后时间：{{pmGylhl.yqgcDxzxAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
 
-         <!-- <view wx:if="{{pmGylhl.yqgcDxzxBeforeImgUrl != '' }}">
-          <view wx:for="{{pmGylhl}}" wx:key="item" class = 'imagesize'>
-            地形造型前图片：<image src= "{{RootPath}}{{item.yqgcDxzxBeforeImgUrl}}" class="in-image"/>
-          </view>
-          <view>
-            地形造型前时间：{{item.yqgcDxzxBeforeTime}}
-          </view>
-        </view>
-        <view wx:if="{{pmGylhl.yqgcDxzxMidImgUrl != '' }}">
-          <view wx:for="{{pmGylhl}}" wx:key="item" class = 'imagesize'>
-            地形造型中图片：<image src= "{{RootPath}}{{item.yqgcDxzxMidImgUrl}}" class="in-image"/>
-          </view>
-          <view>
-            地形造型中时间：{{item.yqgcDxzxMidTime}}
-          </view>
-        </view>
-        <view wx:if="{{pmGylhl.yqgcDxzxAfterImgUrl != '' }}">
-          <view wx:for="{{pmGylhl}}" wx:key="item" class = 'imagesize'>
-            地形造型后图片：<image src= "{{RootPath}}{{item.yqgcDxzxAfterImgUrl}}" class="in-image"/>
-          </view>
-          <view>
-            地形造型后时间：{{item.yqgcDxzxAfterTime}}
-          </view>
-        </view>
-      -->
+ <view wx:if="{{pmGylhl.yqgcJpsgcBeforeImgUrl != '' }}" >
+    <text>给排水工程前图片:</text>
+  <view wx:for="{{yqgcJpsgcBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    给排水工程前时间：{{pmGylhl.yqgcJpsgcBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.yqgcJpsgcMidImgUrl != '' }}" >
+    <text>给排水工程中图片:</text>
+  <view wx:for="{{yqgcJpsgcMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    给排水工程中时间：{{pmGylhl.yqgcJpsgcMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcLdzmAfterImgUrl != '' }}">
+    <text>给排水工程后图片:</text>
+  <view wx:for="{{yqgcLdzmAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   给排水工程后时间：{{pmGylhl.yqgcLdzmAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcLhzzAfterImgUrl != '' }}" >
+    <text>绿化种植前图片:</text>
+  <view wx:for="{{yqgcLhzzAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    绿化种植前时间：{{pmGylhl.yqgcLhzzAfterTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.yqgcLhzzMidImgUrl != '' }}" >
+    <text>绿化种植中图片:</text>
+  <view wx:for="{{yqgcLhzzMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    绿化种植中时间：{{pmGylhl.yqgcLhzzMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcLhzzAfterImgUrl != '' }}">
+    <text>绿化种植后图片:</text>
+  <view wx:for="{{yqgcLhzzAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   绿化种植后时间：{{pmGylhl.yqgcLhzzAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcJgxpBeforeImgUrl != '' }}" >
+    <text>景观小品前图片:</text>
+  <view wx:for="{{yqgcJgxpBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    景观小品前时间：{{pmGylhl.yqgcJgxpBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.yqgcJgxpMidImgUrl != '' }}" >
+    <text>景观小品中图片:</text>
+  <view wx:for="{{yqgcJgxpMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    景观小品中时间：{{pmGylhl.yqgcJgxpMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcJgxpAfterImgUrl != '' }}">
+    <text>景观小品后图片:</text>
+  <view wx:for="{{yqgcJgxpAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   景观小品后时间：{{pmGylhl.yqgcJgxpAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcLdzmBeforeImgUrl != '' }}" >
+    <text>路灯照明前图片:</text>
+  <view wx:for="{{yqgcLdzmBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    路灯照明前时间：{{pmGylhl.yqgcLdzmBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.yqgcLdzmMidImgUrl != '' }}" >
+    <text>路灯照明中图片:</text>
+  <view wx:for="{{yqgcLdzmMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    路灯照明中时间：{{pmGylhl.yqgcLdzmMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcLdzmAfterImgUrl != '' }}">
+    <text>路灯照明后图片:</text>
+  <view wx:for="{{yqgcLdzmAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   路灯照明后时间：{{pmGylhl.yqgcLdzmAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+ 
+ <view wx:if="{{pmGylhl.yqgcJkznBeforeImgUrl != '' }}" >
+    <text>监控智能前图片:</text>
+  <view wx:for="{{yqgcJkznBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    监控智能前时间：{{pmGylhl.yqgcJkznBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.yqgcJkznMidImgUrl != '' }}" >
+    <text>监控智能中图片:</text>
+  <view wx:for="{{yqgcJkznMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    监控智能中时间：{{pmGylhl.yqgcJkznMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcJkznAfterImgUrl != '' }}">
+    <text>监控智能后图片:</text>
+  <view wx:for="{{yqgcJkznAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   监控智能后时间：{{pmGylhl.yqgcJkznAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+ <view wx:if="{{pmGylhl.yqgcLxgcBeforeImgUrl != '' }}" >
+    <text>零星工程前图片:</text>
+  <view wx:for="{{yqgcLxgcBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    零星工程前时间：{{pmGylhl.yqgcLxgcBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.yqgcLxgcMidImgUrl != '' }}" >
+    <text>零星工程中图片:</text>
+  <view wx:for="{{yqgcLxgcMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    零星工程中时间：{{pmGylhl.yqgcLxgcMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.yqgcLxgcAfterImgUrl != '' }}">
+    <text>零星工程后图片:</text>
+  <view wx:for="{{yqgcLxgcAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   零星工程后时间：{{pmGylhl.yqgcLxgcAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>

@@ -18,15 +18,13 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-<<<<<<< HEAD
-=======
 		"useIsolateContext": true,
->>>>>>> 2ff097bb1c1ad01de62927f75ba588b8bdb5ac6a
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
