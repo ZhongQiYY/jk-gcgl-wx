@@ -5,6 +5,7 @@ const RootPath = "http://localhost:16000/jk-gcgl";
 App({
 // -------------------- 存储共享数据区域 --------------------
 globalData: {
+  basePath: "http://localhost:16000/jk-gcgl",
   pName: "",
   userInfo: {},
   hasUserInfo: false,

@@ -1,4 +1,5 @@
 const app = getApp();
+var basePath = app.globalData.basePath;
 Page({
 
   /**
@@ -27,9 +28,10 @@ Page({
    */
   onShow: function () {
     this.setData({
-      wvUrl: "http://localhost:16000/jk-gcgl/api/chartData/gantetu?thirdSession="+app.globalData.thirdSession
-    })
-    console.log(this.data.wvUrl);
+      wvUrl: basePath+"/jk-gcgl/api/chartData/wv/gantetu?thirdSession="+app.globalData.thirdSession
+    });
+
+    
   },
 
   /**

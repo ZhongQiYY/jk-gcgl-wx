@@ -38,9 +38,10 @@
 
 		<view class="weui-cells__title">项目名称</view>
 		<view class="weui-cells weui-cells_after-title">
-			<view data-text="{{item.projectName}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " wx:for="{{projectList}}" wx:key="index" hover-class="weui-cell_active">
+			<view data-text="{{item.projectName}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " 
+			wx:for="{{projectList}}" wx:key="index" hover-class="weui-cell_active">
 				<view class="weui-cell__bd">{{item.projectName}}</view>
-				<view class="weui-cell__ft">{{item.explain}}</view>
+				<view class="weui-cell__ft">{{item.buildType}}</view>
 			</view>
 		</view>
 
