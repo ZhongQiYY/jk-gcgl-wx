@@ -1,2 +1,231 @@
-<!--pages/tableData/datapages/tptx/gylh/ptyf/ptyf.wxml-->
-<text>pages/tableData/datapages/tptx/gylh/ptyf/ptyf.wxml</text>
+
+  <view wx:if="{{pmGylhl.ptyfTfgcBeforeImgUrl != '' }}" >
+    <text>土方工程前图片:</text>
+  <view wx:for="{{ptyfTfgcBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    土方工程前时间：{{pmGylhl.ptyfTfgcBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.ptyfTfgcMidImgUrl != '' }}" >
+    <text>土方工程中图片:</text>
+  <view wx:for="{{ptyfTfgcMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    土方工程中时间：{{pmGylhl.ptyfTfgcMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfTfgcAfterImgUrl != '' }}">
+    <text>土方工程后图片:</text>
+  <view wx:for="{{ptyfTfgcAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    土方工程后时间：{{pmGylhl.ptyfTfgcAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+ <view wx:if="{{pmGylhl.ptyfJcgcBeforeImgUrl != '' }}" >
+    <text>基础工程前图片:</text>
+  <view wx:for="{{ptyfJcgcBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    基础工程前时间：{{pmGylhl.ptyfJcgcBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.ptyfJcgcMidImgUrl != '' }}" >
+    <text>基础工程中图片:</text>
+  <view wx:for="{{ptyfJcgcMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    基础工程中时间：{{pmGylhl.ptyfJcgcMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfJcgcAfterImgUrl != '' }}">
+    <text>基础工程后图片:</text>
+  <view wx:for="{{ptyfJcgcAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   基础工程后时间：{{pmGylhl.ptyfJcgcAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfZtgcBeforeImgUrl != '' }}" >
+    <text>主体工程前图片:</text>
+  <view wx:for="{{ptyfZtgcBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    主体工程前时间：{{pmGylhl.ptyfZtgcBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.ptyfZtgcMidImgUrl != '' }}" >
+    <text>主体工程中图片:</text>
+  <view wx:for="{{ptyfZtgcMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    主体工程中时间：{{pmGylhl.ptyfZtgcMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfZtgcAfterImgUrl != '' }}">
+    <text>主体工程后图片:</text>
+  <view wx:for="{{ptyfZtgcAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   主体工程后时间：{{pmGylhl.ptyfZtgcAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfZszxBeforeImgUrl != '' }}" >
+    <text>装饰装修前图片:</text>
+  <view wx:for="{{ptyfZszxBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    装饰装修前时间：{{pmGylhl.ptyfZszxBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.ptyfZszxMidImgUrl != '' }}" >
+    <text>装饰装修中图片:</text>
+  <view wx:for="{{ptyfZszxMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    装饰装修中时间：{{pmGylhl.ptyfZszxMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfZszxAfterImgUrl != '' }}">
+    <text>装饰装修后图片:</text>
+  <view wx:for="{{ptyfZszxAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   装饰装修后时间：{{pmGylhl.ptyfZszxAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfGsgdBeforeImgUrl != '' }}" >
+    <text>供水供电前图片:</text>
+  <view wx:for="{{ptyfGsgdBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    供水供电前时间：{{pmGylhl.ptyfGsgdBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.ptyfGsgdMidImgUrl != '' }}" >
+    <text>供水供电中图片:</text>
+  <view wx:for="{{ptyfGsgdMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    供水供电中时间：{{pmGylhl.ptyfGsgdMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfGsgdAfterImgUrl != '' }}">
+    <text>供水供电后图片:</text>
+  <view wx:for="{{ptyfGsgdAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   供水供电后时间：{{pmGylhl.ptyfGsgdAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+ 
+ <view wx:if="{{pmGylhl.ptyfPspwBeforeImgUrl != '' }}" >
+    <text>排水排污前图片:</text>
+  <view wx:for="{{ptyfPspwBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    排水排污前时间：{{pmGylhl.ptyfPspwBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.ptyfPspwMidImgUrl != '' }}" >
+    <text>排水排污中图片:</text>
+  <view wx:for="{{ptyfPspwMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    排水排污中时间：{{pmGylhl.ptyfPspwMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfPspwAfterImgUrl != '' }}">
+    <text>排水排污后图片:</text>
+  <view wx:for="{{ptyfPspwAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   排水排污后时间：{{pmGylhl.ptyfPspwAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+ <view wx:if="{{pmGylhl.ptyfLxgcBeforeImgUrl != '' }}" >
+    <text>零星工程前图片:</text>
+  <view wx:for="{{ptyfLxgcBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    零星工程前时间：{{pmGylhl.ptyfLxgcBeforeTime}}
+  </view>
+  <view  class="line"></view>
+</view>
+
+  <view wx:if="{{pmGylhl.ptyfLxgcMidImgUrl != '' }}" >
+    <text>零星工程中图片:</text>
+  <view wx:for="{{ptyfLxgcMidImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+    零星工程中时间：{{pmGylhl.ptyfLxgcMidTime}}
+  </view>
+    <view  class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.ptyfLxgcAfterImgUrl != '' }}">
+    <text>零星工程后图片:</text>
+  <view wx:for="{{ptyfLxgcAfterImgUrl}}" wx:key="item" class = 'imagesize'>
+    <image src= "{{RootPath}}{{item}}" class="in-image"/>
+  </view>
+  <view>
+   零星工程后时间：{{pmGylhl.ptyfLxgcAfterTime}}
+  </view>
+    <view  class="line"></view>
+</view>

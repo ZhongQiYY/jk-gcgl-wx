@@ -7,6 +7,33 @@ Page({
    */
   data: {
     pmGylhl:{},
+    yqgcDxzxAfterImgUrl :[],
+    yqgcDxzxMidImgUrl :[],
+    yqgcDxzxAfterImgUrl:[],
+    
+    yqgcJgxpAfterImgUrl :[],
+    yqgcJgxpMidImgUrl :[],
+    yqgcJgxpBeforeImgUrl:[],
+
+    yqgcJkznAfterImgUrl :[],
+    yqgcJkznBeforeImgUrl :[],
+    yqgcJkznMidImgUrl:[],
+
+    yqgcJpsgcAfterImgUrl :[],
+    yqgcJpsgcBeforeImgUrl :[],
+    yqgcJpsgcMidImgUrl:[],
+
+    yqgcLdzmAfterImgUrl :[],
+    yqgcLdzmBeforeImgUrl :[],
+    yqgcLdzmMidImgUrl:[],
+
+    yqgcLhzzAfterImgUrl :[],
+    yqgcLhzzBeforeImgUrl :[],
+    yqgcLhzzMidImgUrl:[],
+
+    yqgcLxgcAfterImgUrl :[],
+    yqgcLxgcBeforeImgUrl :[],
+    yqgcLxgcMidImgUrl:[],
     RootPath: RootPath
   },
 
@@ -29,7 +56,7 @@ Page({
     console.log("调用getYqgc");
     var that = this;
     wx.request({
-      url: RootPath + "/jk-gcgl/api/tptx/pmTptx/yqgc?pId="+14, //请求路径
+      url: RootPath + "/jk-gcgl/api/tptx/pmTptx/gylhl?pId="+14, //请求路径
       method: 'post',
       data: {
         
@@ -46,6 +73,34 @@ Page({
           if (res.data.code == 200) {
             that.setData({
               pmGylhl: res.data.data,
+              yqgcDxzxAfterImgUrl : res.data.data.yqgcDxzxAfterImgUrl.split(","),
+              yqgcDxzxBeforeImgUrl : res.data.data.yqgcDxzxBeforeImgUrl.split(","),
+              yqgcDxzxMidImgUrl : res.data.data.yqgcDxzxMidImgUrl.split(","),
+
+              yqgcJgxpAfterImgUrl : res.data.data.yqgcJgxpAfterImgUrl.split(","),
+              yqgcJgxpBeforeImgUrl : res.data.data.yqgcJgxpBeforeImgUrl.split(","),
+              yqgcJgxpMidImgUrl : res.data.data.yqgcJgxpMidImgUrl.split(","),
+
+              yqgcJkznAfterImgUrl : res.data.data.yqgcJkznAfterImgUrl.split(","),
+              yqgcJkznBeforeImgUrl :  res.data.data.yqgcJkznBeforeImgUrl.split(","),
+              yqgcJkznMidImgUrl : res.data.data.yqgcJkznMidImgUrl.split(","),
+
+              yqgcJpsgcAfterImgUrl : res.data.data.yqgcJpsgcAfterImgUrl.split(","),
+              yqgcJpsgcMidImgUrl : res.data.data.yqgcJpsgcMidImgUrl.split(","),
+              yqgcJpsgcBeforeImgUrl : res.data.data.yqgcJpsgcBeforeImgUrl.split(","),
+
+              yqgcLdzmAfterImgUrl : res.data.data.yqgcLdzmAfterImgUrl.split(","),
+              yqgcLdzmBeforeImgUrl : res.data.data.yqgcLdzmBeforeImgUrl.split(","),
+              yqgcLdzmMidImgUrl : res.data.data.yqgcLdzmMidImgUrl.split(","),
+
+              yqgcLhzzAfterImgUrl : res.data.data.yqgcLhzzAfterImgUrl.split(","),
+              yqgcLhzzBeforeImgUrl : res.data.data.yqgcLhzzBeforeImgUrl.split(","),
+              yqgcLhzzMidImgUrl : res.data.data.yqgcLhzzMidImgUrl.split(","),
+
+              yqgcLxgcAfterImgUrl : res.data.data.yqgcLxgcAfterImgUrl.split(","),
+              yqgcLxgcBeforeImgUrl : res.data.data.yqgcLxgcBeforeImgUrl.split(","),
+              yqgcLxgcMidImgUrl : res.data.data.yqgcLxgcMidImgUrl.split(","),
+
             })
           }else{
             wx.showToast({
