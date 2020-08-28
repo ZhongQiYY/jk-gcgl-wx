@@ -1,5 +1,6 @@
 var base64 = require("../../dist/example/images/base64");
 var app = getApp();
+var basePath = app.globalData.basePath;
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
@@ -10,16 +11,7 @@ Page({
     categoryIndex: 0,
 
     projectList: [
-      {id: "1", projectName: "华昌新材料产业园（能之光代建）标准厂房", explain: "新建项目"},
-      {id: "2", projectName: "华昌科技园标准厂房", explain: "新建项目"},
-      {id: "3", projectName: "秋山科技园标准厂房", explain: "新建项目"},
-      {id: "4", projectName: "江奥科技园标准厂房", explain: "新建项目"},
-      {id: "5", projectName: "涌泉科技园标准厂房", explain: "续建项目"},
-      {id: "6", projectName: "横江产业园标准厂房", explain: "续建项目"},
-      {id: "7", projectName: "金凤智谷一期项目", explain: "续建项目"},
-      {id: "8", projectName: "秋月科技园标准厂房", explain: "新建项目"},
-      {id: "9", projectName: "春花科技园", explain: "续建项目"},
-      {id: "10", projectName: "横江产业园标准厂房", explain: "新建项目"},
+    
     ],
 
     projectListShow: true,
@@ -29,9 +21,28 @@ Page({
 
   // 选择建设单位
   bindBuildChange: function(e) {  
+    var that = this;
     this.setData({
       buildIndex: e.detail.value
-    })
+    });
+    wx.request({
+      url: basePath+"/api/project/list", //请求路径
+      method: 'post',
+      data: {
+        unitName: this.data.buildArray[e.detail.value],
+        categoryId: e.detail.value
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        console.log(res.data);
+        that.setData({
+          projectList: res.data
+        })
+      }
+    });
   },
   // 选择项目类别
   bindCategoryChange: function(e) {
