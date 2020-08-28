@@ -30,14 +30,13 @@ Page({
       method: 'post',
       data: {
         unitName: this.data.buildArray[e.detail.value],
-        categoryId: e.detail.value
+        categoryId: this.data.categoryIndex
       },
       header: {
         'content-type': 'application/json', // 默认值
         'thirdSession': app.globalData.thirdSession
       },
       success (res) {
-        console.log(res.data);
         that.setData({
           projectList: res.data
         })
@@ -46,9 +45,27 @@ Page({
   },
   // 选择项目类别
   bindCategoryChange: function(e) {
+    var that = this;
     this.setData({
       categoryIndex: e.detail.value
-    })
+    });
+    wx.request({
+      url: basePath+"/api/project/list", //请求路径
+      method: 'post',
+      data: {
+        unitName: this.data.buildArray[this.data.buildIndex],
+        categoryId: this.data.categoryIndex 
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        that.setData({
+          projectList: res.data
+        })
+      }
+    });
   },
 
   //显示项目详情

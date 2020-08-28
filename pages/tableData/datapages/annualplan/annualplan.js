@@ -28,10 +28,10 @@ Page({
    */
   onShow: function () {
     this.setData({
-      wvUrl: basePath+"/jk-gcgl/api/chartData/wv/gantetu?thirdSession="+app.globalData.thirdSession
+      wvUrl: basePath+"/api/chartData/wv/gantetu?thirdSession="+app.globalData.thirdSession
     });
 
-    
+
   },
 
   /**
