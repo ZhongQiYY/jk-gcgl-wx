@@ -1,2 +1,230 @@
-<!--pages/tableData/datapages/tptx/szql/jpsgc/jpsgc.wxml-->
-<text>pages/tableData/datapages/tptx/szql/jpsgc/jpsgc.wxml</text>
+<view wx:if="{{pmSzqll.jpsgcTfgcBeforeImgUrl != '' }}">
+	<text>土方工程前图片:</text>
+	<view wx:for="{{jpsgcTfgcBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		土方工程前时间：{{pmSzqll.jpsgcTfgcBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcTfgcMidImgUrl != '' }}">
+	<text>土方工程中图片:</text>
+	<view wx:for="{{jpsgcTfgcMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		土方工程中时间：{{pmSzqll.jpsgcTfgcMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcTfgcAfterImgUrl != '' }}">
+	<text>土方工程后图片:</text>
+	<view wx:for="{{jpsgcTfgcAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		土方工程后时间：{{pmSzqll.jpsgcTfgcAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGckwBeforeImgUrl != '' }}">
+	<text>沟槽开挖前图片:</text>
+	<view wx:for="{{jpsgcGckwBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		沟槽开挖前时间：{{pmSzqll.jpsgcGckwBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGckwMidImgUrl != '' }}">
+	<text>沟槽开挖中图片:</text>
+	<view wx:for="{{jpsgcGckwMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		沟槽开挖中时间：{{pmSzqll.jpsgcGckwMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGckwAfterImgUrl != '' }}">
+	<text>沟槽开挖后图片:</text>
+	<view wx:for="{{jpsgcGckwAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		沟槽开挖后时间：{{pmSzqll.jpsgcGckwAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcJcdcBeforeImgUrl != '' }}">
+	<text>基础垫层前图片:</text>
+	<view wx:for="{{jpsgcJcdcBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		基础垫层前时间：{{pmSzqll.jpsgcJcdcBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcJcdcMidImgUrl != '' }}">
+	<text>基础垫层中图片:</text>
+	<view wx:for="{{jpsgcJcdcMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		基础垫层中时间：{{pmSzqll.jpsgcJcdcMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcJcdcAfterImgUrl != '' }}">
+	<text>基础垫层后图片:</text>
+	<view wx:for="{{jpsgcJcdcAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		基础垫层后时间：{{pmSzqll.jpsgcJcdcAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdazBeforeImgUrl != '' }}">
+	<text>管道安装前图片:</text>
+	<view wx:for="{{jpsgcGdazBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道安装前时间：{{pmSzqll.jpsgcGdazBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdazMidImgUrl != '' }}">
+	<text>管道安装中图片:</text>
+	<view wx:for="{{jpsgcGdazMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道安装中时间：{{pmSzqll.jpsgcGdazMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdazAfterImgUrl != '' }}">
+	<text>管道安装后图片:</text>
+	<view wx:for="{{jpsgcGdazAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道安装后时间：{{pmSzqll.jpsgcGdazAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdbfBeforeImgUrl != '' }}">
+	<text>管道包封前图片:</text>
+	<view wx:for="{{jpsgcGdbfBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道包封前时间：{{pmSzqll.jpsgcGdbfBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdbfMidImgUrl != '' }}">
+	<text>管道包封中图片:</text>
+	<view wx:for="{{jpsgcGdbfMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道包封中时间：{{pmSzqll.jpsgcGdbfMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdbfAfterImgUrl != '' }}">
+	<text>管道包封后图片:</text>
+	<view wx:for="{{jpsgcGdbfAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道包封后时间：{{pmSzqll.jpsgcGdbfAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdtsBeforeImgUrl != '' }}">
+	<text>管道填砂前图片:</text>
+	<view wx:for="{{jpsgcGdtsBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道填砂前时间：{{pmSzqll.jpsgcGdtsBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdtsMidImgUrl != '' }}">
+	<text>管道填砂中图片:</text>
+	<view wx:for="{{jpsgcGdtsMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道填砂中时间：{{pmSzqll.jpsgcGdtsMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdtsAfterImgUrl != '' }}">
+	<text>管道填砂后图片:</text>
+	<view wx:for="{{jpsgcGdtsAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道填砂后时间：{{pmSzqll.jpsgcGdtsAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdttBeforeImgUrl != '' }}">
+	<text>管道填土前图片:</text>
+	<view wx:for="{{jpsgcGdttBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道填土前时间：{{pmSzqll.jpsgcGdttBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdttMidImgUrl != '' }}">
+	<text>管道填土中图片:</text>
+	<view wx:for="{{jpsgcGdttMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道填土中时间：{{pmSzqll.jpsgcGdttMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.jpsgcGdttAfterImgUrl != '' }}">
+	<text>管道填土后图片:</text>
+	<view wx:for="{{jpsgcGdttAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		管道填土后时间：{{pmSzqll.jpsgcGdttAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>

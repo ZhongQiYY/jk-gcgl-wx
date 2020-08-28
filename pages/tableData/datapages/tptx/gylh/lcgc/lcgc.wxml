@@ -1,231 +1,230 @@
-
-  <view wx:if="{{pmGylhl.lcgcTfgcBeforeImgUrl != '' }}" >
-    <text>土方工程前图片:</text>
-  <view wx:for="{{lcgcTfgcBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    土方工程前时间：{{pmGylhl.lcgcTfgcBeforeTime}}
-  </view>
-  <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcTfgcBeforeImgUrl != '' }}">
+	<text>土方工程前图片:</text>
+	<view wx:for="{{lcgcTfgcBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		土方工程前时间：{{pmGylhl.lcgcTfgcBeforeTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-  <view wx:if="{{pmGylhl.lcgcTfgcMidImgUrl != '' }}" >
-    <text>土方工程中图片:</text>
-  <view wx:for="{{lcgcTfgcMidImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    土方工程中时间：{{pmGylhl.lcgcTfgcMidTime}}
-  </view>
-    <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcTfgcMidImgUrl != '' }}">
+	<text>土方工程中图片:</text>
+	<view wx:for="{{lcgcTfgcMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		土方工程中时间：{{pmGylhl.lcgcTfgcMidTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
 <view wx:if="{{pmGylhl.lcgcTfgcAfterImgUrl != '' }}">
-    <text>土方工程后图片:</text>
-  <view wx:for="{{lcgcTfgcAfterImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    土方工程后时间：{{pmGylhl.lcgcTfgcAfterTime}}
-  </view>
-    <view  class="line"></view>
+	<text>土方工程后图片:</text>
+	<view wx:for="{{lcgcTfgcAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		土方工程后时间：{{pmGylhl.lcgcTfgcAfterTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
- <view wx:if="{{pmGylhl.lcgcYlzxBeforeImgUrl != '' }}" >
-    <text>园路整形前图片:</text>
-  <view wx:for="{{lcgcYlzxBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    园路整形前时间：{{pmGylhl.lcgcYlzxBeforeTime}}
-  </view>
-  <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcYlzxBeforeImgUrl != '' }}">
+	<text>园路整形前图片:</text>
+	<view wx:for="{{lcgcYlzxBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		园路整形前时间：{{pmGylhl.lcgcYlzxBeforeTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-  <view wx:if="{{pmGylhl.lcgcYlzxMidImgUrl != '' }}" >
-    <text>园路整形中图片:</text>
-  <view wx:for="{{lcgcYlzxMidImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    园路整形中时间：{{pmGylhl.lcgcYlzxMidTime}}
-  </view>
-    <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcYlzxMidImgUrl != '' }}">
+	<text>园路整形中图片:</text>
+	<view wx:for="{{lcgcYlzxMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		园路整形中时间：{{pmGylhl.lcgcYlzxMidTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
 <view wx:if="{{pmGylhl.lcgcYlzxAfterImgUrl != '' }}">
-    <text>园路整形后图片:</text>
-  <view wx:for="{{lcgcYlzxAfterImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-   园路整形后时间：{{pmGylhl.lcgcYlzxAfterTime}}
-  </view>
-    <view  class="line"></view>
+	<text>园路整形后图片:</text>
+	<view wx:for="{{lcgcYlzxAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		园路整形后时间：{{pmGylhl.lcgcYlzxAfterTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-<view wx:if="{{pmGylhl.lcgcYlpzBeforeImgUrl != '' }}" >
-    <text>园路铺装前图片:</text>
-  <view wx:for="{{lcgcYlpzBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    园路铺装前时间：{{pmGylhl.lcgcYlpzBeforeTime}}
-  </view>
-  <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcYlpzBeforeImgUrl != '' }}">
+	<text>园路铺装前图片:</text>
+	<view wx:for="{{lcgcYlpzBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		园路铺装前时间：{{pmGylhl.lcgcYlpzBeforeTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-  <view wx:if="{{pmGylhl.lcgcYlpzMidImgUrl != '' }}" >
-    <text>园路铺装中图片:</text>
-  <view wx:for="{{lcgcYlpzMidImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    园路铺装中时间：{{pmGylhl.lcgcYlpzMidTime}}
-  </view>
-    <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcYlpzMidImgUrl != '' }}">
+	<text>园路铺装中图片:</text>
+	<view wx:for="{{lcgcYlpzMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		园路铺装中时间：{{pmGylhl.lcgcYlpzMidTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
 <view wx:if="{{pmGylhl.lcgcYlpzAfterImgUrl != '' }}">
-    <text>园路铺装后图片:</text>
-  <view wx:for="{{lcgcYlpzAfterImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-   园路铺装后时间：{{pmGylhl.lcgcYlpzAfterTime}}
-  </view>
-    <view  class="line"></view>
+	<text>园路铺装后图片:</text>
+	<view wx:for="{{lcgcYlpzAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		园路铺装后时间：{{pmGylhl.lcgcYlpzAfterTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-<view wx:if="{{pmGylhl.lcgcDlzxBeforeImgUrl != '' }}" >
-    <text>道路整形前图片:</text>
-  <view wx:for="{{lcgcDlzxBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    道路整形前时间：{{pmGylhl.lcgcDlzxBeforeTime}}
-  </view>
-  <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcDlzxBeforeImgUrl != '' }}">
+	<text>道路整形前图片:</text>
+	<view wx:for="{{lcgcDlzxBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		道路整形前时间：{{pmGylhl.lcgcDlzxBeforeTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-  <view wx:if="{{pmGylhl.lcgcDlzxMidImgUrl != '' }}" >
-    <text>道路整形中图片:</text>
-  <view wx:for="{{lcgcDlzxMidImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    道路整形中时间：{{pmGylhl.lcgcDlzxMidTime}}
-  </view>
-    <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcDlzxMidImgUrl != '' }}">
+	<text>道路整形中图片:</text>
+	<view wx:for="{{lcgcDlzxMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		道路整形中时间：{{pmGylhl.lcgcDlzxMidTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
 <view wx:if="{{pmGylhl.lcgcDlzxAfterImgUrl != '' }}">
-    <text>道路整形后图片:</text>
-  <view wx:for="{{lcgcDlzxAfterImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-   道路整形后时间：{{pmGylhl.lcgcDlzxAfterTime}}
-  </view>
-    <view  class="line"></view>
+	<text>道路整形后图片:</text>
+	<view wx:for="{{lcgcDlzxAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		道路整形后时间：{{pmGylhl.lcgcDlzxAfterTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-<view wx:if="{{pmGylhl.lcgcDlyhBeforeImgUrl != '' }}" >
-    <text>道路硬化前图片:</text>
-  <view wx:for="{{lcgcDlyhBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    道路硬化前时间：{{pmGylhl.lcgcDlyhBeforeTime}}
-  </view>
-  <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcDlyhBeforeImgUrl != '' }}">
+	<text>道路硬化前图片:</text>
+	<view wx:for="{{lcgcDlyhBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		道路硬化前时间：{{pmGylhl.lcgcDlyhBeforeTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-  <view wx:if="{{pmGylhl.lcgcDlyhMidImgUrl != '' }}" >
-    <text>道路硬化中图片:</text>
-  <view wx:for="{{lcgcDlyhMidImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    道路硬化中时间：{{pmGylhl.lcgcDlyhMidTime}}
-  </view>
-    <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcDlyhMidImgUrl != '' }}">
+	<text>道路硬化中图片:</text>
+	<view wx:for="{{lcgcDlyhMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		道路硬化中时间：{{pmGylhl.lcgcDlyhMidTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
 <view wx:if="{{pmGylhl.lcgcDlyhAfterImgUrl != '' }}">
-    <text>道路硬化后图片:</text>
-  <view wx:for="{{lcgcDlyhAfterImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-   道路硬化后时间：{{pmGylhl.lcgcDlyhAfterTime}}
-  </view>
-    <view  class="line"></view>
-</view>
- 
- <view wx:if="{{pmGylhl.lcgcTcczxBeforeImgUrl != '' }}" >
-    <text>停车(广)场整形前图片:</text>
-  <view wx:for="{{lcgcTcczxBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    停车(广)场整形前时间：{{pmGylhl.lcgcTcczxBeforeTime}}
-  </view>
-  <view  class="line"></view>
+	<text>道路硬化后图片:</text>
+	<view wx:for="{{lcgcDlyhAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		道路硬化后时间：{{pmGylhl.lcgcDlyhAfterTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-  <view wx:if="{{pmGylhl.lcgcTcczxMidImgUrl != '' }}" >
-    <text>停车(广)场整形中图片:</text>
-  <view wx:for="{{lcgcTcczxMidImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    停车(广)场整形中时间：{{pmGylhl.lcgcTcczxMidTime}}
-  </view>
-    <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcTcczxBeforeImgUrl != '' }}">
+	<text>停车(广)场整形前图片:</text>
+	<view wx:for="{{lcgcTcczxBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		停车(广)场整形前时间：{{pmGylhl.lcgcTcczxBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmGylhl.lcgcTcczxMidImgUrl != '' }}">
+	<text>停车(广)场整形中图片:</text>
+	<view wx:for="{{lcgcTcczxMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		停车(广)场整形中时间：{{pmGylhl.lcgcTcczxMidTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
 <view wx:if="{{pmGylhl.lcgcTcczxAfterImgUrl != '' }}">
-    <text>停车(广)场整形后图片:</text>
-  <view wx:for="{{lcgcTcczxAfterImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-   停车(广)场整形后时间：{{pmGylhl.lcgcTcczxAfterTime}}
-  </view>
-    <view  class="line"></view>
+	<text>停车(广)场整形后图片:</text>
+	<view wx:for="{{lcgcTcczxAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		停车(广)场整形后时间：{{pmGylhl.lcgcTcczxAfterTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
- <view wx:if="{{pmGylhl.lcgcTccpzBeforeImgUrl != '' }}" >
-    <text>停车(广)场铺装前图片:</text>
-  <view wx:for="{{lcgcTccpzBeforeImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    停车(广)场铺装前时间：{{pmGylhl.lcgcTccpzBeforeTime}}
-  </view>
-  <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcTccpzBeforeImgUrl != '' }}">
+	<text>停车(广)场铺装前图片:</text>
+	<view wx:for="{{lcgcTccpzBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		停车(广)场铺装前时间：{{pmGylhl.lcgcTccpzBeforeTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
-  <view wx:if="{{pmGylhl.lcgcTccpzMidImgUrl != '' }}" >
-    <text>停车(广)场铺装中图片:</text>
-  <view wx:for="{{lcgcTccpzMidImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-    停车(广)场铺装中时间：{{pmGylhl.lcgcTccpzMidTime}}
-  </view>
-    <view  class="line"></view>
+<view wx:if="{{pmGylhl.lcgcTccpzMidImgUrl != '' }}">
+	<text>停车(广)场铺装中图片:</text>
+	<view wx:for="{{lcgcTccpzMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		停车(广)场铺装中时间：{{pmGylhl.lcgcTccpzMidTime}}
+	</view>
+	<view class="line"></view>
 </view>
 
 <view wx:if="{{pmGylhl.lcgcTccpzAfterImgUrl != '' }}">
-    <text>停车(广)场铺装程后图片:</text>
-  <view wx:for="{{lcgcTccpzAfterImgUrl}}" wx:key="item" class = 'imagesize'>
-    <image src= "{{RootPath}}{{item}}" class="in-image"/>
-  </view>
-  <view>
-   停车(广)场铺装后时间：{{pmGylhl.lcgcTccpzAfterTime}}
-  </view>
-    <view  class="line"></view>
+	<text>停车(广)场铺装程后图片:</text>
+	<view wx:for="{{lcgcTccpzAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		停车(广)场铺装后时间：{{pmGylhl.lcgcTccpzAfterTime}}
+	</view>
+	<view class="line"></view>
 </view>

@@ -38,7 +38,7 @@ Page({
   getRecords: function(){
     var that = this;
     wx.request({
-      url: RootPath + "/api/db/pmDb/list", //请求路径
+      url: RootPath + "/api/db/pmDb/list?pId="+14, //请求路径
       method: 'post',
       data: {
 
