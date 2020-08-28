@@ -1,2 +1,230 @@
-<!--pages/tableData/datapages/tptx/szql/ptgc/ptgc.wxml-->
-<text>pages/tableData/datapages/tptx/szql/ptgc/ptgc.wxml</text>
+<view wx:if="{{pmSzqll.ptgcRxdgcBeforeImgUrl != '' }}">
+	<text>人行道工程前图片:</text>
+	<view wx:for="{{ptgcRxdgcBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		人行道工程前时间：{{pmSzqll.ptgcRxdgcBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcRxdgcMidImgUrl != '' }}">
+	<text>人行道工程中图片:</text>
+	<view wx:for="{{ptgcRxdgcMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		人行道工程中时间：{{pmSzqll.ptgcRxdgcMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcRxdgcAfterImgUrl != '' }}">
+	<text>人行道工程后图片:</text>
+	<view wx:for="{{ptgcRxdgcAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		人行道工程后时间：{{pmSzqll.ptgcRxdgcAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLhgcBeforeImgUrl != '' }}">
+	<text>绿化工程前图片:</text>
+	<view wx:for="{{ptgcLhgcBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		绿化工程前时间：{{pmSzqll.ptgcLhgcBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLhgcMidImgUrl != '' }}">
+	<text>绿化工程中图片:</text>
+	<view wx:for="{{ptgcLhgcMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		绿化工程中时间：{{pmSzqll.ptgcLhgcMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLhgcAfterImgUrl != '' }}">
+	<text>绿化工程后图片:</text>
+	<view wx:for="{{ptgcLhgcAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		绿化工程后时间：{{pmSzqll.ptgcLhgcAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLhgcBeforeImgUrl != '' }}">
+	<text>亮化工程前图片:</text>
+	<view wx:for="{{ptgcLhgcBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		亮化工程前时间：{{pmSzqll.ptgcLhgcBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLhgcMidImgUrl != '' }}">
+	<text>亮化工程中图片:</text>
+	<view wx:for="{{ptgcLhgcMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		亮化工程中时间：{{pmSzqll.ptgcLhgcMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLhgcAfterImgUrl != '' }}">
+	<text>亮化工程后图片:</text>
+	<view wx:for="{{ptgcLhgcAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		亮化工程后时间：{{pmSzqll.ptgcLhgcAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcBsbpBeforeImgUrl != '' }}">
+	<text>标识标牌前图片:</text>
+	<view wx:for="{{ptgcBsbpBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		标识标牌前时间：{{pmSzqll.ptgcBsbpBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcBsbpMidImgUrl != '' }}">
+	<text>标识标牌中图片:</text>
+	<view wx:for="{{ptgcBsbpMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		标识标牌中时间：{{pmSzqll.ptgcBsbpMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcBsbpAfterImgUrl != '' }}">
+	<text>标识标牌后图片:</text>
+	<view wx:for="{{ptgcBsbpAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		标识标牌后时间：{{pmSzqll.ptgcBsbpAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcJtxhdBeforeImgUrl != '' }}">
+	<text>交通信号灯前图片:</text>
+	<view wx:for="{{ptgcJtxhdBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		交通信号灯前时间：{{pmSzqll.ptgcJtxhdBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcJtxhdMidImgUrl != '' }}">
+	<text>交通信号灯中图片:</text>
+	<view wx:for="{{ptgcJtxhdMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		交通信号灯中时间：{{pmSzqll.ptgcJtxhdMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcJtxhdAfterImgUrl != '' }}">
+	<text>交通信号灯后图片:</text>
+	<view wx:for="{{ptgcJtxhdAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		交通信号灯后时间：{{pmSzqll.ptgcJtxhdAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcBpclBeforeImgUrl != '' }}">
+	<text>边坡处理前图片:</text>
+	<view wx:for="{{ptgcBpclBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		边坡处理前时间：{{pmSzqll.ptgcBpclBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcBpclMidImgUrl != '' }}">
+	<text>边坡处理中图片:</text>
+	<view wx:for="{{ptgcBpclMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		边坡处理中时间：{{pmSzqll.ptgcBpclMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcBpclAfterImgUrl != '' }}">
+	<text>边坡处理后图片:</text>
+	<view wx:for="{{ptgcBpclAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		边坡处理后时间：{{pmSzqll.ptgcBpclAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLxgcBeforeImgUrl != '' }}">
+	<text>零星工程前图片:</text>
+	<view wx:for="{{ptgcLxgcBeforeImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		零星工程前时间：{{pmSzqll.ptgcLxgcBeforeTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLxgcMidImgUrl != '' }}">
+	<text>零星工程中图片:</text>
+	<view wx:for="{{ptgcLxgcMidImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		零星工程中时间：{{pmSzqll.ptgcLxgcMidTime}}
+	</view>
+	<view class="line"></view>
+</view>
+
+<view wx:if="{{pmSzqll.ptgcLxgcAfterImgUrl != '' }}">
+	<text>零星工程后图片:</text>
+	<view wx:for="{{ptgcLxgcAfterImgUrl}}" wx:key="item" class='imagesize'>
+		<image src="{{RootPath}}{{item}}" class="in-image" />
+	</view>
+	<view>
+		零星工程后时间：{{pmSzqll.ptgcLxgcAfterTime}}
+	</view>
+	<view class="line"></view>
+</view>
