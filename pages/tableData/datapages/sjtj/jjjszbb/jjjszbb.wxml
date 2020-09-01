@@ -7,7 +7,7 @@
 			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 0}}">
 				<view class="application-name" wx:if="{{item.totalMoney != ''}}">项目总投资：{{item.totalMoney}}</view>
 			</view>
-			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 1}">
+			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 1}}">
 				<view class="application-name" wx:if="{{item.totalMoney != ''}}">本年投资：{{item.totalMoney}}</view>
 			</view>
 			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 2}}">
@@ -17,6 +17,7 @@
 				<view class="application-name" wx:if="{{item.totalMoney != ''}}">第三年年度投资：{{item.totalMoney}}</view>
 			</view>
 		</view>
+	</view>
 
 	<view wx:if="{{categoryType == 1}}">
 		<view class="weui-form-preview__item">
