@@ -41,6 +41,17 @@ Page({
     })
   },
 
+  toZjjk: function() {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/zjjk/zjjk',
+    })
+  },
+ 
+  toSjtj: function() {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/sjtj/sjtj',
+    })
+  },
 
 
 
