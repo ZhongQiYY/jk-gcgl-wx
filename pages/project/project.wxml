@@ -1,5 +1,5 @@
-<view class="search">
-	<view class="weui-flex">
+<view class="{{search}}">
+	<view class="weui-flex" wx:if="{{projectListShow}}">
 
 		<view class="weui-flex__item">
 			<picker bindchange="bindBuildChange" value="{{buildIndex}}" range="{{buildArray}}">
@@ -23,7 +23,12 @@
 		</view>
 
 	</view>
+
+	<view  wx:if="{{projectInfoShow}}">
+		<button class="projectBack" bindtap="showProjectList">返回</button>
+	</view>
 </view>
+
 
 <!-- 
 <navigator wx:for="{{projectList}}" wx:key="index" url="../project/projectInfo/projectInfo?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
@@ -38,10 +43,11 @@
 
 		<view class="weui-cells__title">项目名称</view>
 		<view class="weui-cells weui-cells_after-title">
-			<view data-text="{{item.projectName}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " 
+			
+			<view data-text="{{item.projectName}}" data-id="{{item.id}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " 
 			wx:for="{{projectList}}" wx:key="index" hover-class="weui-cell_active">
 				<view class="weui-cell__bd">{{item.projectName}}</view>
-				<view class="weui-cell__ft">{{item.buildType}}</view>
+				<!-- <view class="weui-cell__ft">{{item.buildType}}</view> -->
 			</view>
 		</view>
 
@@ -50,7 +56,7 @@
 	<!-- 项目详情页 -->
 	<view class="page__bd" wx:if="{{projectInfoShow}}">
 		<view style="text-align: center">
-			<text bindtap="showProjectList">{{projectName}}</text>
+			<text>{{projectName}}</text> 
 		</view>
 
 		<view id="projectImage">
