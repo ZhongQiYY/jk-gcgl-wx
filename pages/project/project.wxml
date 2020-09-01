@@ -60,9 +60,12 @@
 		</view>
 
 		<view id="projectImage">
-			<!-- <navigator url="/pages/tableData/tableData"> -->
-				<image bindtap="toTableData" src="/images/niaokantu.jpg" style="width: 100%"></image>
-			<!-- </navigator> -->
+			<block wx:if="{{projectInfo.effectPicture != ''}}" >
+				<image bindtap="toTableData" src="{{imagePath}}" style="width: 100%"></image>
+			</block>
+			<block wx:if="{{projectInfo.effectPicture == ''}}">
+				<view>未设置图片</view>
+			</block>
 		</view>
 
 		<view class="page">
