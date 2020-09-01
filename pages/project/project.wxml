@@ -71,87 +71,146 @@
 		<view class="page">
 
 			<view class="page__bd page__bd_spacing">
-
 				<view class="weui-flex">
 					<view class="weui-flex__item">
-						<view class="placeholder">
-
-							<view class="table">
-								<view class="table-tr">
-									<view class="table-td">业主代表</view>
-									<view class="table-td">西城公司</view>
-								</view>
-
-								<view class="table-tr">
-									<view class="table-td">本月进度</view>
-									<view class="table-td">/</view>
-								</view>
-
-								<view class="table-tr">
-									<view class="table-td">占地面积</view>
-									<view class="table-td">18377㎡</view>
-								</view>
-
-								<view class="table-tr">
-									<view class="table-td">住在套数</view>
-									<view class="table-td">189</view>
-								</view>
-
-								<view class="table-tr">
-									<view class="table-td">年度计划投资</view>
-									<view class="table-td">3421.55</view>
-								</view>
-
-								<view class="table-tr">
-									<view class="table-td">年度累计审批</view>
-									<view class="table-td">2487.24</view>
-								</view>
-							</view>
-
+						<view wx:if="{{projectInfo.status != ''}}">
+							状态：{{projectInfo.status}}
 						</view>
-					</view>
-					<view class="weui-flex__item">
-						<view class="placeholder">
+						<view wx:if="{{projectInfo.planStatus != ''}}">
+							计划状态：{{projectInfo.planStatus}}
+						</view>
+						<view wx:if="{{projectInfo.scheduleStatus != ''}}">
+							进度状态：{{projectInfo.scheduleStatus}}
+						</view>
+						<view wx:if="{{projectInfo.costStatus != ''}}">
+							造价状态：{{projectInfo.costStatus}}
+						</view>
+						<view wx:if="{{projectInfo.unitName != ''}}">
+							建设单位：{{projectInfo.unitName}}
+						</view>
+						<view wx:if="{{projectInfo.categoryId != ''}}">
+							项目类别id：{{projectInfo.categoryId}}
+						</view>
 
-							<view class="table">
-								<view class="table-tr">
-									<view class="table-td">年度目标</view>
-									<view class="table-td">/</view>
-								</view>
+						<!-- <view wx:if="{{projectInfo.effectPicture != ''}}">
+							效果图：{{projectInfo.effectPicture}}
+						</view> -->
 
-								<view class="table-tr">
-									<view class="table-td">是否达标</view>
-									<view class="table-td">是</view>
-								</view>
+						<view wx:if="{{projectInfo.biddingType != ''}}">
+							招标方式,0.公开招标 1.直接委托：{{projectInfo.biddingType}}
+						</view>
+						<view wx:if="{{projectInfo.categoryType != ''}}">
+							项目类型：1.房建类 2.园林类 3.市政类：{{projectInfo.categoryType}}
+						</view>
+						<view wx:if="{{projectInfo.whichTime != ''}}">
+							填写时间：{{projectInfo.whichTime}}
+						</view>
+						
 
-								<view class="table-tr">
-									<view class="table-td">建筑面积</view>
-									<view class="table-td">24865㎡</view>
-								</view>
+						<view wx:if="{{projectInfo.projectName != ''}}">
+							项目名称：{{projectInfo.projectName}}
+						</view>
+						<view wx:if="{{projectInfo.coverArea != ''}}">
+							占地面积：{{projectInfo.coverArea}}
+						</view>
+						<view wx:if="{{projectInfo.totalArea != ''}}">
+							总建筑面积：{{projectInfo.totalArea}}
+						</view>
+						<view wx:if="{{projectInfo.specialId != ''}}">
+							不同类别项目特定信息表id：{{projectInfo.specialId}}
+						</view>
+						<view wx:if="{{projectInfo.buildSite != ''}}">
+							建设地点：{{projectInfo.buildSite}}
+						</view>
+						<view wx:if="{{projectInfo.buildYear != ''}}">
+							建设年限：{{projectInfo.buildYear}}
+						</view>
+						<view wx:if="{{projectInfo.buildType != ''}}">
+							建设类型 ：0.新建 1.续建：{{projectInfo.buildType}}
+						</view>
+						<view wx:if="{{projectInfo.isExpropriation != ''}}">
+							是否完成征地拆迁：0.否 1.是：{{projectInfo.isExpropriation}}
+						</view>
+						<view wx:if="{{projectInfo.isDispatch != ''}}">
+							是否列入市级调度：0.否 1.是：{{projectInfo.isDispatch}}
+						</view>
+						<view wx:if="{{projectInfo.leaderName != ''}}">
+							挂点领导：{{projectInfo.leaderName}}
+						</view>
 
-								<view class="table-tr">
-									<view class="table-td">店面间数</view>
-									<view class="table-td">44</view>
-								</view>
 
-								<view class="table-tr">
-									<view class="table-td">年度累计产值</view>
-									<view class="table-td">3109.05</view>
-								</view>
+						<view wx:if="{{projectInfo.responsibleUnits != ''}}">
+							责任单位：{{projectInfo.responsibleUnits}}
+						</view>
+						<view wx:if="{{projectInfo.ownerCompanyName != ''}}">
+							业主-公司名称：{{projectInfo.ownerCompanyName}}
+						</view>
+						<view wx:if="{{projectInfo.ownerProjectLeader != ''}}">
+							业主-项目负责人：{{projectInfo.ownerProjectLeader}}
+						</view>
+						<view wx:if="{{projectInfo.ownerPhone != ''}}">
+							业主-联系电话：{{projectInfo.ownerPhone}}
+						</view>
+						<view wx:if="{{projectInfo.constructionCompanyName != ''}}">
+							施工-公司名称：{{projectInfo.constructionCompanyName}}
+						</view>
+						<view wx:if="{{projectInfo.constructionProjectLeader != ''}}">
+							施工-项目负责人：{{projectInfo.constructionProjectLeader}}
+						</view>
+						<view wx:if="{{projectInfo.constructionPhone != ''}}">
+							施工-联系电话：{{projectInfo.constructionPhone}}
+						</view>
+						<view wx:if="{{projectInfo.supervisionCompanyName != ''}}">
+							监理-公司名称：{{projectInfo.supervisionCompanyName}}
+						</view>
+						<view wx:if="{{projectInfo.supervisionDirectorName != ''}}">
+							监理-总监：{{projectInfo.supervisionDirectorName}}
+						</view>
+						<view wx:if="{{projectInfo.supervisionPhone != ''}}">
+							监理-联系电话：{{projectInfo.supervisionPhone}}
+						</view>
 
-								<view class="table-tr">
-									<view class="table-td">年度累计支付</view>
-									<view class="table-td">2487.24</view>
-								</view>
-							</view>
+					
+						<view wx:if="{{projectInfo.designCompanyName != ''}}">
+							设计-公司名称：{{projectInfo.designCompanyName}}
+						</view>
+						<view wx:if="{{projectInfo.designProjectLeader != ''}}">
+							设计-项目负责人：{{projectInfo.designProjectLeader}}
+						</view>
+						<view wx:if="{{projectInfo.designPhone != ''}}">
+							设计-联系电话：{{projectInfo.designPhone}}
+						</view>
+						<view wx:if="{{projectInfo.surveyCompanyName != ''}}">
+							勘察-公司名称：{{projectInfo.surveyCompanyName}}
+						</view>
+						<view wx:if="{{projectInfo.surveyProjectLeader != ''}}">
+							勘察-项目负责人：{{projectInfo.surveyProjectLeader}}
+						</view>
+						<view wx:if="{{projectInfo.surveyPhone != ''}}">
+							勘察-联系电话：{{projectInfo.surveyPhone}}
+						</view>
+						<view wx:if="{{projectInfo.costId != ''}}">
+							造价表id：{{projectInfo.costId}}
+						</view>
+						<view wx:if="{{projectInfo.planId != ''}}">
+							计划表id：{{projectInfo.planId}}
+						</view>
+						<view wx:if="{{projectInfo.scheduleId != ''}}">
+							进度id：{{projectInfo.scheduleId}}
+						</view>
+						<view wx:if="{{projectInfo.isPlan != ''}}">
+							是否填写年度计划信息：0.否 1.是：{{projectInfo.isPlan}}
+						</view>
+						<view wx:if="{{projectInfo.isMonomer != ''}}">
+							是否填写单体情况：0.否 1.是：{{projectInfo.isMonomer}}
+						</view>
+						<view wx:if="{{projectInfo.isValid != ''}}">
+							是否有效：0.无效 1.有效：{{projectInfo.isValid}}
 						</view>
 
 					</view>
 				</view>
-
 			</view>
-
 		</view>
 	</view>
-
 </view>
