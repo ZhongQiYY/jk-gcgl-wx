@@ -89,7 +89,6 @@ Page({
         'thirdSession': app.globalData.thirdSession
       },
       success (res) {
-        console.log(res.data);
         that.setData({
           projectInfo: res.data
         });

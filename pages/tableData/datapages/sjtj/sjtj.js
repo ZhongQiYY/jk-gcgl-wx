@@ -28,7 +28,6 @@ Page({
       },
       success (res) {
         app.globalData.projectBaseInfo = res.data;
-        console.log(app.globalData.projectBaseInfo);
       }
     });
   },
