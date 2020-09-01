@@ -1,6 +1,7 @@
 // pages/control/dcdb/details/details.js
-var basePath = app.globalData.basePath;
 const app = getApp();
+var basePath = app.globalData.basePath;
+
 Page({
 
   /**

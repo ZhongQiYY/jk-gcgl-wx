@@ -2,7 +2,6 @@ const app = getApp();
 // const RootPath = "http://localhost:16000";
 const RootPath = "https://telecom1.xizinet.com:4433";
 Page({
-Page({
 
   /**
    * 页面的初始数据
