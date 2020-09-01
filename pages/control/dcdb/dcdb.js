@@ -1,5 +1,6 @@
 const app = getApp();
-const RootPath = "http://localhost:16000/jk-gcgl";
+// const RootPath = "https://telecom1.xizinet.com:4433/jk-gcgl";
+var basePath = app.globalData.basePath;
 Page({
   /**
    * 页面的初始数据
@@ -38,7 +39,7 @@ Page({
   getRecords: function(){
     var that = this;
     wx.request({
-      url: RootPath + "/api/db/pmDb/list?pId="+14, //请求路径
+      url: basePath + "/api/db/pmDb/list?pId="+14, //请求路径
       method: 'post',
       data: {
 
@@ -116,7 +117,7 @@ Page({
       // 调用接口数据
     wx.request({
       //后台接口
-      url: RootPath + '/api/db/pmDb/delete?id='+id,
+      url: basePath + '/api/db/pmDb/delete?id='+id,
       method: 'POST',
       data: {
         id : id

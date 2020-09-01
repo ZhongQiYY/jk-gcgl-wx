@@ -1,5 +1,6 @@
 // pages/charts/charts.js
 const app = getApp();
+var basePath = app.globalData.basePath;
 Page({
 
 // -------------------- 数据区域 --------------------
@@ -21,7 +22,7 @@ onLoad: function (options) {
 getRankData: function(){
   var that = this;
   wx.request({
-    url: "http://localhost:16000/jk-gcgl/api/leaderboard/leaderboard/list", //请求路径
+    url: basePath + "/api/leaderboard/leaderboard/list", //请求路径
     method: 'post',
     data: {
 
