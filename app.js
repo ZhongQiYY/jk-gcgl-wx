@@ -1,11 +1,13 @@
 //app.js
 //获取应用实例
 const app = getApp();
-const RootPath = "http://localhost:16000/jk-gcgl";
+// const RootPath = "http://localhost:16000/jk-gcgl";
+// const RootPath = "https://telecom1.xizinet.com:4433/jk-gcgl"
 App({
 // -------------------- 存储共享数据区域 --------------------
 globalData: {
-  basePath: "http://localhost:16000/jk-gcgl",
+  // basePath: "http://localhost:16000/jk-gcgl",
+  basePath: "https://telecom1.xizinet.com:4433/jk-gcgl",
   pName: "",
   userInfo: {},
   hasUserInfo: false,
