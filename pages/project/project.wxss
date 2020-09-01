@@ -127,6 +127,10 @@
 #projectImage {
   width: 100%;
   text-align: center;
+  height: 490rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .projectBack {

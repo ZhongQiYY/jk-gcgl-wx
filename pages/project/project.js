@@ -1,6 +1,7 @@
 var base64 = require("../../dist/example/images/base64");
 var app = getApp();
 var basePath = app.globalData.basePath;
+var rootPath = "http://106.225.164.136:8081";
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
@@ -14,6 +15,7 @@ Page({
     projectInfoShow: false,
     projectName: "",
     search: "search",
+    imagePath: "",
     projectInfo: {}
   },
 
@@ -90,6 +92,9 @@ Page({
         console.log(res.data);
         that.setData({
           projectInfo: res.data
+        });
+        that.setData({
+          imagePath: rootPath+res.data.effectPicture
         })
       }
     });
