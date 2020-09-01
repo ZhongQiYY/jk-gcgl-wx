@@ -1,0 +1,42 @@
+
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-grids">
+
+		<a class="weui-grid" bindtap="toGcbb">
+			<view class="weui-grid__icon">
+				<image src="/images/gcbb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">工程报表</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toZtqkb">
+			<view class="weui-grid__icon">
+				<image src="/images/ztqkb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">总体情况表</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toJjjszbb">
+			<view class="weui-grid__icon">
+				<image src="/images/jjjszbb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">经济技术指标表</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toJsjdb">
+			<view class="weui-grid__icon">
+				<image src="/images/jsjdb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">建设进度表</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toXmfxt">
+			<view class="weui-grid__icon">
+				<image src="/images/xmfxt.png" alt></image>
+			</view>
+			<view class="weui-grid__label">项目分析图</view>
+		</a>
+
+	</view>
+
+</view>
