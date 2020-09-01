@@ -1,4 +1,4 @@
-// pages/tableData/datapages/sjtj/jjjszbb/jjjszbb.js
+var app = getApp();
 Page({
 
   /**
@@ -26,7 +26,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log("onshow");
+    var that = this;
+    wx.request({
+      url: "", //请求路径
+      method: 'post',
+      data: {
+        projectId: app.globalData.projectId,
+        categoryType: app.globalData.categoryType,
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        that.setData({
+          map: res.data
+        })
+      }
+    });
   },
 
   /**
