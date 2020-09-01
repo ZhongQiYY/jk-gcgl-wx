@@ -64,7 +64,7 @@
 				<image bindtap="toTableData" src="{{imagePath}}" style="width: 100%"></image>
 			</block>
 			<block wx:if="{{projectInfo.effectPicture == ''}}">
-				<view>未设置图片</view>
+				<view bindtap="toTableData">未设置图片</view>
 			</block>
 		</view>
 

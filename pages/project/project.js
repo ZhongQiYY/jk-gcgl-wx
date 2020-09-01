@@ -103,7 +103,9 @@ Page({
   //跳转到数据表界面
   toTableData: function() {
     app.globalData.pName = this.data.projectName;
-    wx.switchTab({
+    app.globalData.projectId = this.data.projectInfo.id;
+    app.globalData.categoryType = this.data.projectInfo.categoryType;
+    wx.switchTab({ 
       url: '/pages/tableData/tableData'
     });
   },

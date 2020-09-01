@@ -12,45 +12,59 @@ Page({
   },
 
   toPlan: function() {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/annualplan/annualplan',
-    })
+    if(app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/annualplan/annualplan',
+      })
+    }   
   },
 
   toDb: function() {
-    wx.navigateTo({
-      url: '/pages/control/dcdb/dcdb',
-    })
+    if(app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/control/dcdb/dcdb',
+      })
+    } 
   },
 
   toSwInstruction: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tzwj/tzwj',
-    })
+    if(app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/tzwj/tzwj',
+      })
+    }   
   },
 
   toHtgl: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/htgl/htgl',
-    })
+    if(app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/htgl/htgl',
+      })
+    } 
   },
 
   toTptx: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/tptx',
-    })
+    if(app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/tptx/tptx',
+      })
+    }
   },
 
   toZjjk: function() {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/zjjk/zjjk',
-    })
+    if(app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/zjjk/zjjk',
+      })
+    }
   },
  
   toSjtj: function() {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/sjtj/sjtj',
-    })
+    if(app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/sjtj/sjtj',
+      })
+    }
   },
 
 
