@@ -30,8 +30,6 @@ Page({
     this.setData({
       wvUrl: basePath+"/api/chartData/wv/ndjh?thirdSession="+app.globalData.thirdSession
     });
-
-
   },
 
   /**
