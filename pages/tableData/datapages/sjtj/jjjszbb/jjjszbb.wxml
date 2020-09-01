@@ -1,2 +1,71 @@
-<!--pages/tableData/datapages/sjtj/jjjszbb/jjjszbb.wxml-->
-<text>pages/tableData/datapages/sjtj/jjjszbb/jjjszbb.wxml</text>
+<view class="page project-list-info" data-weui-theme="{{theme}}">
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}" class="xmqk">项目情况</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">项目总投资：{{map.status}} </view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">本年投资：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">第二年年度投资：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">第三年年度投资：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">工程建安费”{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">房建造价：{{map.status}} </view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">配套造价：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">供水造价：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">供电造价：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">供气造价：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">设计费用：{{map.status}} </view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">检测费用：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">监理费用：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">图审费用：{{map.status}}</view>
+		</view>
+
+
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.dtqk != ''}}" class='dtqk'>单体情况：{{map.status}}</view>
+		</view>
+		<view class="weui-form-preview" wx:for="{{records}}" wx:key="index" wx:for-item="item">
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">楼栋号：{{map.status}} </view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">工程造价：{{map.status}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">建筑面积：{{map.status}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">层数：{{map.status}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">标准层面积：{{map.status}}</view>
+			</view>
+		</view>
+	</view>
+</view>

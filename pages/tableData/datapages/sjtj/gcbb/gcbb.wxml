@@ -1,2 +1,22 @@
-<!--pages/tableData/datapages/sjtj/gcbb/gcbb.wxml-->
-<web-view src="wvUrl"></web-view>
+<view class="page project-list-info" data-weui-theme="{{theme}}">
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">项目名称：{{map.status}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">占地面积：{{map.status}}	</view>
+    </view>
+    <view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">总建筑面积：{{map.status}}</view>	
+    </view>
+    <view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">楼栋数：{{map.status}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">住宅套数：{{map.status}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
+		</view>
+	</view>
+</view>

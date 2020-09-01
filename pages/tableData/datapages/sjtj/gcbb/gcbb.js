@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    wvUrl: ""
+    map: {}
   },
 
   /**
@@ -29,10 +29,24 @@ Page({
    */
   onShow: function () {
     console.log("onshow");
-    this.setData({
-      wvUrl: basePath+"/api/chartData/wv/gcbb?thirdSession="+app.globalData.thirdSession+"&projectId="+app.globalData.projectId+"&categoryType="+app.globalData.categoryType
+    var that = this;
+    wx.request({
+      url: "", //请求路径
+      method: 'post',
+      data: {
+        projectId: app.globalData.projectId,
+        categoryType: app.globalData.categoryType,
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        that.setData({
+          map: res.data
+        })
+      }
     });
-    console.log(this.data.wvUrl);
   },
 
   /**
