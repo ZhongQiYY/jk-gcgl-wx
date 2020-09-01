@@ -1,7 +1,7 @@
 var base64 = require("../../dist/example/images/base64");
 var app = getApp();
 var basePath = app.globalData.basePath;
-var rootPath = "http://106.225.164.136:8081";
+var rootPath = "https://telecom1.xizinet.com:4433";
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
@@ -157,7 +157,7 @@ Page({
   onShow: function(){
     var that = this;
     var succ = 0;
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 4; i++) {
         var timeOut = setTimeout(function(){
           wx.request({
             url: basePath+"/api/project/list", //请求路径

@@ -1,4 +1,6 @@
 // pages/tableData/datapages/sjtj/sjtj.js
+var app = getApp();
+var basePath = app.globalData.basePath;
 Page({
 
   /**
@@ -12,7 +14,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: basePath+"/api/project/projectBaseInfo", //请求路径
+      method: 'post',
+      data: {
+        projectId: app.globalData.projectId,
+        categoryType: app.globalData.categoryType
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        app.globalData.projectBaseInfo = res.data;
+        console.log(app.globalData.projectBaseInfo);
+      }
+    });
   },
 
   /**

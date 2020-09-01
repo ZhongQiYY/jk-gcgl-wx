@@ -28,11 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("onshow");
-    this.setData({
-      wvUrl: basePath+"/api/chartData/wv/gcbb?thirdSession="+app.globalData.thirdSession+"&projectId="+app.globalData.projectId+"&categoryType="+app.globalData.categoryType
-    });
-    console.log(this.data.wvUrl);
+    
   },
 
   /**

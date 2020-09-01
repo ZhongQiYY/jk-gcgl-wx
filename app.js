@@ -11,6 +11,7 @@ globalData: {
   pName: "",
   projectId: 0,
   categoryType: 0,
+  projectBaseInfo: {},
   userInfo: {},
   hasUserInfo: false,
   canIUse: wx.canIUse('button.open-type.getUserInfo'),
