@@ -7,14 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    map: {}
+    map: {},
+    categoryType:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -28,25 +29,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("onshow");
-    var that = this;
-    wx.request({
-      url: "", //请求路径
-      method: 'post',
-      data: {
-        projectId: app.globalData.projectId,
-        categoryType: app.globalData.categoryType,
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success (res) {
-        that.setData({
-          map: res.data
-        })
-      }
-    });
+    map = app.globalData.projectBaseInfo;
+    categoryType = app.globalData.categoryType
   },
 
   /**

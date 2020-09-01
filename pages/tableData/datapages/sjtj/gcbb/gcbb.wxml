@@ -1,24 +1,95 @@
-
 <view class="page project-list-info" data-weui-theme="{{theme}}">
 	<view class="weui-form-preview__hd">
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}">项目名称：{{map.status}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}">占地面积：{{map.status}}	</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}">总建筑面积：{{map.status}}</view>	
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}">楼栋数：{{map.status}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}">住宅套数：{{map.status}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
+		<view wx:if="{{categoryType == 1}}">
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.projectName != ''}}">项目名称：{{map.projectName}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.coverArea != ''}}">占地面积：{{map.coverArea}} </view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.totalArea != ''}}">总建筑面积：{{map.totalArea}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.buildNum != ''}}">楼栋数：{{map.buildNum}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.houseNum != ''}}">住宅套数：{{map.houseNum}}</view>
+			</view>
+      <view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.storeNum != ''}}">店面间数：{{map.storeNum}}</view>
+			</view>
+      <view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.businessArea != ''}}">商业面积：{{map.businessArea}}</view>
+			</view>
+      <view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.houseArea != ''}}">住宅面积：{{map.houseArea}}</view>
+			</view>
+			<!-- <view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
+			</view> -->
+		</view>
+
+
+		<view wx:if="{{categoryType == 2}}">
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.projectName != ''}}">项目名称：{{map.projectName}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.coverArea != ''}}">占地面积：{{map.coverArea}} </view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.totalArea != ''}}">总建筑面积：{{map.totalArea}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.pathArea != ''}}">园路面积：{{map.pathArea}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.paveArea != ''}}">铺装面积：{{map.paveArea}}</view>
+			</view>
+      	<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.landscapeBridge != ''}}">景观桥(座)：{{map.landscapeBridge}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.treeNum != ''}}">乔木数(颗)：{{map.treeNum}}</view>
+			</view>
+      	<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.brightenNum != ''}}">亮化数(盏)：{{map.brightenNum}}</view>
+			</view>
+			
+			<!-- <view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
+			</view> -->
+		</view>
+
+		<view wx:if="{{categoryType == 3}}">
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.projectName != ''}}">项目名称：{{map.projectName}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.coverArea != ''}}">占地面积：{{map.coverArea}} </view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.totalArea != ''}}">总建筑面积：{{map.totalArea}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.roadLength != ''}}">道路长：{{map.roadLength}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.roadWidth != ''}}">道路宽：{{map.roadWidth}}</view>
+			</view>
+      	<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.carriagewayWidth != ''}}">行车道宽：{{map.carriagewayWidth}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.sidewalkWidth != ''}}">人行道宽：{{map.sidewalkWidth}}</view>
+			</view>
+			<view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.pondWidth != ''}}">花池宽：{{map.pondWidth}}</view>
+			</view>
+			<!-- <view class="weui-form-preview__item">
+				<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
+			</view> -->
 		</view>
 	</view>
 </view>
->>>>>>> 3febf6ee55a4a408510ea79ea738c5b2ef51407d
