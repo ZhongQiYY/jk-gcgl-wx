@@ -137,10 +137,17 @@
 			</view>
 		</view>
 
+<<<<<<< HEAD
 		<view class="weui-form-preview__item">
 			<view class="application-name" wx:if="{{map.status != ''}}" class="wfxx">五方信息</view>
 		</view>
 		<view class="weui-form-preview__item">
+=======
+    <view class="weui-form-preview__item">
+			<view class="application-name" wx:if="{{map.status != ''}}" class="wfxx">五方信息</view>	
+    </view>
+    <view class="weui-form-preview__item">
+>>>>>>> 1daf94049c70bd75dfc009c4bf67abf6bb8725bf
 			<view class="application-name" wx:if="{{map.ownerCompanyName != ''}}">项目业主：{{map.ownerCompanyName}}</view>
 		</view>
 		<view class="weui-form-preview__item">

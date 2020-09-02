@@ -282,41 +282,282 @@
     </view>
     <view class="tr">
       <view class="td bg-g">立项批复</view>
-      <view class="td">{{1}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planParkInfo.qqlxpf.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.qqlxpf.percentage == 100?timeInfo.scheduleParkInfo.qqlxpf.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">方案审批</view>
-      <view class="td">{{1}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planParkInfo.qqfasp.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.qqfasp.percentage == 100?timeInfo.scheduleParkInfo.qqfasp.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">施工图图审</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planParkInfo.qqsgtts.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.qqsgtts.percentage == 100?timeInfo.scheduleParkInfo.qqsgtts.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">预算审核</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planParkInfo.qqyssh.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.qqyssh.percentage == 100?timeInfo.scheduleParkInfo.qqyssh.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">施工招标</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planParkInfo.qqsgzb.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.qqsgzb.percentage == 100?timeInfo.scheduleParkInfo.qqsgzb.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">施工证办理</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planParkInfo.qqsgzbl.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.qqsgzbl.percentage == 100?timeInfo.scheduleParkInfo.qqsgzbl.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">项目开工</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planParkInfo.qqxmkg.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.qqxmkg.percentage == 100?timeInfo.scheduleParkInfo.qqxmkg.end:''}}</view>
     </view>
     
   </view>
+
+  <!-- 园区工程 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">园区工程</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">地形造型</view>
+      <view class="td">{{timeInfo.planParkInfo.yqdxzx.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.yqdxzx.percentage == 100?timeInfo.scheduleParkInfo.yqdxzx.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">给排水工程</view>
+      <view class="td">{{timeInfo.planParkInfo.yqjpsgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.yqjpsgc.percentage == 100?timeInfo.scheduleParkInfo.yqjpsgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">绿化种植</view>
+      <view class="td">{{timeInfo.planParkInfo.yqlhzz.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.yqlhzz.percentage == 100?timeInfo.scheduleParkInfo.yqlhzz.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">景观小品</view>
+      <view class="td">{{timeInfo.planParkInfo.yqjgxp.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.yqjgxp.percentage == 100?timeInfo.scheduleParkInfo.yqjgxp.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">路灯照明</view>
+      <view class="td">{{timeInfo.planParkInfo.yqldzm.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.yqldzm.percentage == 100?timeInfo.scheduleParkInfo.yqldzm.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">监控智能</view>
+      <view class="td">{{timeInfo.planParkInfo.yqjkzn.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.yqjkzn.percentage == 100?timeInfo.scheduleParkInfo.yqjkzn.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">零星工程</view>
+      <view class="td">{{timeInfo.planParkInfo.yqlxgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.yqlxgc.percentage == 100?timeInfo.scheduleParkInfo.yqlxgc.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 路场工程 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">路场工程</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">土方工程</view>
+      <view class="td">{{timeInfo.planParkInfo.lctfgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.lctfgc.percentage == 100?timeInfo.scheduleParkInfo.lctfgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">园路整形</view>
+      <view class="td">{{timeInfo.planParkInfo.lcylzx.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.lcylzx.percentage == 100?timeInfo.scheduleParkInfo.lcylzx.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">园路铺装</view>
+      <view class="td">{{timeInfo.planParkInfo.lcylpz.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.lcylpz.percentage == 100?timeInfo.scheduleParkInfo.lcylpz.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">道路整形</view>
+      <view class="td">{{timeInfo.planParkInfo.lcdlzx.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.lcdlzx.percentage == 100?timeInfo.scheduleParkInfo.lcdlzx.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">道路硬化</view>
+      <view class="td">{{timeInfo.planParkInfo.lcdlyh.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.lcdlyh.percentage == 100?timeInfo.scheduleParkInfo.lcdlyh.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">停车场(广)整形</view>
+      <view class="td">{{timeInfo.planParkInfo.lctcczx.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.lctcczx.percentage == 100?timeInfo.scheduleParkInfo.lctcczx.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">停车场(广)铺装</view>
+      <view class="td">{{timeInfo.planParkInfo.lctccpz.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.lctccpz.percentage == 100?timeInfo.scheduleParkInfo.lctccpz.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 配套用房 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">配套用房</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">土方工程</view>
+      <view class="td">{{timeInfo.planParkInfo.pttfgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.pttfgc.percentage == 100?timeInfo.scheduleParkInfo.pttfgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">基础工程</view>
+      <view class="td">{{timeInfo.planParkInfo.ptjcgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.ptjcgc.percentage == 100?timeInfo.scheduleParkInfo.ptjcgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">主体工程</view>
+      <view class="td">{{timeInfo.planParkInfo.ptztgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.ptztgc.percentage == 100?timeInfo.scheduleParkInfo.ptztgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">装饰装修</view>
+      <view class="td">{{timeInfo.planParkInfo.ptzszx.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.ptzszx.percentage == 100?timeInfo.scheduleParkInfo.ptzszx.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">供水供电</view>
+      <view class="td">{{timeInfo.planParkInfo.ptgsgd.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.ptgsgd.percentage == 100?timeInfo.scheduleParkInfo.ptgsgd.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">排水排污</view>
+      <view class="td">{{timeInfo.planParkInfo.ptpspw.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.ptpspw.percentage == 100?timeInfo.scheduleParkInfo.ptpspw.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">零星工程</view>
+      <view class="td">{{timeInfo.planParkInfo.ptlxgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.ptlxgc.percentage == 100?timeInfo.scheduleParkInfo.ptlxgc.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 文化景观 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">文化景观</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">水系整理</view>
+      <view class="td">{{timeInfo.planParkInfo.whsxzl.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.whsxzl.percentage == 100?timeInfo.scheduleParkInfo.whsxzl.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">木栈道</view>
+      <view class="td">{{timeInfo.planParkInfo.whmzd.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.whmzd.percentage == 100?timeInfo.scheduleParkInfo.whmzd.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">景观桥</view>
+      <view class="td">{{timeInfo.planParkInfo.whjgq.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.whjgq.percentage == 100?timeInfo.scheduleParkInfo.whjgq.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">艺术小品</view>
+      <view class="td">{{timeInfo.planParkInfo.whysxp.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.whysxp.percentage == 100?timeInfo.scheduleParkInfo.whysxp.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">文化雕塑</view>
+      <view class="td">{{timeInfo.planParkInfo.whwhds.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.whwhds.percentage == 100?timeInfo.scheduleParkInfo.whwhds.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">美化刻画</view>
+      <view class="td">{{timeInfo.planParkInfo.whmhkh.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.whmhkh.percentage == 100?timeInfo.scheduleParkInfo.whmhkh.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">业态布展</view>
+      <view class="td">{{timeInfo.planParkInfo.whytbz.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.whytbz.percentage == 100?timeInfo.scheduleParkInfo.whytbz.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 竣工交付 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">竣工交付</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">竣工初验</view>
+      <view class="td">{{timeInfo.planParkInfo.jgjgcy.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.jgjgcy.percentage == 100?timeInfo.scheduleParkInfo.jgjgcy.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">规划等专项验收</view>
+      <view class="td">{{timeInfo.planParkInfo.jgghdzxys.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.jgghdzxys.percentage == 100?timeInfo.scheduleParkInfo.jgghdzxys.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">竣工验收</view>
+      <view class="td">{{timeInfo.planParkInfo.jgjgys.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.jgjgys.percentage == 100?timeInfo.scheduleParkInfo.jgjgys.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">档案验收</view>
+      <view class="td">{{timeInfo.planParkInfo.jgdays.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.jgdays.percentage == 100?timeInfo.scheduleParkInfo.jgdays.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">竣工备案</view>
+      <view class="td">{{timeInfo.planParkInfo.jgjgba.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.jgjgba.percentage == 100?timeInfo.scheduleParkInfo.jgjgba.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">交付使用</view>
+      <view class="td">{{timeInfo.planParkInfo.jgjfsy.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.jgjfsy.percentage == 100?timeInfo.scheduleParkInfo.jgjfsy.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">不动产登记</view>
+      <view class="td">{{timeInfo.planParkInfo.jgbdcdj.end}}</view>
+      <view class="td">{{timeInfo.scheduleParkInfo.jgbdcdj.percentage == 100?timeInfo.scheduleParkInfo.jgbdcdj.end:''}}</view>
+    </view>
+    
+  </view>
+
 </block>
 <!-- 园林类项目-end -->
 
@@ -336,40 +577,281 @@
     </view>
     <view class="tr">
       <view class="td bg-g">立项批复</view>
-      <view class="td">{{1}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qqlxpf.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qqlxpf.percentage == 100?timeInfo.scheduleMunicipalInfo.qqlxpf.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">方案审批</view>
-      <view class="td">{{1}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qqfasp.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qqfasp.percentage == 100?timeInfo.scheduleMunicipalInfo.qqfasp.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">施工图图审</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qqsgtts.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qqsgtts.percentage == 100?timeInfo.scheduleMunicipalInfo.qqsgtts.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">预算审核</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qqyssh.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qqyssh.percentage == 100?timeInfo.scheduleMunicipalInfo.qqyssh.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">施工招标</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qqsgzb.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qqsgzb.percentage == 100?timeInfo.scheduleMunicipalInfo.qqsgzb.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">施工证办理</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qqsgzbl.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qqsgzbl.percentage == 100?timeInfo.scheduleMunicipalInfo.qqsgzbl.end:''}}</view>
     </view>
     <view class="tr">
       <view class="td bg-g">项目开工</view>
-      <view class="td">{{}}</view>
-      <view class="td">{{}}</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qqxmkg.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qqxmkg.percentage == 100?timeInfo.scheduleMunicipalInfo.qqxmkg.end:''}}</view>
     </view>
     
   </view>
+
+  <!-- 桥涵工程 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">桥涵工程</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">土方工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qhtfgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qhtfgc.percentage == 100?timeInfo.scheduleMunicipalInfo.qhtfgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">支护工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qhzhgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qhzhgc.percentage == 100?timeInfo.scheduleMunicipalInfo.qhzhgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">基础工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qhjcgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qhjcgc.percentage == 100?timeInfo.scheduleMunicipalInfo.qhjcgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">桥台(涵)工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qhqtgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qhqtgc.percentage == 100?timeInfo.scheduleMunicipalInfo.qhqtgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">桥梁工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qhqlgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qhqlgc.percentage == 100?timeInfo.scheduleMunicipalInfo.qhqlgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">桥面工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qhqmgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qhqmgc.percentage == 100?timeInfo.scheduleMunicipalInfo.qhqmgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">装饰工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.qhzsgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.qhzsgc.percentage == 100?timeInfo.scheduleMunicipalInfo.qhzsgc.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 道路工程 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">道路工程</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">土方工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.dltfgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.dltfgc.percentage == 100?timeInfo.scheduleMunicipalInfo.dltfgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">路基处理</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.dlljcl.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.dlljcl.percentage == 100?timeInfo.scheduleMunicipalInfo.dlljcl.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">路基工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.dlljgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.dlljgc.percentage == 100?timeInfo.scheduleMunicipalInfo.dlljgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">检查井安装</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.dljcjaz.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.dljcjaz.percentage == 100?timeInfo.scheduleMunicipalInfo.dljcjaz.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">雨污水管</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.dlywsg.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.dlywsg.percentage == 100?timeInfo.scheduleMunicipalInfo.dlywsg.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">结构基层</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.dljgjc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.dljgjc.percentage == 100?timeInfo.scheduleMunicipalInfo.dljgjc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">结构面层</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.dljgmc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.dljgmc.percentage == 100?timeInfo.scheduleMunicipalInfo.dljgmc.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 给排水工程 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">给排水工程</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">土方工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jpstfgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jpstfgc.percentage == 100?timeInfo.scheduleMunicipalInfo.jpstfgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">沟槽开挖</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jpsgckw.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jpsgckw.percentage == 100?timeInfo.scheduleMunicipalInfo.jpsgckw.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">基础垫层</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jpsjcdc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jpsjcdc.percentage == 100?timeInfo.scheduleMunicipalInfo.jpsjcdc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">管道安装</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jpsgdaz.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jpsgdaz.percentage == 100?timeInfo.scheduleMunicipalInfo.jpsgdaz.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">管道包封</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jpsjdbf.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jpsjdbf.percentage == 100?timeInfo.scheduleMunicipalInfo.jpsjdbf.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">管道填砂</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jpsgdts.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jpsgdts.percentage == 100?timeInfo.scheduleMunicipalInfo.jpsgdts.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">管道填土</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jpsgdtt.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jpsgdtt.percentage == 100?timeInfo.scheduleMunicipalInfo.jpsgdtt.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 配套工程 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">配套工程</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">人行道工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.ptrxdgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.ptrxdgc.percentage == 100?timeInfo.scheduleMunicipalInfo.ptrxdgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">绿化工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.ptlhgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.ptlhgc.percentage == 100?timeInfo.scheduleMunicipalInfo.ptlhgc.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">亮化工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.ptlhgc1.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.ptlhgc1.percentage == 100?timeInfo.scheduleMunicipalInfo.ptlhgc1.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">标识标牌</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.ptbsbp.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.ptbsbp.percentage == 100?timeInfo.scheduleMunicipalInfo.ptbsbp.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">交通信号灯</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.ptjtxhd.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.ptjtxhd.percentage == 100?timeInfo.scheduleMunicipalInfo.ptjtxhd.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">边坡处理</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.ptbpcl.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.ptbpcl.percentage == 100?timeInfo.scheduleMunicipalInfo.ptbpcl.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">零星工程</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.ptlxgc.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.ptlxgc.percentage == 100?timeInfo.scheduleMunicipalInfo.ptlxgc.end:''}}</view>
+    </view>
+    
+  </view>
+
+  <!-- 竣工交付 -->
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">竣工交付</view>
+    </view>
+    <view class="tr bg-g">
+      <view class="td">工作分类</view>
+      <view class="td">计划时间</view>
+      <view class="td">实际时间</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">竣工初验</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jgjgcy.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jgjgcy.percentage == 100?timeInfo.scheduleMunicipalInfo.jgjgcy.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">规划等专项验收</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jgghdzxys.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jgghdzxys.percentage == 100?timeInfo.scheduleMunicipalInfo.jgghdzxys.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">竣工验收</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jgjgys.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jgjgys.percentage == 100?timeInfo.scheduleMunicipalInfo.jgjgys.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">档案验收</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jgdays.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jgdays.percentage == 100?timeInfo.scheduleMunicipalInfo.jgdays.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">竣工备案</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jgjgba.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jgjgba.percentage == 100?timeInfo.scheduleMunicipalInfo.jgjgba.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">交付使用</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jgjfsy.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jgjfsy.percentage == 100?timeInfo.scheduleMunicipalInfo.jgjfsy.end:''}}</view>
+    </view>
+    <view class="tr">
+      <view class="td bg-g">不动产登记</view>
+      <view class="td">{{timeInfo.planMunicipalInfo.jgbdcdj.end}}</view>
+      <view class="td">{{timeInfo.scheduleMunicipalInfo.jgbdcdj.percentage == 100?timeInfo.scheduleMunicipalInfo.jgbdcdj.end:''}}</view>
+    </view>
+    
+  </view>
+  
 </block>
 <!-- 市政类项目-end -->
