@@ -40,7 +40,7 @@
 		</view>
 
 		<view class="weui-form-preview__item">
-			<view class="application-name" class='dtqk'>单体情况：{{map.status}}</view>
+			<view class="application-name" class='dtqk'>单体情况</view>
 		</view>
 		<view class="weui-form-preview" wx:for="{{map.zhuti}}" wx:key="index" wx:for-item="item">
 			<view class="weui-form-preview__item">
