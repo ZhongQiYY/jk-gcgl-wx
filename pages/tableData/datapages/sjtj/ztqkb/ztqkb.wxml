@@ -123,7 +123,7 @@
     </view>
 
     <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}" class="wfxx">五方信息{{map.status}}</view>	
+			<view class="application-name" wx:if="{{map.status != ''}}" class="wfxx">五方信息</view>	
     </view>
     <view class="weui-form-preview__item">
 			<view class="application-name" wx:if="{{map.ownerCompanyName != ''}}">项目业主：{{map.ownerCompanyName}}</view>
