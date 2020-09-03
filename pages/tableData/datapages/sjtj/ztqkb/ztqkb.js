@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    map: {}
+    map: {},
+    categoryType: 0
   },
 
   /**
@@ -30,6 +31,7 @@ Page({
   onShow: function () {
     this.setData({
       map: app.globalData.projectBaseInfo,
+      categoryType: app.globalData.categoryType
     })
   },
 
