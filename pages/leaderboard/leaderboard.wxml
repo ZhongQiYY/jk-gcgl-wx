@@ -37,7 +37,7 @@
 <view class='table-module'>
   <!-- 左侧固定 -->
   <view class='left-policy-type'>
-    <view class='empty-box'></view>
+    <view class='empty-box'>综合排名</view>
     <view wx:for="{{rankData}}" class='left-col-list' wx:key="{{index}}">
       <view style="font-size:28rpx;  color: rebeccapurple;font-weight:bolder">{{item.integrated}}</view>
     </view>
