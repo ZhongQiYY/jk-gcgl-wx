@@ -1,4 +1,4 @@
-// pages/control/control.js
+// pages/control/tjdbsx/tjdbsx.js
 Page({
 
   /**
@@ -62,45 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  toJdxx: function() {
-      wx.navigateTo({
-        url: '/pages/control/txjdxx/txjdxx',
-      })
-  },
-  toAqjc: function() {
-    wx.navigateTo({
-      url: '/pages/control/tjaqjc/tjaqjc',
-    })
-},
-toZljc: function() {
-  wx.navigateTo({
-    url: '/pages/control/tjzljc/tjzljc',
-  })
-},
-toDbsx: function() {
-  wx.navigateTo({
-    url: '/pages/control/tjdbsx/tjdbsx',
-  })
-},
-toQzsp: function() {
-  wx.navigateTo({
-    url: '/pages/control/tjqzsp/tjqzsp',
-  })
-},
-toHtgl: function() {
-  wx.navigateTo({
-    url: '/pages/control/tjhtgl/tjhtgl',
-  })
-},
-toTzwj: function() {
-  wx.navigateTo({
-    url: '/pages/control/tjtzwj/tjtzwj',
-  })
-},
-toTptx: function() {
-  wx.navigateTo({
-    url: '/pages/control/tjtptx/tjtptx',
-  })
-},
+  }
 })
