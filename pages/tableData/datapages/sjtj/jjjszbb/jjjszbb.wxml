@@ -1,115 +1,244 @@
-<view class="page project-list-info" data-weui-theme="{{theme}}">
-	<view class="weui-form-preview__hd">
-		<view class="weui-form-preview__item">
-			<view class="application-name" class="xmqk">项目情况</view>
-		</view>
-		<view class="weui-form-preview" wx:for="{{map.investments}}" wx:key="index" wx:for-item="item">
-			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 0}}">
-				<view class="application-name" wx:if="{{item.totalMoney != ''}}">项目总投资：{{item.totalMoney}}</view>
-			</view>
-			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 1}}">
-				<view class="application-name" wx:if="{{item.totalMoney != ''}}">本年投资：{{item.totalMoney}}</view>
-			</view>
-			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 2}}">
-				<view class="application-name" wx:if="{{item.totalMoney != ''}}">第二年年度投资：{{item.totalMoney}}</view>
-			</view>
-			<view class="weui-form-preview__item" wx:if="{{item.investmentType == 3}}">
-				<view class="application-name" wx:if="{{item.totalMoney != ''}}">第三年年度投资：{{item.totalMoney}}</view>
-			</view>
-		</view>
-	</view>
 
-	<view wx:if="{{categoryType == 1}}">
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.jiananCost != ''}}">工程建安费：{{map.jiananCost}}</view>
+<!-- 房建类项目-start -->
+<block wx:if="{{categoryType == 1}}">
+	<!-- 项目前期工作 -->
+	<view class="table">
+		<view class="tr bg-w">
+			<view class="th">项目情况</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.houseBuildCost != ''}}">房建造价：{{map.houseBuildCost}} </view>
+		<view wx:for="{{map.investments}}" wx:key="index" wx:for-item="item">
+			<view class="tr" wx:if="{{item.investmentType == 0}}">
+				<view class="td bg-g" >项目总投资</view>
+				<view class="td">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr" wx:if="{{item.investmentType == 1}}">
+				<view class="td bg-g">本年投资</view>
+				<view class="td" >{{item.totalMoney}}</view>
+			</view>
+			<view class="tr" wx:if="{{item.investmentType == 2}}">
+				<view class="td bg-g">第二年年度投资</view>
+				<view class="td">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr" wx:if="{{item.investmentType == 3}}">
+				<view class="td bg-g" >第三年年度投资</view>
+				<view class="td">{{item.totalMoney}}</view>
+			</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.supportCost != ''}}">配套造价：{{map.supportCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">工程建安费</view>
+			<view class="td">{{map.jiananCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.waterCost != ''}}">供水造价：{{map.waterCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">房建造价</view>
+			<view class="td">{{map.houseBuildCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.electricityCost != ''}}">供电造价：{{map.electricityCost}}</view>
-		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.airCost != ''}}">供气造价：{{map.airCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">配套造价</view>
+			<view class="td">{{map.supportCost}}</view>
 		</view>
 
-		<view class="weui-form-preview__item">
-			<view class="application-name" class='dtqk'>单体情况：{{map.status}}</view>
+		<view class="tr">
+			<view class="td bg-g">供水造价</view>
+			<view class="td">{{map.waterCost}}</view>
 		</view>
-		<view class="weui-form-preview" wx:for="{{map.zhuti}}" wx:key="index" wx:for-item="item">
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{item.ztName != ''}}">楼栋号：{{item.ztName}} </view>
+		<view class="tr">
+			<view class="td bg-g">供电造价</view>
+			<view class="td">{{map.electricityCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">供气造价</view>
+			<view class="td">{{map.airCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">设计费用</view>
+			<view class="td">{{map.designCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">勘察费用</view>
+			<view class="td">{{map.surveyCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">检测费用</view>
+			<view class="td">{{map.checkCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">监理费用</view>
+			<view class="td">{{map.supervisionCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">图审费用</view>
+			<view class="td">{{map.drawCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">其它费用</view>
+			<view class="td">{{map.otherCost}}</view>
+		</view>
+		<view class="table">
+			<view class="tr bg-w">
+				<view class="th">单体情况</view>
 			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{item.projectCost != ''}}">工程造价：{{item.projectCost}}</view>
+			<view class="tr bg-g">
+				<view class="td">楼栋号</view>
+				<view class="td">工程造价</view>
+				<view class="td">建筑面积</view>
+				<view class="td">层数</view>
 			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{item.buildArea != ''}}">建筑面积：{{item.buildArea}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{item.floors != ''}}">层数：{{item.floors }}</view>
+			<view wx:for="{{map.zhuti}}" wx:key="index" wx:for-item="item">
+				<view class="tr">
+					<view class="td">{{item.ztName}}</view>
+					<view class="td">{{item.projectCost}}</view>
+					<view class="td">{{item.buildArea}}</view>
+					<view class="td">{{item.floors}}</view>
+				</view>
 			</view>
 		</view>
 	</view>
+</block>
+<!-- 房建类项目-end -->
 
-	<view wx:if="{{categoryType == 2}}">
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.jiananCost != ''}}">工程建安费：{{map.jiananCost}}</view>
+<!--园林类start-->
+<block wx:if="{{categoryType == 2}}">
+	<!-- 项目前期工作 -->
+	<view class="table">
+		<view class="tr bg-w">
+			<view class="th">项目情况</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.parkdCost != ''}}">园林造价：{{map.parkdCost}} </view>
+		<view wx:for="{{map.investments}}" wx:key="index" wx:for-item="item">
+			<view class="tr">
+				<view class="td bg-g">项目总投资</view>
+				<view class="td" wx:if="{{item.investmentType == 0}}">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">本年投资</view>
+				<view class="td" wx:if="{{item.investmentType == 1}}">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">第二年年度投资</view>
+				<view class="td" wx:if="{{item.investmentType == 2}}">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">第三年年度投资</view>
+				<view class="td" wx:if="{{item.investmentType == 3}}">{{item.totalMoney}}</view>
+			</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.supportHouseCost != ''}}">配套用房造价：{{map.supportHouseCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">工程建安费</view>
+			<view class="td">{{map.jiananCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.roadCost != ''}}">路场造价：{{map.roadCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">园林造价</view>
+			<view class="td">{{map.parkdCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.culturalCost != ''}}">文化景观造价：{{map.culturalCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">配套用房造价</view>
+			<view class="td">{{map.supportHouseCost}}</view>
 		</view>
-	</view>
 
-	<view wx:if="{{categoryType == 3}}">
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.jiananCost != ''}}">工程建安费：{{map.jiananCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">路场造价</view>
+			<view class="td">{{map.roadCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.municipalCost != ''}}">市政造价：{{map.municipalCost}} </view>
+		<view class="tr">
+			<view class="td bg-g">文化景观造价</view>
+			<view class="td">{{map.culturalCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.bridgeCost != ''}}">桥梁造价：{{map.bridgeCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">设计费用</view>
+			<view class="td">{{map.designCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.drainageCost != ''}}">给排水造价：{{map.drainageCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">勘察费用</view>
+			<view class="td">{{map.surveyCost}}</view>
 		</view>
-		<view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.trafficCost != ''}}">交通工程造价：{{map.trafficCost}}</view>
+		<view class="tr">
+			<view class="td bg-g">检测费用</view>
+			<view class="td">{{map.checkCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">监理费用</view>
+			<view class="td">{{map.supervisionCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">图审费用</view>
+			<view class="td">{{map.drawCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">其它费用</view>
+			<view class="td">{{map.otherCost}}</view>
 		</view>
 	</view>
+</block>
+<!--园林类 end-->
 
-	<view class="weui-form-preview__item">
-		<view class="application-name" wx:if="{{map.designCost != ''}}">设计费用：{{map.designCost}} </view>
+<!--市政类start-->
+<block wx:if="{{categoryType == 2}}">
+	<!-- 项目前期工作 -->
+	<view class="table">
+		<view class="tr bg-w">
+			<view class="th">项目情况</view>
+		</view>
+		<view wx:for="{{map.investments}}" wx:key="index" wx:for-item="item">
+			<view class="tr">
+				<view class="td bg-g">项目总投资</view>
+				<view class="td" wx:if="{{item.investmentType == 0}}">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">本年投资</view>
+				<view class="td" wx:if="{{item.investmentType == 1}}">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">第二年年度投资</view>
+				<view class="td" wx:if="{{item.investmentType == 2}}">{{item.totalMoney}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">第三年年度投资</view>
+				<view class="td" wx:if="{{item.investmentType == 3}}">{{item.totalMoney}}</view>
+			</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">工程建安费</view>
+			<view class="td">{{map.jiananCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">市政造价</view>
+			<view class="td">{{map.municipalCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">桥梁造价</view>
+			<view class="td">{{map.bridgeCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">给排水造价</view>
+			<view class="td">{{map.drainageCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">交通工程造价</view>
+			<view class="td">{{map.trafficCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">设计费用</view>
+			<view class="td">{{map.designCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">勘察费用</view>
+			<view class="td">{{map.surveyCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">检测费用</view>
+			<view class="td">{{map.checkCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">监理费用</view>
+			<view class="td">{{map.supervisionCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">图审费用</view>
+			<view class="td">{{map.drawCost}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">其它费用</view>
+			<view class="td">{{map.otherCost}}</view>
+		</view>
 	</view>
-	<view class="weui-form-preview__item">
-		<view class="application-name" wx:if="{{map.surveyCost != ''}}">勘察费用：{{map.surveyCost}}</view>
-	</view>
-	<view class="weui-form-preview__item">
-		<view class="application-name" wx:if="{{map.checkCost != ''}}">检测费用：{{map.checkCost}}</view>
-	</view>
-	<view class="weui-form-preview__item">
-		<view class="application-name" wx:if="{{map.supervisionCost != ''}}">监理费用：{{map.supervisionCost}}</view>
-	</view>
-	<view class="weui-form-preview__item">
-		<view class="application-name" wx:if="{{map.drawCost != ''}}">图审费用：{{map.drawCost}}</view>
-	</view>
-	<view class="weui-form-preview__item">
-		<view class="application-name" wx:if="{{map.otherCost != ''}}">其它费用：{{map.otherCost}}</view>
-	</view>
-</view>
+</block>
+<!--市政类 end-->

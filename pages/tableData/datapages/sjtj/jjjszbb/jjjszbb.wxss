@@ -1,43 +1,40 @@
-.middle {
-  border:1rpx solid rgb(233, 222, 222);
-  height: 65rpx;
-  margin-top: 15rpx;
+/* pages/tableData/datapages/sjtj/jsjdb/jsjdb.wxss */
+.table {
+  border: 0px solid darkgray;
 }
-/* 审核列表的样式，主要是为了让上下两个固定框不遮挡列表内容 */
-.chekc-record-list {
-  margin-top: 105rpx;
-  margin-bottom: 20rpx;
-}
-.application-name {
-  width: 675rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow:ellipsis;
-  text-align: left;
-}
-.application-date {
-  font-size: x-small;
-  line-height: 15rpx;
-}
-.application-state {
-  font-size: x-small;
-  line-height: 20rpx;
-}
-.application-name image {
-  width: 30rpx;
-  height: 30rpx;
-  /* vertical-align: middle; */
-}
-.weui-btn {
+.tr {
+  border: 1px solid gray;
+  display: flex;
   width: 100%;
-  padding: 25rpx 0rpx;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
 }
-.weui-form-preview__item {
-  border: 1px solid black;
+/* .td {
+    width:40%;
+    justify-content: center;
+    text-align: center;
+} */
+.td {
+  border: 1px solid gray;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
 }
-.xmqk{
-  text-align: center;
+.bg-w{
+  background: snow;
 }
-.dtqk{
-  text-align: center;
+.bg-g{
+  background: #f0f0f0;
+}
+.th {
+  width: 100%;
+  justify-content: center;
+  background: #cccccc;
+  /* color: #fff; */
+  display: flex;
+  height: 3rem;
+  align-items: center;
 }

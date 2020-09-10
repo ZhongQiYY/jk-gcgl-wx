@@ -1,175 +1,321 @@
-<view class="page project-list-info" data-weui-theme="{{theme}}">
-	<view class="weui-form-preview__hd">
-		<view class="weui-form-preview__item">
-			<view class="application-name" class = "jbxx">基本信息</view>
-    </view>
-    <view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.unitName != ''}}">建设单位：{{map.unitName}}</view>
-			</view>
-    <view wx:if="{{categoryType == 1}}">
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.projectName != ''}}">项目名称：{{map.projectName}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.coverArea != ''}}">占地面积：{{map.coverArea}} </view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.totalArea != ''}}">总建筑面积：{{map.totalArea}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.buildNum != ''}}">楼栋数：{{map.buildNum}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.houseNum != ''}}">住宅套数：{{map.houseNum}}</view>
-			</view>
-      <view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.storeNum != ''}}">店面间数：{{map.storeNum}}</view>
-			</view>
-      <view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.businessArea != ''}}">商业面积：{{map.businessArea}}</view>
-			</view>
-      <view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.houseArea != ''}}">住宅面积：{{map.houseArea}}</view>
-			</view>
-			<!-- <view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
-			</view> -->
+<!--房建类start-->
+<block wx:if="{{categoryType == 1}}">
+	<view class="table">
+		<view class="tr bg-w">
+			<view class="th">基本信息</view>
 		</view>
+		<!-- 项目前期工作 -->
+		<view class="table">
+			<view class="tr">
+				<view class="td bg-g">项目名称</view>
+				<view class="td">{{map.projectName}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">占地面积</view>
+				<view class="td">{{map.coverArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">总建筑面积</view>
+				<view class="td">{{map.totalArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">楼栋数</view>
+				<view class="td">{{map.buildNum}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">住宅套数</view>
+				<view class="td">{{map.houseNum}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">店面间数</view>
+				<view class="td">{{map.storeNum}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">商业面积</view>
+				<view class="td">{{map.businessArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">住宅面积</view>
+				<view class="td">{{map.houseArea}}</view>
+			</view>
 
-
-		<view wx:if="{{categoryType == 2}}">
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.projectName != ''}}">项目名称：{{map.projectName}}</view>
+			<!--相同的start-->
+			<view class="tr">
+				<view class="td bg-g">建设地点</view>
+				<view class="td">{{map.buildSite}}</view>
 			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.coverArea != ''}}">占地面积：{{map.coverArea}} </view>
+			<view class="tr">
+				<view class="td bg-g">建设年限</view>
+				<view class="td">{{map.buildYear}}</view>
 			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.totalArea != ''}}">总建筑面积：{{map.totalArea}}</view>
+			<view class="tr">
+				<view class="td bg-g">新建/续建</view>
+				<view class="td" wx:if="{{map.buildType==1}}">续建</view>
+				<view class="td" wx:if="{{map.buildType==0}}">新建</view>
 			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.pathArea != ''}}">园路面积：{{map.pathArea}}</view>
+			<view class="tr">
+				<view class="td bg-g">是否完成征地拆迁</view>
+				<view class="td" wx:if="{{map.isExpropriation==1}}">是</view>
+				<view class="td" wx:if="{{map.isExpropriation==0}}">否</view>
 			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.paveArea != ''}}">铺装面积：{{map.paveArea}}</view>
+			<view class="tr">
+				<view class="td bg-g">是否列入市级调度</view>
+				<view class="td" wx:if="{{map.isDispatch==1}}">是</view>
+				<view class="td" wx:if="{{map.isDispatch==0}}">否</view>
 			</view>
-      	<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.landscapeBridge != ''}}">景观桥(座)：{{map.landscapeBridge}}</view>
+			<view class="tr">
+				<view class="td bg-g">挂点领导</view>
+				<view class="td">{{map.leaderName}}</view>
 			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.treeNum != ''}}">乔木数(颗)：{{map.treeNum}}</view>
+			<view class="tr">
+				<view class="td bg-g">责任单位</view>
+				<view class="td">{{map.responsibleUnits}}</view>
 			</view>
-      	<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.brightenNum != ''}}">亮化数(盏)：{{map.brightenNum}}</view>
+			<view class="tr">
+				<view class="td bg-g">招标方式</view>
+				<view class="td" wx:if="{{map.biddingType==1}}">直接委托</view>
+				<view class="td" wx:if="{{map.biddingType==0}}">公开招标</view>
 			</view>
-			
-			<!-- <view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
-			</view> -->
+			<!--相同的stop-->
 		</view>
+	</view>
+</block>
+<!--房建类stop-->
 
-		<view wx:if="{{categoryType == 3}}">
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.projectName != ''}}">项目名称：{{map.projectName}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.coverArea != ''}}">占地面积：{{map.coverArea}} </view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.totalArea != ''}}">总建筑面积：{{map.totalArea}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.roadLength != ''}}">道路长：{{map.roadLength}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.roadWidth != ''}}">道路宽：{{map.roadWidth}}</view>
-			</view>
-      	<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.carriagewayWidth != ''}}">行车道宽：{{map.carriagewayWidth}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.sidewalkWidth != ''}}">人行道宽：{{map.sidewalkWidth}}</view>
-			</view>
-			<view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.pondWidth != ''}}">花池宽：{{map.pondWidth}}</view>
-			</view>
-			<!-- <view class="weui-form-preview__item">
-				<view class="application-name" wx:if="{{map.status != ''}}">施工单位：{{map.status}}</view>
-			</view> -->
+<!--园林类start-->
+<block wx:if="{{categoryType == 2}}">
+	<view class="table">
+		<view class="tr bg-w">
+			<view class="th">基本信息</view>
 		</view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.buildSite != ''}}">建设地点：{{map.buildSite}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.buildYear != ''}}">建设年限：{{map.buildYear}}</view>
-    </view>
-     <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.buildType != ''}}">新建/续建：{{map.buildType}}	</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.isExpropriation != ''}}">是否完成征地拆迁：{{map.isExpropriation}}	</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.isDispatch != ''}}">是否列入市级调度：{{map.isDispatch}}</view>	
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.leaderName != ''}}">挂点领导：{{map.leaderName}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.responsibleUnits != ''}}">责任单位：{{map.responsibleUnits}}</view>
-    </view>
-     <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.biddingType != ''}}">招标方式: {{map.biddingType}}	</view>
-    </view>
+		<!-- 项目前期工作 -->
+		<view class="table">
+			<view class="tr">
+				<view class="td bg-g">项目名称</view>
+				<view class="td">{{map.projectName}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">占地面积</view>
+				<view class="td">{{map.coverArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">总建筑面积</view>
+				<view class="td">{{map.totalArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">园路面积</view>
+				<view class="td">{{map.pathArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">铺装面积</view>
+				<view class="td">{{map.paveArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">景观桥(座)</view>
+				<view class="td">{{map.landscapeBridge}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">乔木数(颗)</view>
+				<view class="td">{{map.treeNum}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">亮化数(盏)</view>
+				<view class="td">{{map.brightenNum}}</view>
+			</view>
 
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.status != ''}}" class="wfxx">五方信息</view>	
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.ownerCompanyName != ''}}">项目业主：{{map.ownerCompanyName}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.ownerProjectLeader != ''}}">项目负责人：{{map.ownerProjectLeader}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.ownerPhone != ''}}">电话：{{map.ownerPhone}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.constructionCompanyName != ''}}">施工单位：{{map.constructionCompanyName}}</view>
+			<!--相同的start-->
+			<view class="tr">
+				<view class="td bg-g">建设地点</view>
+				<view class="td">{{map.buildSite}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">建设年限</view>
+				<view class="td">{{map.buildYear}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">新建/续建</view>
+				<view class="td" wx:if="{{map.buildType==1}}">续建</view>
+				<view class="td" wx:if="{{map.buildType==0}}">新建</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">是否完成征地拆迁</view>
+				<view class="td" wx:if="{{map.isExpropriation==1}}">是</view>
+				<view class="td" wx:if="{{map.isExpropriation==0}}">否</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">是否列入市级调度</view>
+				<view class="td" wx:if="{{map.isDispatch==1}}">是</view>
+				<view class="td" wx:if="{{map.isDispatch==0}}">否</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">挂点领导</view>
+				<view class="td">{{map.leaderName}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">责任单位</view>
+				<view class="td">{{map.responsibleUnits}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">招标方式</view>
+				<view class="td" wx:if="{{map.biddingType==1}}">直接委托</view>
+				<view class="td" wx:if="{{map.biddingType==0}}">公开招标</view>
+			</view>
+			<!--相同的stop-->
 		</view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.constructionProjectLeader != ''}}">项目负责人：{{map.constructionProjectLeader}}</view>	
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.constructionPhone != ''}}">电话：{{map.constructionPhone}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.supervisionCompanyName != ''}}">监理单位：{{map.supervisionCompanyName}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.supervisionPhone != ''}}">总监：{{map.supervisionPhone}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.supervisionDirectorName != ''}}">电话：{{map.status}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.designCompanyName != ''}}">设计单位：{{map.designCompanyName}}</view>
-		</view>
+	</view>
+</block>
+<!--园林类stop-->
 
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.designProjectLeader != ''}}">项目负责人：{{map.designProjectLeader}}</view>	
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.designPhone != ''}}">电话：{{map.designPhone}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.surveyCompanyName != ''}}">勘察单位：{{map.surveyCompanyName}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.surveyProjectLeader != ''}}">项目负责人：{{map.surveyProjectLeader}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-			<view class="application-name" wx:if="{{map.surveyPhone != ''}}">电话：{{map.surveyPhone}}</view>
-    </view>
+<!--市政类start-->
+<block wx:if="{{categoryType == 3}}">
+	<view class="table">
+		<view class="tr bg-w">
+			<view class="th">基本信息</view>
+		</view>
+		<view class="table">
+			<view class="tr">
+				<view class="td bg-g">项目名称</view>
+				<view class="td">{{map.projectName}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">占地面积</view>
+				<view class="td">{{map.coverArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">总建筑面积</view>
+				<view class="td">{{map.totalArea}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">道路长</view>
+				<view class="td">{{map.roadLength}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">道路宽</view>
+				<view class="td">{{map.roadWidth}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">行车道宽</view>
+				<view class="td">{{map.carriagewayWidth}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">人行道宽</view>
+				<view class="td">{{map.sidewalkWidth}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">花池宽</view>
+				<view class="td">{{map.pondWidth}}</view>
+			</view>
+
+			<!--相同的start-->
+			<view class="tr">
+				<view class="td bg-g">建设地点</view>
+				<view class="td">{{map.buildSite}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">建设年限</view>
+				<view class="td">{{map.buildYear}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">新建/续建</view>
+				<view class="td" wx:if="{{map.buildType==1}}">续建</view>
+				<view class="td" wx:if="{{map.buildType==0}}">新建</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">是否完成征地拆迁</view>
+				<view class="td" wx:if="{{map.isExpropriation==1}}">是</view>
+				<view class="td" wx:if="{{map.isExpropriation==0}}">否</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">是否列入市级调度</view>
+				<view class="td" wx:if="{{map.isDispatch==1}}">是</view>
+				<view class="td" wx:if="{{map.isDispatch==0}}">否</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">挂点领导</view>
+				<view class="td">{{map.leaderName}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">责任单位</view>
+				<view class="td">{{map.responsibleUnits}}</view>
+			</view>
+			<view class="tr">
+				<view class="td bg-g">招标方式</view>
+				<view class="td" wx:if="{{map.biddingType==1}}">直接委托</view>
+				<view class="td" wx:if="{{map.biddingType==0}}">公开招标</view>
+			</view>
+			<!--相同的stop-->
+		</view>
+	</view>
+</block>
+<!--市政类stop-->
+
+<!--五方信息start-->
+<view class="table">
+	<view class="tr bg-w">
+		<view class="th">五方信息</view>
+	</view>
+	<!-- 项目前期工作 -->
+	<view class="table">
+		<view class="tr">
+			<view class="td bg-g">项目业主</view>
+			<view class="td">{{map.ownerCompanyName}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">项目负责人</view>
+			<view class="td">{{map.ownerProjectLeader}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">电话</view>
+			<view class="td">{{map.ownerPhone}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">施工单位</view>
+			<view class="td">{{map.constructionCompanyName}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">项目负责人</view>
+			<view class="td">{{map.constructionProjectLeader}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">电话</view>
+			<view class="td">{{map.constructionPhone}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">监理单位</view>
+			<view class="td">{{map.supervisionCompanyName}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">总监</view>
+			<view class="td">{{map.supervisionDirectorName}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">电话</view>
+			<view class="td">{{map.supervisionPhone}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">设计单位</view>
+			<view class="td">{{map.designCompanyName}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">项目负责人</view>
+			<view class="td">{{map.designProjectLeader}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">电话</view>
+			<view class="td">{{map.designPhone}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">勘察单位</view>
+			<view class="td">{{map.surveyCompanyName}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">项目负责人</view>
+			<view class="td">{{map.surveyProjectLeader}}</view>
+		</view>
+		<view class="tr">
+			<view class="td bg-g">电话</view>
+			<view class="td">{{map.surveyPhone}}</view>
+		</view>
 	</view>
 </view>
+<!--五方信息stop-->
