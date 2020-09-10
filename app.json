@@ -2,6 +2,7 @@
   "pages": [
     "pages/project/project",
     "pages/leaderboard/leaderboard",
+    "pages/leaderboard/product/product",
     "pages/tableData/tableData",
     "pages/self/self",
     "pages/self/info/info",

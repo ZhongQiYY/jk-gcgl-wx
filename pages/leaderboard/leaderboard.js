@@ -5,9 +5,11 @@ Page({
 
 // -------------------- 数据区域 --------------------
   data: {
-    rankData: [
-      
-    ],
+    display:'none',
+    rankData: [],
+    productContent:[],
+    projectListShow: true,
+    projectInfoShow: false,
     titleList: [
       // {columnName: 'integrated', title: '综合排名'},
       {columnName: 'projectNum', title: '项目个数',data: []},
@@ -26,6 +28,12 @@ Page({
 // -------------------- 生命周期函数区域 --------------------
 onLoad: function (options) {
   this.getRankData();
+},  
+
+onShow: function () {
+  // this.setData({
+  //   projectInfoShow: true
+  // })
 },
 
 
@@ -102,4 +110,49 @@ getRankData: function(){
     }
   });
 },
+test: function(e) {
+  let title = e.currentTarget.dataset.title
+  console.log(title)
+  let projectName = this.data.rankData[e.currentTarget.dataset.index].integrated;
+  console.log(projectName)
+  var that = this;
+  wx.request({
+    url: basePath+"/api/project/list", //请求路径
+    method: 'post',
+    data: {
+      unitName: projectName,
+      categoryId: 0 
+    },
+    header: {
+      'content-type': 'application/json', // 默认值
+      'thirdSession': app.globalData.thirdSession
+    },
+    success (res) {
+      that.setData({
+        projectInfoShow : true,
+        productContent: res.data
+      });
+      console.log(res.data)
+      if ('projectNum' == title) {
+        
+      }
+    },
+  });
+},
+
+ //跳转到数据表界面
+ toTableData: function(e) {
+  console.log( e.currentTarget.dataset)
+  app.globalData.pName = e.currentTarget.dataset.text;
+  app.globalData.projectId = e.currentTarget.dataset.id;
+  app.globalData.categoryType = e.currentTarget.dataset.categoryType;
+  wx.switchTab({ 
+    url: '/pages/tableData/tableData'
+  });
+},
+hideview: function(){
+  this.setData({
+    projectInfoShow : false,
+  });
+}
 })
