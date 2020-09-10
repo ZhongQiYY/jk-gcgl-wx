@@ -28,7 +28,8 @@ Page({
    */
   onShow: function () {
     this.setData({
-      wvUrl: basePath+"/api/chartData/wv/fangJian?thirdSession="+app.globalData.thirdSession
+      wvUrl: basePath+"/api/chartData/wv/zjjkData?thirdSession="
+      +app.globalData.thirdSession+"&projectId="+app.globalData.projectId+"&categoryType="+app.globalData.categoryType
     });
   },
 
