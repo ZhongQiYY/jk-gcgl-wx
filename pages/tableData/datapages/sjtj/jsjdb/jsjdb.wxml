@@ -253,15 +253,16 @@
       <view class="td">实际时间</view>
     </view>
     <block wx:for="{{timeInfo.scheduleBuildInfo.scheduleBuildZhutiVOS}}" wx:for-index="index" wx:for-item="sitem" wx:key="index">
-    <view class="tr" wx:for="{{timeInfo.planBuildInfo.planBuildZhuTiVOS}}" wx:for-index="index" wx:for-item="pitem" wx:key="index">
-      
-        <block wx:if="pitem.ztName == sitem.ztName">
-          <view class="td bg-g">{{pitem.ztName}}</view>
-          <view class="td">{{pitem.useTime.end}}</view>
-          <view class="td">{{sitem.completion.percentage == 100?sitem.completion.end:''}}</view>
+      <block wx:for="{{timeInfo.planBuildInfo.planBuildZhuTiVOS}}" wx:for-index="index" wx:for-item="pitem" wx:key="index">
+        <block wx:if="{{pitem.ztName == sitem.ztName && pitem.finishFloors == sitem.finishFloors}}">
+          <view class="tr">
+            <view class="td bg-g">{{pitem.ztName}}-{{pitem.finishFloors}}</view>
+            <view class="td">{{pitem.useTime.end}}</view>
+            <view class="td">{{sitem.completion.percentage == 100?sitem.completion.end:''}}</view>
+          </view>
         </block>
-      
-    </view>
+      </block>
+    
     </block>
   </view>
 </block>
