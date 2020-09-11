@@ -1,7 +1,7 @@
 var base64 = require("../../dist/example/images/base64");
 var app = getApp();
 var basePath = app.globalData.basePath;
-var rootPath = "https://telecom1.xizinet.com:4433";
+var rootPath = "https://test.xizinet.com:4433";
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
