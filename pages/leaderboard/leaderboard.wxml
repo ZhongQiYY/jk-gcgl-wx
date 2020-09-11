@@ -58,7 +58,7 @@
 <view class="page__bd"  wx:if="{{projectInfoShow}}">
 	<view class="weui-cells__title" bindtap='hideview'>点击此处隐藏</view>
 	<view class="weui-cells weui-cells_after-title">
-		<view data-text="{{item.projectName}}" data-category="{{item.categoryType}}" data-id="{{item.id}}" bindtap="toTableData" class="weui-cell weui-cell_example " wx:for="{{productContent}}" wx:key="index" hover-class="weui-cell_active">
+		<view data-text="{{item.projectName}}" data-categoryType="{{item.categoryType}}" data-id="{{item.id}}" bindtap="toTableData" class="weui-cell weui-cell_example " wx:for="{{productContent}}" wx:key="index" hover-class="weui-cell_active">
 			<view class="weui-cell__bd">{{item.projectName}}</view>
 		</view>
 	</view>
