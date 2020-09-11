@@ -1,39 +1,3 @@
-<!--pages/charts/charts.wxml-->
-<!-- <view class="table">
-  <view class="tr bg-w">
-    <view class="th">综合排名</view>
-    <view class="th">项目个数</view>
-    <view class="th ">达标项目</view>
-    <view class="th ">达标率</view>
-    <view class="th ">建筑面积</view>
-    <view class="th ">总投资</view>
-    <view class="th ">工程投资</view>
-    <view class="th ">本月产值</view>
-  </view>
-  <block wx:for="{{rankData}}" wx:key="index"> 
-    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-      <view class="td">{{item.integrated}}</view>
-      <view class="td">{{item.projectNum}}</view>
-      <view class="td">{{item.standardsNum}}</view>
-      <view class="td">{{item.standardsRate}}</view>
-      <view class="td">{{item.buildArea}}</view>
-      <view class="td">{{item.totalInvestment}}</view>
-      <view class="td">{{item.projectInvestment}}</view>
-      <view class="td">{{item.monthOutput}}</view>
-    </view>
-    <view class="tr" wx:else>
-      <view class="td">{{item.integrated}}</view>
-      <view class="td">{{item.projectNum}}</view>
-      <view class="td">{{item.standardsNum}}</view>
-      <view class="td">{{item.standardsRate}}</view>
-      <view class="td">{{item.buildArea}}</view>
-      <view class="td">{{item.totalInvestment}}</view>
-      <view class="td">{{item.projectInvestment}}</view>
-      <view class="td">{{item.monthOutput}}</view>
-    </view>
-  </block>
-</view> -->
-
 <view class='table-module'>
 	<!-- 左侧固定 -->
 	<view class='left-policy-type'>
@@ -58,7 +22,7 @@
 <view class="page__bd"  wx:if="{{projectInfoShow}}">
 	<view class="weui-cells__title" bindtap='hideview'>点击此处隐藏</view>
 	<view class="weui-cells weui-cells_after-title">
-		<view data-text="{{item.projectName}}" data-category="{{item.categoryType}}" data-id="{{item.id}}" bindtap="toTableData" class="weui-cell weui-cell_example " wx:for="{{productContent}}" wx:key="index" hover-class="weui-cell_active">
+		<view data-text="{{item.projectName}}" data-categoryType="{{item.categoryType}}" data-id="{{item.id}}" bindtap="toTableData" class="weui-cell weui-cell_example " wx:for="{{productContent}}" wx:key="index" hover-class="weui-cell_active">
 			<view class="weui-cell__bd">{{item.projectName}}</view>
 		</view>
 	</view>

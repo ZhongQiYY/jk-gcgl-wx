@@ -145,7 +145,7 @@ test: function(e) {
   console.log( e.currentTarget.dataset)
   app.globalData.pName = e.currentTarget.dataset.text;
   app.globalData.projectId = e.currentTarget.dataset.id;
-  app.globalData.categoryType = e.currentTarget.dataset.categoryType;
+  app.globalData.categoryType = e.currentTarget.dataset.categorytype;
   wx.switchTab({ 
     url: '/pages/tableData/tableData'
   });
