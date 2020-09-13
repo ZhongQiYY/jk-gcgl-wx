@@ -27,6 +27,12 @@ Page({
 
 // -------------------- 生命周期函数区域 --------------------
 onLoad: function (options) {
+  var that = this;
+  setTimeout(function(){
+    that.setData({
+        loadingHidden: true
+    });
+  }, 1000);
   this.getRankData();
 },  
 

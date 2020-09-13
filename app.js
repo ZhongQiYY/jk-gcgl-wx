@@ -26,6 +26,8 @@ globalData: {
 },
 userLogin: function (callback, fail) {
   const page = this;
+
+
   wx.checkSession({
     success: function () {
       console.log("checkSession未过期");
@@ -48,50 +50,55 @@ userLogin: function (callback, fail) {
       page.onLogin();
     }
   })
+
+
 },
 onLogin: function (callback, fail) {
   const page = this;
-  wx.login({
-    success: function (res) {
-      if (res.code) {
-        console.log("onLogin成功");
-        wx.request({
-          url: page.globalData.url.auth,
-          method: 'POST',
-          data: {
-            code: res.code
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            if (res.statusCode == 200) {
-              if (res.data.code == 200) {
-                console.log("auth成功");
-                wx.setStorage({
-                  key: page.globalData.userKey,
-                  data: res.data.data
-                });
-                console.log("setStorage保存成功");
-                page.globalData.thirdSession = res.data.data;
-                page.getUserInfo(callback, fail);
+  let promise = new Promise((resolve, reject) => {
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          console.log("onLogin成功");
+          wx.request({
+            url: page.globalData.url.auth,
+            method: 'POST',
+            data: {
+              code: res.code
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              if (res.statusCode == 200) {
+                if (res.data.code == 200) {
+                  console.log("auth成功");
+                  wx.setStorage({
+                    key: page.globalData.userKey,
+                    data: res.data.data
+                  });
+                  console.log("setStorage保存成功");
+                  page.globalData.thirdSession = res.data.data;
+                  page.getUserInfo(callback, fail);
+                } else {
+                  page.showToast(res.data.msg + '\n' + '(错误码:' + res.data.code + ')');
+                }
               } else {
-                page.showToast(res.data.msg + '\n' + '(错误码:' + res.data.code + ')');
+                page.showToast('服务器繁忙，请稍后再试\n' + '(状态码:' + res.statusCode + ')');
               }
-            } else {
-              page.showToast('服务器繁忙，请稍后再试\n' + '(状态码:' + res.statusCode + ')');
+            },
+            fail: function (res) {
+              page.showToast('服务器繁忙，请稍后再试\n' + '(状态码:500)');
             }
-          },
-          fail: function (res) {
-            page.showToast('服务器繁忙，请稍后再试\n' + '(状态码:500)');
-          }
-        })
+          })
+        }
+      },
+      fail: function (res) {
+        page.showToast('服务器繁忙，请稍后再试\n' + '(状态码:wx500)');
       }
-    },
-    fail: function (res) {
-      page.showToast('服务器繁忙，请稍后再试\n' + '(状态码:wx500)');
-    }
-  })
+    })
+  });
+  return promise;
 },
 getUserInfo: function (callback, fail) {
   const page = this;

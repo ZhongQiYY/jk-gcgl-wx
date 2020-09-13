@@ -19,6 +19,10 @@ Page({
     categoryType: 0,
     projectInfo: {},
     isJbxxShow: false,
+    isWfxxShow: false,
+    isZjqkShow: false,
+    isDtqkShow: false,
+    loadingHidden: false
   },
 
   // 选择建设单位
@@ -143,25 +147,72 @@ Page({
 
   //点击五方信息触发
   towfxx: function(e) {
-    wx.pageScrollTo({
-      duration: 300,
-      selector: '#wfxx'
+    setTimeout(function(){
+      wx.pageScrollTo({
+        duration: 300,
+        selector: '#wfxx'
+        // scrollTop: 0
+      });
+    },600);
+    this.setData({
+      isWfxxShow: !this.data.isWfxxShow,
+      isJbxxShow: false,
+      isZjqkShow: false,
+      isDtqkShow: false
     })
+    
   },
   //点击基本信息触发
   toJbxx: function(e) {
-    wx.pageScrollTo({
-      duration: 300,
-      selector: '.jbxx'
+    setTimeout(function(){
+      wx.pageScrollTo({
+        duration: 300,
+        selector: '.jbxx'
+        // scrollTop: 0
+      });
+    },600);
+    this.setData({
+      isJbxxShow: !this.data.isJbxxShow,
+      isWfxxShow: false,
+      isZjqkShow: false,
+      isDtqkShow: false
     })
   },
   //点击资金信息触发
   toZjqk: function(e) {
-    wx.pageScrollTo({
-      duration: 300,
-      selector: '.zjqk'
+    setTimeout(function(){
+      wx.pageScrollTo({
+        duration: 300,
+        selector: '.zjqk'
+        // scrollTop: 0
+      });
+    },600);
+    
+    this.setData({
+      isZjqkShow: !this.data.isZjqkShow,
+      isWfxxShow: false,
+      isJbxxShow: false,
+      isDtqkShow: false
     })
   },
+  //点击单体情况触发
+  toDtqk: function(e) {
+    setTimeout(function(){
+      wx.pageScrollTo({
+        duration: 300,
+        selector: '.dtqk'
+        // scrollTop: 0
+      });
+    },600);
+    
+    this.setData({
+      isDtqkShow: !this.data.isDtqkShow,
+      isWfxxShow: false,
+      isJbxxShow: false,
+      isZjqkShow: false,
+    })
+  },
+  
 
 //--------------------------生命周期函数------------------------------
 
@@ -169,6 +220,11 @@ Page({
 
   onLoad: function(options){
       let page = this
+      setTimeout(function(){
+        page.setData({
+            loadingHidden: true
+        });
+      }, 900);
       this.setData({
           icon: base64.icon20
       });
@@ -182,32 +238,25 @@ Page({
 
   onShow: function(){
     var that = this;
-    var succ = 0;
-    for (let i = 0; i < 4; i++) {
-        var timeOut = setTimeout(function(){
-          wx.request({
-            url: basePath+"/api/project/list", //请求路径
-            method: 'post',
-            data: {
-              unitName: that.data.buildArray[that.data.buildIndex],
-              categoryId: that.data.categoryIndex 
-            },
-            header: {
-              'content-type': 'application/json', // 默认值
-              'thirdSession': app.globalData.thirdSession
-            },
-            success (res) {
-              that.setData({
-                projectList: res.data
-              });
-              succ = 1;
-            }
+    var interval = setInterval(function(){
+      wx.request({
+        url: basePath+"/api/project/list", //请求路径
+        method: 'post',
+        data: {
+          unitName: that.data.buildArray[that.data.buildIndex],
+          categoryId: that.data.categoryIndex 
+        },
+        header: {
+          'content-type': 'application/json', // 默认值
+          'thirdSession': app.globalData.thirdSession
+        },
+        success (res) {
+          that.setData({
+            projectList: res.data
           });
-        },1000);
-      if(succ == 1) {
-        clearTimeout(timeOut);
-        break;
-      }
-    }
+          clearInterval(interval);
+        }
+      });
+    },1000);
   }
 })
