@@ -16,7 +16,9 @@ Page({
     projectName: "",
     search: "search",
     imagePath: "",
-    projectInfo: {}
+    categoryType: 0,
+    projectInfo: {},
+    isJbxxShow: false,
   },
 
   // 选择建设单位
@@ -70,25 +72,30 @@ Page({
 
   //显示项目详情
   showProjectInfo: function(e) {
+    app.globalData.projectId = e.currentTarget.dataset.id;
+    app.globalData.categoryType = e.currentTarget.dataset.categorytype;
     var that = this;
     this.setData({
       projectListShow: false,
       projectInfoShow: true,
       projectName: e.currentTarget.dataset.text,
+      categoryType: e.currentTarget.dataset.categorytype,
       search: "search1"
     });
 
     wx.request({
-      url: basePath+"/api/project/projectInfo?projectId="+e.currentTarget.dataset.id, //请求路径
+      url: basePath+"/api/project/projectBaseInfo", //请求路径
       method: 'post',
       data: {
-       
+        projectId: app.globalData.projectId,
+        categoryType: app.globalData.categoryType
       },
       header: {
         'content-type': 'application/json', // 默认值
         'thirdSession': app.globalData.thirdSession
       },
       success (res) {
+        console.log(res.data)
         that.setData({
           projectInfo: res.data
         });
@@ -102,8 +109,6 @@ Page({
   //跳转到数据表界面
   toTableData: function() {
     app.globalData.pName = this.data.projectName;
-    app.globalData.projectId = this.data.projectInfo.id;
-    app.globalData.categoryType = this.data.projectInfo.categoryType;
     wx.switchTab({ 
       url: '/pages/tableData/tableData'
     });
@@ -134,6 +139,28 @@ Page({
         })
       }
     });
+  },
+
+  //点击五方信息触发
+  towfxx: function(e) {
+    wx.pageScrollTo({
+      duration: 300,
+      selector: '#wfxx'
+    })
+  },
+  //点击基本信息触发
+  toJbxx: function(e) {
+    wx.pageScrollTo({
+      duration: 300,
+      selector: '.jbxx'
+    })
+  },
+  //点击资金信息触发
+  toZjqk: function(e) {
+    wx.pageScrollTo({
+      duration: 300,
+      selector: '.zjqk'
+    })
   },
 
 //--------------------------生命周期函数------------------------------

@@ -68,15 +68,6 @@
   height: 30rpx;
   /* vertical-align: middle; */
 }
-
-/* .reject {
-  background-color: red;
-  color: white;
-}
-.pass {
-  background-color: #07C160;
-  color: white;
-} */
 .weui-btn {
   width: 100%;
   padding: 25rpx 0rpx;
@@ -99,30 +90,42 @@
 
 
 /* 详情表格样式 */
-.table,
-.table div {
-  margin: 0 auto;
-}
-
 .table {
-  display: table;
+  border: 0px solid darkgray;
+}
+.tr {
+  border: 1px solid gray;
+  display: flex;
   width: 100%;
-  border-collapse: collapse;
-  box-sizing: border-box;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+}
+.td {
+  border: 1px solid gray;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+}
+.bg-w{
+  background: snow;
+}
+.bg-g{
+  background: #f0f0f0;
+}
+.th {
+  width: 100%;
+  justify-content: center;
+  background: #cccccc;
+  /* color: #fff; */
+  display: flex;
+  height: 3rem;
+  align-items: center;
 }
 
-.table-tr {
-  display: table-row;
-  /* height: 92rpx; */
-}
 
-.table-td {
-  color: black;
-  display: table-cell;
-  border: 1rpx solid gray;
-  text-align: center;
-  vertical-align: middle;
-}
 
 #projectImage {
   width: 100%;
