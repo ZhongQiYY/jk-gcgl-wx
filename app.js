@@ -4,6 +4,7 @@ const app = getApp();
 const RootPath = "http://localhost:16000/jk-gcgl";
 // const RootPath = "https://test.xizinet.com/jk-gcgl"
 App({
+
 // -------------------- 存储共享数据区域 --------------------
 globalData: {
   basePath: "http://localhost:16000/jk-gcgl",

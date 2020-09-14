@@ -1,5 +1,5 @@
 <!-- 文件上传 -->
-<view class='domes_title'>uploader</view>
+<!-- <view class='domes_title'>uploader</view>
 <view class='ui_cell'>
 	<view class='ui_cell_bd'>图片上传</view>
 	<view class='ui_cell_ft'>{{uploaderNum}}/9</view>
@@ -10,4 +10,6 @@
 		<image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
 	</view>
 	<view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
-</view>
+</view> -->
+
+<text>开发中...</text>
