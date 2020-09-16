@@ -1,3 +1,6 @@
+<loading hidden="{{loadingHidden}}">
+        加载中...
+</loading>
 <view class="{{search}}">
 	<view class="weui-flex" wx:if="{{projectListShow}}">
 
@@ -35,7 +38,7 @@
 		<view class="weui-cells__title">项目名称</view>
 		<view class="weui-cells weui-cells_after-title">
 
-			<view data-text="{{item.projectName}}" data-id="{{item.id}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " wx:for="{{projectList}}" wx:key="index" hover-class="weui-cell_active">
+			<view data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " wx:for="{{projectList}}" wx:key="index" hover-class="weui-cell_active">
 				<view class="weui-cell__bd">{{item.projectName}}</view>
 				<!-- <view class="weui-cell__ft">{{item.buildType}}</view> -->
 			</view>
@@ -44,11 +47,14 @@
 	</view>
 
 	<!-- 项目详情页 -->
-	<view class="page__bd" wx:if="{{projectInfoShow}}">
+	<block wx:if="{{projectInfoShow}}">
+		<!-- <view class="page__bd"> -->
+		<!-- 项目名称区域 -->
 		<view style="text-align: center">
 			<text>{{projectName}}</text>
 		</view>
 
+		<!-- 图片区域 -->
 		<view id="projectImage">
 			<block wx:if="{{projectInfo.effectPicture != ''}}">
 				<image bindtap="toTableData" src="{{imagePath}}" style="width: 100%"></image>
@@ -58,153 +64,562 @@
 			</block>
 		</view>
 
-		<view class="page">
-			<view class="page__bd page__bd_spacing">
-				<view class="weui-flex">
-					<view class="weui-flex__item">
-						<view wx:if="{{projectInfo.status != ''}}">
-							状态：{{projectInfo.status}}
-						</view>
-						<view wx:if="{{projectInfo.planStatus != ''}}">
-							计划状态：{{projectInfo.planStatus}}
-						</view>
-						<view wx:if="{{projectInfo.scheduleStatus != ''}}">
-							进度状态：{{projectInfo.scheduleStatus}}
-						</view>
-						<view wx:if="{{projectInfo.costStatus != ''}}">
-							造价状态：{{projectInfo.costStatus}}
-						</view>
-						<view wx:if="{{projectInfo.unitName != ''}}">
-							建设单位：{{projectInfo.unitName}}
-						</view>
-						<view wx:if="{{projectInfo.categoryId != ''}}">
-							项目类别id：{{projectInfo.categoryId}}
-						</view>
-						<view wx:if="{{projectInfo.biddingType != ''}}">
-							招标方式：
-							<block wx:if="{{projectInfo.biddingType == 0}}">公开招标</block>
-							<block wx:if="{{projectInfo.biddingType == 1}}">直接委托</block>
-						</view>
-						<view wx:if="{{projectInfo.categoryType != ''}}">
-							项目类型：
-							<block wx:if="{{projectInfo.categoryType == 1}}">房建类</block>
-							<block wx:if="{{projectInfo.categoryType == 2}}">园林类</block>
-							<block wx:if="{{projectInfo.categoryType == 3}}">市政类</block>
-						</view>
-						<view wx:if="{{projectInfo.whichTime != ''}}">
-							填写时间：{{projectInfo.whichTime}}
-						</view>
-						<view wx:if="{{projectInfo.projectName != ''}}">
-							项目名称：{{projectInfo.projectName}}
-						</view>
-						<view wx:if="{{projectInfo.coverArea != ''}}">
-							占地面积：{{projectInfo.coverArea}}
-						</view>
-						<view wx:if="{{projectInfo.totalArea != ''}}">
-							总建筑面积：{{projectInfo.totalArea}}
-						</view>
-						<view wx:if="{{projectInfo.specialId != ''}}">
-							不同类别项目特定信息表id：{{projectInfo.specialId}}
-						</view>
-						<view wx:if="{{projectInfo.buildSite != ''}}">
-							建设地点：{{projectInfo.buildSite}}
-						</view>
-						<view wx:if="{{projectInfo.buildYear != ''}}">
-							建设年限：{{projectInfo.buildYear}}
-						</view>
-						<view wx:if="{{projectInfo.buildType != ''}}">
-							建设类型：
-							<block wx:if="{{projectInfo.buildType == 0}}">新建</block>
-							<block wx:if="{{projectInfo.buildType == 1}}">续建</block>
-						</view>
-						<view wx:if="{{projectInfo.isExpropriation != ''}}">
-							是否完成征地拆迁：
-							<block wx:if="{{projectInfo.isExpropriation == 0}}">否</block>
-							<block wx:if="{{projectInfo.isExpropriation == 1}}">是</block>
-						</view>
-						<view wx:if="{{projectInfo.isDispatch != ''}}">
-							是否列入市级调度：
-							<block wx:if="{{projectInfo.isDispatch == 0}}">否</block>
-							<block wx:if="{{projectInfo.isDispatch == 1}}">是</block>
-						</view>
-						<view wx:if="{{projectInfo.leaderName != ''}}">
-							挂点领导：{{projectInfo.leaderName}}
-						</view>
-						<view wx:if="{{projectInfo.responsibleUnits != ''}}">
-							责任单位：{{projectInfo.responsibleUnits}}
-						</view>
-						<view wx:if="{{projectInfo.ownerCompanyName != ''}}">
-							业主-公司名称：{{projectInfo.ownerCompanyName}}
-						</view>
-						<view wx:if="{{projectInfo.ownerProjectLeader != ''}}">
-							业主-项目负责人：{{projectInfo.ownerProjectLeader}}
-						</view>
-						<view wx:if="{{projectInfo.ownerPhone != ''}}">
-							业主-联系电话：{{projectInfo.ownerPhone}}
-						</view>
-						<view wx:if="{{projectInfo.constructionCompanyName != ''}}">
-							施工-公司名称：{{projectInfo.constructionCompanyName}}
-						</view>
-						<view wx:if="{{projectInfo.constructionProjectLeader != ''}}">
-							施工-项目负责人：{{projectInfo.constructionProjectLeader}}
-						</view>
-						<view wx:if="{{projectInfo.constructionPhone != ''}}">
-							施工-联系电话：{{projectInfo.constructionPhone}}
-						</view>
-						<view wx:if="{{projectInfo.supervisionCompanyName != ''}}">
-							监理-公司名称：{{projectInfo.supervisionCompanyName}}
-						</view>
-						<view wx:if="{{projectInfo.supervisionDirectorName != ''}}">
-							监理-总监：{{projectInfo.supervisionDirectorName}}
-						</view>
-						<view wx:if="{{projectInfo.supervisionPhone != ''}}">
-							监理-联系电话：{{projectInfo.supervisionPhone}}
-						</view>
-						<view wx:if="{{projectInfo.designCompanyName != ''}}">
-							设计-公司名称：{{projectInfo.designCompanyName}}
-						</view>
-						<view wx:if="{{projectInfo.designProjectLeader != ''}}">
-							设计-项目负责人：{{projectInfo.designProjectLeader}}
-						</view>
-						<view wx:if="{{projectInfo.designPhone != ''}}">
-							设计-联系电话：{{projectInfo.designPhone}}
-						</view>
-						<view wx:if="{{projectInfo.surveyCompanyName != ''}}">
-							勘察-公司名称：{{projectInfo.surveyCompanyName}}
-						</view>
-						<view wx:if="{{projectInfo.surveyProjectLeader != ''}}">
-							勘察-项目负责人：{{projectInfo.surveyProjectLeader}}
-						</view>
-						<view wx:if="{{projectInfo.surveyPhone != ''}}">
-							勘察-联系电话：{{projectInfo.surveyPhone}}
-						</view>
-						<view wx:if="{{projectInfo.costId != ''}}">
-							造价表id：{{projectInfo.costId}}
-						</view>
-						<view wx:if="{{projectInfo.planId != ''}}">
-							计划表id：{{projectInfo.planId}}
-						</view>
-						<view wx:if="{{projectInfo.scheduleId != ''}}">
-							进度id：{{projectInfo.scheduleId}}
-						</view>
-						<view wx:if="{{projectInfo.isPlan != ''}}">
-							是否填写年度计划信息：
-							<block wx:if="{{projectInfo.isPlan == 0}}">否</block>
-							<block wx:if="{{projectInfo.isPlan == 1}}">是</block>
-						</view>
-						<view wx:if="{{projectInfo.isMonomer != ''}}">
-							是否填写单体情况：
-							<block wx:if="{{projectInfo.isMonomer == 0}}">否</block>
-							<block wx:if="{{projectInfo.isMonomer == 1}}">是</block>
-						</view>
-						<view wx:if="{{projectInfo.isValid != ''}}">
-							是否有效：
-							<block wx:if="{{projectInfo.isValid == 0}}">无效</block>
-							<block wx:if="{{projectInfo.isValid == 1}}">有效</block>
-						</view>
+		<!-- 项目信息区域 -->
+		<!-- ==================基本信息start================== -->
+		<!--房建类start-->
+		<block wx:if="{{categoryType == 1}}">
+			<view class="table">
+				<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="toJbxx">
+					<view class="th jbxx">基本信息</view>
+				</view>
+
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">占地面积</view>
+					<view class="td">{{projectInfo.coverArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">总建筑面积</view>
+					<view class="td">{{projectInfo.totalArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">楼栋数</view>
+					<view class="td">{{projectInfo.buildNum}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">住宅套数</view>
+					<view class="td">{{projectInfo.houseNum}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">店面间数</view>
+					<view class="td">{{projectInfo.storeNum}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">商业面积</view>
+					<view class="td">{{projectInfo.businessArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">住宅面积</view>
+					<view class="td">{{projectInfo.houseArea}}</view>
+				</view>
+
+				<!--相同的start-->
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">建设地点</view>
+					<view class="td">{{projectInfo.buildSite}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">建设年限</view>
+					<view class="td">{{projectInfo.buildYear}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">新建/续建</view>
+					<view class="td" wx:if="{{projectInfo.buildType==1}}">续建</view>
+					<view class="td" wx:if="{{projectInfo.buildType==0}}">新建</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">是否完成征地拆迁</view>
+					<view class="td" wx:if="{{projectInfo.isExpropriation==1}}">是</view>
+					<view class="td" wx:if="{{projectInfo.isExpropriation==0}}">否</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">是否列入市级调度</view>
+					<view class="td" wx:if="{{projectInfo.isDispatch==1}}">是</view>
+					<view class="td" wx:if="{{projectInfo.isDispatch==0}}">否</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">挂点领导</view>
+					<view class="td">{{projectInfo.leaderName}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">责任单位</view>
+					<view class="td">{{projectInfo.responsibleUnits}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">招标方式</view>
+					<view class="td" wx:if="{{projectInfo.biddingType==1}}">直接委托</view>
+					<view class="td" wx:if="{{projectInfo.biddingType==0}}">公开招标</view>
+				</view>
+				<!--相同的stop-->
+			</view>
+		</block>
+		<!--房建类stop-->
+		<!--园林类start-->
+		<block wx:if="{{categoryType == 2}}">
+			<view class="table">
+				<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="toJbxx">
+					<view class="th jbxx">基本信息</view>
+				</view>
+
+
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">项目名称</view>
+					<view class="td">{{projectInfo.projectName}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">占地面积</view>
+					<view class="td">{{projectInfo.coverArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">总建筑面积</view>
+					<view class="td">{{projectInfo.totalArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">园路面积</view>
+					<view class="td">{{projectInfo.pathArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">铺装面积</view>
+					<view class="td">{{projectInfo.paveArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">景观桥(座)</view>
+					<view class="td">{{projectInfo.landscapeBridge}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">乔木数(颗)</view>
+					<view class="td">{{projectInfo.treeNum}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">亮化数(盏)</view>
+					<view class="td">{{projectInfo.brightenNum}}</view>
+				</view>
+
+				<!--相同的start-->
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">建设地点</view>
+					<view class="td">{{projectInfo.buildSite}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">建设年限</view>
+					<view class="td">{{projectInfo.buildYear}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">新建/续建</view>
+					<view class="td" wx:if="{{projectInfo.buildType==1}}">续建</view>
+					<view class="td" wx:if="{{projectInfo.buildType==0}}">新建</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">是否完成征地拆迁</view>
+					<view class="td" wx:if="{{projectInfo.isExpropriation==1}}">是</view>
+					<view class="td" wx:if="{{projectInfo.isExpropriation==0}}">否</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">是否列入市级调度</view>
+					<view class="td" wx:if="{{projectInfo.isDispatch==1}}">是</view>
+					<view class="td" wx:if="{{projectInfo.isDispatch==0}}">否</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">挂点领导</view>
+					<view class="td">{{projectInfo.leaderName}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">责任单位</view>
+					<view class="td">{{projectInfo.responsibleUnits}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">招标方式</view>
+					<view class="td" wx:if="{{projectInfo.biddingType==1}}">直接委托</view>
+					<view class="td" wx:if="{{projectInfo.biddingType==0}}">公开招标</view>
+				</view>
+				<!--相同的stop-->
+
+			</view>
+		</block>
+		<!--园林类stop-->
+		<!--市政类start-->
+		<block wx:if="{{categoryType == 3}}">
+			<view class="table">
+				<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="toJbxx">
+					<view class="th jbxx">基本信息</view>
+				</view>
+
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">项目名称</view>
+					<view class="td">{{projectInfo.projectName}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">占地面积</view>
+					<view class="td">{{projectInfo.coverArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">总建筑面积</view>
+					<view class="td">{{projectInfo.totalArea}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">道路长</view>
+					<view class="td">{{projectInfo.roadLength}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">道路宽</view>
+					<view class="td">{{projectInfo.roadWidth}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">行车道宽</view>
+					<view class="td">{{projectInfo.carriagewayWidth}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">人行道宽</view>
+					<view class="td">{{projectInfo.sidewalkWidth}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">花池宽</view>
+					<view class="td">{{projectInfo.pondWidth}}</view>
+				</view>
+
+				<!--相同的start-->
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">建设地点</view>
+					<view class="td">{{projectInfo.buildSite}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">建设年限</view>
+					<view class="td">{{projectInfo.buildYear}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">新建/续建</view>
+					<view class="td" wx:if="{{projectInfo.buildType==1}}">续建</view>
+					<view class="td" wx:if="{{projectInfo.buildType==0}}">新建</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">是否完成征地拆迁</view>
+					<view class="td" wx:if="{{projectInfo.isExpropriation==1}}">是</view>
+					<view class="td" wx:if="{{projectInfo.isExpropriation==0}}">否</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">是否列入市级调度</view>
+					<view class="td" wx:if="{{projectInfo.isDispatch==1}}">是</view>
+					<view class="td" wx:if="{{projectInfo.isDispatch==0}}">否</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">挂点领导</view>
+					<view class="td">{{projectInfo.leaderName}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">责任单位</view>
+					<view class="td">{{projectInfo.responsibleUnits}}</view>
+				</view>
+				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
+					<view class="td bg-g">招标方式</view>
+					<view class="td" wx:if="{{projectInfo.biddingType==1}}">直接委托</view>
+					<view class="td" wx:if="{{projectInfo.biddingType==0}}">公开招标</view>
+				</view>
+				<!--相同的stop-->
+
+			</view>
+		</block>
+		<!--市政类stop-->
+		<!-- ==================基本信息end================== -->
+
+
+		<!-- =======================五方信息start=========================-->
+		<view class="table">
+			<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="towfxx">
+				<view class="th" id="wfxx">五方信息</view>
+			</view>
+
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">项目业主</view>
+				<view class="td">{{projectInfo.ownerCompanyName}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">项目负责人</view>
+				<view class="td">{{projectInfo.ownerProjectLeader}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">电话</view>
+				<view class="td">{{projectInfo.ownerPhone}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">施工单位</view>
+				<view class="td">{{projectInfo.constructionCompanyName}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">项目负责人</view>
+				<view class="td">{{projectInfo.constructionProjectLeader}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">电话</view>
+				<view class="td">{{projectInfo.constructionPhone}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">监理单位</view>
+				<view class="td">{{projectInfo.supervisionCompanyName}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">总监</view>
+				<view class="td">{{projectInfo.supervisionDirectorName}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">电话</view>
+				<view class="td">{{projectInfo.supervisionPhone}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">设计单位</view>
+				<view class="td">{{projectInfo.designCompanyName}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">项目负责人</view>
+				<view class="td">{{projectInfo.designProjectLeader}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">电话</view>
+				<view class="td">{{projectInfo.designPhone}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">勘察单位</view>
+				<view class="td">{{projectInfo.surveyCompanyName}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">项目负责人</view>
+				<view class="td">{{projectInfo.surveyProjectLeader}}</view>
+			</view>
+			<view class="tr{{!isWfxxShow?' hide':' showBorder'}}">
+				<view class="td bg-g">电话</view>
+				<view class="td">{{projectInfo.surveyPhone}}</view>
+			</view>
+
+		</view>
+		<!-- ==================五方信息stop===============================-->
+
+
+		<!-- 项目资金情况与单体情况 -->
+		<!-- 房建类项目-start -->
+		<block wx:if="{{categoryType == 1}}">
+			<view class="table">
+				<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="toZjqk">
+					<view class="th zjqk">项目资金情况</view>
+				</view>
+				<view wx:for="{{projectInfo.investments}}" wx:key="index" wx:for-item="item">
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 0}}">
+						<view class="td bg-g">项目总投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 1}}">
+						<view class="td bg-g">本年投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 2}}">
+						<view class="td bg-g">第二年年度投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 3}}">
+						<view class="td bg-g">第三年年度投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">工程建安费</view>
+					<view class="td">{{projectInfo.jiananCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">房建造价</view>
+					<view class="td">{{projectInfo.houseBuildCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">配套造价</view>
+					<view class="td">{{projectInfo.supportCost}}</view>
+				</view>
+
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">供水造价</view>
+					<view class="td">{{projectInfo.waterCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">供电造价</view>
+					<view class="td">{{projectInfo.electricityCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">供气造价</view>
+					<view class="td">{{projectInfo.airCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">设计费用</view>
+					<view class="td">{{projectInfo.designCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">勘察费用</view>
+					<view class="td">{{projectInfo.surveyCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">检测费用</view>
+					<view class="td">{{projectInfo.checkCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">监理费用</view>
+					<view class="td">{{projectInfo.supervisionCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">图审费用</view>
+					<view class="td">{{projectInfo.drawCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">其它费用</view>
+					<view class="td">{{projectInfo.otherCost}}</view>
+				</view>
+			</view>
+			<view class="table">
+				<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="toDtqk">
+					<view class="th dtqk">单体情况</view>
+				</view>
+				<view class="tr{{!isDtqkShow?' hide':' showBorder'}} bg-g">
+					<view class="td">楼栋号</view>
+					<view class="td">工程造价</view>
+					<view class="td">建筑面积</view>
+					<view class="td">层数</view>
+				</view>
+				<view wx:for="{{projectInfo.zhuti}}" wx:key="index" wx:for-item="item">
+					<view class="tr{{!isDtqkShow?' hide':' showBorder'}}">
+						<view class="td">{{item.ztName}}</view>
+						<view class="td">{{item.projectCost}}</view>
+						<view class="td">{{item.buildArea}}</view>
+						<view class="td">{{item.floors}}</view>
 					</view>
 				</view>
 			</view>
-		</view>
-	</view>
+		</block>
+		<!-- 房建类项目-end -->
+		<!--园林类start-->
+		<block wx:if="{{categoryType == 2}}">
+			<view class="table">
+				<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="toZjqk">
+					<view class="th zjqk">项目资金情况</view>
+				</view>
+				<view wx:for="{{projectInfo.investments}}" wx:key="index" wx:for-item="item">
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 0}}">
+						<view class="td bg-g">项目总投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 1}}">
+						<view class="td bg-g">本年投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 2}}">
+						<view class="td bg-g">第二年年度投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 3}}">
+						<view class="td bg-g">第三年年度投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">工程建安费</view>
+					<view class="td">{{projectInfo.jiananCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">园林造价</view>
+					<view class="td">{{projectInfo.parkdCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">配套用房造价</view>
+					<view class="td">{{projectInfo.supportHouseCost}}</view>
+				</view>
+
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">路场造价</view>
+					<view class="td">{{projectInfo.roadCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">文化景观造价</view>
+					<view class="td">{{projectInfo.culturalCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">设计费用</view>
+					<view class="td">{{projectInfo.designCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">勘察费用</view>
+					<view class="td">{{projectInfo.surveyCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">检测费用</view>
+					<view class="td">{{projectInfo.checkCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">监理费用</view>
+					<view class="td">{{projectInfo.supervisionCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">图审费用</view>
+					<view class="td">{{projectInfo.drawCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">其它费用</view>
+					<view class="td">{{projectInfo.otherCost}}</view>
+				</view>
+			</view>
+		</block>
+		<!--园林类 end-->
+		<!--市政类start-->
+		<block wx:if="{{categoryType == 3}}">
+			<view class="table">
+				<view class="tr bg-w" hover-class='wsui-btn__hover_list' bindtap="toZjqk">
+					<view class="th zjqk">项目资金情况</view>
+				</view>
+				<view wx:for="{{projectInfo.investments}}" wx:key="index" wx:for-item="item">
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 0}}">
+						<view class="td bg-g">项目总投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 1}}">
+						<view class="td bg-g">本年投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 2}}">
+						<view class="td bg-g">第二年年度投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 3}}">
+						<view class="td bg-g">第三年年度投资</view>
+						<view class="td">{{item.totalMoney}}</view>
+					</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">工程建安费</view>
+					<view class="td">{{projectInfo.jiananCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">市政造价</view>
+					<view class="td">{{projectInfo.municipalCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">桥梁造价</view>
+					<view class="td">{{projectInfo.bridgeCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">给排水造价</view>
+					<view class="td">{{projectInfo.drainageCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">交通工程造价</view>
+					<view class="td">{{projectInfo.trafficCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">设计费用</view>
+					<view class="td">{{projectInfo.designCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">勘察费用</view>
+					<view class="td">{{projectInfo.surveyCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">检测费用</view>
+					<view class="td">{{projectInfo.checkCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">监理费用</view>
+					<view class="td">{{projectInfo.supervisionCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">图审费用</view>
+					<view class="td">{{projectInfo.drawCost}}</view>
+				</view>
+				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
+					<view class="td bg-g">其它费用</view>
+					<view class="td">{{projectInfo.otherCost}}</view>
+				</view>
+			</view>
+		</block>
+		<!--市政类 end-->
+	</block>
 </view>

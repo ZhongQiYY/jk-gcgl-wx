@@ -115,5 +115,23 @@ upload: function(e) {
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  /**
+   * 公园绿化类
+   */
+  toDetailsAndGylhl: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/gylh'
+    })
+  },
+
+  /**
+   * 市政桥梁类
+   */
+  toDetailsAndSzqll: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/szql'
+    })
+  },
 })

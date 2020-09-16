@@ -1,10 +1,9 @@
 
 <!-- 房建类项目-start -->
 <block wx:if="{{categoryType == 1}}">
-	<!-- 项目前期工作 -->
 	<view class="table">
 		<view class="tr bg-w">
-			<view class="th">项目情况</view>
+			<view class="th">项目资金情况</view>
 		</view>
 		<view wx:for="{{map.investments}}" wx:key="index" wx:for-item="item">
 			<view class="tr" wx:if="{{item.investmentType == 0}}">
@@ -98,27 +97,26 @@
 
 <!--园林类start-->
 <block wx:if="{{categoryType == 2}}">
-	<!-- 项目前期工作 -->
 	<view class="table">
 		<view class="tr bg-w">
-			<view class="th">项目情况</view>
+			<view class="th">项目资金情况</view>
 		</view>
 		<view wx:for="{{map.investments}}" wx:key="index" wx:for-item="item">
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 0}}">
 				<view class="td bg-g">项目总投资</view>
-				<view class="td" wx:if="{{item.investmentType == 0}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 1}}">
 				<view class="td bg-g">本年投资</view>
-				<view class="td" wx:if="{{item.investmentType == 1}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 2}}">
 				<view class="td bg-g">第二年年度投资</view>
-				<view class="td" wx:if="{{item.investmentType == 2}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 3}}">
 				<view class="td bg-g">第三年年度投资</view>
-				<view class="td" wx:if="{{item.investmentType == 3}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
 		</view>
 		<view class="tr">
@@ -171,28 +169,28 @@
 <!--园林类 end-->
 
 <!--市政类start-->
-<block wx:if="{{categoryType == 2}}">
+<block wx:if="{{categoryType == 3}}">
 	<!-- 项目前期工作 -->
 	<view class="table">
 		<view class="tr bg-w">
-			<view class="th">项目情况</view>
+			<view class="th">项目资金情况</view>
 		</view>
 		<view wx:for="{{map.investments}}" wx:key="index" wx:for-item="item">
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 0}}">
 				<view class="td bg-g">项目总投资</view>
-				<view class="td" wx:if="{{item.investmentType == 0}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 1}}">
 				<view class="td bg-g">本年投资</view>
-				<view class="td" wx:if="{{item.investmentType == 1}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 2}}">
 				<view class="td bg-g">第二年年度投资</view>
-				<view class="td" wx:if="{{item.investmentType == 2}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
-			<view class="tr">
+			<view class="tr" wx:if="{{item.investmentType == 3}}">
 				<view class="td bg-g">第三年年度投资</view>
-				<view class="td" wx:if="{{item.investmentType == 3}}">{{item.totalMoney}}</view>
+				<view class="td">{{item.totalMoney}}</view>
 			</view>
 		</view>
 		<view class="tr">
