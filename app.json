@@ -45,8 +45,9 @@
     "pages/tableData/datapages/tptx/szql/qhgc/qhgc",
     "pages/tableData/datapages/tptx/szql/dlgc/dlgc",
     "pages/tableData/datapages/tptx/szql/jpsgc/jpsgc",
-    "pages/tableData/datapages/tptx/szql/ptgc/ptgc"
-
+    "pages/tableData/datapages/tptx/szql/ptgc/ptgc",
+    "pages/control/tjwtjy/tjwtjy",
+    "pages/control/sjbsc/sjbsc"
   ],
   "window": {
     "backgroundTextStyle": "dark",
