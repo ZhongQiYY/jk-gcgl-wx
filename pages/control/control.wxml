@@ -50,5 +50,17 @@
 			</view>
 			<view class="weui-grid__label">提交图片图像</view>
 		</a>
+		<a class="weui-grid" bindtap="towtjy">
+			<view class="weui-grid__icon">
+				<image src="/images/tjwtjy.png" alt></image>
+			</view>
+			<view class="weui-grid__label">提交问题建议</view>
+		</a>
+		<a class="weui-grid" bindtap="tosjbsc">
+			<view class="weui-grid__icon">
+				<image src="/images/sjbsc.png" alt></image>
+			</view>
+			<view class="weui-grid__label">数据表输出</view>
+		</a>
 	</view>
 </view>

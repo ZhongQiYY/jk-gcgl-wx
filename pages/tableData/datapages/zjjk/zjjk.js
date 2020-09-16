@@ -29,8 +29,9 @@ Page({
   onShow: function () {
     this.setData({
       wvUrl: basePath+"/api/chartData/wv/zjjkData?thirdSession="
-      +app.globalData.thirdSession+"&projectId="+app.globalData.projectId+"&categoryType="+app.globalData.categoryType
+      +app.globalData.thirdSession+"&projectId="+app.globalData.projectId+"&categoryType="+app.globalData.categoryType+"&costType="+"1"
     });
+    console.log(this.data.wvUrl)
   },
 
   /**
