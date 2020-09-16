@@ -75,31 +75,31 @@
 
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">占地面积</view>
-					<view class="td">{{projectInfo.coverArea}}</view>
+					<view class="td">{{projectInfo.coverArea != ""?projectInfo.coverArea+coverArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">总建筑面积</view>
-					<view class="td">{{projectInfo.totalArea}}</view>
+					<view class="td">{{projectInfo.totalArea != ""?projectInfo.totalArea+buildArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">楼栋数</view>
-					<view class="td">{{projectInfo.buildNum}}</view>
+					<view class="td">{{projectInfo.buildNum != ""?projectInfo.buildNum+"栋":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">住宅套数</view>
-					<view class="td">{{projectInfo.houseNum}}</view>
+					<view class="td">{{projectInfo.houseNum != ""?projectInfo.houseNum+"套":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">店面间数</view>
-					<view class="td">{{projectInfo.storeNum}}</view>
+					<view class="td">{{projectInfo.storeNum != ""?projectInfo.storeNum+"间":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">商业面积</view>
-					<view class="td">{{projectInfo.businessArea}}</view>
+					<view class="td">{{projectInfo.businessArea != ""?projectInfo.businessArea+buildArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">住宅面积</view>
-					<view class="td">{{projectInfo.houseArea}}</view>
+					<view class="td">{{projectInfo.houseArea != ""?projectInfo.houseArea+buildArea:''}}</view>
 				</view>
 
 				<!--相同的start-->
@@ -150,38 +150,33 @@
 					<view class="th jbxx">基本信息</view>
 				</view>
 
-
-				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
-					<view class="td bg-g">项目名称</view>
-					<view class="td">{{projectInfo.projectName}}</view>
-				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">占地面积</view>
-					<view class="td">{{projectInfo.coverArea}}</view>
+					<view class="td">{{projectInfo.coverArea != ""?projectInfo.coverArea+coverArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">总建筑面积</view>
-					<view class="td">{{projectInfo.totalArea}}</view>
+					<view class="td">{{projectInfo.totalArea != ""?projectInfo.totalArea+buildArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">园路面积</view>
-					<view class="td">{{projectInfo.pathArea}}</view>
+					<view class="td">{{projectInfo.pathArea != ""?projectInfo.pathArea+buildArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">铺装面积</view>
-					<view class="td">{{projectInfo.paveArea}}</view>
+					<view class="td">{{projectInfo.paveArea != ""?projectInfo.paveArea+buildArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
-					<view class="td bg-g">景观桥(座)</view>
-					<view class="td">{{projectInfo.landscapeBridge}}</view>
+					<view class="td bg-g">景观桥</view>
+					<view class="td">{{projectInfo.landscapeBridge != ""?projectInfo.landscapeBridge+"座":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
-					<view class="td bg-g">乔木数(颗)</view>
-					<view class="td">{{projectInfo.treeNum}}</view>
+					<view class="td bg-g">乔木数</view>
+					<view class="td">{{projectInfo.treeNum != ""?projectInfo.treeNum+"颗":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
-					<view class="td bg-g">亮化数(盏)</view>
-					<view class="td">{{projectInfo.brightenNum}}</view>
+					<view class="td bg-g">亮化数</view>
+					<view class="td">{{projectInfo.brightenNum != ""?projectInfo.brightenNum+"盏":''}}</view>
 				</view>
 
 				<!--相同的start-->
@@ -234,36 +229,32 @@
 				</view>
 
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
-					<view class="td bg-g">项目名称</view>
-					<view class="td">{{projectInfo.projectName}}</view>
-				</view>
-				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">占地面积</view>
-					<view class="td">{{projectInfo.coverArea}}</view>
+					<view class="td">{{projectInfo.coverArea != ""?projectInfo.coverArea+coverArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">总建筑面积</view>
-					<view class="td">{{projectInfo.totalArea}}</view>
+					<view class="td">{{projectInfo.totalArea != ""?projectInfo.totalArea+buildArea:''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">道路长</view>
-					<view class="td">{{projectInfo.roadLength}}</view>
+					<view class="td">{{projectInfo.roadLength != ""?projectInfo.roadLength+"米":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">道路宽</view>
-					<view class="td">{{projectInfo.roadWidth}}</view>
+					<view class="td">{{projectInfo.roadWidth != ""?projectInfo.roadWidth+"米":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">行车道宽</view>
-					<view class="td">{{projectInfo.carriagewayWidth}}</view>
+					<view class="td">{{projectInfo.carriagewayWidth != ""?projectInfo.carriagewayWidth+"米":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">人行道宽</view>
-					<view class="td">{{projectInfo.sidewalkWidth}}</view>
+					<view class="td">{{projectInfo.sidewalkWidth != ""?projectInfo.sidewalkWidth+"米":''}}</view>
 				</view>
 				<view class="tr{{!isJbxxShow?' hide':' showBorder'}}">
 					<view class="td bg-g">花池宽</view>
-					<view class="td">{{projectInfo.pondWidth}}</view>
+					<view class="td">{{projectInfo.pondWidth != ""?projectInfo.pondWidth+"米":''}}</view>
 				</view>
 
 				<!--相同的start-->
@@ -392,69 +383,69 @@
 				<view wx:for="{{projectInfo.investments}}" wx:key="index" wx:for-item="item">
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 0}}">
 						<view class="td bg-g">项目总投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 1}}">
 						<view class="td bg-g">本年投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 2}}">
 						<view class="td bg-g">第二年年度投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 3}}">
 						<view class="td bg-g">第三年年度投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">工程建安费</view>
-					<view class="td">{{projectInfo.jiananCost}}</view>
+					<view class="td">{{projectInfo.jiananCost != ""?projectInfo.jiananCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">房建造价</view>
-					<view class="td">{{projectInfo.houseBuildCost}}</view>
+					<view class="td">{{projectInfo.houseBuildCost != ""?projectInfo.houseBuildCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">配套造价</view>
-					<view class="td">{{projectInfo.supportCost}}</view>
+					<view class="td">{{projectInfo.supportCost != ""?projectInfo.supportCost+moneyUnit:''}}</view>
 				</view>
 
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">供水造价</view>
-					<view class="td">{{projectInfo.waterCost}}</view>
+					<view class="td">{{projectInfo.waterCost != ""?projectInfo.waterCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">供电造价</view>
-					<view class="td">{{projectInfo.electricityCost}}</view>
+					<view class="td">{{projectInfo.electricityCost != ""?projectInfo.electricityCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">供气造价</view>
-					<view class="td">{{projectInfo.airCost}}</view>
+					<view class="td">{{projectInfo.airCost != ""?projectInfo.airCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">设计费用</view>
-					<view class="td">{{projectInfo.designCost}}</view>
+					<view class="td">{{projectInfo.designCost != ""?projectInfo.designCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">勘察费用</view>
-					<view class="td">{{projectInfo.surveyCost}}</view>
+					<view class="td">{{projectInfo.surveyCost != ""?projectInfo.surveyCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">检测费用</view>
-					<view class="td">{{projectInfo.checkCost}}</view>
+					<view class="td">{{projectInfo.checkCost != ""?projectInfo.checkCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">监理费用</view>
-					<view class="td">{{projectInfo.supervisionCost}}</view>
+					<view class="td">{{projectInfo.supervisionCost != ""?projectInfo.supervisionCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">图审费用</view>
-					<view class="td">{{projectInfo.drawCost}}</view>
+					<view class="td">{{projectInfo.drawCost != ""?projectInfo.drawCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">其它费用</view>
-					<view class="td">{{projectInfo.otherCost}}</view>
+					<view class="td">{{projectInfo.otherCost != ""?projectInfo.otherCost+moneyUnit:''}}</view>
 				</view>
 			</view>
 			<view class="table">
@@ -470,9 +461,9 @@
 				<view wx:for="{{projectInfo.zhuti}}" wx:key="index" wx:for-item="item">
 					<view class="tr{{!isDtqkShow?' hide':' showBorder'}}">
 						<view class="td">{{item.ztName}}</view>
-						<view class="td">{{item.projectCost}}</view>
-						<view class="td">{{item.buildArea}}</view>
-						<view class="td">{{item.floors}}</view>
+						<view class="td">{{item.projectCost != ""?item.projectCost+moneyUnit:""}}</view>
+						<view class="td">{{item.buildArea != ""?item.buildArea+buildArea:""}}</view>
+						<view class="td">{{item.floors != ""?item.floors+"层":""}}</view>
 					</view>
 				</view>
 			</view>
@@ -487,65 +478,65 @@
 				<view wx:for="{{projectInfo.investments}}" wx:key="index" wx:for-item="item">
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 0}}">
 						<view class="td bg-g">项目总投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 1}}">
 						<view class="td bg-g">本年投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 2}}">
 						<view class="td bg-g">第二年年度投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 3}}">
 						<view class="td bg-g">第三年年度投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">工程建安费</view>
-					<view class="td">{{projectInfo.jiananCost}}</view>
+					<view class="td">{{projectInfo.jiananCost != ""?projectInfo.jiananCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">园林造价</view>
-					<view class="td">{{projectInfo.parkdCost}}</view>
+					<view class="td">{{projectInfo.parkdCost != undefined?projectInfo.parkdCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">配套用房造价</view>
-					<view class="td">{{projectInfo.supportHouseCost}}</view>
+					<view class="td">{{projectInfo.supportHouseCost != ""?projectInfo.supportHouseCost+moneyUnit:''}}</view>
 				</view>
 
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">路场造价</view>
-					<view class="td">{{projectInfo.roadCost}}</view>
+					<view class="td">{{projectInfo.roadCost != ""?projectInfo.roadCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">文化景观造价</view>
-					<view class="td">{{projectInfo.culturalCost}}</view>
+					<view class="td">{{projectInfo.culturalCost != ""?projectInfo.culturalCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">设计费用</view>
-					<view class="td">{{projectInfo.designCost}}</view>
+					<view class="td">{{projectInfo.designCost != ""?projectInfo.designCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">勘察费用</view>
-					<view class="td">{{projectInfo.surveyCost}}</view>
+					<view class="td">{{projectInfo.surveyCost != ""?projectInfo.surveyCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">检测费用</view>
-					<view class="td">{{projectInfo.checkCost}}</view>
+					<view class="td">{{projectInfo.checkCost != ""?projectInfo.checkCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">监理费用</view>
-					<view class="td">{{projectInfo.supervisionCost}}</view>
+					<view class="td">{{projectInfo.supervisionCost != ""?projectInfo.supervisionCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">图审费用</view>
-					<view class="td">{{projectInfo.drawCost}}</view>
+					<view class="td">{{projectInfo.drawCost != ""?projectInfo.drawCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">其它费用</view>
-					<view class="td">{{projectInfo.otherCost}}</view>
+					<view class="td">{{projectInfo.otherCost != ""?projectInfo.otherCost+moneyUnit:''}}</view>
 				</view>
 			</view>
 		</block>
@@ -559,64 +550,64 @@
 				<view wx:for="{{projectInfo.investments}}" wx:key="index" wx:for-item="item">
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 0}}">
 						<view class="td bg-g">项目总投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 1}}">
 						<view class="td bg-g">本年投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 2}}">
 						<view class="td bg-g">第二年年度投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 					<view class="tr{{!isZjqkShow?' hide':' showBorder'}}" wx:if="{{item.investmentType == 3}}">
 						<view class="td bg-g">第三年年度投资</view>
-						<view class="td">{{item.totalMoney}}</view>
+						<view class="td">{{item.totalMoney != ""?item.totalMoney+moneyUnit:''}}</view>
 					</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">工程建安费</view>
-					<view class="td">{{projectInfo.jiananCost}}</view>
+					<view class="td">{{projectInfo.jiananCost != ""?projectInfo.jiananCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">市政造价</view>
-					<view class="td">{{projectInfo.municipalCost}}</view>
+					<view class="td">{{projectInfo.municipalCost != ""?projectInfo.municipalCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">桥梁造价</view>
-					<view class="td">{{projectInfo.bridgeCost}}</view>
+					<view class="td">{{projectInfo.bridgeCost != ""?projectInfo.bridgeCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">给排水造价</view>
-					<view class="td">{{projectInfo.drainageCost}}</view>
+					<view class="td">{{projectInfo.drainageCost != ""?projectInfo.drainageCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">交通工程造价</view>
-					<view class="td">{{projectInfo.trafficCost}}</view>
+					<view class="td">{{projectInfo.trafficCost != ""?projectInfo.trafficCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">设计费用</view>
-					<view class="td">{{projectInfo.designCost}}</view>
+					<view class="td">{{projectInfo.designCost != ""?projectInfo.designCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">勘察费用</view>
-					<view class="td">{{projectInfo.surveyCost}}</view>
+					<view class="td">{{projectInfo.surveyCost != ""?projectInfo.surveyCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">检测费用</view>
-					<view class="td">{{projectInfo.checkCost}}</view>
+					<view class="td">{{projectInfo.checkCost != ""?projectInfo.checkCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">监理费用</view>
-					<view class="td">{{projectInfo.supervisionCost}}</view>
+					<view class="td">{{projectInfo.supervisionCost != ""?projectInfo.supervisionCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">图审费用</view>
-					<view class="td">{{projectInfo.drawCost}}</view>
+					<view class="td">{{projectInfo.drawCost != ""?projectInfo.drawCost+moneyUnit:''}}</view>
 				</view>
 				<view class="tr{{!isZjqkShow?' hide':' showBorder'}}">
 					<view class="td bg-g">其它费用</view>
-					<view class="td">{{projectInfo.otherCost}}</view>
+					<view class="td">{{projectInfo.otherCost != ""?projectInfo.otherCost+moneyUnit:''}}</view>
 				</view>
 			</view>
 		</block>

@@ -1,19 +1,18 @@
-const app = getApp();
-var basePath = app.globalData.basePath;
+// pages/control/sjbsc/sjbsc.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    wvUrl: "",
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      
+
   },
 
   /**
@@ -27,11 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      wvUrl: basePath+"/api/chartData/wv/zjjkData?thirdSession="
-      +app.globalData.thirdSession+"&projectId="+app.globalData.projectId+"&categoryType="+app.globalData.categoryType+"&costType="+"1"
-    });
-    console.log(this.data.wvUrl)
+
   },
 
   /**

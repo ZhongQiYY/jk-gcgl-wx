@@ -22,7 +22,10 @@ Page({
     isWfxxShow: false,
     isZjqkShow: false,
     isDtqkShow: false,
-    loadingHidden: false
+    loadingHidden: false,
+    moneyUnit: "万元",
+    buildArea: "万平米",
+    coverArea: "亩",
   },
 
   // 选择建设单位
