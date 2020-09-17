@@ -1,0 +1,25 @@
+<view>
+	<view class="line">
+		<picker mode="multiSelector" name="finalTime" value="{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+			<view class="domes_title">
+				园区工程前期时间 : {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
+			</view>
+		</picker>
+		<view class='domes_title'>园区工程前期图片</view>
+		<view class='ui_cell'>
+			<view class='ui_cell_bd'>图片上传</view>
+			<view class='ui_cell_ft'>{{hasPicture}}/9</view>
+		</view>
+		<view class='ui_uploader_cell'>
+			<view class='ui_uploader_item' wx:for="{{files}}" wx:key="{{index}}">
+				<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+				<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+			</view>
+			<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files.length < 10 }}"></view>
+		</view>
+	</view>
+<view class="divLine">
+</view>
+  <view class="fb-btn" bindtap="submit">提交</view>
+</view>
+

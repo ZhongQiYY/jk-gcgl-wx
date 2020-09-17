@@ -78,22 +78,22 @@ getRankData: function(){
               titleList[2].data.push('-')
             }
             if (dataList[i].buildArea) {
-              titleList[3].data.push(dataList[i].buildArea)
+              titleList[3].data.push(dataList[i].buildArea.toFixed(2))
             } else {
               titleList[3].data.push('-')
             }
             if (dataList[i].totalInvestment) {
-              titleList[4].data.push(dataList[i].totalInvestment)
+              titleList[4].data.push(dataList[i].totalInvestment.toFixed(2))
             } else {
               titleList[4].data.push('-')
             }
             if (dataList[i].projectInvestment) {
-              titleList[5].data.push(dataList[i].projectInvestment)
+              titleList[5].data.push(dataList[i].projectInvestment.toFixed(2))
             } else {
               titleList[5].data.push('-')
             }
             if (dataList[i].monthOutput) {
-              titleList[6].data.push(dataList[i].monthOutput)
+              titleList[6].data.push(dataList[i].monthOutput.toFixed(2))
             } else {
               titleList[6].data.push('-')
             }
@@ -118,8 +118,9 @@ getRankData: function(){
 },
 test: function(e) {
   let title = e.currentTarget.dataset.title
-  console.log(title)
   let projectName = this.data.rankData[e.currentTarget.dataset.index].integrated;
+  let ids = this.data.rankData[e.currentTarget.dataset.index].standardsId;
+  console.log(ids);
   console.log(projectName)
   var that = this;
   wx.request({
@@ -134,15 +135,22 @@ test: function(e) {
       'thirdSession': app.globalData.thirdSession
     },
     success (res) {
+      for(var i = 0; i< res.data.length ;i++){
+        for(var j = 0; j< ids.length;j++){
+          if(ids[j] == res.data[i].id){
+            res.data[i].color = "green";
+            break;
+          }else{
+            res.data[i].color = "red";
+          }
+        }
+      }
       that.setData({
         projectInfoShow : true,
         productContent: res.data
-      });
-      console.log(res.data)
-      if ('projectNum' == title) {
-        
+      });  
+        console.log(res.data)
       }
-    },
   });
 },
 

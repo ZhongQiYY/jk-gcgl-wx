@@ -1,13 +1,27 @@
-<!-- 文件上传 -->
-<view class='domes_title'>uploader</view>
-<view class='ui_cell'>
-	<view class='ui_cell_bd'>图片上传</view>
-	<view class='ui_cell_ft'>{{uploaderNum}}/9</view>
-</view>
-<view class='ui_uploader_cell'>
-	<view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
-		<icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
-		<image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+<view class="page" data-weui-theme="{{theme}}">
+	<!-- <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndSzqll">
+				<view class="application-name">
+					<image src="/images/fjl.png" />房建类</view>
+			</label>
+		</view>
+	</view> -->
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndGylhl">
+				<view class="application-name">
+					<image src="/images/gylh.png" />公园绿化类</view>
+			</label>
+		</view>
 	</view>
-	<view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndSzqll">
+				<view class="application-name">
+					<image src="/images/jgsg.png" />市政桥梁类</view>
+			</label>
+		</view>
+	</view>
 </view>
