@@ -1,6 +1,7 @@
 <loading hidden="{{loadingHidden}}">
         加载中...
 </loading>
+
 <view class="{{search}}">
 	<view class="weui-flex">
 
@@ -26,9 +27,11 @@
 		</view>
 	</view>
 </view>
+
+
  
 <view class="page project-list-info" data-weui-theme="{{theme}}">
-
+<view hidden="{{errorInfo}}">错误，请下拉刷新或重新登录</view>
 	<!-- 项目列表页 -->
 	<view class="page__bd">
 		<view class="weui-cells">
