@@ -1,0 +1,2 @@
+<!--pages/tableData/datapages/ydxx/ydxx.wxml-->
+<web-view src="{{wvUrl}}"></web-view>

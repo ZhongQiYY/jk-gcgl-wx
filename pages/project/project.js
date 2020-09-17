@@ -1,13 +1,13 @@
 var base64 = require("../../dist/example/images/base64");
 var app = getApp();
 var basePath = app.globalData.basePath;
-var rootPath = "https://test.xizinet.com";
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
   data: {
     buildArray: ['--请选择--','科技城', '满园', '西城', '综保区', '中恒工业', '中恒商业', '磊昇', '工建'],
     categoryArray: ['--请选择--','返迁棚改', '工业厂房', '商业地产', '文教体卫', '公园绿化', '市政桥梁'],
+    rootPath: "https://test.xizinet.com",
     buildIndex: 0,
     categoryIndex: 0,
     projectList: [],
@@ -107,7 +107,7 @@ Page({
           projectInfo: res.data
         });
         that.setData({
-          imagePath: rootPath+res.data.effectPicture
+          imagePath: that.data.rootPath+res.data.effectPicture
         })
       }
     });

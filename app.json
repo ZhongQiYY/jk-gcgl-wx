@@ -47,7 +47,8 @@
     "pages/tableData/datapages/tptx/szql/jpsgc/jpsgc",
     "pages/tableData/datapages/tptx/szql/ptgc/ptgc",
     "pages/control/tjwtjy/tjwtjy",
-    "pages/control/sjbsc/sjbsc"
+    "pages/control/sjbsc/sjbsc",
+    "pages/tableData/datapages/ydxx/ydxx"
   ],
   "window": {
     "backgroundTextStyle": "dark",

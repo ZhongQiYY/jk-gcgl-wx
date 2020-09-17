@@ -35,15 +35,43 @@
 	<!-- 项目列表页 -->
 	<view class="page__bd" wx:if="{{projectListShow}}">
 
-		<view class="weui-cells__title">项目名称</view>
+		<!-- <view class="weui-cells__title">项目名称</view>
 		<view class="weui-cells weui-cells_after-title">
 
 			<view data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " wx:for="{{projectList}}" wx:key="index" hover-class="weui-cell_active">
 				<view class="weui-cell__bd">{{item.projectName}}</view>
-				<!-- <view class="weui-cell__ft">{{item.buildType}}</view> -->
+			</view>
+		</view> -->
+		<view class="weui-cells">
+		
+			<view 
+			data-text="{{item.projectName}}" 
+			data-id="{{item.id}}" 
+			data-categoryType="{{item.categoryType}}" 
+			bindtap="showProjectInfo" 
+			class="weui-cell weui-cell_example " 
+			wx:for="{{projectList}}" 
+			wx:key="index"
+			style="height: 145rpx;"
+			class="weui-cell weui-cell_active">
+				<view style="position: absolute; top: 20rpx;display:flex;">
+					<view class="weui-cell__hd" style="position: relative; margin-right: 10px;">
+						<image src="{{rootPath}}{{item.effectPicture}}" style="width: 200rpx;height: 130rpx;display: block;"></image>
+						<!-- <image src="" style="width: 200rpx;height: 130rpx;display: block;"></image> -->
+						<text class="weui-badge" style="position: absolute; top: -0.4em; right: -0.4em;">8</text>
+					</view>
+
+					<view class="weui-cell__bd">
+						<view>{{item.projectName}}</view>
+						<view style="font-size: 13px; color: #888;">{{item.unitName}}</view>
+					</view>
+
+					<view style="position: absolute; top: 130rpx;border: 1px solid red;width: 100%">
+						
+					</view>
+				</view>
 			</view>
 		</view>
-
 	</view>
 
 	<!-- 项目详情页 -->
