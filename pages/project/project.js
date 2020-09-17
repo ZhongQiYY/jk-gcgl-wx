@@ -14,21 +14,31 @@ Page({
     search: "search",
     loadingHidden: false,
     hasUserInfo: false,
-    errorInfo: true
+    errorInfo: true, //展示隐藏错误提示
+    dataHidden: true, //上滑触底显示数据加载钟
+    dataHidden_last: true, //项目全部加载出来后显示没有更多
+    haveNoData: false, //是否还有项目没有加载完
+
+    pageNumber: 1, // 当前页码
+    pageLimit: 10, // 每页加载的条数
+    
   },
 
   // 选择建设单位
   bindBuildChange: function (e) {
     var that = this;
     this.setData({
-      buildIndex: e.detail.value
+      buildIndex: e.detail.value,
+      pageNumber: 1
     });
     wx.request({
       url: basePath + "/api/project/list", //请求路径
       method: 'post',
       data: {
         unitName: this.data.buildArray[e.detail.value],
-        categoryId: this.data.categoryIndex
+        categoryId: this.data.categoryIndex,
+        pageNumber: that.data.pageNumber,
+        pageLimit: that.data.pageLimit
       },
       header: {
         'content-type': 'application/json', // 默认值
@@ -36,7 +46,8 @@ Page({
       },
       success(res) {
         that.setData({
-          projectList: res.data
+          projectList: res.data,
+          pageNumber: that.data.pageNumber+1,
         })
       }
     });
@@ -45,14 +56,17 @@ Page({
   bindCategoryChange: function (e) {
     var that = this;
     this.setData({
-      categoryIndex: e.detail.value
+      categoryIndex: e.detail.value,
+      pageNumber: 1
     });
     wx.request({
       url: basePath + "/api/project/list", //请求路径
       method: 'post',
       data: {
         unitName: this.data.buildArray[this.data.buildIndex],
-        categoryId: this.data.categoryIndex
+        categoryId: this.data.categoryIndex,
+        pageNumber: that.data.pageNumber,
+        pageLimit: that.data.pageLimit
       },
       header: {
         'content-type': 'application/json', // 默认值
@@ -60,7 +74,8 @@ Page({
       },
       success(res) {
         that.setData({
-          projectList: res.data
+          projectList: res.data,
+          pageNumber: that.data.pageNumber+1,
         })
       }
     });
@@ -84,11 +99,80 @@ Page({
     that.onLoad();
   },
 
+  //触底触发
+  onReachBottom() {
+    var that = this;
+    that.setData({
+      dataHidden: false
+    })
+    if(!that.data.haveNoData){
+      wx.request({
+        url: basePath + "/api/project/list", //请求路径
+        method: 'post',
+        data: {
+          unitName: that.data.buildArray[that.data.buildIndex],
+          categoryId: that.data.categoryIndex,
+          pageNumber: that.data.pageNumber,
+          pageLimit: that.data.pageLimit
+        },
+        header: {
+          'content-type': 'application/json', // 默认值
+          'thirdSession': app.globalData.thirdSession
+        },
+        success(res) {
+          if(res.data.length > 0) {
+            that.setData({
+              dataHidden: true,
+              pageNumber: that.data.pageNumber+1,
+              projectList: that.data.projectList.concat(res.data),
+            });
+          }else {
+            that.setData({
+              dataHidden: true,
+              dataHidden_last: false,
+            });
+            setTimeout(function () {
+              that.setData({
+                dataHidden_last: true,
+                haveNoData: true
+              })
+            }, 3000);
+          }
+          
+        },
+        fail() {
+          that.setData({
+            loadingHidden: false,
+            errorInfo: true
+          })
+          setTimeout(function () {
+            that.setData({
+              loadingHidden: true,
+              errorInfo: false
+            })
+          }, 10000);
+        }
+      });
+    }else{
+      that.setData({
+        dataHidden: true,
+        dataHidden_last: false,
+      });
+      setTimeout(function () {
+        that.setData({
+          dataHidden_last: true,
+        })
+      }, 3000);
+    }
+    
+  },
+
   //--------------------------生命周期函数------------------------------
   onLoad: function (options) {
     var that = this;
     wx.stopPullDownRefresh();
     that.setData({
+      pageNumber: 1,
       hasUserInfo: app.globalData.hasUserInfo
     });
 
@@ -107,7 +191,9 @@ Page({
             method: 'post',
             data: {
               unitName: that.data.buildArray[that.data.buildIndex],
-              categoryId: that.data.categoryIndex
+              categoryId: that.data.categoryIndex,
+              pageNumber: that.data.pageNumber,
+              pageLimit: that.data.pageLimit
             },
             header: {
               'content-type': 'application/json', // 默认值
@@ -115,7 +201,8 @@ Page({
             },
             success(res) {
               that.setData({
-                projectList: res.data,
+                projectList: that.data.projectList.concat(res.data),
+                pageNumber: that.data.pageNumber+1,
                 loadingHidden: true,
                 errorInfo: true
               });

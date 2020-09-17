@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "项目库"
+  "navigationBarTitleText": "项目库",
+  "onReachBottomDistance": 0
 }

@@ -62,5 +62,14 @@
 				</view>
 			</view>
 		</view>
+
+		<view> 
+		 	<view class='data-loading' hidden='{{dataHidden}}'>  
+				数据加载中...  
+			</view> 
+			<view class='data-loading' hidden='{{dataHidden_last}}'>  
+				没有更多了...  
+			</view> 
+		</view>
 	</view>
 </view>
