@@ -17,7 +17,7 @@ Page({
     buildArea: "万平米",
     coverArea: "亩",
     projectName: "",
-    rootPath: "https://test.xizinet.com",
+    rootPath: app.globalData.imageRootPath,
     categoryType: 0,
     loadingHidden: false,
   },
