@@ -32,7 +32,7 @@ onLoad: function (options) {
     that.setData({
         loadingHidden: true
     });
-  }, 1000);
+  }, 10000);
   this.getRankData();
 },  
 
