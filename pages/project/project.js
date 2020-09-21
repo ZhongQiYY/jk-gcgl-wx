@@ -45,10 +45,23 @@ Page({
         'thirdSession': app.globalData.thirdSession
       },
       success(res) {
-        that.setData({
-          projectList: res.data,
-          pageNumber: that.data.pageNumber+1,
-        })
+        if(res.data.length > 0) {
+          that.setData({
+            dataHidden: true,
+            pageNumber: that.data.pageNumber+1,
+            projectList: res.data,
+          });
+        }else {
+          that.setData({
+            dataHidden: true,
+            dataHidden_last: false,
+          });
+          setTimeout(function () {
+            that.setData({
+              dataHidden_last: true,
+            })
+          }, 3000);
+        }
       }
     });
   },
@@ -73,10 +86,23 @@ Page({
         'thirdSession': app.globalData.thirdSession
       },
       success(res) {
-        that.setData({
-          projectList: res.data,
-          pageNumber: that.data.pageNumber+1,
-        })
+        if(res.data.length > 0) {
+          that.setData({
+            dataHidden: true,
+            pageNumber: that.data.pageNumber+1,
+            projectList: res.data,
+          });
+        }else {
+          that.setData({
+            dataHidden: true,
+            dataHidden_last: false,
+          });
+          setTimeout(function () {
+            that.setData({
+              dataHidden_last: true,
+            })
+          }, 3000);
+        }
       }
     });
   },
