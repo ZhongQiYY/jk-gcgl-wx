@@ -1,265 +1,257 @@
 var base64 = require("../../dist/example/images/base64");
 var app = getApp();
 var basePath = app.globalData.basePath;
-var rootPath = "https://test.xizinet.com";
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
   data: {
-    buildArray: ['--请选择--','科技城', '满园', '西城', '综保区', '中恒工业', '中恒商业', '磊昇', '工建'],
-    categoryArray: ['--请选择--','返迁棚改', '工业厂房', '商业地产', '文教体卫', '公园绿化', '市政桥梁'],
+    buildArray: ['--请选择--', '科技城', '满园', '西城', '综保区', '中恒工业', '中恒商业', '磊昇', '工建'],
+    categoryArray: ['--请选择--', '返迁棚改', '工业厂房', '商业地产', '文教体卫', '公园绿化', '市政桥梁'],
+    rootPath: app.globalData.imageRootPath,
     buildIndex: 0,
     categoryIndex: 0,
     projectList: [],
-    projectListShow: true,
-    projectInfoShow: false,
-    projectName: "",
     search: "search",
-    imagePath: "",
-    categoryType: 0,
-    projectInfo: {},
-    isJbxxShow: false,
-    isWfxxShow: false,
-    isZjqkShow: false,
-    isDtqkShow: false,
     loadingHidden: false,
-    moneyUnit: "万元",
-    buildArea: "万平米",
-    coverArea: "亩",
+    hasUserInfo: false,
+    errorInfo: true, //展示隐藏错误提示
+    dataHidden: true, //上滑触底显示数据加载钟
+    dataHidden_last: true, //项目全部加载出来后显示没有更多
+    haveNoData: false, //是否还有项目没有加载完
+
+    pageNumber: 1, // 当前页码
+    pageLimit: 10, // 每页加载的条数
+    
   },
 
   // 选择建设单位
-  bindBuildChange: function(e) {  
+  bindBuildChange: function (e) {
     var that = this;
     this.setData({
-      buildIndex: e.detail.value
+      buildIndex: e.detail.value,
+      pageNumber: 1
     });
     wx.request({
-      url: basePath+"/api/project/list", //请求路径
+      url: basePath + "/api/project/list", //请求路径
       method: 'post',
       data: {
         unitName: this.data.buildArray[e.detail.value],
-        categoryId: this.data.categoryIndex
+        categoryId: this.data.categoryIndex,
+        pageNumber: that.data.pageNumber,
+        pageLimit: that.data.pageLimit
       },
       header: {
         'content-type': 'application/json', // 默认值
         'thirdSession': app.globalData.thirdSession
       },
-      success (res) {
+      success(res) {
         that.setData({
-          projectList: res.data
+          projectList: res.data,
+          pageNumber: that.data.pageNumber+1,
         })
       }
     });
   },
   // 选择项目类别
-  bindCategoryChange: function(e) {
+  bindCategoryChange: function (e) {
     var that = this;
     this.setData({
-      categoryIndex: e.detail.value
+      categoryIndex: e.detail.value,
+      pageNumber: 1
     });
     wx.request({
-      url: basePath+"/api/project/list", //请求路径
+      url: basePath + "/api/project/list", //请求路径
       method: 'post',
       data: {
         unitName: this.data.buildArray[this.data.buildIndex],
-        categoryId: this.data.categoryIndex 
+        categoryId: this.data.categoryIndex,
+        pageNumber: that.data.pageNumber,
+        pageLimit: that.data.pageLimit
       },
       header: {
         'content-type': 'application/json', // 默认值
         'thirdSession': app.globalData.thirdSession
       },
-      success (res) {
+      success(res) {
         that.setData({
-          projectList: res.data
+          projectList: res.data,
+          pageNumber: that.data.pageNumber+1,
         })
       }
     });
   },
 
   //显示项目详情
-  showProjectInfo: function(e) {
+  showProjectInfo: function (e) {
     app.globalData.projectId = e.currentTarget.dataset.id;
     app.globalData.categoryType = e.currentTarget.dataset.categorytype;
+    app.globalData.pName = e.currentTarget.dataset.text
+    wx.navigateTo({
+      url: '/pages/project/projectInfo/projectInfo',
+    })
+
+
+  },
+
+  //下拉触发
+  onPullDownRefresh: function () {
     var that = this;
-    this.setData({
-      projectListShow: false,
-      projectInfoShow: true,
-      projectName: e.currentTarget.dataset.text,
-      categoryType: e.currentTarget.dataset.categorytype,
-      search: "search1"
-    });
-
-    wx.request({
-      url: basePath+"/api/project/projectBaseInfo", //请求路径
-      method: 'post',
-      data: {
-        projectId: app.globalData.projectId,
-        categoryType: app.globalData.categoryType
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success (res) {
-        console.log(res.data)
-        that.setData({
-          projectInfo: res.data
-        });
-        that.setData({
-          imagePath: rootPath+res.data.effectPicture
-        })
-      }
-    });
+    that.onLoad();
   },
 
-  //跳转到数据表界面
-  toTableData: function() {
-    app.globalData.pName = this.data.projectName;
-    wx.switchTab({ 
-      url: '/pages/tableData/tableData'
-    });
-  },
-
-  //显示项目列表
-  showProjectList: function(e) {
+  //触底触发
+  onReachBottom() {
     var that = this;
-    this.setData({
-      projectListShow: true,
-      projectInfoShow: false,
-      search: "search"
-    });
-    wx.request({
-      url: basePath+"/api/project/list", //请求路径
-      method: 'post',
-      data: {
-        unitName: this.data.buildArray[this.data.buildIndex],
-        categoryId: this.data.categoryIndex 
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success (res) {
-        that.setData({
-          projectList: res.data
-        })
-      }
-    });
-  },
-
-  //点击五方信息触发
-  towfxx: function(e) {
-    setTimeout(function(){
-      wx.pageScrollTo({
-        duration: 300,
-        selector: '#wfxx'
-        // scrollTop: 0
-      });
-    },600);
-    this.setData({
-      isWfxxShow: !this.data.isWfxxShow,
-      isJbxxShow: false,
-      isZjqkShow: false,
-      isDtqkShow: false
+    that.setData({
+      dataHidden: false
     })
-    
-  },
-  //点击基本信息触发
-  toJbxx: function(e) {
-    setTimeout(function(){
-      wx.pageScrollTo({
-        duration: 300,
-        selector: '.jbxx'
-        // scrollTop: 0
-      });
-    },600);
-    this.setData({
-      isJbxxShow: !this.data.isJbxxShow,
-      isWfxxShow: false,
-      isZjqkShow: false,
-      isDtqkShow: false
-    })
-  },
-  //点击资金信息触发
-  toZjqk: function(e) {
-    setTimeout(function(){
-      wx.pageScrollTo({
-        duration: 300,
-        selector: '.zjqk'
-        // scrollTop: 0
-      });
-    },600);
-    
-    this.setData({
-      isZjqkShow: !this.data.isZjqkShow,
-      isWfxxShow: false,
-      isJbxxShow: false,
-      isDtqkShow: false
-    })
-  },
-  //点击单体情况触发
-  toDtqk: function(e) {
-    setTimeout(function(){
-      wx.pageScrollTo({
-        duration: 300,
-        selector: '.dtqk'
-        // scrollTop: 0
-      });
-    },600);
-    
-    this.setData({
-      isDtqkShow: !this.data.isDtqkShow,
-      isWfxxShow: false,
-      isJbxxShow: false,
-      isZjqkShow: false,
-    })
-  },
-  
-
-//--------------------------生命周期函数------------------------------
-
-
-
-  onLoad: function(options){
-      let page = this
-      setTimeout(function(){
-        page.setData({
-            loadingHidden: true
-        });
-      }, 900);
-      this.setData({
-          icon: base64.icon20
-      });
-      app.userLogin(function(){
-        page.setData({
-          hasUserInfo: app.globalData.hasUserInfo
-        });
-      });
-
-  },
-
-  onShow: function(){
-    var that = this;
-    var interval = setInterval(function(){
+    if(!that.data.haveNoData){
       wx.request({
-        url: basePath+"/api/project/list", //请求路径
+        url: basePath + "/api/project/list", //请求路径
         method: 'post',
         data: {
           unitName: that.data.buildArray[that.data.buildIndex],
-          categoryId: that.data.categoryIndex 
+          categoryId: that.data.categoryIndex,
+          pageNumber: that.data.pageNumber,
+          pageLimit: that.data.pageLimit
         },
         header: {
           'content-type': 'application/json', // 默认值
           'thirdSession': app.globalData.thirdSession
         },
-        success (res) {
+        success(res) {
+          if(res.data.length > 0) {
+            that.setData({
+              dataHidden: true,
+              pageNumber: that.data.pageNumber+1,
+              projectList: that.data.projectList.concat(res.data),
+            });
+          }else {
+            that.setData({
+              dataHidden: true,
+              dataHidden_last: false,
+            });
+            setTimeout(function () {
+              that.setData({
+                dataHidden_last: true,
+                haveNoData: true
+              })
+            }, 3000);
+          }
+          
+        },
+        fail() {
           that.setData({
-            projectList: res.data
-          });
-          clearInterval(interval);
+            loadingHidden: false,
+            errorInfo: true
+          })
+          setTimeout(function () {
+            that.setData({
+              loadingHidden: true,
+              errorInfo: false
+            })
+          }, 10000);
         }
       });
-    },1000);
+    }else{
+      that.setData({
+        dataHidden: true,
+        dataHidden_last: false,
+      });
+      setTimeout(function () {
+        that.setData({
+          dataHidden_last: true,
+        })
+      }, 3000);
+    }
+    
+  },
+
+  //--------------------------生命周期函数------------------------------
+  onLoad: function (options) {
+    var that = this;
+    wx.stopPullDownRefresh();
+    that.setData({
+      pageNumber: 1,
+      hasUserInfo: app.globalData.hasUserInfo
+    });
+
+    app.userLogin(
+      function () {
+        that.setData({
+          hasUserInfo: app.globalData.hasUserInfo
+        });
+        if (that.data.hasUserInfo) {
+          that.setData({
+            loadingHidden: false,
+            errorInfo: true
+          })
+          wx.request({
+            url: basePath + "/api/project/list", //请求路径
+            method: 'post',
+            data: {
+              unitName: that.data.buildArray[that.data.buildIndex],
+              categoryId: that.data.categoryIndex,
+              pageNumber: that.data.pageNumber,
+              pageLimit: that.data.pageLimit
+            },
+            header: {
+              'content-type': 'application/json', // 默认值
+              'thirdSession': app.globalData.thirdSession
+            },
+            success(res) {
+              that.setData({
+                projectList: that.data.projectList.concat(res.data),
+                pageNumber: that.data.pageNumber+1,
+                loadingHidden: true,
+                errorInfo: true
+              });
+            },
+            fail() {
+              that.setData({
+                loadingHidden: false,
+                errorInfo: true
+              })
+              setTimeout(function () {
+                that.setData({
+                  loadingHidden: true,
+                  errorInfo: false
+                })
+              }, 10000);
+            }
+          });
+        } else {
+          that.setData({
+            loadingHidden: false,
+            errorInfo: true
+          })
+          setTimeout(function () {
+            that.setData({
+              loadingHidden: true,
+              errorInfo: false
+            })
+          }, 10000);
+        }
+      },
+      function () {
+        that.setData({
+          loadingHidden: false,
+          errorInfo: true
+        })
+        setTimeout(function () {
+          that.setData({
+            loadingHidden: true,
+            errorInfo: false
+          })
+        }, 10000);
+      });
+
+    this.setData({
+      icon: base64.icon20
+    });
+  },
+
+  onShow: function () {
+
   }
 })

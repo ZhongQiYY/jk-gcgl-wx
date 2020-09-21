@@ -66,7 +66,7 @@ upload1: function(res) {
   var that = this;
   console.log(res.tempFilePaths);
     const uploadTask = wx.uploadFile({
-      url: basePath + '/api/tptx/upload/fileUpload?dir=image',
+      url: basePath + '/api/tptx/yqgc/upload/fileUpload?dir=image',
       filePath: res.tempFilePaths[0],
       name: 'file',
       header: { 
@@ -174,7 +174,7 @@ upload2: function(res) {
   var that = this;
   console.log(res.tempFilePaths);
     const uploadTask = wx.uploadFile({
-      url: basePath + '/api/tptx/upload/fileUpload?dir=image',
+      url: basePath + '/api/tptx/yqgc/upload/fileUpload?dir=image',
       filePath: res.tempFilePaths[0],
       name: 'file',
       header: { 
@@ -284,7 +284,7 @@ upload3: function(res) {
   var that = this;
   console.log(res.tempFilePaths);
     const uploadTask = wx.uploadFile({
-      url: basePath + '/api/tptx/upload/fileUpload?dir=image',
+      url: basePath + '/api/tptx/yqgc/upload/fileUpload?dir=image',
       filePath: res.tempFilePaths[0],
       name: 'file',
       header: { 
@@ -458,7 +458,7 @@ changeDateTimeColumn3(e){
     let time3 = year3+"-"+month3+"-"+day3+" "+hour3+":"+min3+":"+sec3;
     wx.request({
       //后台接口
-      url: basePath + '/api/tptx/yqgc/insert',
+      url: basePath + '/api/tptx/yqgc/dxzx/insert',
       method: 'POST',
       data: {
         pId: 14,

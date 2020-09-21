@@ -157,3 +157,11 @@
 .projectBack {
   background-color: #0089dd;
 }
+
+.data-loading {  
+  height: 100rpx;  
+  line-height: 100rpx;  
+  background-color: #eee;  
+  text-align: center;  
+  font-size: 14px;  
+}

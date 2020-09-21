@@ -67,6 +67,14 @@ Page({
     }
   },
 
+  toYdxx: function() {
+    if(app.globalData.projectId != 0 && app.globalData.categoryType == 1) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/ydxx/ydxx',
+      })
+    }
+  },
+
 
 
 

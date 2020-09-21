@@ -10,6 +10,7 @@ Page({
     productContent:[],
     projectListShow: true,
     projectInfoShow: false,
+    loadingHidden: false,
     titleList: [
       // {columnName: 'integrated', title: '综合排名'},
       {columnName: 'projectNum', title: '项目个数',data: []},
@@ -37,9 +38,7 @@ onLoad: function (options) {
 },  
 
 onShow: function () {
-  // this.setData({
-  //   projectInfoShow: true
-  // })
+  
 },
 
 
@@ -57,7 +56,6 @@ getRankData: function(){
     },
     success (res) {
       if (res.statusCode == 200) {
-        console.log(res.data);
         if (res.data.code == 200) {
           let dataList = res.data.data
           let titleList = that.data.titleList
@@ -98,7 +96,6 @@ getRankData: function(){
               titleList[6].data.push('-')
             }
           }
-          console.log(titleList)
           that.setData({
             rankData: res.data.data,
             titleList: titleList
@@ -109,10 +106,11 @@ getRankData: function(){
             icon: 'success',
             duration: 2000
           });
-          console.log("leaderboard.js getRankData() error res:----->>>>");
-          console.log(res);
         }
       }
+      that.setData({
+        loadingHidden: true
+      })
     }
   });
 },

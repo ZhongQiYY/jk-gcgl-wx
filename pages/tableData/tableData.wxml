@@ -19,7 +19,7 @@
 			<view class="weui-grid__label">年度计划</view>
 		</a>
 
-		<a class="weui-grid" bindtap="toDcdb">
+		<a class="weui-grid" bindtap="toYdxx">
 			<view class="weui-grid__icon">
 				<image src="/images/ydxx.png" alt></image>
 			</view>

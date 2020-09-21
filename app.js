@@ -9,6 +9,7 @@ App({
 globalData: {
   basePath: "http://localhost:16000/jk-gcgl",
   // basePath: "https://test.xizinet.com/jk-gcgl",
+  imageRootPath: "https://test.xizinet.com",
   pName: "",
   projectId: 0,
   categoryType: 0,
