@@ -1,4 +1,4 @@
-// pages/control/tjtptx/gylh/lcgc/lcgc.js
+// pages/tableData/datapages/tptx/tptx.js
 Page({
 
   /**
@@ -62,5 +62,69 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  /**
+   * 土方工程
+   */
+  toDetailsAndDxzx: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/lcgc/tfgc/tfgc'
+    })
+
+  },
+
+  /**
+   * 园路整形
+   */
+  toDetailsAndJps: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/lcgc/ylzx/ylzx'
+    })
+  },
+
+   /**
+   * 园路铺装
+   */
+  toDetailsAndLhzz: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/lcgc/ylpz/ylpz'
+    })
+  },
+
+  /**
+   * 道路整形
+   */
+  toDetailsAndJgxp: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/lcgc/dlzx/dlzx'
+    })
+  },
+
+  /**
+   * 道路硬化
+   */
+  toDetailsAndLdzm: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/lcgc/dlyh/dlyh'
+    })
+  },
+
+  /**
+   * 停车(广)场整形
+   */
+  toDetailsAndJkzn: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/lcgc/tcczx/tcczx'
+    })
+  },
+
+   /**
+   * 停车(广)场铺装
+   */
+  toDetailsAndLxgc: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/lcgc/tccpz/tccpz'
+    })
+  },
 })
