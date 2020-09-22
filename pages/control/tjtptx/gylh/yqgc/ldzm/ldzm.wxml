@@ -31,7 +31,7 @@
 				路灯照明中期时间 : {{dateTimeArray2[0][dateTime2[0]]}}-{{dateTimeArray2[1][dateTime2[1]]}}-{{dateTimeArray2[2][dateTime2[2]]}} {{dateTimeArray2[3][dateTime2[3]]}}:{{dateTimeArray2[4][dateTime2[4]]}}:{{dateTimeArray2[5][dateTime2[5]]}}
 			</view>
 		</picker>
-		<view class='domes_title'>路灯照明前期图片</view>
+		<view class='domes_title'>路灯照明中期图片</view>
 		<view class='ui_cell'>
 			<view class='ui_cell_bd'>图片上传</view>
 			<view class='ui_cell_ft'>{{hasPicture2}}/9</view>
