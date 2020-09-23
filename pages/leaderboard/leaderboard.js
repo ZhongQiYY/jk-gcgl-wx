@@ -122,7 +122,7 @@ test: function(e) {
   console.log(projectName)
   var that = this;
   wx.request({
-    url: basePath+"/api/project/list", //请求路径
+    url: basePath+"/api/project/lists", //请求路径
     method: 'post',
     data: {
       unitName: projectName,

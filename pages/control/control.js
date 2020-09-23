@@ -1,4 +1,6 @@
 // pages/control/control.js
+const app = getApp();
+var basePath = app.globalData.basePath;
 Page({
 
   /**

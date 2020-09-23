@@ -10,6 +10,7 @@ Page({
   data: {
     startYear: 2000,
     endYear: 2050,
+    pId : app.globalData.projectId,
 
     dateTimeArray1: null,
     dateTime1: null,
@@ -460,7 +461,7 @@ changeDateTimeColumn3(e){
       url: basePath + '/api/tptx/lcgc/dlyh/insert',
       method: 'POST',
       data: {
-        pId: 14,
+        pId: app.globalData.projectId,
         picUrls1: that.data.picUrls1,
         picUrls2: that.data.picUrls2,
         picUrls3: that.data.picUrls3,

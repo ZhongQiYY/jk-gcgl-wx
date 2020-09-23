@@ -460,7 +460,7 @@ changeDateTimeColumn3(e){
       url: basePath + '/api/tptx/whjg/sxzl/insert',
       method: 'POST',
       data: {
-        pId: 14,
+        pId: app.globalData.projectId,
         picUrls1: that.data.picUrls1,
         picUrls2: that.data.picUrls2,
         picUrls3: that.data.picUrls3,

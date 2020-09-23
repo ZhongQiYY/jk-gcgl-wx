@@ -1,2 +1,52 @@
-<!--pages/control/tjtptx/szql/jpsgc/jpsgc.wxml-->
-<text>pages/control/tjtptx/szql/jpsgc/jpsgc.wxml</text>
+<!--pages/tableData/datapages/tzwj/tzwj.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndDxzx" >
+				<view class="application-name"><image src="/images/tfgc.png"/>上传土方工程图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJps">
+				<view class="application-name" ><image src="/images/gckw.png"/>上传沟槽开挖图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndLhzz">
+				<view class="application-name"><image src="/images/jcdc.png"/>上传基础垫层图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJgxp">
+				<view class="application-name"><image src="/images/gdaz.png"/>上传管道安装图片以及时间</view>
+			</label>
+		</view>
+	</view>
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndLdzm">
+				<view class="application-name" ><image src="/images/gdbf.png"/>上传管道包封图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJkzn">
+				<view class="application-name"><image src="/images/gdts.png"/>上传管道填砂图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndLxgc">
+				<view class="application-name"><image src="/images/gdtt.png"/>上传管道填土图片以及时间</view>
+			</label>
+		</view>
+	</view>
+</view>
