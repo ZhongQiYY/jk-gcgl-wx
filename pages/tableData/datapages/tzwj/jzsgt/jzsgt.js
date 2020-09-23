@@ -30,7 +30,7 @@ Page({
     console.log("调用getJzsgt");
     var that = this;
     wx.request({
-      url: RootPath + "/jk-gcgl/api/tzwj/pmTzwj/jzsgt?pId="+12, //请求路径
+      url: RootPath + "/jk-gcgl/api/tzwj/pmTzwj/jzsgt?pId="+app.globalData.projectId, //请求路径
       method: 'post',
       data: {
         

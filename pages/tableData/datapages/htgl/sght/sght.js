@@ -31,7 +31,7 @@ Page({
     console.log("调用getSght");
     var that = this;
     wx.request({
-      url: RootPath + "/jk-gcgl/api/htgl/pmHtgl/sght?pId="+12, //请求路径
+      url: RootPath + "/jk-gcgl/api/htgl/pmHtgl/sght?pId="+app.globalData.projectId, //请求路径
       method: 'post',
       data: {
         

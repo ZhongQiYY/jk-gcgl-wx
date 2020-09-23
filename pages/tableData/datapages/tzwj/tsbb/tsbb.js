@@ -30,7 +30,7 @@ Page({
     console.log("调用getTsbb");
     var that = this;
     wx.request({
-      url: RootPath + "/jk-gcgl/api/tzwj/pmTzwj/tsbb?pId="+12, //请求路径
+      url: RootPath + "/jk-gcgl/api/tzwj/pmTzwj/tsbb?pId="+app.globalData.projectId, //请求路径
       method: 'post',
       data: {
         

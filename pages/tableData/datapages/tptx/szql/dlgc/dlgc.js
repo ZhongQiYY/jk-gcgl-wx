@@ -57,7 +57,7 @@ Page({
     console.log("getSzqll");
     var that = this;
     wx.request({
-      url: RootPath + "/jk-gcgl/api/tptx/pmTptx/szqll?pId="+14, //请求路径
+      url: RootPath + "/jk-gcgl/api/tptx/pmTptx/szqll?pId="+app.globalData.projectId, //请求路径
       method: 'post',
       data: {
         

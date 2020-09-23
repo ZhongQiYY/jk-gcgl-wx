@@ -31,7 +31,7 @@ Page({
     console.log("调用getJlht");
     var that = this;
     wx.request({
-      url: RootPath + "/jk-gcgl/api/htgl/pmHtgl/jlht?pId="+12, //请求路径
+      url: RootPath + "/jk-gcgl/api/htgl/pmHtgl/jlht?pId="+app.globalData.projectId, //请求路径
       method: 'post',
       data: {
         
