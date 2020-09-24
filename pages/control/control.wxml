@@ -60,7 +60,7 @@
 			<view class="weui-grid__icon">
 				<image src="/images/sjbsc.png" alt></image>
 			</view>
-			<view class="weui-grid__label">数据表输出</view>
+			<view class="weui-grid__label">输出数据报表</view>
 		</a>
 	</view>
 </view>

@@ -1,4 +1,4 @@
-// pages/control/tjtptx/szql/qhgc/qhgc.js
+// pages/tableData/datapages/tptx/tptx.js
 Page({
 
   /**
@@ -62,5 +62,69 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  /**
+   * 土方工程
+   */
+  toDetailsAndDxzx: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/qhgc/tfgc/tfgc'
+    })
+
+  },
+
+  /**
+   * 支护工程
+   */
+  toDetailsAndJps: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/qhgc/zhgc/zhgc'
+    })
+  },
+
+   /**
+   * 基础工程
+   */
+  toDetailsAndLhzz: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/qhgc/jcgc/jcgc'
+    })
+  },
+
+  /**
+   * 桥台（涵）工程
+   */
+  toDetailsAndJgxp: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/qhgc/qtgc/qtgc'
+    })
+  },
+
+  /**
+   * 桥梁工程
+   */
+  toDetailsAndLdzm: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/qhgc/qlgc/qlgc'
+    })
+  },
+
+  /**
+   * 桥面工程
+   */
+  toDetailsAndJkzn: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/qhgc/qmgc/qmgc'
+    })
+  },
+
+   /**
+   * 装饰工程
+   */
+  toDetailsAndLxgc: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/szql/qhgc/zsgc/zsgc'
+    })
+  },
 })

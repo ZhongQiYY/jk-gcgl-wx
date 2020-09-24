@@ -1,4 +1,4 @@
-// pages/control/tjtptx/gylh/ptyf/ptyf.js
+// pages/tableData/datapages/tptx/tptx.js
 Page({
 
   /**
@@ -62,5 +62,69 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  /**
+   * 土方工程
+   */
+  toDetailsAndDxzx: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/ptyf/tfgc/tfgc'
+    })
+
+  },
+
+  /**
+   * 基础工程
+   */
+  toDetailsAndJps: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/ptyf/jcgc/jcgc'
+    })
+  },
+
+   /**
+   * 主体工程
+   */
+  toDetailsAndLhzz: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/ptyf/ztgc/ztgc'
+    })
+  },
+
+  /**
+   * 装饰装修
+   */
+  toDetailsAndJgxp: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/ptyf/zszx/zszx'
+    })
+  },
+
+  /**
+   * 供水供电
+   */
+  toDetailsAndLdzm: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/ptyf/gsgd/gsgd'
+    })
+  },
+
+  /**
+   * 排水排污
+   */
+  toDetailsAndJkzn: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/ptyf/pspw/pspw'
+    })
+  },
+
+   /**
+   * 零星工程
+   */
+  toDetailsAndLxgc: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/gylh/ptyf/lxgc/lxgc'
+    })
+  },
 })

@@ -29,6 +29,11 @@ Page({
 // -------------------- 生命周期函数区域 --------------------
 onLoad: function (options) {
   var that = this;
+  setTimeout(function(){
+    that.setData({
+        loadingHidden: true
+    });
+  }, 10000);
   this.getRankData();
 },  
 
@@ -117,7 +122,7 @@ test: function(e) {
   console.log(projectName)
   var that = this;
   wx.request({
-    url: basePath+"/api/project/list", //请求路径
+    url: basePath+"/api/project/lists", //请求路径
     method: 'post',
     data: {
       unitName: projectName,

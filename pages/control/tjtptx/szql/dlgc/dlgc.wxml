@@ -1,2 +1,52 @@
-<!--pages/control/tjtptx/szql/dlgc/dlgc.wxml-->
-<text>pages/control/tjtptx/szql/dlgc/dlgc.wxml</text>
+<!--pages/tableData/datapages/tzwj/tzwj.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndDxzx" >
+				<view class="application-name"><image src="/images/tfgc.png"/>上传土方工程图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJps">
+				<view class="application-name" ><image src="/images/ljcl.png"/>上传路基处理图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndLhzz">
+				<view class="application-name"><image src="/images/ljgc.png"/>上传路基工程图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJgxp">
+				<view class="application-name"><image src="/images/jcjaz.png"/>上传检查井安装图片以及时间</view>
+			</label>
+		</view>
+	</view>
+	<view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndLdzm">
+				<view class="application-name" ><image src="/images/ywsg.png"/>上传雨污水管图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndJkzn">
+				<view class="application-name"><image src="/images/jgjc.png"/>上传结构基层图片以及时间</view>
+			</label>
+		</view>
+	</view>
+  <view class="weui-form-preview__hd">
+		<view class="weui-form-preview__item">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndLxgc">
+				<view class="application-name"><image src="/images/jgmc.png"/>上传结构面层图片以及时间</view>
+			</label>
+		</view>
+	</view>
+</view>

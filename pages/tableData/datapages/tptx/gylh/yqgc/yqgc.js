@@ -57,7 +57,7 @@ Page({
     console.log("调用getYqgc");
     var that = this;
     wx.request({
-      url: RootPath + "/jk-gcgl/api/tptx/pmTptx/gylhl?pId="+14, //请求路径
+      url: RootPath + "/jk-gcgl/api/tptx/pmTptx/gylhl?pId="+app.globalData.projectId, //请求路径
       method: 'post',
       data: {
         
