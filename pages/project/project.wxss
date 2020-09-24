@@ -37,10 +37,18 @@
   vertical-align: text-bottom;
 }
 
+/* 搜索栏竖线 */
 .middle {
   border: 1rpx solid rgb(233, 222, 222);
   height: 65rpx;
   margin-top: 15rpx;
+}
+
+/* 进度分割竖线 */
+.proMiddle {
+  border: 3rpx solid white;
+  height: 40rpx;
+  margin-top: 48rpx;
 }
 
 /* 审核列表的样式，主要是为了让上下两个固定框不遮挡列表内容 */

@@ -1,5 +1,5 @@
 <loading hidden="{{loadingHidden}}">
-        加载中...
+	加载中...
 </loading>
 
 <view class="{{search}}">
@@ -29,47 +29,63 @@
 </view>
 
 
- 
+
 <view class="page project-list-info" data-weui-theme="{{theme}}">
-<view hidden="{{errorInfo}}">错误，请下拉刷新或重新登录</view>
+	<view hidden="{{errorInfo}}">
+		错误，请下拉刷新或重新登录
+	</view>
 	<!-- 项目列表页 -->
 	<view class="page__bd">
 		<view class="weui-cells">
-			<view 
-			data-text="{{item.projectName}}" 
-			data-id="{{item.id}}" 
-			data-categoryType="{{item.categoryType}}" 
-			bindtap="showProjectInfo" 
-			class="weui-cell weui-cell_example " 
-			wx:for="{{projectList}}" 
-			wx:key="index"
-			style="height: 145rpx;"
-			class="weui-cell weui-cell_active">
+			<view data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " wx:for="{{projectList}}" wx:key="index" style="height: 200rpx;" class="weui-cell weui-cell_active">
 				<view style="position: absolute; top: 20rpx;display:flex;">
+
+					<!-- 图片区域 -->
 					<view class="weui-cell__hd" style="position: relative; margin-right: 10px;">
 						<image src="{{rootPath}}{{item.effectPicture}}" style="width: 200rpx;height: 130rpx;display: block;"></image>
 						<text class="weui-badge" style="position: absolute; top: -0.4em; right: -0.4em;">8</text>
 					</view>
 
+					<!-- 项目简易信息区 -->
 					<view class="weui-cell__bd">
 						<view>{{item.projectName}}</view>
-						<view style="font-size: 13px; color: #888;">{{item.unitName}}</view>
-					</view>
-
-					<view style="position: absolute; top: 130rpx;border: 1px solid blue;width: 700rpx">
+						<view style="display: flex;">
+							<view style="font-size: 13px; color: #888;">{{item.unitName}}</view>
+							<view style="width: 10rpx"></view>
+							<view style="font-size: 13px; color: #888;">{{item.ownerCompanyName}}</view>
+							<view style="width: 10rpx"></view>
+							<view style="font-size: 13px; color: #888;">{{item.proMainName}}</view>
+							<view style="width: 10rpx"></view>
+						</view>
 						
 					</view>
+
+					<!-- 项目进度区域 -->
+					<view style="display:flex;position: absolute; top: 140rpx;width: 700rpx">
+
+						<block wx:for-item="item1" wx:for-index="index1" wx:for="{{item.infoList}}" wx:key="index1">
+
+							<view class="progress-box" style="width:100%">
+								<lable style="font-size: {{desProgress}}">{{item1.proTermName}}</lable>
+								<progress percent="{{item1.proPercent}}" color="{{item1.proColor}}" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
+							</view>
+							<view class="proMiddle"></view>
+
+						</block>
+
+					</view>
+
 				</view>
 			</view>
 		</view>
 
-		<view> 
-		 	<view class='data-loading' hidden='{{dataHidden}}'>  
-				数据加载中...  
-			</view> 
-			<view class='data-loading' hidden='{{dataHidden_last}}'>  
-				没有更多了...  
-			</view> 
+		<view>
+			<view class='data-loading' hidden='{{dataHidden}}'>
+				数据加载中...
+			</view>
+			<view class='data-loading' hidden='{{dataHidden_last}}'>
+				没有更多了...
+			</view>
 		</view>
 	</view>
 </view>
