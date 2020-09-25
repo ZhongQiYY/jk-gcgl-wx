@@ -22,6 +22,11 @@ Page({
     pageNumber: 1, // 当前页码
     pageLimit: 10, // 每页加载的条数
     
+    desProgress: "19.9rpx", //进度条描述文字的大小
+    proPercent: 50, //进度百分比
+    proWidth: 20, //进度条宽度
+    proDuration: 3, //进度条动画增加1%所需毫秒数
+    proColor: "#09BB07", //进度条的颜色
   },
 
   // 选择建设单位
@@ -29,6 +34,7 @@ Page({
     var that = this;
     this.setData({
       buildIndex: e.detail.value,
+      haveNoData: false,
       pageNumber: 1
     });
     wx.request({
@@ -70,6 +76,7 @@ Page({
     var that = this;
     this.setData({
       categoryIndex: e.detail.value,
+      haveNoData: false,
       pageNumber: 1
     });
     wx.request({
@@ -199,6 +206,7 @@ Page({
     wx.stopPullDownRefresh();
     that.setData({
       pageNumber: 1,
+      haveNoData: false,
       hasUserInfo: app.globalData.hasUserInfo
     });
 
