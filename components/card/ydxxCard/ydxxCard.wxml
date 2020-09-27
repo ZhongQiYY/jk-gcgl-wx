@@ -1,0 +1,17 @@
+<!--components/card/ydxxCard/ydxxCard.wxml-->
+
+<!-- 工序名称区域 -->
+<view>{{proMainName}}</view>
+
+<!-- 进度条区域 -->
+<view style="display: flex;">
+	<block wx:for-item="item" wx:for-index="index" wx:for="{{scheduleInfoList}}" wx:key="index">
+
+		<view class="progress-box" style="width:100%">
+			<lable style="font-size: {{desProgress}}">{{item.proTermName}}</lable>
+			<progress percent="{{item.proPercent}}" color="{{item.proColor}}" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
+		</view>
+		<view class="proMiddle"></view>
+
+	</block>
+</view>

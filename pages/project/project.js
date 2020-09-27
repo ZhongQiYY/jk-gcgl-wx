@@ -216,7 +216,6 @@ Page({
           hasUserInfo: app.globalData.hasUserInfo
         });
         if (that.data.hasUserInfo) {
-          console.log("that.data.hasUserInfo="+that.data.hasUserInfo);
           that.setData({
             loadingHidden: false,
             errorInfo: true

@@ -1,0 +1,49 @@
+/* 遮罩层样式 */
+.myMask {
+  width: 100%;
+  height: 100%;
+  /*让遮罩层铺满整个屏幕*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+
+  z-index: 9000;
+  /*遮罩层层级*/
+  opacity: 0.5;
+}
+
+/*弹出的容器内部样式*/
+.myDialog {
+  width: 500rpx;
+  height: 800rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  /* transform: translate(-50%,-50%); */
+  z-index: 9999;
+  /*弹出层层级*/
+  background-color: #fff;
+  border-radius: 36rpx;
+  /*添加圆角边框  */
+  /* display: flex; 流式布局，容器变为弹性盒 */
+  /* flex-direction: column;按列的方式进行流式布局 */
+  align-items: center;
+  /*居中对齐弹性盒的各项元素*/
+}
+
+/*选项之间的横线*/
+.tsLine {
+  width: 100%;
+  border: 1rpx solid gray;
+  opacity: 0.1;
+}
+
+/*选项内容样式*/
+.selectContent {
+  margin: 10rpx auto;
+  padding: 10rpx 10rpx;
+}

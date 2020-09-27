@@ -52,7 +52,7 @@
 						<view style="display: flex;">
 							<view style="font-size: 13px; color: #888;">{{item.unitName}}</view>
 							<view style="width: 10rpx"></view>
-							<view style="font-size: 13px; color: #888;">{{item.ownerCompanyName}}</view>
+							<view style="font-size: 13px; color: #888;">{{item.ownerProjectLeader}}</view>
 							<view style="width: 10rpx"></view>
 							<view style="font-size: 13px; color: #888;">{{item.proMainName}}</view>
 							<view style="width: 10rpx"></view>
@@ -61,7 +61,7 @@
 					</view>
 
 					<!-- 项目进度区域 -->
-					<view style="display:flex;position: absolute; top: 140rpx;width: 700rpx">
+					<view style="display:flex;position: absolute; top: 125rpx;width: 700rpx">
 
 						<block wx:for-item="item1" wx:for-index="index1" wx:for="{{item.infoList}}" wx:key="index1">
 
