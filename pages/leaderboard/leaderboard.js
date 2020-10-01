@@ -24,16 +24,30 @@ Page({
   },
 
 // -------------------- 监听wxml文件事件区域 --------------------
-
+//下拉触发
+onPullDownRefresh: function () {
+  var that = this;
+  that.setData({
+    rankData: [],
+    titleList: [
+      // {columnName: 'integrated', title: '综合排名'},
+      {columnName: 'projectNum', title: '项目个数',data: []},
+      {columnName: 'standardsNum', title: '达标项目',data: []},
+      {columnName: 'standardsRate', title: '达标率',data: []},
+      {columnName: 'buildArea', title: '建筑面积',data: []},
+      {columnName: 'totalInvestment', title: '总投资',data: []},
+      {columnName: 'projectInvestment', title: '工程投资',data: []},
+      {columnName: 'monthOutput', title: '本月产值',data: []},
+    ],
+    loadingHidden: false
+  })
+  that.onLoad();
+},
 
 // -------------------- 生命周期函数区域 --------------------
 onLoad: function (options) {
   var that = this;
-  setTimeout(function(){
-    that.setData({
-        loadingHidden: true
-    });
-  }, 10000);
+  
   this.getRankData();
 },  
 

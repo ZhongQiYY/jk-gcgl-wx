@@ -19,5 +19,10 @@ bind:closeDialog="closeDialogMonth">
 </selectDialog>
 
 <!-- 进度条显示区域 -->
-<!-- <ydxxCard wx:for="{{ydxxList}}" proMainName="{{item.proMainName}}" scheduleInfoList="{{item.scheduleInfoList}}"></ydxxCard> -->
+<ydxxCard 
+wx:for="{{ydxxList}}" 
+proMainName="{{item.proMainName}}" 
+scheduleInfoList="{{item.scheduleInfoList}}"
+wx:key="index">
+</ydxxCard>
 

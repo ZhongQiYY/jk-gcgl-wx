@@ -129,6 +129,10 @@ Page({
   //下拉触发
   onPullDownRefresh: function () {
     var that = this;
+    that.setData({
+      projectList: [],
+      loadingHidden: false
+    })
     that.onLoad();
   },
 
@@ -235,7 +239,8 @@ Page({
             },
             success(res) {
               that.setData({
-                projectList: that.data.projectList.concat(res.data),
+                // projectList: that.data.projectList.concat(res.data),
+                projectList: res.data,
                 pageNumber: that.data.pageNumber+1,
                 loadingHidden: true,
                 errorInfo: true

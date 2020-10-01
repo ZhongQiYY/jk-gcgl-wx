@@ -1,17 +1,32 @@
 <!--components/card/ydxxCard/ydxxCard.wxml-->
 
 <!-- 工序名称区域 -->
-<view>{{proMainName}}</view>
+<view style="width:100%;text-align:center;font-weight: bold;">{{proMainName}}</view>
 
 <!-- 进度条区域 -->
-<view style="display: flex;">
+<block wx:if="{{proMainName != '主体工程'}}">
+	<view style="display: flex;">
+		<block wx:for-item="item" wx:for-index="index" wx:for="{{scheduleInfoList}}" wx:key="index">
+
+			<view class="progress-box" style="width:100%">
+				<lable style="font-size: {{desProgress}};width:100%;text-align:center;">{{item.proTermName}}</lable>
+				<progress percent="{{item.proPercent}}" color="{{item.proColor}}" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
+			</view>
+			<view class="proMiddle"></view>
+
+		</block>
+	</view>
+	<view style="width:100%;height:5rpx;background-color:black;opacity:0.1"></view>
+</block>
+
+<block wx:if="{{proMainName == '主体工程'}}">
 	<block wx:for-item="item" wx:for-index="index" wx:for="{{scheduleInfoList}}" wx:key="index">
 
 		<view class="progress-box" style="width:100%">
-			<lable style="font-size: {{desProgress}}">{{item.proTermName}}</lable>
-			<progress percent="{{item.proPercent}}" color="{{item.proColor}}" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
+			<lable style="font-size: 25rpx">{{item.proTermName}}</lable>
+			<progress percent="{{item.proPercent}}" color="{{item.proColor}}" show-info="true" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
 		</view>
-		<view class="proMiddle"></view>
 
 	</block>
-</view>
+	<view style="width:100%;height:5rpx;background-color:black;opacity:0.1;position: relative;top: 7rpx"></view>
+</block>

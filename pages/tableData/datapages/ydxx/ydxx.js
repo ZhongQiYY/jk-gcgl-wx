@@ -76,13 +76,11 @@ Page({
 
 
 
-
-
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     //初始化年份与月份信息
     //获取当前日期
     var timestamp = Date.parse(new Date());     
@@ -103,30 +101,25 @@ Page({
       radioItemsYear: radioItemsYear
     })
 
-
-
-    // wx.request({
-    //   url: basePath + "/api/project/list", //请求路径
-    //   method: 'post',
-    //   data: {
-    //     unitName: that.data.buildArray[that.data.buildIndex],
-    //     categoryId: that.data.categoryIndex,
-    //     pageNumber: that.data.pageNumber,
-    //     pageLimit: that.data.pageLimit
-    //   },
-    //   header: {
-    //     'content-type': 'application/json', // 默认值
-    //     'thirdSession': app.globalData.thirdSession
-    //   },
-    //   success(res) {
-    //     that.setData({
-          
-    //     });
-    //   },
-    //   fail() {
+    wx.request({
+      url: basePath + "/api/chartData/ydxx", //请求路径
+      method: 'post',
+      data: {
+        projectId: app.globalData.projectId
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success(res) {
+        that.setData({
+          ydxxList: res.data
+        });
+      },
+      fail() {
         
-    //   }
-    // });
+      }
+    });
   },
 
   /**
