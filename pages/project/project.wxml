@@ -57,23 +57,30 @@
 							<view style="font-size: 13px; color: #888;">{{item.proMainName}}</view>
 							<view style="width: 10rpx"></view>
 						</view>
-						
+
 					</view>
 
 					<!-- 项目进度区域 -->
-					<view style="display:flex;position: absolute; top: 125rpx;width: 700rpx">
 
-						<block wx:for-item="item1" wx:for-index="index1" wx:for="{{item.infoList}}" wx:key="index1">
+					<view style="position: absolute; top: 125rpx;width: 700rpx">
+						<scroll-view scroll-x="true" style="height:100rpx;white-space:nowrap;width:100%">
 
-							<view class="progress-box" style="width:100%">
-								<lable style="font-size: {{desProgress}}">{{item1.proTermName}}</lable>
-								<progress percent="{{item1.proPercent}}" color="{{item1.proColor}}" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
-							</view>
-							<view class="proMiddle"></view>
+							<block wx:for-item="item1" wx:for-index="index1" wx:for="{{item.infoList}}" wx:key="index1">
+								<view style="display:inline-block">
+									<view style="display:flex">
+										<view class="progress-box" style="width:99.5rpx">
+											<view style="font-size: {{desProgress}}">{{item1.proTermName}}</view>
+											<progress percent="{{item1.proPercent}}" color="{{item1.proColor}}" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
+										</view>
+										<view class="proMiddle"></view>
+									</view>
+								</view>
+							</block>
 
-						</block>
-
+						</scroll-view>
 					</view>
+
+
 
 				</view>
 			</view>

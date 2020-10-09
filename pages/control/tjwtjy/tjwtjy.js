@@ -1,12 +1,60 @@
 // pages/control/tjwtjy/tjwtjy.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    maxProblemLength: 500,
+    currentProblemLength: 0,
+    maxPlanLength: 500,
+    currentPlanLength: 0,
+    inputShowed: false,
+    inputVal: ""
+  },
+  //输入问题建议时计算当前字数
+  inputProblem: function (e) {
+    var len = e.detail.value.length;
+    if (len > this.data.maxProblemLength) return;
+    this.setData({
+      currentProblemLength: len
+    })
+  },
+  //输入下一步工作计划时计算当前字数
+  inputPlan: function (e) {
+    var len = e.detail.value.length;
+    if (len > this.data.maxPlanLength) return;
+    this.setData({
+      currentPlanLength: len
+    })
+  },
+
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
 
   },
+
+
+
 
   /**
    * 生命周期函数--监听页面加载

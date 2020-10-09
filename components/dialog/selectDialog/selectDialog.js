@@ -5,7 +5,19 @@ Component({
    */
   properties: {
     notShowDialog: Boolean,
-    radioItems: Array
+    radioItems: Array,
+    dialogHeight: {
+      type: String,
+      value: '800rpx'
+    },
+    dialogWidth: {
+      type: String,
+      value: '600rpx'
+    },
+    dialogRadius: {
+      type: String,
+      value: '36rpx'
+    },
   },
 
   /**

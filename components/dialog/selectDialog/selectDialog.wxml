@@ -1,5 +1,9 @@
 <view class="myMask" bindtap="closeDialog" hidden="{{notShowDialog}}"></view>
-<view class="myDialog" hidden="{{notShowDialog}}">
+<view 
+class="myDialog" 
+hidden="{{notShowDialog}}"
+style="height:{{dialogHeight}}; width:{{dialogWidth}}; border-radius: {{dialogRadius}};"
+>
 	<scroll-view scroll-y="true" style="width: 100%; height: 100%; text-align: center">
 
 		<block  wx:for="{{radioItems}}" wx:key="index">

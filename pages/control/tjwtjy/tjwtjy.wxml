@@ -1,2 +1,82 @@
-<!--pages/control/tjwtjy/tjwtjy.wxml-->
-<text>pages/control/tjwtjy/tjwtjy.wxml</text>
+<!-- 搜索项目区域 -->
+<view class="weui-search-bar {{inputShowed ? 'weui-search-bar_focusing' : ''}}" id="searchBar">
+
+	<form class="weui-search-bar__form">
+
+		<!--  -->
+		<view class="weui-search-bar__box">
+			<i class="weui-icon-search"></i>
+			<input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+			<span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+		</view>
+
+		<!-- 搜索提示文字图标 -->
+		<label class="weui-search-bar__label" bindtap="showInput">
+			<i class="weui-icon-search"></i>
+			<span class="weui-search-bar__text">搜索</span>
+		</label>
+
+	</form>
+
+	<view class="weui-search-bar__cancel-btn" bindtap="hideInput">取消</view>
+</view>
+
+<view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+	<view class="weui-cell weui-cell_active weui-cell_access">
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>实时搜索文本</view>
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_active weui-cell_access">
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>实时搜索文本</view>
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_active weui-cell_access">
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>实时搜索文本</view>
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_active weui-cell_access">
+		<view class="weui-cell__bd weui-cell_primary">
+			<view>实时搜索文本</view>
+		</view>
+	</view>
+</view>
+
+<!-- 模糊横线 -->
+<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
+
+<!-- 提交问题计划区域 -->
+<!-- 项目名称显示 -->
+<view class="weui-form__text-area">
+	<h2 class="weui-form__title">提交问题与计划提交问题与计划提交问题与计划提交问题与计划</h2>
+</view>
+<!-- 存在问题 -->
+<view class="weui-form__control-area">
+	<view class="weui-cells__group weui-cells__group_form">
+		<view class="weui-cells__title">存在问题</view>
+		<view class="weui-cells weui-cells_form">
+
+			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述所存在的问题" maxlength="{{maxProblemLength}}" bindinput="inputProblem"></textarea>
+			<view class="weui-textarea-counter"><text>{{currentProblemLength}}</text>/{{maxProblemLength}}</view>
+
+		</view>
+	</view>
+</view>
+<!-- 下一步工作计划 -->
+<view class="weui-form__control-area">
+	<view class="weui-cells__group weui-cells__group_form">
+		<view class="weui-cells__title">下一步工作计划</view>
+		<view class="weui-cells weui-cells_form">
+
+			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述下一步工作计划" maxlength="{{maxPlanLength}}" bindinput="inputPlan"></textarea>
+			<view class="weui-textarea-counter"><text>{{currentPlanLength}}</text>/{{maxPlanLength}}</view>
+
+		</view>
+	</view>
+</view>
+
+<view class="weui-form__opr-area">
+	<a class="weui-btn weui-btn_primary">提交</a>
+</view>
