@@ -14,7 +14,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: basePath+"/api/project/nameList", //请求路径
+      method: 'post',
+      data: {
+        unitName: "",
+        categoryId: 0 
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        app.globalData.projectNameList = res.data  
+      }
+    });
   },
 
   /**

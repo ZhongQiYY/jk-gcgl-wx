@@ -14,6 +14,7 @@ globalData: {
   pName: "",
   projectId: 0,
   categoryType: 0,
+  projectNameList:[],
   projectBaseInfo: {},
   userInfo: {},
   hasUserInfo: false,
