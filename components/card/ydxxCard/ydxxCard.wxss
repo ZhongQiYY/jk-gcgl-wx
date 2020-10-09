@@ -1,0 +1,7 @@
+/* components/card/ydxxCard/ydxxCard.wxss */
+/* 进度分割竖线 */
+.proMiddle {
+  border: 3rpx solid white;
+  height: 40rpx;
+  margin-top: 48rpx;
+}

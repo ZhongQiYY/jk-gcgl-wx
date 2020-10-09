@@ -1,0 +1,11 @@
+<view class="myMask" bindtap="closeDialog" hidden="{{notShowDialog}}"></view>
+<view class="myDialog" hidden="{{notShowDialog}}">
+	<scroll-view scroll-y="true" style="width: 100%; height: 100%; text-align: center">
+
+		<block  wx:for="{{radioItems}}" wx:key="index">
+			<view bindtap="select" data-selectvalue="{{item.selectValue}}" class="selectContent">{{item.selectContent}}</view>
+			<view class="tsLine"></view>
+		</block>
+
+	</scroll-view>
+</view>

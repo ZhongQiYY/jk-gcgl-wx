@@ -129,6 +129,10 @@ Page({
   //下拉触发
   onPullDownRefresh: function () {
     var that = this;
+    that.setData({
+      projectList: [],
+      loadingHidden: false
+    })
     that.onLoad();
   },
 
@@ -216,7 +220,6 @@ Page({
           hasUserInfo: app.globalData.hasUserInfo
         });
         if (that.data.hasUserInfo) {
-          console.log("that.data.hasUserInfo="+that.data.hasUserInfo);
           that.setData({
             loadingHidden: false,
             errorInfo: true
@@ -236,7 +239,8 @@ Page({
             },
             success(res) {
               that.setData({
-                projectList: that.data.projectList.concat(res.data),
+                // projectList: that.data.projectList.concat(res.data),
+                projectList: res.data,
                 pageNumber: that.data.pageNumber+1,
                 loadingHidden: true,
                 errorInfo: true

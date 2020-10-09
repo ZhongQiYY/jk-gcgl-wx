@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "ydxxCard": "/components/card/ydxxCard/ydxxCard",
+    "selectDialog": "/components/dialog/selectDialog/selectDialog"
+  }
 }

@@ -1,2 +1,28 @@
 <!--pages/tableData/datapages/ydxx/ydxx.wxml-->
-<web-view src="{{wvUrl}}"></web-view>
+<!-- 顶部选择日期区域 -->
+<view style="display: flex">
+	<button style="width: 50%" bindtap="selectYear">{{selectValueYear}}</button>
+	<button style="width: 50%" bindtap="selectMonth">{{selectValueMonth}}</button>
+</view>
+
+<selectDialog
+notShowDialog="{{notShowDialogYear}}" 
+radioItems="{{radioItemsYear}}" 
+bind:getSelectValue="getSelectValueYear" 
+bind:closeDialog="closeDialogYear">
+</selectDialog>
+<selectDialog 
+notShowDialog="{{notShowDialogMonth}}" 
+radioItems="{{radioItemsMonth}}" 
+bind:getSelectValue="getSelectValueMonth" 
+bind:closeDialog="closeDialogMonth">
+</selectDialog>
+
+<!-- 进度条显示区域 -->
+<ydxxCard 
+wx:for="{{ydxxList}}" 
+proMainName="{{item.proMainName}}" 
+scheduleInfoList="{{item.scheduleInfoList}}"
+wx:key="index">
+</ydxxCard>
+
