@@ -12,6 +12,8 @@ Page({
     name: '',
     company: '',
     companies: [],
+    roleId: app.globalData.userInfo.roleId,
+    role: app.globalData.userInfo.role,
   },
 
   /**
@@ -24,6 +26,8 @@ Page({
       name: app.globalData.userInfo.name,
       company: app.globalData.userInfo.company,
       companies: app.globalData.companies,
+      roleId: app.globalData.userInfo.roleId,
+      role: app.globalData.userInfo.role,
     });
     console.log(this.data.userInfo);
     console.log("zxczxc")
@@ -44,6 +48,8 @@ Page({
         data: {
           name: this.data.name,
           company: this.data.company.name,
+          roleId: this.data.roleId,
+          role: this.data.role,
         },
 
         header: {
@@ -58,6 +64,8 @@ Page({
             if (res.data.code == 200) {
               page.data.userInfo.name = page.data.name;
               page.data.userInfo.company = page.data.company.name;
+              page.data.userInfo.roleId = page.data.roleId;
+              page.data.userInfo.role = page.data.role;
               app.globalData.userInfo = page.data.userInfo;
               console.log(app.globalData.userInfo);
               wx.navigateBack({
@@ -84,6 +92,12 @@ Page({
       })
     }
   }, 
+  bindPositionChange: function(e) {
+    this.setData({
+      roleId: this.data.userInfo.roles[e.detail.value].id,
+      role: this.data.userInfo.roles[e.detail.value].name
+    });
+  },
   bindCompanyChange: function(e) {
     console.log(e.detail)
     console.log(e+"AA")

@@ -19,6 +19,16 @@
     </div>
     <div class="weui-cell">
         <div class="weui-cell__bd">
+            <p>职位</p>
+        </div>
+        <div class="weui-cell__ft">
+          <picker bindchange="bindPositionChange" value="{{index}}" range="{{userInfo.roles}}" range-key="name">
+              <input class="weui-input" placeholder="请选择职位" disabled="disabled" value="{{role}}" />
+          </picker>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
             <p>姓名</p>
         </div>
         <div class="weui-cell__ft">

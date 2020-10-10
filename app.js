@@ -9,7 +9,6 @@ App({
 globalData: {
   basePath: "http://localhost:16000/jk-gcgl",
   // basePath: "https://test.xizinet.com/jk-gcgl",
-  
   imageRootPath: "https://test.xizinet.com",
   // imageRootPath: "https://telecom1.xizinet.com:4433",
   pName: "",
@@ -170,6 +169,9 @@ userInfoSetInSQL: function (userInfo, callback) {
               page.globalData.userInfo.company = res.data.data.company;
               page.globalData.userInfo.state = res.data.data.state;
               page.globalData.userInfo.stateText = res.data.data.stateText;
+              page.globalData.userInfo.roles = res.data.data.roles;
+              page.globalData.userInfo.roleId = res.data.data.roleId;
+              page.globalData.userInfo.role = res.data.data.role;
               page.globalData.companies = res.data.data.companies;
               page.globalData.hasUserInfo = true;
               // page.loadData(false, callback);
