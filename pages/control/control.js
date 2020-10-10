@@ -18,8 +18,7 @@ Page({
       url: basePath+"/api/project/nameList", //请求路径
       method: 'post',
       data: {
-        unitName: "",
-        categoryId: 0 
+        
       },
       header: {
         'content-type': 'application/json', // 默认值

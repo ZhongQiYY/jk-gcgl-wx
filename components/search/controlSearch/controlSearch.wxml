@@ -1,0 +1,35 @@
+<view class="weui-search-bar {{inputShowed ? 'weui-search-bar_focusing' : ''}}" id="searchBar">
+
+	<form class="weui-search-bar__form">
+
+		<!-- 点击搜索后的搜索框 -->
+		<view class="weui-search-bar__box">
+			<i class="weui-icon-search"></i>
+			<input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+			<span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+		</view>
+
+		<!-- 搜索提示文字图标 -->
+		<label class="weui-search-bar__label" bindtap="showInput">
+			<i class="weui-icon-search"></i>
+			<span class="weui-search-bar__text">搜索</span>
+		</label>
+
+	</form>
+
+	<view class="weui-search-bar__cancel-btn" bindtap="hideInput">取消</view>
+</view>
+<!-- 实时提示项目 -->
+<view class="weui-panel__bd" wx:if="{{inputVal.length>0 && projectNames.length>0}}">
+	<block wx:for-index="index" wx:for-item="item" wx:for="{{projectNames}}" wx:key="index">
+    <view hover-class="hover" 
+    bindtap="selectProject" 
+    data-projectid="{{item.projectId}}" 
+    data-categorytype="{{item.categoryType}}"
+    data-projectname="{{item.projectName}}" 
+    class="weui-media-box weui-media-box_text">
+      <view class="weui-media-box__title">{{item.projectName}}</view>
+    </view>
+  </block>
+</view>
+
