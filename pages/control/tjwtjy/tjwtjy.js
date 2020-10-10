@@ -10,8 +10,10 @@ Page({
     currentProblemLength: 0,
     maxPlanLength: 500,
     currentPlanLength: 0,
-    inputShowed: false,
-    inputVal: ""
+    projectNames: [], //@@
+    projectId: "", //@@
+    categoryType: "", //@@
+    projectName: "" //@@
   },
   //输入问题建议时计算当前字数
   inputProblem: function (e) {
@@ -30,27 +32,28 @@ Page({
     })
   },
 
-  showInput: function () {
+  //搜索框组件返回的方法 @@
+  inputTyping: function(e){
+    var inputVal = e.detail.inputVal;
+    var nameList = app.globalData.projectNameList;
+    var projectNames1 = [];
+    for (const nl of nameList) {
+      var projectName = nl.projectName;
+      if(projectName.indexOf(inputVal) != -1){
+        projectNames1.push(nl);
+      }
+    }
     this.setData({
-      inputShowed: true
-    });
+      projectNames: projectNames1
+    })
   },
-  hideInput: function () {
+  //搜索框组件返回的方法 @@
+  selectProject: function(e){
     this.setData({
-      inputVal: "",
-      inputShowed: false
+      projectId: e.detail.projectId,
+      categoryType: e.detail.categoryType,
+      projectName: e.detail.projectName
     });
-  },
-  clearInput: function () {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function (e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-
   },
 
 

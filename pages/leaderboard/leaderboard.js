@@ -62,7 +62,7 @@ getRankData: function(){
     url: basePath + "/api/leaderboard/leaderboard/list", //请求路径
     method: 'post',
     data: {
-
+ 
     },
     header: {
       'content-type': 'application/json', // 默认值
@@ -132,8 +132,6 @@ test: function(e) {
   let title = e.currentTarget.dataset.title
   let projectName = this.data.rankData[e.currentTarget.dataset.index].integrated;
   let ids = this.data.rankData[e.currentTarget.dataset.index].standardsId;
-  console.log(ids);
-  console.log(projectName)
   var that = this;
   wx.request({
     url: basePath+"/api/project/lists", //请求路径
@@ -162,7 +160,7 @@ test: function(e) {
         productContent: res.data
       });  
         console.log(res.data)
-      }
+    }
   });
 },
 

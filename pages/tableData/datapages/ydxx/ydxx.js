@@ -105,7 +105,8 @@ Page({
       url: basePath + "/api/chartData/ydxx", //请求路径
       method: 'post',
       data: {
-        projectId: app.globalData.projectId
+        projectId: app.globalData.projectId,
+        categoryType: app.globalData.categoryType
       },
       header: {
         'content-type': 'application/json', // 默认值
