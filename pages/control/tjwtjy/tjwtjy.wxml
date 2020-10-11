@@ -21,8 +21,8 @@ bind:selectProject="selectProject"
 		<view class="weui-cells__title">存在问题</view>
 		<view class="weui-cells weui-cells_form">
 
-			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述所存在的问题" maxlength="{{maxProblemLength}}" bindinput="inputProblem"></textarea>
-			<view class="weui-textarea-counter"><text>{{currentProblemLength}}</text>/{{maxProblemLength}}</view>
+			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述所存在的问题" value="{{currentProblem}}" maxlength="{{maxProblemLength}}" bindinput="inputProblem"></textarea>
+			<view class="weui-textarea-counter"><text>{{currentProblem.length}}</text>/{{maxProblemLength}}</view>
 
 		</view>
 	</view>
@@ -33,13 +33,16 @@ bind:selectProject="selectProject"
 		<view class="weui-cells__title">下一步工作计划</view>
 		<view class="weui-cells weui-cells_form">
 
-			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述下一步工作计划" maxlength="{{maxPlanLength}}" bindinput="inputPlan"></textarea>
-			<view class="weui-textarea-counter"><text>{{currentPlanLength}}</text>/{{maxPlanLength}}</view>
+			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述下一步工作计划" value="{{currentPlan}}" maxlength="{{maxPlanLength}}" bindinput="inputPlan"></textarea>
+			<view class="weui-textarea-counter"><text>{{currentPlan.length}}</text>/{{maxPlanLength}}</view>
 
 		</view>
 	</view>
 </view>
 
-<view class="weui-form__opr-area">
+<view class="weui-form__opr-area" bindtap="submitProblemPlan">
 	<a class="weui-btn weui-btn_primary">提交</a>
 </view>
+
+<!-- 提交记录 -->
+<view hover-class="subHover" bindtap="submitRecord" style="position:absolute;left:50%;top:140%;transform:translate(-50%,0);color:#0089dd">提交记录</view>

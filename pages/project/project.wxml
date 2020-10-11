@@ -1,7 +1,7 @@
 <loading hidden="{{loadingHidden}}">
 	加载中...
 </loading>
-
+<!-- 筛选区域 -->
 <view class="{{search}}">
 	<view class="weui-flex">
 
@@ -34,6 +34,7 @@
 	<view hidden="{{errorInfo}}">
 		错误，请下拉刷新或重新登录
 	</view>
+	
 	<!-- 项目列表页 -->
 	<view class="page__bd">
 		<view class="weui-cells">
@@ -41,7 +42,7 @@
 				<view style="position: absolute; top: 20rpx;display:flex;">
 
 					<!-- 图片区域 -->
-					<view class="weui-cell__hd" style="position: relative; margin-right: 10px;">
+					<view catchtap='toTableData' hover-stop-propagation='true' data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="weui-cell__hd" style="position: relative; margin-right: 10px;">
 						<image src="{{rootPath}}{{item.effectPicture}}" style="width: 200rpx;height: 130rpx;display: block;"></image>
 						<text class="weui-badge" style="position: absolute; top: -0.4em; right: -0.4em;">8</text>
 					</view>
@@ -61,7 +62,6 @@
 					</view>
 
 					<!-- 项目进度区域 -->
-
 					<view style="position: absolute; top: 125rpx;width: 700rpx">
 						<scroll-view scroll-x="true" style="height:100rpx;white-space:nowrap;width:100%">
 
@@ -80,12 +80,11 @@
 						</scroll-view>
 					</view>
 
-
-
 				</view>
 			</view>
 		</view>
 
+		<!-- 上拉翻页提示 -->
 		<view>
 			<view class='data-loading' hidden='{{dataHidden}}'>
 				数据加载中...
@@ -94,5 +93,6 @@
 				没有更多了...
 			</view>
 		</view>
+
 	</view>
 </view>

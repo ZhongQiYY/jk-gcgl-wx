@@ -7,7 +7,7 @@ style="height:{{dialogHeight}}; width:{{dialogWidth}}; border-radius: {{dialogRa
 	<scroll-view scroll-y="true" style="width: 100%; height: 100%; text-align: center">
 
 		<block  wx:for="{{radioItems}}" wx:key="index">
-			<view bindtap="select" data-selectvalue="{{item.selectValue}}" class="selectContent">{{item.selectContent}}</view>
+			<view hover-class="hc" bindtap="select" data-selectvalue="{{item.selectValue}}" class="selectContent">{{item.selectContent}}</view>
 			<view class="tsLine"></view>
 		</block>
 
