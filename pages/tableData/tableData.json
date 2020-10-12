@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    
+    "controlSearch": "/components/search/controlSearch/controlSearch"
   },
   "navigationBarTitleText": "数据表"
 }

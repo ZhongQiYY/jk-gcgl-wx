@@ -82,10 +82,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     //初始化年份与月份信息
-    //获取当前日期
-    var timestamp = Date.parse(new Date());     
-    var Y = new Date(timestamp).getFullYear();//获取年份 
-    var M = new Date(timestamp).getMonth()+1;//获取月份
+    //获取当前日期  
+    var Y = new Date().getFullYear();//获取年份 
+    var M = new Date().getMonth()+1;//获取月份
     var radioItemsYear = [];
     var yearMap = {};
     var num = Y + 5

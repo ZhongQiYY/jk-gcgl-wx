@@ -1,0 +1,3 @@
+.subHover{
+  opacity: 0.5;
+}

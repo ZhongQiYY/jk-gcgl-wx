@@ -29,6 +29,16 @@ Page({
     proColor: "#09BB07", //进度条的颜色
   },
 
+  // 点击图片触发
+  toTableData: function(e){
+    app.globalData.projectId = e.currentTarget.dataset.id;
+    app.globalData.categoryType = e.currentTarget.dataset.categorytype;
+    app.globalData.pName = e.currentTarget.dataset.text
+    wx.switchTab({
+      url: "/pages/tableData/tableData"
+    })
+  },
+
   // 选择建设单位
   bindBuildChange: function (e) {
     var that = this;
@@ -122,8 +132,6 @@ Page({
     wx.navigateTo({
       url: '/pages/project/projectInfo/projectInfo',
     })
-
-
   },
 
   //下拉触发
@@ -214,6 +222,7 @@ Page({
       hasUserInfo: app.globalData.hasUserInfo
     });
 
+    //用户登录
     app.userLogin(
       function () {
         that.setData({

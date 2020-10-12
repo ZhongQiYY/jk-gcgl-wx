@@ -47,14 +47,14 @@
     "pages/tableData/datapages/tptx/szql/ptgc/ptgc",
     "pages/control/tjwtjy/tjwtjy",
     "pages/control/sjbsc/sjbsc",
-    "pages/tableData/datapages/ydxx/ydxx"
+    "pages/tableData/datapages/ydxx/ydxx",
+    "pages/tableData/datapages/txsx/txsx"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#0089dd",
     "navigationBarTitleText": "",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true,
     "backgroundColor": "#eeeeee"
   },
   "tabBar": {

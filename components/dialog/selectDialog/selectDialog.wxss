@@ -44,3 +44,9 @@
   margin: 10rpx auto;
   padding: 10rpx 10rpx;
 }
+
+/* 点击选中时的样式 */
+.hc {
+  opacity: 0.5;
+  background-color: rgb(237, 237, 237);
+}

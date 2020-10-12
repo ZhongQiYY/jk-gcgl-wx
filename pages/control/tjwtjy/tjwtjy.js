@@ -1,5 +1,7 @@
 // pages/control/tjwtjy/tjwtjy.js
 const app = getApp();
+var basePath = app.globalData.basePath;
+var dateTime = require('../../../utils/getDateTime.js');
 Page({
 
   /**
@@ -7,40 +9,39 @@ Page({
    */
   data: {
     maxProblemLength: 500,
-    currentProblemLength: 0,
+    currentProblem: "",
     maxPlanLength: 500,
-    currentPlanLength: 0,
+    currentPlan: "",
     projectNames: [], //@@
     projectId: "", //@@
     categoryType: "", //@@
     projectName: "" //@@
   },
-  //输入问题建议时计算当前字数
+  //输入问题建议时
   inputProblem: function (e) {
-    var len = e.detail.value.length;
-    if (len > this.data.maxProblemLength) return;
+    if (e.detail.value.length > this.data.maxProblemLength) return;
     this.setData({
-      currentProblemLength: len
+      currentProblem: e.detail.value
     })
   },
-  //输入下一步工作计划时计算当前字数
+  //输入下一步工作计划时
   inputPlan: function (e) {
-    var len = e.detail.value.length;
-    if (len > this.data.maxPlanLength) return;
+    if (e.detail.value.length > this.data.maxPlanLength) return;
     this.setData({
-      currentPlanLength: len
+      currentPlan: e.detail.value
     })
   },
 
   //搜索框组件返回的方法 @@
-  inputTyping: function(e){
+  inputTyping: function (e) {
     var inputVal = e.detail.inputVal;
-    var nameList = app.globalData.projectNameList;
     var projectNames1 = [];
-    for (const nl of nameList) {
-      var projectName = nl.projectName;
-      if(projectName.indexOf(inputVal) != -1){
-        projectNames1.push(nl);
+    if (inputVal.length > 0) {
+      for (const nl of app.globalData.projectNameList) {
+        var projectName = nl.projectName;
+        if (projectName.indexOf(inputVal) != -1) {
+          projectNames1.push(nl);
+        }
       }
     }
     this.setData({
@@ -48,12 +49,74 @@ Page({
     })
   },
   //搜索框组件返回的方法 @@
-  selectProject: function(e){
+  selectProject: function (e) {
     this.setData({
       projectId: e.detail.projectId,
       categoryType: e.detail.categoryType,
       projectName: e.detail.projectName
     });
+  },
+
+  // 提交记录
+  submitRecord: function(e){
+    
+  },
+
+  //提交问题和计划
+  submitProblemPlan: function () {
+    var that = this;
+    //获取当前时间
+    var year = new Date().getFullYear();//获取年份 
+    var month = new Date().getMonth() + 1;//获取月份
+    var submitTime = dateTime.getymdhms(new Date(), '-', ':');
+
+    if(that.data.projectId == ""){
+      wx.showToast({
+        title: '请选择项目',
+        icon: 'none',
+        duration: 1500
+      })
+    }else{
+      wx.request({
+        url: basePath + "/api/control/submitWtjy", //请求路径
+        method: 'post',
+        data: {
+          projectId: that.data.projectId,
+          existProblem: that.data.currentProblem,
+          nextPlan: that.data.currentPlan,
+          year: year,
+          month: month,
+          submitTime: submitTime
+        },
+        header: {
+          'content-type': 'application/json', // 默认值
+          'thirdSession': app.globalData.thirdSession
+        },
+        success(res) {
+          if (res.data === "success") {
+            wx.showToast({
+              title: '提交成功',
+              icon: 'success',
+              duration: 1500
+            })
+            that.setData({
+              currentProblem: "",
+              currentPlan: "",
+              projectId: "",
+              categoryType: "",
+              projectName: ""
+            })
+          }else{
+            wx.showToast({
+              title: '提交失败，服务器错误',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
+      });
+    }
+    
   },
 
 
@@ -63,7 +126,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
