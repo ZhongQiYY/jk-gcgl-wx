@@ -8,8 +8,36 @@ Page({
   data: {
     uploaderList: [],
     uploaderNum:0,
-    showUpload:true
+    showUpload:true,
+    projectNames: [], //@@
+    projectId: "", //@@
+    categoryType: "", //@@
+    projectName: "" //@@
   },
+  //搜索框组件返回的方法 @@
+  inputTyping: function(e){
+    var inputVal = e.detail.inputVal;
+    var nameList = app.globalData.projectNameList;
+    var projectNames1 = [];
+    for (const nl of nameList) {
+      var projectName = nl.projectName;
+      if(projectName.indexOf(inputVal) != -1){
+        projectNames1.push(nl);
+      }
+    }
+    this.setData({
+      projectNames: projectNames1
+    })
+  },
+  //搜索框组件返回的方法 @@
+  selectProject: function(e){
+    this.setData({
+      projectId: e.detail.projectId,
+      categoryType: e.detail.categoryType,
+      projectName: e.detail.projectName
+    });
+  },
+
    // 删除图片
    clearImg:function(e){
     var nowList = [];//新数据
@@ -117,6 +145,14 @@ upload: function(e) {
 
   },
 
+  /**
+   * 房建类
+   */
+  toDetailsAndFjl: function (){
+    wx.navigateTo({
+      url: '/pages/control/tjtptx/fjl/fjl'
+    })
+  },
   /**
    * 公园绿化类
    */

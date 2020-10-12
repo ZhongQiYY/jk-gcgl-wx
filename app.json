@@ -97,6 +97,7 @@
       "root": "pages/control/tjtptx/",
       "pages": [
         "tjtptx",
+        "fjl/fjl",
         "szql/szql",
         "szql/ptgc/ptgc",
         "szql/ptgc/rxdgc/rxdgc",

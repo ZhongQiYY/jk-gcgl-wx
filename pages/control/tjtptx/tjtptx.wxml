@@ -1,13 +1,22 @@
+<controlSearch 
+projectNames="{{projectNames}}"
+bind:inputTyping="inputTyping" 
+bind:selectProject="selectProject" 
+>
+</controlSearch>
+<view class="weui-form__text-area">
+	<h2 class="weui-form__title">{{projectName}}</h2>
+</view>
 <view class="page" data-weui-theme="{{theme}}">
-	<!-- <view class="weui-form-preview__hd">
+	<view class="weui-form-preview__hd" wx:if="{{categoryType == 1}}">
 		<view class="weui-form-preview__item">
-			<label class="weui-form-preview__label" bindtap="toDetailsAndSzqll">
+			<label class="weui-form-preview__label" bindtap="toDetailsAndFjl">
 				<view class="application-name">
 					<image src="/images/fjl.png" />房建类</view>
 			</label>
 		</view>
-	</view> -->
-	<view class="weui-form-preview__hd">
+	</view>
+	<view class="weui-form-preview__hd" wx:if="{{categoryType == 2}}">
 		<view class="weui-form-preview__item">
 			<label class="weui-form-preview__label" bindtap="toDetailsAndGylhl">
 				<view class="application-name">
@@ -16,7 +25,7 @@
 		</view>
 	</view>
 
-	<view class="weui-form-preview__hd">
+	<view class="weui-form-preview__hd" wx:if="{{categoryType == 3}}">
 		<view class="weui-form-preview__item">
 			<label class="weui-form-preview__label" bindtap="toDetailsAndSzqll">
 				<view class="application-name">
