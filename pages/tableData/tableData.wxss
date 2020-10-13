@@ -110,3 +110,7 @@
 .check-process .check-person,.check-process .check-date-time {
   font-size: smaller;
 }
+
+.btn-hover{
+  opacity: 0.5;
+}

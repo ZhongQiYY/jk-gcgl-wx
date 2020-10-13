@@ -51,6 +51,7 @@ userLogin: function (callback, fail) {
     },
     fail: function () {
       console.log("checkSession已过期");
+      typeof fail == 'function' && fail();
       page.onLogin();
     }
   })

@@ -225,6 +225,7 @@ Page({
     //用户登录
     app.userLogin(
       function () {
+        console.log("登录成功的触发"); 
         that.setData({
           hasUserInfo: app.globalData.hasUserInfo
         });
@@ -282,6 +283,7 @@ Page({
         }
       },
       function () {
+        console.log("登录失败的触发");
         that.setData({
           loadingHidden: false,
           errorInfo: true

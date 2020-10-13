@@ -1,17 +1,16 @@
 <!--pages/tableData/tableData.wxml-->
 <controlSearch 
-projectNames="{{projectNames}}"
+projectNames="{{projectNames}}" 
 bind:inputTyping="inputTyping" 
-bind:selectProject="selectProject" 
->
+bind:selectProject="selectProject">
 </controlSearch>
 <!-- 模糊横线 -->
 <view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
 
 <view style="text-align:center;width:100%;color:#0089dd">{{projectName}}</view>
- 
 
 
+<!-- 图标功能区域 -->
 <view class="page" data-weui-theme="{{theme}}">
 	<view class="weui-grids">
 
@@ -89,7 +88,7 @@ bind:selectProject="selectProject"
 			<view class="weui-grid__label">图纸文件</view>
 		</a>
 
-  	<a class="weui-grid" bindtap="toTptx">
+		<a class="weui-grid" bindtap="toTptx">
 			<view class="weui-grid__icon">
 				<image src="/images/tptx.png" alt></image>
 			</view>
@@ -102,8 +101,9 @@ bind:selectProject="selectProject"
 			</view>
 			<view class="weui-grid__label">提醒事项</view>
 		</a>
-		
+
 
 	</view>
-
+	<!-- 清除当前选中的项目信息 -->
+	<button bindtap="viewAll" hover-class="btn-hover" style="background-color:#0089dd" class="weui-btn weui-btn_primary">清除选定项目</button>
 </view>

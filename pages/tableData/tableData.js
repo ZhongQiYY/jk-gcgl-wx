@@ -112,6 +112,16 @@ selectProject: function (e) {
   });
 },
 
+// 查看所有项目
+viewAll: function(e){
+  var that = this;
+  app.globalData.projectId = 0;
+  app.globalData.categoryType = 0;
+  app.globalData.pName = "";
+  that.setData({
+    projectName: ""
+  })
+},
 
 
 

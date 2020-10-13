@@ -16,7 +16,6 @@ Page({
   onLoad: function (options) {
     var list = app.globalData.projectNameList;
     if(list.length <= 0){
-      console.log("zhongqi")
       wx.request({
         url: basePath+"/api/project/nameList", //请求路径
         method: 'post',
