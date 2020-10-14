@@ -84,8 +84,8 @@ Page({
           projectId: that.data.projectId,
           existProblem: that.data.currentProblem,
           nextPlan: that.data.currentPlan,
-          year: year,
-          month: month,
+          submitYear: year,
+          submitMonth: month,
           submitTime: submitTime
         },
         header: {
