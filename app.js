@@ -13,6 +13,7 @@ globalData: {
   // imageRootPath: "https://telecom1.xizinet.com:4433",
   pName: "",
   projectId: 0,
+  pId: 0,
   categoryType: 0,
   projectNameList:[],
   projectBaseInfo: {},
