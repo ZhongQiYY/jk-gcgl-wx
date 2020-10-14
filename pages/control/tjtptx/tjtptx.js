@@ -31,6 +31,7 @@ Page({
   },
   //搜索框组件返回的方法 @@
   selectProject: function(e){
+    app.globalData.pId =  e.detail.projectId,
     this.setData({
       projectId: e.detail.projectId,
       categoryType: e.detail.categoryType,
