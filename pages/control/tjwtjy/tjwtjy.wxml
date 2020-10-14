@@ -40,9 +40,9 @@ bind:selectProject="selectProject"
 	</view>
 </view>
 
-<view class="weui-form__opr-area" bindtap="submitProblemPlan">
-	<a class="weui-btn weui-btn_primary">提交</a>
-</view>
+<!-- <view class="weui-form__opr-area"> -->
+	<button hover-class="submit-hover" bindtap="submitProblemPlan" style="background-color:#0089dd" class="weui-btn weui-btn_primary">提交</button>
+<!-- </view> -->
 
 <!-- 提交记录 -->
 <view hover-class="subHover" bindtap="submitRecord" style="position:absolute;left:50%;top:140%;transform:translate(-50%,0);color:#0089dd">提交记录</view>

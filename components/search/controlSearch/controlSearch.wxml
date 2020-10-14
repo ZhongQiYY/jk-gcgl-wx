@@ -11,7 +11,9 @@
 
 		<!-- 搜索提示文字图标 -->
 		<label class="weui-search-bar__label" bindtap="showInput">
-			<i class="weui-icon-search"></i>
+			<view class="icon-small-wrp">
+				<icon class="icon-small" type="search" size="14"></icon>
+			</view>
 			<span class="weui-search-bar__text">搜索</span>
 		</label>
 
@@ -22,14 +24,8 @@
 <!-- 实时提示项目 -->
 <view class="weui-panel__bd" wx:if="{{inputVal.length>0 && projectNames.length>0}}">
 	<block wx:for-index="index" wx:for-item="item" wx:for="{{projectNames}}" wx:key="index">
-    <view hover-class="hover" 
-    bindtap="selectProject" 
-    data-projectid="{{item.projectId}}" 
-    data-categorytype="{{item.categoryType}}"
-    data-projectname="{{item.projectName}}" 
-    class="weui-media-box weui-media-box_text">
-      <view class="weui-media-box__title">{{item.projectName}}</view>
-    </view>
-  </block>
+		<view hover-class="hover" bindtap="selectProject" data-projectid="{{item.projectId}}" data-categorytype="{{item.categoryType}}" data-projectname="{{item.projectName}}" class="weui-media-box weui-media-box_text">
+			<view class="weui-media-box__title">{{item.projectName}}</view>
+		</view>
+	</block>
 </view>
-

@@ -1,3 +1,6 @@
 .subHover{
   opacity: 0.5;
 }
+.submit-hover{
+  opacity: 0.5;
+}
