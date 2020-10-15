@@ -4,6 +4,8 @@ var dateTimePicker2 = require('../../../../utils/dateTimePicker.js');
 var dateTimePicker3 = require('../../../../utils/dateTimePicker.js');
 var app = getApp();
 var basePath = app.globalData.basePath;
+var basePath = app.globalData.imageRootPath;
+// var basePath = "http://localhost:16000/jk-gcgl"
 Page({
   mixins: [require('../../../../dist/mixin/themeChanged')],
 
