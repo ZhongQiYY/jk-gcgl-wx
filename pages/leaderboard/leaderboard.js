@@ -183,10 +183,15 @@ Page({
   },
 
   onShow: function () {
+    var that = this;
     if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
-      this.setData({
+      that.setData({
         notShowLimit: true
       });
+    }else{
+      that.setData({
+        notShowLimit: false
+      })
     }
   }
   

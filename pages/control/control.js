@@ -34,6 +34,10 @@ Page({
       this.setData({
         notShowLimit: true
       });
+    }else{
+      that.setData({
+        notShowLimit: false
+      })
     }
 
     var list = app.globalData.projectNameList;

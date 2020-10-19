@@ -1,4 +1,5 @@
 var base64 = require("../../dist/example/images/base64");
+var auth = require("../../utils/getAuthInfo");
 var app = getApp();
 var basePath = app.globalData.basePath;
 Page({
@@ -13,6 +14,7 @@ Page({
     projectList: [],
     search: "search",
     loadingHidden: false,
+    isNotBuildUnit: true,//
     notShowLimit: false, //
     errorInfo: true, //展示隐藏错误提示
     dataHidden: true, //上滑触底显示数据加载钟
@@ -144,8 +146,6 @@ Page({
       })
       that.onLoad();
     }
-    
-    
   },
 
   //触底触发
@@ -214,8 +214,7 @@ Page({
           dataHidden_last: true,
         })
       }, 3000);
-    }
-    
+    }  
   },
 
   //--------------------------生命周期函数------------------------------
@@ -256,8 +255,10 @@ Page({
                 projectList: res.data,
                 pageNumber: that.data.pageNumber+1,
                 loadingHidden: true,
-                errorInfo: true
+                errorInfo: true,
+                isBuildUnit: auth.isBuildUnit(app.globalData.userInfo)
               });
+              
             },
             fail() {
               that.setData({
@@ -276,7 +277,7 @@ Page({
           that.setData({
             loadingHidden: false,
             errorInfo: true,
-            // notShowLimit: false
+            notShowLimit: false
           })
           setTimeout(function () {
             that.setData({
@@ -305,6 +306,10 @@ Page({
     if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
       that.setData({
         notShowLimit: true
+      })
+    }else{
+      that.setData({
+        notShowLimit: false
       })
     }
   }

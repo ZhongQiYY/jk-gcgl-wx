@@ -11,17 +11,19 @@
 	<view class="{{search}}">
 		<view class="weui-flex">
 
-			<view class="weui-flex__item">
-				<picker bindchange="bindBuildChange" value="{{buildIndex}}" range="{{buildArray}}">
-					<view class="search-type">
-						<image src="/images/sgdw.png"></image>
-						<text>{{buildArray[buildIndex]}}</text>
-					</view>
-				</picker>
-			</view>
+			<block wx:if="{{!isNotBuildUnit}}">
+				<view class="weui-flex__item">
+					<picker bindchange="bindBuildChange" value="{{buildIndex}}" range="{{buildArray}}">
+						<view class="search-type">
+							<image src="/images/sgdw.png"></image>
+							<text>{{buildArray[buildIndex]}}</text>
+						</view>
+					</picker>
+				</view>
 
-			<!-- 画竖线 -->
-			<view class="middle"></view>
+				<!-- 画竖线 -->
+				<view class="middle"></view>
+			</block>
 
 			<view class="weui-flex__item">
 				<picker bindchange="bindCategoryChange" value="{{categoryIndex}}" range="{{categoryArray}}">
@@ -32,10 +34,11 @@
 				</picker>
 			</view>
 		</view>
+
 	</view>
 
 	<view class="page project-list-info" data-weui-theme="{{theme}}">
-		<view hidden="{{errorInfo}}">
+		<view style="text-align:center" hidden="{{errorInfo}}">
 			错误，请下拉刷新重试
 		</view>
 		

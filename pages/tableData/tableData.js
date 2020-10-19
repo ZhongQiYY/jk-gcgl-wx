@@ -190,6 +190,10 @@ Page({
         notShowLimit: true
       });
       that.getRedDotNum();
+    }else{
+      that.setData({
+        notShowLimit: false
+      })
     }
   },
 
