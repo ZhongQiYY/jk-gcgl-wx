@@ -1,4 +1,4 @@
-// pages/tableData/datapages/tptx/tptx.js
+// pages/tableData/datapages/tptx/gylh/gylh.js
 Page({
 
   /**
@@ -63,30 +63,38 @@ Page({
   onShareAppMessage: function () {
 
   },
-
   /**
-   * 房建类
+   * 主体工程
    */
-  toDetailsAndFjl: function () {
+  toDetailsAndZtgc: function () {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/fjl/fjl'
-    })
-  },
-  /**
-   * 公园绿化类
-   */
-  toDetailsAndGylhl: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/gylh/gylh'
+      url: '/pages/tableData/datapages/tptx/fjl/ztgc/ztgc'
     })
   },
 
   /**
-   * 市政桥梁类
+   * 地下室工程
    */
-  toDetailsAndSzqll: function () {
+  toDetailsAndDxsgc: function () {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/szql/szql'
+      url: '/pages/tableData/datapages/tptx/fjl/dxsgc/dxsgc'
+    })
+  },
+  /**
+   * 配套用房
+   */
+  toDetailsAndPtgc: function () {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tptx/fjl/ptgc/ptgc'
+    })
+  },
+
+  /**
+   * 装饰装修工程
+   */
+  toDetailsAndZszxgc: function () {
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tptx/fjl/zszxgc/zszxgc'
     })
   },
 })
