@@ -59,6 +59,10 @@ Page({
 
   // 提交记录
   submitRecord: function(e){
+
+    wx.navigateTo({
+      url: '/pages/control/tjwtjy/commitRecord/commitRecord',
+    })
     
   },
 
@@ -76,11 +80,24 @@ Page({
         icon: 'none',
         duration: 1500
       })
+    }else if(that.data.currentProblem == ""){
+      wx.showToast({
+        title: '请描述存在的问题',
+        icon: 'none',
+        duration: 1500
+      })
+    }else if(that.data.currentPlan == ""){
+      wx.showToast({
+        title: '请描述下一步工作计划',
+        icon: 'none',
+        duration: 1500
+      })
     }else{
       wx.request({
-        url: basePath + "/api/control/submitWtjy", //请求路径
+        url: basePath + "/api/control/submitProblemPlan", //请求路径
         method: 'post',
         data: {
+          status: 1,
           projectId: that.data.projectId,
           existProblem: that.data.currentProblem,
           nextPlan: that.data.currentPlan,

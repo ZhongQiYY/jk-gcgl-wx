@@ -7,30 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    haveNameList: false,
+    notShowLimit: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var list = app.globalData.projectNameList;
-    if(list.length <= 0){
-      wx.request({
-        url: basePath+"/api/project/nameList", //请求路径
-        method: 'post',
-        data: {
-          
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'thirdSession': app.globalData.thirdSession
-        },
-        success (res) {
-          app.globalData.projectNameList = res.data  
-        }
-      });
-    }
+    
   },
 
   /**
@@ -44,7 +29,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
+      this.setData({
+        notShowLimit: true
+      });
+    }
 
+    var list = app.globalData.projectNameList;
+    if(list.length <= 0 && !that.data.haveNameList && app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
+      wx.request({
+        url: basePath+"/api/project/nameList", //请求路径
+        method: 'post',
+        data: {
+          
+        },
+        header: {
+          'content-type': 'application/json', // 默认值
+          'thirdSession': app.globalData.thirdSession
+        },
+        success (res) {
+          app.globalData.projectNameList = res.data  
+          that.setData({
+            haveNameList: true
+          })
+        }
+      });
+    }
   },
 
   /**

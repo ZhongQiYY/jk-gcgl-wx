@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "myMask": "/components/mask/myMask",
+    "limitPage": "/components/limitPage/limitPage"
+  },
   "navigationBarTitleText": "项目库",
   "onReachBottomDistance": 50,
   "enablePullDownRefresh": true

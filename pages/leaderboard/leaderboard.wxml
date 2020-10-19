@@ -1,33 +1,37 @@
-<loading hidden="{{loadingHidden}}">
-	加载中...
-</loading>
-<view class='table-module'>
-	<!-- 左侧固定 -->
-	<view class='left-policy-type'>
-		<view class='empty-box'>综合排名</view>
-		<view wx:for="{{rankData}}" class='left-col-list' wx:key="index">
-			<view style="font-size:28rpx;  color: rebeccapurple;font-weight:bolder">{{item.integrated}}</view>
-		</view>
-	</view>
-	<!-- 右侧表格滚动 -->
-	<scroll-view class="scroll-box" scroll-x="true">
-		<view class="scroll-view-item" wx:for="{{titleList}}" wx:for-item="titleItem" wx:for-index="bigindex" wx:key="index">
-			<view class='company-name'>{{titleItem.title}}</view>
-			<view wx:for="{{titleItem.data}}" wx:for-item="cell" wx:for-index="subindex" class='price-box' wx:key="index">
-				<view class="price" bindtap='showview' bindtap="test" data-title="{{titleItem.columnName}}" data-index="{{subindex}}">{{cell}}</view>
-				<!-- <view class="price" style="color:#FF6347" wx:elif="{{cell.price == '缺货'}}">缺货</view> -->
+<!-- 无权限展示页 -->
+<limitPage notShowLimit="{{notShowLimit}}"></limitPage>
+<view wx:if="{{notShowLimit}}">
+	<loading hidden="{{loadingHidden}}">
+		加载中...
+	</loading>
+	<view class='table-module'>
+		<!-- 左侧固定 -->
+		<view class='left-policy-type'>
+			<view class='empty-box'>综合排名</view>
+			<view wx:for="{{rankData}}" class='left-col-list' wx:key="index">
+				<view style="font-size:28rpx;  color: rebeccapurple;font-weight:bolder">{{item.integrated}}</view>
 			</view>
 		</view>
-	</scroll-view>
-</view>
+		<!-- 右侧表格滚动 -->
+		<scroll-view class="scroll-box" scroll-x="true">
+			<view class="scroll-view-item" wx:for="{{titleList}}" wx:for-item="titleItem" wx:for-index="bigindex" wx:key="index">
+				<view class='company-name'>{{titleItem.title}}</view>
+				<view wx:for="{{titleItem.data}}" wx:for-item="cell" wx:for-index="subindex" class='price-box' wx:key="index">
+					<view class="price" bindtap='showview' bindtap="test" data-title="{{titleItem.columnName}}" data-index="{{subindex}}">{{cell}}</view>
+					<!-- <view class="price" style="color:#FF6347" wx:elif="{{cell.price == '缺货'}}">缺货</view> -->
+				</view>
+			</view>
+		</scroll-view>
+	</view>
 
-<!-- 项目列表页 -->
-<view class="page__bd" wx:if="{{projectInfoShow}}">
-	<view class="weui-cells__title" bindtap='hideview'>点击此处隐藏</view>
-	<view class="weui-cells weui-cells_after-title">
-		<view data-text="{{item.projectName}}" data-categoryType="{{item.categoryType}}" data-id="{{item.id}}" bindtap="toTableData" class="weui-cell weui-cell_example " wx:for="{{productContent}}" wx:key="index" hover-class="weui-cell_active">
-			<view wx:if="{{item.color == 'green'}}" class="weui-cell__bd" style="color: green">{{item.projectName}}</view>
-			<view wx:if="{{item.color == 'red'}}" class="weui-cell__bd" style="color: red">{{item.projectName}}</view>
+	<!-- 项目列表页 -->
+	<view class="page__bd" wx:if="{{projectInfoShow}}">
+		<view class="weui-cells__title" bindtap='hideview'>点击此处隐藏</view>
+		<view class="weui-cells weui-cells_after-title">
+			<view data-text="{{item.projectName}}" data-categoryType="{{item.categoryType}}" data-id="{{item.id}}" bindtap="toTableData" class="weui-cell weui-cell_example " wx:for="{{productContent}}" wx:key="index" hover-class="weui-cell_active">
+				<view wx:if="{{item.color == 'green'}}" class="weui-cell__bd" style="color: green">{{item.projectName}}</view>
+				<view wx:if="{{item.color == 'red'}}" class="weui-cell__bd" style="color: red">{{item.projectName}}</view>
+			</view>
 		</view>
 	</view>
 </view>

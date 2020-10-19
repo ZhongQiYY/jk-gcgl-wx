@@ -48,7 +48,8 @@
     "pages/control/tjwtjy/tjwtjy",
     "pages/control/sjbsc/sjbsc",
     "pages/tableData/datapages/ydxx/ydxx",
-    "pages/tableData/datapages/txsx/txsx"
+    "pages/tableData/datapages/txsx/txsx",
+    "pages/control/tjwtjy/commitRecord/commitRecord"
   ],
   "window": {
     "backgroundTextStyle": "dark",

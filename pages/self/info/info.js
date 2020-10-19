@@ -1,40 +1,37 @@
 // pages/self/info/info.js
 const app = getApp()
-
+var basePath = app.globalData.basePath;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    hasUserInfo: false,
-    name: '',
-    company: '',
     companies: [],
-    roleId: app.globalData.userInfo.roleId,
-    role: app.globalData.userInfo.role,
+    roles: [],
+    stateText: '',
+    company: '',
+    role: '',
+    name: '',
+    roleId: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  // 职位选中触发
+  bindPositionChange: function (e) {
     this.setData({
-      userInfo: app.globalData.userInfo,
-      hasUserInfo: app.globalData.hasUserInfo,
-      name: app.globalData.userInfo.name,
-      company: app.globalData.userInfo.company,
-      companies: app.globalData.companies,
-      roleId: app.globalData.userInfo.roleId,
-      role: app.globalData.userInfo.role,
+      roleId: this.data.roles[e.detail.value].id,
+      role: this.data.roles[e.detail.value].name
     });
-    console.log(this.data.userInfo);
-    console.log("zxczxc")
-    console.log(this.data)
-    console.log(app.globalData.companies);
   },
 
+  // 公司选中触发
+  bindCompanyChange: function (e) {
+    this.setData({
+      company: this.data.companies[e.detail.value].name
+    });
+  },
+
+  //提交信息
   saveInfo: function () {
     if (this.checkInput()) {
       const page = this;
@@ -46,10 +43,10 @@ Page({
         url: app.globalData.url.userData,
         method: 'POST',
         data: {
-          name: this.data.name,
-          company: this.data.company.name,
-          roleId: this.data.roleId,
-          role: this.data.role,
+          name: page.data.name,
+          company: page.data.company,
+          roleId: page.data.roleId,
+          role: page.data.role,
         },
 
         header: {
@@ -57,27 +54,16 @@ Page({
           'thirdSession': app.globalData.thirdSession
         },
         success(res) {
-          console.log(page.data.company.name+"MM")
-          console.log(page.data.userInfo)
+          console.log(page.data.company + "MM")
           wx.hideLoading();
           if (res.statusCode == 200) {
             if (res.data.code == 200) {
-              page.data.userInfo.name = page.data.name;
-              page.data.userInfo.company = page.data.company.name;
-              page.data.userInfo.roleId = page.data.roleId;
-              page.data.userInfo.role = page.data.role;
-              app.globalData.userInfo = page.data.userInfo;
-              console.log(app.globalData.userInfo);
+              app.globalData.userInfo = res.data.data;
               wx.navigateBack({
                 delta: 1
               })
             } else if (res.data.code == 201) {
-              page.data.userInfo.state = 1;
-              page.data.userInfo.stateText = res.data.msg;
-              app.globalData.userInfo = page.data.userInfo;
-              page.setData({
-                userInfo: app.globalData.userInfo
-              });
+              page.data.stateText = res.data.msg;
               app.showToast(res.data.msg);
             } else {
               app.showToast('服务器繁忙，请稍后再试\n' + '(错误码:' + res.data.code + ')');
@@ -91,29 +77,16 @@ Page({
         }
       })
     }
-  }, 
-  bindPositionChange: function(e) {
-    this.setData({
-      roleId: this.data.userInfo.roles[e.detail.value].id,
-      role: this.data.userInfo.roles[e.detail.value].name
-    });
   },
-  bindCompanyChange: function(e) {
-    console.log(e.detail)
-    console.log(e+"AA")
-    console.log(this.data.companies[e.detail.value])
-    let company = this.data.companies[e.detail.value];
-    this.data.userInfo.company = company.name;
-    console.log(this.data.userInfo.company)
-    this.setData({
-      company: company
-    });
-  },
+
+  // 
   inputName: function (e) {
     this.setData({
       name: e.detail.value
     });
   },
+
+  //检查输入
   checkInput: function () {
     console.log(this.data.company)
     if (this.data.company == '' || this.data.company == '') {
@@ -125,5 +98,46 @@ Page({
       return false;
     }
     return true;
+  },
+
+  onShow: function (options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    that.setData({
+      company: app.globalData.userInfo.company,
+      role: app.globalData.userInfo.role,
+      name: app.globalData.userInfo.name,
+      roleId: app.globalData.userInfo.roleId
+    });
+    // 查询公司与角色集合
+    wx.request({
+      url: basePath+'/api/wechat/companiesAndRoles',
+      method: 'POST',
+      data: {
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'thirdSession': app.globalData.thirdSession
+      },
+      success(res) {
+        if(res.data.code == 200){
+          that.setData({
+            companies: res.data.data.companies,
+            roles: res.data.data.roles,
+            stateText: res.data.data.stateText
+          })
+        }
+      },
+      fail(res) {
+        app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:500)');
+      }
+    })
   }
+
 })

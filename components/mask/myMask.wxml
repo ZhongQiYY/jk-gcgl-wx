@@ -1,0 +1,1 @@
+<view class="myMask"  hidden="{{notShowMask}}"></view>

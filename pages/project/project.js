@@ -13,7 +13,7 @@ Page({
     projectList: [],
     search: "search",
     loadingHidden: false,
-    hasUserInfo: false,
+    notShowLimit: false, //
     errorInfo: true, //展示隐藏错误提示
     dataHidden: true, //上滑触底显示数据加载钟
     dataHidden_last: true, //项目全部加载出来后显示没有更多
@@ -137,67 +137,73 @@ Page({
   //下拉触发
   onPullDownRefresh: function () {
     var that = this;
-    that.setData({
-      projectList: [],
-      loadingHidden: false
-    })
-    that.onLoad();
+    if(that.data.notShowLimit){
+      that.setData({
+        projectList: [],
+        loadingHidden: false
+      })
+      that.onLoad();
+    }
+    
+    
   },
 
   //触底触发
   onReachBottom() {
     var that = this;
-    that.setData({
-      dataHidden: false
-    })
     if(!that.data.haveNoData){
-      wx.request({
-        url: basePath + "/api/project/list", //请求路径
-        method: 'post',
-        data: {
-          unitName: that.data.buildArray[that.data.buildIndex],
-          categoryId: that.data.categoryIndex,
-          pageNumber: that.data.pageNumber,
-          pageLimit: that.data.pageLimit
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'thirdSession': app.globalData.thirdSession
-        },
-        success(res) {
-          if(res.data.length > 0) {
+      if(that.data.errorInfo && that.data.loadingHidden){
+        that.setData({
+          dataHidden: false
+        })
+        wx.request({
+          url: basePath + "/api/project/list", //请求路径
+          method: 'post',
+          data: {
+            unitName: that.data.buildArray[that.data.buildIndex],
+            categoryId: that.data.categoryIndex,
+            pageNumber: that.data.pageNumber,
+            pageLimit: that.data.pageLimit
+          },
+          header: {
+            'content-type': 'application/json', // 默认值
+            'thirdSession': app.globalData.thirdSession
+          },
+          success(res) {
+            if(res.data.length > 0) {
+              that.setData({
+                dataHidden: true,
+                pageNumber: that.data.pageNumber+1,
+                projectList: that.data.projectList.concat(res.data),
+              });
+            }else {
+              that.setData({
+                dataHidden: true,
+                dataHidden_last: false,
+              });
+              setTimeout(function () {
+                that.setData({
+                  dataHidden_last: true,
+                  haveNoData: true
+                })
+              }, 3000);
+            }
+            
+          },
+          fail() {
             that.setData({
-              dataHidden: true,
-              pageNumber: that.data.pageNumber+1,
-              projectList: that.data.projectList.concat(res.data),
-            });
-          }else {
-            that.setData({
-              dataHidden: true,
-              dataHidden_last: false,
-            });
+              loadingHidden: false,
+              errorInfo: true
+            })
             setTimeout(function () {
               that.setData({
-                dataHidden_last: true,
-                haveNoData: true
+                loadingHidden: true,
+                errorInfo: false
               })
-            }, 3000);
+            }, 10000);
           }
-          
-        },
-        fail() {
-          that.setData({
-            loadingHidden: false,
-            errorInfo: true
-          })
-          setTimeout(function () {
-            that.setData({
-              loadingHidden: true,
-              errorInfo: false
-            })
-          }, 10000);
-        }
-      });
+        });
+      }
     }else{
       that.setData({
         dataHidden: true,
@@ -218,21 +224,18 @@ Page({
     wx.stopPullDownRefresh();
     that.setData({
       pageNumber: 1,
-      haveNoData: false,
-      hasUserInfo: app.globalData.hasUserInfo
+      haveNoData: false
     });
 
     //用户登录
     app.userLogin(
       function () {
         console.log("登录成功的触发"); 
-        that.setData({
-          hasUserInfo: app.globalData.hasUserInfo
-        });
-        if (that.data.hasUserInfo) {
+        if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
           that.setData({
             loadingHidden: false,
-            errorInfo: true
+            errorInfo: true,
+            notShowLimit: true
           })
           wx.request({
             url: basePath + "/api/project/list", //请求路径
@@ -272,7 +275,8 @@ Page({
         } else {
           that.setData({
             loadingHidden: false,
-            errorInfo: true
+            errorInfo: true,
+            // notShowLimit: false
           })
           setTimeout(function () {
             that.setData({
@@ -285,15 +289,9 @@ Page({
       function () {
         console.log("登录失败的触发");
         that.setData({
-          loadingHidden: false,
-          errorInfo: true
+          loadingHidden: true,
+          errorInfo: false,
         })
-        setTimeout(function () {
-          that.setData({
-            loadingHidden: true,
-            errorInfo: false
-          })
-        }, 10000);
       }
     );
 
@@ -303,6 +301,11 @@ Page({
   },
 
   onShow: function () {
-
+    var that = this;
+    if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
+      that.setData({
+        notShowLimit: true
+      })
+    }
   }
 })

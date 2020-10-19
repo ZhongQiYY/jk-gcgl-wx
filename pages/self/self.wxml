@@ -6,6 +6,7 @@
 	</view>
 	<view>
 		<view class="userinfo">
+			<!-- 未登录显示微信登录按钮 -->
 			<block wx:if="{{!hasUserInfo && canIUse}}">
 				<view class="default-avatar">
 					<image src="../../images/icon-wechat.png"></image>
@@ -15,6 +16,8 @@
 					<button wx:if="{{loading}}" class="weui-btn weui-btn_disabled weui-btn_loading"><i class="weui-loading"></i></button>
 				</view>
 			</block>
+
+			<!-- 已登录则显示公司和姓名 -->
 			<block wx:else>
 				<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
 				<div class="weui-cells" style="width:100%;margin-top:80rpx;">
@@ -33,7 +36,10 @@
 				</div>
 
 			</block>
+			
 		</view>
+
+		<!-- 文字区域 -->
 		<view class="copyright">
 			<!-- <view class="company">物联网大数据 · 研发项目</view>
       <view class="company">综合管理部门 · 业务支持</view> -->

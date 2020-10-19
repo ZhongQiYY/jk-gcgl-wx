@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "limitPage": "/components/limitPage/limitPage"
   },
   "navigationBarTitleText": "排行榜",
   "enablePullDownRefresh": true

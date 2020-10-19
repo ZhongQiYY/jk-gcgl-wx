@@ -1,4 +1,7 @@
-<view class="page" data-weui-theme="{{theme}}">
+<!-- 无权限展示页 -->
+<limitPage notShowLimit="{{notShowLimit}}"></limitPage>
+
+<view class="page" data-weui-theme="{{theme}}" wx:if="{{notShowLimit}}">
 	<view class="weui-grids">
 		<a class="weui-grid" bindtap="toJdxx">
 			<view class="weui-grid__icon">

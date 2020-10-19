@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "controlSearch": "/components/search/controlSearch/controlSearch"
+    "controlSearch": "/components/search/controlSearch/controlSearch",
+    "limitPage": "/components/limitPage/limitPage"
   },
   "navigationBarTitleText": "数据表"
 }

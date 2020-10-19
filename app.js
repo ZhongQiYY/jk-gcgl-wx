@@ -12,11 +12,11 @@ globalData: {
   imageRootPath: "https://test.xizinet.com",
   // imageRootPath: "https://telecom1.xizinet.com:4433",
   pName: "",
-  projectId: 0,
+  projectId: 0,//全局项目id
   pId: 0,
-  categoryType: 0,
-  projectNameList:[],
-  projectBaseInfo: {},
+  categoryType: 0,//全局项目类型
+  projectNameList:[],//用于搜索框搜索项目
+  projectBaseInfo: {},//用于数据统计内展示统计信息
   userInfo: {},
   hasUserInfo: false,
   canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -29,10 +29,9 @@ globalData: {
     auth: RootPath+"/api/wechat/auth",
   }
 },
+
 userLogin: function (callback, fail) {
   const page = this;
-
-
   wx.checkSession({
     success: function () {
       console.log("checkSession未过期");
@@ -171,10 +170,10 @@ userInfoSetInSQL: function (userInfo, callback) {
               page.globalData.userInfo.company = res.data.data.company;
               page.globalData.userInfo.state = res.data.data.state;
               page.globalData.userInfo.stateText = res.data.data.stateText;
-              page.globalData.userInfo.roles = res.data.data.roles;
+              // page.globalData.userInfo.roles = res.data.data.roles;
               page.globalData.userInfo.roleId = res.data.data.roleId;
               page.globalData.userInfo.role = res.data.data.role;
-              page.globalData.companies = res.data.data.companies;
+              // page.globalData.companies = res.data.data.companies;
               page.globalData.hasUserInfo = true;
               // page.loadData(false, callback);
               typeof callback == 'function' && callback();

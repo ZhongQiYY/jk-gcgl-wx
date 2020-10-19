@@ -1,0 +1,6 @@
+<view class="myLimit"  hidden="{{notShowLimit}}">
+  <view class="limit">
+    <image src="/images/limit.png"></image>
+    <view style="text-align:center;">未授权登录或审核未通过</view>
+  </view>
+</view>

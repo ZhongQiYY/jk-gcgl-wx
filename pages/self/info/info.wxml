@@ -1,41 +1,53 @@
 <scroll-view>
   <div class="weui-cells">
+
+    <!-- 审核状态 -->
     <div class="weui-cell">
         <div class="weui-cell__bd">
             <p>状态</p>
         </div>
-        <div class="weui-cell__ft">{{userInfo.stateText}}</div>
+        <div class="weui-cell__ft">{{stateText}}</div>
     </div>
+
     <view class="info-gap"></view>
+
+    <!-- 公司选择 -->
     <div class="weui-cell">
         <div class="weui-cell__bd">
             <p>公司</p>
         </div>
         <div class="weui-cell__ft">
           <picker bindchange="bindCompanyChange" value="{{index}}" range="{{companies}}" range-key="name">
-              <input class="weui-input" placeholder="请选择公司" disabled="disabled" value="{{company.name}}" />
+              <input class="weui-input" placeholder="请选择公司" disabled="disabled" value="{{company}}" />
           </picker>
         </div>
     </div>
+
+    <!-- 职位选择 -->
     <div class="weui-cell">
         <div class="weui-cell__bd">
             <p>职位</p>
         </div>
         <div class="weui-cell__ft">
-          <picker bindchange="bindPositionChange" value="{{index}}" range="{{userInfo.roles}}" range-key="name">
+          <picker bindchange="bindPositionChange" value="{{index}}" range="{{roles}}" range-key="name">
               <input class="weui-input" placeholder="请选择职位" disabled="disabled" value="{{role}}" />
           </picker>
         </div>
     </div>
+
+    <!-- 姓名选择 -->
     <div class="weui-cell">
         <div class="weui-cell__bd">
             <p>姓名</p>
         </div>
         <div class="weui-cell__ft">
-          <input class="weui-input" type="text" placeholder="请输入姓名" value="{{userInfo.name}}" bindinput="inputName" /></div>
+          <input class="weui-input" type="text" placeholder="请输入姓名" value="{{name}}" bindinput="inputName" /></div>
     </div>
+
+    <!-- 提交按钮 -->
     <div wx:if="{{userInfo.state != 1}}" class="weui-form-preview__ft">
         <a class="weui-form-preview__btn weui-form-preview__btn_primary tjsh" href="javascript:" catchtap="saveInfo">提交审核</a>
     </div>
+
   </div>
 </scroll-view>
