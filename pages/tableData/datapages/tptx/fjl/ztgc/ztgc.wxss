@@ -1,1 +1,14 @@
-/* pages/tableData/datapages/tptx/fjl/ztgc/ztgc.wxss */
+.imagesize{
+  display:flex;
+  justify-content: center;         
+  padding: 5px; 
+ }
+ .in-image{
+  height: 300px;
+  width: 350px;
+}
+.line{
+  width:100%;
+  height:5rpx;
+  background:#0089dd;
+}

@@ -1,2 +1,34 @@
-<!--pages/tableData/datapages/tptx/fjl/ztgc/ztgc.wxml-->
-<text>pages/tableData/datapages/tptx/fjl/ztgc/ztgc.wxml</text>
+<view wx:for="{{ztName}}">
+  <view wx:if="{{item.ztBeforeImgUrl != '' }}">
+    <text>{{item.ztName}}前图片:</text>
+    <view wx:for="{{item.ztBeforeImgUrl}}" wx:key="item" class='imagesize'>
+      <image src="{{RootPath}}{{item}}" class="in-image" />
+    </view>
+    <view>
+      {{item.ztName}}前时间：{{item.ztBeforeTime}}
+    </view>
+    <view class="line"></view>
+  </view>
+
+  <view wx:if="{{item.ztMidImgUrl != '' }}">
+    <text>{{item.ztName}}中图片:</text>
+    <view wx:for="{{item.ztMidImgUrl}}" wx:key="item" class='imagesize'>
+      <image src="{{RootPath}}{{item}}" class="in-image" />
+    </view>
+    <view>
+      {{item.ztName}}中时间：{{item.ztMidTime}}
+    </view>
+    <view class="line"></view>
+  </view>
+
+  <view wx:if="{{item.ztAfterImgUrl != '' }}">
+    <text>{{item.ztName}}后图片:</text>
+    <view wx:for="{{item.ztAfterImgUrl}}" wx:key="item" class='imagesize'>
+      <image src="{{RootPath}}{{item}}" class="in-image" />
+    </view>
+    <view>
+      {{item.ztName}}后时间：{{item.ztAfterTime}}
+    </view>
+    <view class="line"></view>
+  </view>
+</view>
