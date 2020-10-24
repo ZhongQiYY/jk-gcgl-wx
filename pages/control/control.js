@@ -31,9 +31,9 @@ Page({
   onShow: function () {
     var that = this;
     if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
-      this.setData({
-        notShowLimit: true
-      });
+        this.setData({
+          notShowLimit: true
+        });
     }else{
       that.setData({
         notShowLimit: false

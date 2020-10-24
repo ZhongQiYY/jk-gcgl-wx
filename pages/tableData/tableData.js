@@ -15,76 +15,75 @@ Page({
     redMap: {}
   },
 
+  //年度计划
   toPlan: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/annualplan/annualplan',
       })
-    }
+    } else app.showToast("请先选定项目");
   },
 
-  toDb: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/control/dcdb/dcdb',
-      })
-    }
+  //督办事项
+  toDcdb: function () {
+    wx.navigateTo({
+      url: '/pages/control/dcdb/dcdb',
+    })
   },
 
+  //图纸文件
   toSwInstruction: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/tzwj/tzwj',
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tzwj/tzwj',
+    })
   },
 
+  //合同管理
   toHtgl: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/htgl/htgl',
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/htgl/htgl',
+    })
   },
 
+  //图片图像
   toTptx: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/tptx/tptx',
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/tptx/tptx',
+    })
   },
 
+  //造价监控
   toZjjk: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/zjjk/zjjk',
       })
-    }
+    } else app.showToast("请先选定项目");
   },
 
+  //数据统计
   toSjtj: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/sjtj/sjtj',
       })
-    }
+    } else app.showToast("请先选定项目");
   },
 
+  //月度形象
   toYdxx: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/ydxx/ydxx',
       })
-    }
+    } else app.showToast("请先选定项目");
   },
 
+  //提醒事项
   toTxsx: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/txsx/txsx',
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/txsx/txsx',
+    })
   },
 
 
@@ -112,6 +111,7 @@ Page({
     this.setData({
       projectName: e.detail.projectName
     });
+    this.getRedDotNum();
   },
 
   // 查看所有项目
@@ -184,13 +184,13 @@ Page({
    */
   onShow: function () {
     var that = this;
-    if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
+    if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
       this.setData({
         projectName: app.globalData.pName,
         notShowLimit: true
       });
       that.getRedDotNum();
-    }else{
+    } else {
       that.setData({
         notShowLimit: false
       })

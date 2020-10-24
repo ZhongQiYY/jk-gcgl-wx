@@ -1,23 +1,44 @@
-var base64 = require("../../dist/example/images/base64");
+// var base64 = require("../../dist/example/images/base64");
 var auth = require("../../utils/getAuthInfo");
 var app = getApp();
 var basePath = app.globalData.basePath;
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
+ 
+
   data: {
-    buildArray: ['--请选择--', '科技城', '满园', '西城', '综保区', '中恒工业', '中恒商业', '磊昇', '工建'],
-    categoryArray: ['--请选择--', '返迁棚改', '工业厂房', '商业地产', '文教体卫', '公园绿化', '市政桥梁'],
+    buildArray: [
+      {text:'全部建设单位', value:'全部建设单位'},
+      {text:'科技城', value:'科技城'},
+      {text:'满园', value:'满园'},
+      {text:'西城', value:'西城'},
+      {text:'综保区', value:'综保区'},
+      {text:'中恒工业', value:'中恒工业'},
+      {text:'中恒商业', value:'中恒商业'},
+      {text:'磊昇', value:'磊昇'},
+      {text:'工建', value:'工建'}
+    ],
+    categoryArray: [
+      {text:'全部类别', value:'全部类别'},
+      {text:'返迁棚改', value:'1'},
+      {text:'工业厂房', value:'2'},
+      {text:'商业地产', value:'3'},
+      {text:'文教体卫', value:'4'},
+      {text:'公园绿化', value:'5'},
+      {text:'市政桥梁', value:'6'}
+    ],
+    buildValue: '全部建设单位',
+    categoryValue: '全部类别',
     rootPath: app.globalData.imageRootPath,
-    buildIndex: 0,
-    categoryIndex: 0,
-    projectList: [],
-    search: "search",
+    projectList: [],//项目列表信息
     loadingHidden: false,
-    isNotBuildUnit: true,//
-    notShowLimit: false, //
+    imageSize:{width: '260rpx',height: '160rpx'},//图片宽高
+    iconSize: '50rpx',//图标大小
+    isBuildUnit: true,//是否是建设单位
+    notShowLimit: false, //是否展示无权限遮罩页
     errorInfo: true, //展示隐藏错误提示
-    dataHidden: true, //上滑触底显示数据加载钟
+    dataHidden: true, //上滑触底显示数据加载中
     dataHidden_last: true, //项目全部加载出来后显示没有更多
     haveNoData: false, //是否还有项目没有加载完
 
@@ -31,21 +52,49 @@ Page({
     proColor: "#09BB07", //进度条的颜色
   },
 
-  // 点击图片触发
-  toTableData: function(e){
+  //为全局变量，项目名、项目类别、项目id赋值
+  setProjectNameCategoryId:function(e){
     app.globalData.projectId = e.currentTarget.dataset.id;
     app.globalData.categoryType = e.currentTarget.dataset.categorytype;
     app.globalData.pName = e.currentTarget.dataset.text
-    wx.switchTab({
-      url: "/pages/tableData/tableData"
+  },
+
+  // 跳转安全检查
+  gotoAqjc:function(e){
+    var that = this;
+    that.setProjectNameCategoryId(e);
+
+  },
+  // 跳转质量监控
+  gotoZljc:function(e){
+    var that = this;
+    that.setProjectNameCategoryId(e);
+  },
+  // 跳转签证审批
+  gotoQzsp:function(e){
+    var that = this;
+    that.setProjectNameCategoryId(e);
+  },
+  // 跳转督办事项
+  gotoDbsx:function(e){
+    var that = this;
+    that.setProjectNameCategoryId(e);
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/dbsx/dbsx',
     })
   },
+  // 跳转提醒事项
+  gotoTxsx:function(e){
+    var that = this;
+    that.setProjectNameCategoryId(e);
+  },
+
 
   // 选择建设单位
   bindBuildChange: function (e) {
     var that = this;
     this.setData({
-      buildIndex: e.detail.value,
+      buildValue: e.detail,
       haveNoData: false,
       pageNumber: 1
     });
@@ -53,8 +102,8 @@ Page({
       url: basePath + "/api/project/list", //请求路径
       method: 'post',
       data: {
-        unitName: this.data.buildArray[e.detail.value],
-        categoryId: this.data.categoryIndex,
+        unitName: that.data.buildValue,
+        categoryId: that.data.categoryValue,
         pageNumber: that.data.pageNumber,
         pageLimit: that.data.pageLimit
       },
@@ -87,7 +136,7 @@ Page({
   bindCategoryChange: function (e) {
     var that = this;
     this.setData({
-      categoryIndex: e.detail.value,
+      categoryValue: e.detail,
       haveNoData: false,
       pageNumber: 1
     });
@@ -95,8 +144,8 @@ Page({
       url: basePath + "/api/project/list", //请求路径
       method: 'post',
       data: {
-        unitName: this.data.buildArray[this.data.buildIndex],
-        categoryId: this.data.categoryIndex,
+        unitName: this.data.buildValue,
+        categoryId: this.data.categoryValue,
         pageNumber: that.data.pageNumber,
         pageLimit: that.data.pageLimit
       },
@@ -160,8 +209,8 @@ Page({
           url: basePath + "/api/project/list", //请求路径
           method: 'post',
           data: {
-            unitName: that.data.buildArray[that.data.buildIndex],
-            categoryId: that.data.categoryIndex,
+            unitName: that.data.buildValue,
+            categoryId: that.data.categoryValue,
             pageNumber: that.data.pageNumber,
             pageLimit: that.data.pageLimit
           },
@@ -240,8 +289,8 @@ Page({
             url: basePath + "/api/project/list", //请求路径
             method: 'post',
             data: {
-              unitName: that.data.buildArray[that.data.buildIndex],
-              categoryId: that.data.categoryIndex,
+              unitName: that.data.buildValue,
+              categoryId: that.data.categoryValue,
               pageNumber: that.data.pageNumber,
               pageLimit: that.data.pageLimit
             },
@@ -250,8 +299,8 @@ Page({
               'thirdSession': app.globalData.thirdSession
             },
             success(res) {
+              app.globalData.clickLoginBtn = false;
               that.setData({
-                // projectList: that.data.projectList.concat(res.data),
                 projectList: res.data,
                 pageNumber: that.data.pageNumber+1,
                 loadingHidden: true,
@@ -261,6 +310,7 @@ Page({
               
             },
             fail() {
+              app.globalData.clickLoginBtn = false;
               that.setData({
                 loadingHidden: false,
                 errorInfo: true
@@ -294,19 +344,23 @@ Page({
           errorInfo: false,
         })
       }
-    );
-
-    this.setData({
-      icon: base64.icon20
-    });   
+    ); 
   },
 
   onShow: function () {
     var that = this;
     if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
-      that.setData({
-        notShowLimit: true
-      })
+      //在微信未登录，点击了微信登录后再次回来会触发此函数
+      if(app.globalData.clickLoginBtn){
+    
+        that.setData({
+          notShowLimit: true,
+          projectList: [],
+          loadingHidden: false
+        });
+
+        that.onLoad();
+      }
     }else{
       that.setData({
         notShowLimit: false

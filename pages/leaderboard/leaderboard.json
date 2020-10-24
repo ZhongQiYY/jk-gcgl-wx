@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "limitPage": "/components/limitPage/limitPage"
+    "limitPage": "/components/limitPage/limitPage",
+    "van-overlay": "@vant/weapp/overlay/index"
   },
   "navigationBarTitleText": "排行榜",
   "enablePullDownRefresh": true

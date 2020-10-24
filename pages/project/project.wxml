@@ -1,107 +1,117 @@
 <!-- 无权限展示页 -->
 <limitPage notShowLimit="{{notShowLimit}}"></limitPage>
 
+<!-- 加载中提示 -->
+<myMask notShowMask="{{loadingHidden}}"></myMask>
+<loading hidden="{{loadingHidden}}">加载中...</loading>
+
 <view wx:if="{{notShowLimit}}">
-	<myMask notShowMask="{{loadingHidden}}"></myMask>
-	<loading style="z-index: 9900;" hidden="{{loadingHidden}}">
-		加载中...
-	</loading>
 
 	<!-- 筛选区域 -->
-	<view class="{{search}}">
-		<view class="weui-flex">
+	<van-dropdown-menu class="search">
+		<van-dropdown-item bind:change="bindBuildChange" wx:if="{{!isBuildUnit}}" value="{{buildValue}}" options="{{buildArray}}" />
+		<van-dropdown-item bind:change="bindCategoryChange" value="{{categoryValue}}" options="{{categoryArray}}" />
+	</van-dropdown-menu>
 
-			<block wx:if="{{!isNotBuildUnit}}">
-				<view class="weui-flex__item">
-					<picker bindchange="bindBuildChange" value="{{buildIndex}}" range="{{buildArray}}">
-						<view class="search-type">
-							<image src="/images/sgdw.png"></image>
-							<text>{{buildArray[buildIndex]}}</text>
-						</view>
-					</picker>
-				</view>
-
-				<!-- 画竖线 -->
-				<view class="middle"></view>
-			</block>
-
-			<view class="weui-flex__item">
-				<picker bindchange="bindCategoryChange" value="{{categoryIndex}}" range="{{categoryArray}}">
-					<view class="search-type">
-						<image src="/images/xmlb.png"></image>
-						<text>{{categoryArray[categoryIndex]}}</text>
-					</view>
-				</picker>
-			</view>
-		</view>
-
-	</view>
-
-	<view class="page project-list-info" data-weui-theme="{{theme}}">
+	<view style="padding-top:100rpx">
+		<!-- 错误信息提示 -->
 		<view style="text-align:center" hidden="{{errorInfo}}">
-			错误，请下拉刷新重试
+				错误，请下拉刷新重试
 		</view>
-		
+			
 		<!-- 项目列表页 -->
-		<view class="page__bd">
-			<view class="weui-cells">
-				<view data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" bindtap="showProjectInfo" class="weui-cell weui-cell_example " wx:for="{{projectList}}" wx:key="index" style="height: 200rpx;" class="weui-cell weui-cell_active">
-					<view style="position: absolute; top: 20rpx;display:flex;">
+		<block wx:for="{{projectList}}" wx:key="index">
 
-						<!-- 图片区域 -->
-						<view catchtap='toTableData' hover-stop-propagation='true' data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="weui-cell__hd" style="position: relative; margin-right: 10px;">
-							<image wx:if="{{item.effectPicture.length > 0}}" src="{{rootPath}}{{item.effectPicture}}" style="width: 200rpx;height: 130rpx;display: block;"></image>
-							<view wx:if="{{item.effectPicture.length <= 0}}" style="margin:auto;width: 200rpx;height: 130rpx;">未上传图片</view>
-							<text wx:if="{{item.problemPlanNum > 0}}" class="weui-badge" style="position: absolute; top: -0.4em; right: -0.4em;">{{item.problemPlanNum}}</text>
-						</view>
+				<!-- 悬浮块展示 -->
+				<view class="suspension-card-external">
+					<view class="suspension-card-internal">
 
-						<!-- 项目简易信息区 -->
-						<view class="weui-cell__bd">
-							<view>{{item.projectName}}</view>
-							<view style="display: flex;">
-								<view style="font-size: 13px; color: #888;">{{item.unitName}}</view>
-								<view style="width: 10rpx"></view>
-								<view style="font-size: 13px; color: #888;">{{item.ownerProjectLeader}}</view>
-								<view style="width: 10rpx"></view>
-								<view style="font-size: 13px; color: #888;">{{item.proMainName}}</view>
-								<view style="width: 10rpx"></view>
-							</view>
-
-						</view>
-
-						<!-- 项目进度区域 -->
-						<view style="position: absolute; top: 125rpx;width: 700rpx">
-							<scroll-view scroll-x="true" style="height:100rpx;white-space:nowrap;width:100%">
-
-								<block wx:for-item="item1" wx:for-index="index1" wx:for="{{item.infoList}}" wx:key="index1">
-									<view style="display:inline-block">
-										<view style="display:flex">
-											<view class="progress-box" style="width:99.5rpx">
-												<view style="font-size: {{desProgress}}">{{item1.proTermName}}</view>
-												<progress percent="{{item1.proPercent}}" color="{{item1.proColor}}" active duration="{{proDuration}}" stroke-width="{{proWidth}}" />
-											</view>
-											<view class="proMiddle"></view>
-										</view>
+						<!-- 图片、项目名、公司名、人名、进度项名、按钮 -->
+						<van-card>
+									<!-- 项目名称 -->
+									<view slot="title" class="title-class" bindtap="showProjectInfo" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+										{{item.projectName}}
 									</view>
-								</block>
+									<!-- 公司名称，负责人名称 -->
+									<view slot="desc" class="desc-class" bindtap="showProjectInfo" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+										{{item.unitName}}  {{item.ownerProjectLeader}}
+									</view>
+		
+									<!-- 进度项名称 -->
+									<view slot="tags" class="tags-class">		
+										<van-tag type="primary" wx:if="{{item.proMainName.length > 0}}">{{item.proMainName}}</van-tag>
+									</view>
+
+									<!-- 红点提示 -->
+									<view slot="tag" class="tag-class">
+										
+									</view>
+
+									<!-- 图片 -->
+									<view slot="thumb" bindtap="showProjectInfo" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+										<van-image
+											height="{{imageSize.height}}"
+											width="{{imageSize.width}}"
+											lazy-load 
+											use-error-slot 
+											use-loading-slot 
+											show-menu-by-longpress src="{{rootPath}}{{item.effectPicture}}">
+											<van-loading slot="loading" type="spinner" size="20" vertical />
+											<text slot="error">未找到图片</text>
+										</van-image>
+									</view>
+
+									<!-- 按钮 -->
+									<view slot="footer">
+										<van-icon info="{{}}" bind:click="gotoAqjc" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/aqjc.png" />
+										<van-icon info="{{}}" bind:click="gotoZljc" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/zljc.png" />
+										<van-icon info="{{}}" bind:click="gotoQzsp" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/qzsp.png" />
+										<van-icon info="{{}}" bind:click="gotoDbsx" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/dbsx.png" />
+										<van-icon info="{{}}" bind:click="gotoTxsx" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/txsx.png" />
+        					</view>
+
+						</van-card>
+					
+						<!-- 进度条区域 -->
+						<view class="progress-frame">
+							<scroll-view scroll-x="true" class="progress-scroll">
+
+											<block wx:for-item="item1" wx:for-index="index1" wx:for="{{item.infoList}}" wx:key="index1">
+												<view style="display:inline-block">
+													<view style="display:flex">
+
+														<!-- 单个进度条 -->
+														<view class="single-progress">
+															<view style="font-size: {{desProgress}}">{{item1.proTermName}}</view>
+															<!-- <progress percent="{{item1.proPercent}}" color="{{item1.proColor}}" active
+																duration="{{proDuration}}" stroke-width="{{proWidth}}" > -->
+															<van-progress color="{{item1.proColor}}" percentage="{{item1.proPercent}}" 
+															show-pivot="{{item1.proPercent<60?false:true}}"
+															stroke-width="{{proWidth}}" />
+														</view>
+														<!-- 进度条之间的分隔线 -->
+														<view class="proMiddle"></view>
+
+													</view>
+												</view>
+											</block>
 
 							</scroll-view>
 						</view>
 
 					</view>
 				</view>
-			</view>
 
-			<!-- 上拉翻页提示 -->
-			<view>
-				<view class='data-loading' hidden='{{dataHidden}}'>
-					数据加载中...
-				</view>
-				<view class='data-loading' hidden='{{dataHidden_last}}'>
-					没有更多了...
-				</view>
-			</view>
+		</block>
 
+		<!-- 上拉翻页提示 -->
+		<view>
+					<view class='data-loading' hidden='{{dataHidden}}'>
+						数据加载中...
+					</view>
+					<view class='data-loading' hidden='{{dataHidden_last}}'>
+						没有更多了...
+					</view>
 		</view>
 	</view>
 </view>

@@ -14,6 +14,7 @@ globalData: {
   pName: "",
   projectId: 0,//全局项目id
   pId: 0,
+  clickLoginBtn: false,//点击了微信登录后会修改一次值
   categoryType: 0,//全局项目类型
   projectNameList:[],//用于搜索框搜索项目
   projectBaseInfo: {},//用于数据统计内展示统计信息

@@ -25,6 +25,9 @@ Page({
           userInfo: app.globalData.userInfo,
           hasUserInfo: app.globalData.hasUserInfo
         });
+        if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
+          app.globalData.clickLoginBtn = true;
+        }
         if (page.data.userInfo.name == null ||
            page.data.userInfo.name == ''||
            page.data.userInfo.company == null || 

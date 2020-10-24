@@ -1,9 +1,6 @@
+<import src="/template/commitRecord/commitRecord.wxml" />
 
-<controlSearch 
-projectNames="{{projectNames}}"
-bind:inputTyping="inputTyping" 
-bind:selectProject="selectProject" 
->
+<controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
 </controlSearch>
 
 
@@ -15,13 +12,16 @@ bind:selectProject="selectProject"
 <view class="weui-form__text-area">
 	<h2 class="weui-form__title">{{projectName}}</h2>
 </view>
+
+
 <!-- 存在问题 -->
 <view class="weui-form__control-area">
 	<view class="weui-cells__group weui-cells__group_form">
 		<view class="weui-cells__title">存在问题</view>
 		<view class="weui-cells weui-cells_form">
 
-			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述所存在的问题" value="{{currentProblem}}" maxlength="{{maxProblemLength}}" bindinput="inputProblem"></textarea>
+			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述所存在的问题"
+				value="{{currentProblem}}" maxlength="{{maxProblemLength}}" bindinput="inputProblem"></textarea>
 			<view class="weui-textarea-counter"><text>{{currentProblem.length}}</text>/{{maxProblemLength}}</view>
 
 		</view>
@@ -33,15 +33,16 @@ bind:selectProject="selectProject"
 		<view class="weui-cells__title">下一步工作计划</view>
 		<view class="weui-cells weui-cells_form">
 
-			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述下一步工作计划" value="{{currentPlan}}" maxlength="{{maxPlanLength}}" bindinput="inputPlan"></textarea>
+			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述下一步工作计划"
+				value="{{currentPlan}}" maxlength="{{maxPlanLength}}" bindinput="inputPlan"></textarea>
 			<view class="weui-textarea-counter"><text>{{currentPlan.length}}</text>/{{maxPlanLength}}</view>
 
 		</view>
 	</view>
 </view>
 
-<view style="height:250rpx">
-	<button hover-class="submit-hover" bindtap="submitProblemPlan" style="background-color:#0089dd" class="weui-btn weui-btn_primary">提交</button>
-	<!-- 提交记录 -->
-	<view hover-class="subHover" bindtap="submitRecord" style="margin: 7% 157px;color:#0089dd"><text>提交记录</text></view>
-</view>
+<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd"
+	class="weui-btn weui-btn_primary">提交</button>
+
+<!-- 提交记录 -->
+<template is="commitRecord"></template>

@@ -37,7 +37,7 @@
 				<view class="weui-grid__label">造价监控</view>
 			</a>
 
-			<a class="weui-grid" bindtap="toDcdb">
+			<a class="weui-grid" bindtap="toAqjc">
 				<view class="weui-grid__icon">
 					<image src="/images/aqjc.png" alt></image>
 				</view>
@@ -45,7 +45,7 @@
 				<text class="weui-badge" style="position: absolute; top: -0.4em; right: 0;">1</text>
 			</a>
 
-			<a class="weui-grid" bindtap="toDcdb">
+			<a class="weui-grid" bindtap="">
 				<view class="weui-grid__icon">
 					<image src="/images/zljc.png" alt></image>
 				</view>
@@ -63,7 +63,7 @@
 
 		<!-- <view class="weui-grids" wx:if="{{userInfo.role != '普通职员'}}"> -->
 		<view class="weui-grids">
-			<a class="weui-grid" bindtap="toDb">
+			<a class="weui-grid" bindtap="toDcdb">
 				<view class="weui-grid__icon">
 					<image src="/images/dbsx.png" alt></image>
 				</view>
