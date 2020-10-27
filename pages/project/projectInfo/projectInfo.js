@@ -24,7 +24,7 @@ Page({
 
   //跳转到数据表界面
   toTableData: function () {
-    app.globalData.pName = this.data.projectName;
+    app.globalData.projectName = this.data.projectName;
     wx.switchTab({
       url: '/pages/tableData/tableData'
     });
@@ -105,7 +105,7 @@ Page({
     var that = this;
     wx.stopPullDownRefresh();
     that.setData({
-      projectName: app.globalData.pName,
+      projectName: app.globalData.projectName,
       categoryType: app.globalData.categoryType,
       loadingHidden: false
     })
@@ -126,7 +126,6 @@ Page({
           loadingHidden: true,
           imagePath: that.data.rootPath + res.data.effectPicture   
         });
-        console.log(that.data.imagePath);
       }
     });
   },

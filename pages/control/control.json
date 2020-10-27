@@ -1,5 +1,8 @@
 {
   "usingComponents": {
-    "limitPage": "/components/limitPage/limitPage"
+    "controlSearch": "/components/search/controlSearch/controlSearch",
+    "limitPage": "/components/limitPage/limitPage",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index"
   }
 }

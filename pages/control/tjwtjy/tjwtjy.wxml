@@ -1,48 +1,85 @@
 <import src="/template/commitRecord/commitRecord.wxml" />
+<van-toast id="van-toast" />
 
-<controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
-</controlSearch>
+<view style="padding-bottom: 100rpx">
 
+	<!-- 提交问题与工作计划区域 -->
+	<view wx:if="{{showOther}}">
+		
+		<view style="width:100%;position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);">
+			<!-- 当前项目名称 -->
+			<view style="text-align:center;width:100%;color:#0089dd;margin-bottom:40rpx">{{projectName}}</view>
+			<!-- 提交问题计划区域 -->
+				<van-field
+					required
+					value="{{currentProblem}}"
+					label="存在问题"
+					type="textarea"
+					placeholder="请输入存在问题"
+					autosize
+					show-word-limit
+					maxlength="{{maxProblemLength}}"
+					bind:input="inputProblem"
+					border="{{true}}"
+				/>
+				
+				<van-field
+					value="{{currentPlan}}"
+					label="下一步工作计划"
+					type="textarea"
+					placeholder="请输入下一步工作计划"
+					autosize
+					required
+					show-word-limit
+					maxlength="{{maxPlanLength}}"
+					bind:input="{{inputPlan}}"
+					border="{{true}}"
+				/>
 
-<!-- 模糊横线 -->
-<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
-
-<!-- 提交问题计划区域 -->
-<!-- 项目名称显示 -->
-<view class="weui-form__text-area">
-	<h2 class="weui-form__title">{{projectName}}</h2>
-</view>
-
-
-<!-- 存在问题 -->
-<view class="weui-form__control-area">
-	<view class="weui-cells__group weui-cells__group_form">
-		<view class="weui-cells__title">存在问题</view>
-		<view class="weui-cells weui-cells_form">
-
-			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述所存在的问题"
-				value="{{currentProblem}}" maxlength="{{maxProblemLength}}" bindinput="inputProblem"></textarea>
-			<view class="weui-textarea-counter"><text>{{currentProblem.length}}</text>/{{maxProblemLength}}</view>
-
+			<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
+				class="weui-btn weui-btn_primary">提交</button>
+			<!-- 提交记录 -->
+			<template is="commitRecord"></template>
 		</view>
+
 	</view>
-</view>
-<!-- 下一步工作计划 -->
-<view class="weui-form__control-area">
-	<view class="weui-cells__group weui-cells__group_form">
-		<view class="weui-cells__title">下一步工作计划</view>
-		<view class="weui-cells weui-cells_form">
 
-			<textarea style="height:500rpx;margin: 0 25rpx 0 25rpx;" class="weui-textarea" placeholder="请描述下一步工作计划"
-				value="{{currentPlan}}" maxlength="{{maxPlanLength}}" bindinput="inputPlan"></textarea>
-			<view class="weui-textarea-counter"><text>{{currentPlan.length}}</text>/{{maxPlanLength}}</view>
 
-		</view>
+	<!-- 查看提交信息区域 -->
+	<view wx:if="{{!showOther}}">
+		<van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
+
+			<block wx:for="{{problemPlanList}}" wx:key="index">
+				<van-collapse-item name="{{index}}" value="{{item.unitName}}">
+
+					<view slot="title">
+						<view class="van-cell-text">{{item.projectName}}</view>
+						<van-tag type="danger">{{item.timeNameList.length}}</van-tag>
+					</view>
+
+					<van-cell-group >
+						<block wx:for="{{item.timeNameList}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
+							<van-cell 
+								title="{{item1.submitTime}}"
+								value="{{item1.commitName}}" 
+								border="{{ true }}" 
+								is-link 
+								bind:click=""
+								url="/pages/control/tjwtjy/wtjyDetail/wtjyDetail">
+							</van-cell>
+						</block>
+					</van-cell-group>
+
+				</van-collapse-item>
+			</block>
+
+		</van-collapse>
 	</view>
+
 </view>
 
-<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd"
-	class="weui-btn weui-btn_primary">提交</button>
-
-<!-- 提交记录 -->
-<template is="commitRecord"></template>
+<!-- 底部菜单 -->
+<van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
+  <van-tabbar-item icon="records">提交信息</van-tabbar-item>
+  <van-tabbar-item icon="chat-o" info="40">查看信息</van-tabbar-item>
+</van-tabbar>

@@ -162,7 +162,7 @@ Page({
   //跳转到数据表界面
   toTableData: function (e) {
     console.log(e.currentTarget.dataset)
-    app.globalData.pName = e.currentTarget.dataset.text;
+    app.globalData.projectName = e.currentTarget.dataset.text;
     app.globalData.projectId = e.currentTarget.dataset.id;
     app.globalData.categoryType = e.currentTarget.dataset.categorytype;
     wx.switchTab({

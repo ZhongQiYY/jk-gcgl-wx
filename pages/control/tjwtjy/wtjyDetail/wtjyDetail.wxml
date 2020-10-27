@@ -1,0 +1,49 @@
+<view>
+  <van-panel title="标准厂房" desc="西城    张三    2020-10-28" use-footer-slot>
+
+			<van-cell-group >
+        <van-field
+        readonly
+					value="建筑行业应用范围及其广阔，囊括了一个城市的基础建设、包括建筑、商务楼盘、住宅、桥梁以及公路建设等均在建筑范畴之内。建筑工程项目管理是由建筑企业对建筑工程项目进行的管理。为了保障建筑工程项目的顺利实施，施工企业要以建筑工程项目管理为中心，以安全生产、提高工程质量为重点，保证工程进度，提高工程质量，本文简述了建筑工程项目管理的主要特征，对建筑工程项目管理存在的问题及其解决对策进行了论述分析。"
+					label="存在问题"
+					type="textarea"
+					placeholder="请输入存在问题"
+					autosize
+					show-word-limit
+					maxlength="{{maxProblemLength}}"
+					bind:input="inputProblem"
+					border="{{true}}"
+				/>
+				
+        <van-field
+        readonly
+					value="工程项目管理，属新兴的项目管理学中的一个重要领域，也是建筑行业重点研究发展的一门管理科学。众所周知，起源于欧美发达国家的项目管理学近年来已成为世界性的热门学科，著名的《财富》杂志近期断言：“项目管理在未来10年会变得非常重要，企业未来取决于项目管理，项目管理是未来的风暴。”"
+					label="下一步工作计划"
+					type="textarea"
+					placeholder="请输入下一步工作计划"
+					autosize
+					show-word-limit
+					maxlength="{{maxPlanLength}}"
+					bind:input="{{inputPlan}}"
+					border="{{true}}"
+        />
+        <van-field
+					value=""
+					label="批示"
+					type="textarea"
+					placeholder="请输入"
+					autosize
+					show-word-limit
+					maxlength="{{maxPlanLength}}"
+					bind:input="{{inputPlan}}"
+					border="{{true}}"
+				/>
+      </van-cell-group>
+      
+
+    <view slot="footer">
+      <van-button color="#0089dd" size="small">完成</van-button>
+    </view>
+  </van-panel>
+</view>
+

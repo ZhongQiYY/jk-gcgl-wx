@@ -11,11 +11,15 @@ globalData: {
   // basePath: "https://test.xizinet.com/jk-gcgl",
   imageRootPath: "https://test.xizinet.com",
   // imageRootPath: "https://telecom1.xizinet.com:4433",
-  pName: "",
+  projectName: "",//全局项目名称
   projectId: 0,//全局项目id
-  pId: 0,
-  clickLoginBtn: false,//点击了微信登录后会修改一次值
   categoryType: 0,//全局项目类型
+
+  pId: 0,//全局项目id --操作台使用
+  pName: "",//全局项目名称 --操作台使用
+  cType: 0,//全局项目类型 --操作台使用
+  
+  clickLoginBtn: false,//点击了微信登录后会修改一次值
   projectNameList:[],//用于搜索框搜索项目
   projectBaseInfo: {},//用于数据统计内展示统计信息
   userInfo: {},

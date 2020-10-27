@@ -26,7 +26,7 @@
 				<view class="suspension-card-external">
 					<view class="suspension-card-internal">
 
-						<!-- 图片、项目名、公司名、人名、进度项名、按钮 -->
+						<!-- 项目卡片区域，包括图片、项目名、公司名、人名、进度项名、按钮 -->
 						<van-card>
 									<!-- 项目名称 -->
 									<view slot="title" class="title-class" bindtap="showProjectInfo" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
@@ -63,14 +63,19 @@
 
 									<!-- 按钮 -->
 									<view slot="footer">
-										<van-icon info="{{}}" bind:click="gotoAqjc" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/aqjc.png" />
-										<van-icon info="{{}}" bind:click="gotoZljc" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/zljc.png" />
-										<van-icon info="{{}}" bind:click="gotoQzsp" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/qzsp.png" />
-										<van-icon info="{{}}" bind:click="gotoDbsx" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/dbsx.png" />
-										<van-icon info="{{}}" bind:click="gotoTxsx" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" class="van-icon-tip" size="{{iconSize}}" name="/images/txsx.png" />
+										<van-grid icon-size="20px" square clickable column-num="5" border="{{false}}">
+											<van-grid-item badge="{{}}" bind:click="gotoAqjc" icon="/images/aqjc.png" text="安全检查" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
+											<van-grid-item badge="{{}}" bind:click="gotoZljc" icon="/images/zljc.png" text="质量检查" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
+											<van-grid-item badge="{{}}" bind:click="gotoQzsp" icon="/images/qzsp.png" text="签证审批" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
+											<van-grid-item badge="{{}}" bind:click="gotoDbsx" icon="/images/dbsx.png" text="督办事项" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
+											<van-grid-item badge="{{}}" bind:click="gotoTxsx" icon="/images/txsx.png" text="提醒事项" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
+										</van-grid>
         					</view>
 
 						</van-card>
+
+						<!-- 模糊横线 -->
+						<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
 					
 						<!-- 进度条区域 -->
 						<view class="progress-frame">

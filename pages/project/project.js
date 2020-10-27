@@ -56,7 +56,7 @@ Page({
   setProjectNameCategoryId:function(e){
     app.globalData.projectId = e.currentTarget.dataset.id;
     app.globalData.categoryType = e.currentTarget.dataset.categorytype;
-    app.globalData.pName = e.currentTarget.dataset.text
+    app.globalData.projectName = e.currentTarget.dataset.text;
   },
 
   // 跳转安全检查
@@ -179,7 +179,7 @@ Page({
   showProjectInfo: function (e) {
     app.globalData.projectId = e.currentTarget.dataset.id;
     app.globalData.categoryType = e.currentTarget.dataset.categorytype;
-    app.globalData.pName = e.currentTarget.dataset.text
+    app.globalData.projectName = e.currentTarget.dataset.text
     wx.navigateTo({
       url: '/pages/project/projectInfo/projectInfo',
     })

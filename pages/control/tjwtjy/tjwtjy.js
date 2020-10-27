@@ -2,70 +2,101 @@
 const app = getApp();
 var basePath = app.globalData.basePath;
 var dateTime = require('../../../utils/getDateTime.js');
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    maxProblemLength: 500,
-    currentProblem: "",
-    maxPlanLength: 500,
-    currentPlan: "",
-    projectNames: [], //@@
-    projectId: "", //@@
-    categoryType: "", //@@
-    projectName: "" //@@
+    maxProblemLength: 500,//最大问题提交长度
+    maxPlanLength: 500,//最大计划提交长度
+    currentProblem: "",//当前输入的问题文字
+    currentPlan: "",//当前输入的计划文字
+    projectName:"",//项目名称
+    
+    active: 0,//tabbar索引
+    showOther: true,
+    activeNames: ['1'],
+    problemPlanList:[
+      {
+        unitName: "综保区", projectName: "标准厂房三期", timeNameList: [
+          {submitTime: "2020-09-27", commitName: "钟祺"},
+          {submitTime: "2020-08-27", commitName: "刘杭"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+          {submitTime: "2020-09-27", commitName: "缪隽峰"},
+          {submitTime: "2020-12-27", commitName: "温龙飞"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-12-27", commitName: "温龙飞"},
+        ]
+      },
+      {
+        unitName: "满园", projectName: "水韵康居四期项目", timeNameList: [
+          {submitTime: "2020-09-27", commitName: "钟祺"},
+          {submitTime: "2020-08-27", commitName: "刘杭"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+          {submitTime: "2020-09-27", commitName: "缪隽峰"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-12-27", commitName: "温龙飞"},
+        ]
+      },
+      {
+        unitName: "满园", projectName: "香江棚户区改造安居小区", timeNameList: [
+          {submitTime: "2020-11-27", commitName: "高镪"},
+          {submitTime: "2020-09-27", commitName: "缪隽峰"},
+          {submitTime: "2020-12-27", commitName: "温龙飞"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-12-27", commitName: "温龙飞"},
+        ]
+      },
+      {
+        unitName: "西城", projectName: "工业路（客家大道-赣丰路）", timeNameList: [
+          {submitTime: "2020-09-27", commitName: "钟祺"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+        ]
+      },
+      {
+        unitName: "中恒工业", projectName: "金凤智谷一期项目", timeNameList: [
+          {submitTime: "2020-09-27", commitName: "钟祺"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+        ]
+      },
+      {
+        unitName: "中恒商业", projectName: "蟠龙返乡创业基地项目西地块", timeNameList: [
+          {submitTime: "2020-09-27", commitName: "钟祺"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+        ]
+      },
+      {
+        unitName: "磊昇", projectName: "赣州经济技术开发区第一中学新建工程", timeNameList: [
+          {submitTime: "2020-09-27", commitName: "钟祺"},
+          {submitTime: "2020-06-27", commitName: "吴忠喜"},
+          {submitTime: "2020-11-27", commitName: "高镪"},
+        ]
+      },
+    ],
   },
   //输入问题建议时
   inputProblem: function (e) {
-    if (e.detail.value.length > this.data.maxProblemLength) return;
+    if (e.detail.length > this.data.maxProblemLength) return;
     this.setData({
-      currentProblem: e.detail.value
+      currentProblem: e.detail
     })
   },
   //输入下一步工作计划时
   inputPlan: function (e) {
-    if (e.detail.value.length > this.data.maxPlanLength) return;
+    if (e.detail.length > this.data.maxPlanLength) return;
     this.setData({
-      currentPlan: e.detail.value
+      currentPlan: e.detail
     })
   },
-
-  //搜索框组件返回的方法 @@
-  inputTyping: function (e) {
-    var inputVal = e.detail.inputVal;
-    var projectNames1 = [];
-    if (inputVal.length > 0) {
-      for (const nl of app.globalData.projectNameList) {
-        var projectName = nl.projectName;
-        if (projectName.indexOf(inputVal) != -1) {
-          projectNames1.push(nl);
-        }
-      }
-    }
-    this.setData({
-      projectNames: projectNames1
-    })
-  },
-  //搜索框组件返回的方法 @@
-  selectProject: function (e) {
-    this.setData({
-      projectId: e.detail.projectId,
-      categoryType: e.detail.categoryType,
-      projectName: e.detail.projectName
-    });
-  },
-
-  // 提交记录
-  submitRecord: function(e){
-
-    wx.navigateTo({
-      url: '/pages/control/tjwtjy/commitRecord/commitRecord',
-    })
-    
-  },
-
   //提交问题和计划
   submitProblemPlan: function () {
     var that = this;
@@ -74,24 +105,12 @@ Page({
     var month = new Date().getMonth() + 1;//获取月份
     var submitTime = dateTime.getymdhms(new Date(), '-', ':');
 
-    if(that.data.projectId == ""){
-      wx.showToast({
-        title: '请选择项目',
-        icon: 'none',
-        duration: 1500
-      })
+    if(app.globalData.pId == "" || app.globalData.pId == 0){
+      Toast.fail('请选择项目');
     }else if(that.data.currentProblem == ""){
-      wx.showToast({
-        title: '请描述存在的问题',
-        icon: 'none',
-        duration: 1500
-      })
+      Toast.fail('请描述存在的问题');
     }else if(that.data.currentPlan == ""){
-      wx.showToast({
-        title: '请描述下一步工作计划',
-        icon: 'none',
-        duration: 1500
-      })
+      Toast.fail('请描述下一步工作计划');
     }else{
       wx.request({
         url: basePath + "/api/control/submitProblemPlan", //请求路径
@@ -103,7 +122,9 @@ Page({
           nextPlan: that.data.currentPlan,
           submitYear: year,
           submitMonth: month,
-          submitTime: submitTime
+          submitTime: submitTime,
+          projectName: that.data.projectName,
+          unitName: app.globalData.userInfo.company
         },
         header: {
           'content-type': 'application/json', // 默认值
@@ -111,86 +132,53 @@ Page({
         },
         success(res) {
           if (res.data === "success") {
-            wx.showToast({
-              title: '提交成功',
-              icon: 'success',
-              duration: 1500
-            })
+            Toast.success('提交成功');
             that.setData({
               currentProblem: "",
               currentPlan: "",
-              projectId: "",
-              categoryType: "",
-              projectName: ""
             })
           }else{
-            wx.showToast({
-              title: '提交失败，服务器错误',
-              icon: 'none',
-              duration: 2000
-            })
+            Toast.fail('提交失败，服务器错误');
           }
         }
       });
     }
-    
   },
 
 
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  tabbarChange: function(e){
+    var that = this;
+    that.setData({
+      active: e.detail,
+      showOther: !that.data.showOther
+    })
+  },
+  collapseChange: function(e){
+    this.setData({
+      activeNames: e.detail,
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 提交记录
+  submitRecord: function(e){
+    wx.navigateTo({
+      url: '/pages/control/tjwtjy/commitRecord/commitRecord',
+    }) 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.setData({
+      projectName: app.globalData.pName
+    })
   },
-
+  
   /**
-   * 生命周期函数--监听页面隐藏
+   * 生命周期函数--监听页面加载
    */
-  onHide: function () {
-
+  onLoad: function (options) {
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

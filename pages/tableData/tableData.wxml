@@ -1,113 +1,33 @@
-<!--pages/tableData/tableData.wxml-->
 <!-- 无权限展示页 -->
 <limitPage notShowLimit="{{notShowLimit}}"></limitPage>
+<!-- 搜索框 -->
+<controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
+</controlSearch>
 
-	<controlSearch 
-	projectNames="{{projectNames}}" 
-	bind:inputTyping="inputTyping" 
-	bind:selectProject="selectProject">
-	</controlSearch>
-	<!-- 模糊横线 -->
-	<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
-
-	<view style="text-align:center;width:100%;color:#0089dd">{{projectName}}</view>
-
-	<!-- 图标功能区域 -->
-	<view class="page" data-weui-theme="{{theme}}" wx:if="{{notShowLimit}}">
-		<view class="weui-grids">
-
-			<a class="weui-grid" bindtap="toPlan">
-				<view class="weui-grid__icon">
-					<image src="/images/ndjh.png" alt></image>
-				</view>
-				<view class="weui-grid__label">年度计划</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toYdxx">
-				<view class="weui-grid__icon">
-					<image src="/images/ydxx.png" alt></image>
-				</view>
-				<view class="weui-grid__label">月度形象</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toZjjk">
-				<view class="weui-grid__icon">
-					<image src="/images/zjjk.png" alt></image>
-				</view>
-				<view class="weui-grid__label">造价监控</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toAqjc">
-				<view class="weui-grid__icon">
-					<image src="/images/aqjc.png" alt></image>
-				</view>
-				<view class="weui-grid__label">安全检查</view>
-				<text class="weui-badge" style="position: absolute; top: -0.4em; right: 0;">1</text>
-			</a>
-
-			<a class="weui-grid" bindtap="">
-				<view class="weui-grid__icon">
-					<image src="/images/zljc.png" alt></image>
-				</view>
-				<view class="weui-grid__label">质量检查</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toSjtj">
-				<view class="weui-grid__icon">
-					<image src="/images/sjtj.png" alt></image>
-				</view>
-				<view class="weui-grid__label">数据统计</view>
-			</a>
-
+<!-- 图标功能区域 -->
+<view wx:if="{{notShowLimit}}">
+	<view class="suspension-card-external">
+		<view class="suspension-card-internal">
+			<!-- 当前项目名称 -->
+			<view style="text-align:center;width:100%;color:#0089dd">{{projectName}}</view>
+			<!-- 模糊横线 -->
+			<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
+			<van-grid square clickable column-num="3" border="{{false}}">
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toNdjh" icon="/images/ndjh.png" text="年度计划" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toYdxx" icon="/images/ydxx.png" text="月度形象" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toZjjk" icon="/images/zjjk.png" text="造价监控" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toAqjc" icon="/images/aqjc.png" text="安全检查" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toZljc" icon="/images/zljc.png" text="质量检查" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toSjtj" icon="/images/sjtj.png" text="数据统计" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toDbsx" icon="/images/dbsx.png" text="督办事项" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toQzsp" icon="/images/qzsp.png" text="签证审批" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toHtgl" icon="/images/htgl.png" text="合同管理" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toTzwj" icon="/images/tzwj2.png" text="图纸文件" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toTptx" icon="/images/tptx.png" text="图片图像" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toTxsx" icon="/images/txsx.png" text="提醒事项" />
+			</van-grid>
 		</view>
-
-		<!-- <view class="weui-grids" wx:if="{{userInfo.role != '普通职员'}}"> -->
-		<view class="weui-grids">
-			<a class="weui-grid" bindtap="toDcdb">
-				<view class="weui-grid__icon">
-					<image src="/images/dbsx.png" alt></image>
-				</view>
-				<view class="weui-grid__label">督办事项</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toFinish">
-				<view class="weui-grid__icon">
-					<image src="/images/qzsp.png" alt></image>
-				</view>
-				<view class="weui-grid__label">签证审批</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toHtgl">
-				<view class="weui-grid__icon">
-					<image src="/images/htgl.png" alt></image>
-				</view>
-				<view class="weui-grid__label">合同管理</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toSwInstruction">
-				<view class="weui-grid__icon">
-					<image src="/images/tzwj2.png" alt></image>
-				</view>
-				<view class="weui-grid__label">图纸文件</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toTptx">
-				<view class="weui-grid__icon">
-					<image src="/images/tptx.png" alt></image>
-				</view>
-				<view class="weui-grid__label">图片图像</view>
-			</a>
-
-			<a class="weui-grid" bindtap="toTxsx">
-				<view class="weui-grid__icon">
-					<image src="/images/txsx.png" alt></image>
-				</view>
-				<view class="weui-grid__label">提醒事项</view>
-				<text wx:if="{{redMap.problemPlanNum > 0}}" class="weui-badge" style="position: absolute; top: -0.4em; right: 0;">{{redMap.problemPlanNum}}</text>
-			</a>
-
-
-		</view>
-		<!-- 清除当前选中的项目信息 -->
-		<button bindtap="viewAll" hover-class="btn-hover" style="background-color:#0089dd" class="weui-btn weui-btn_primary">清除选定项目</button>
 	</view>
+	<!-- 清除当前选中的项目信息 -->
+	<!-- <button bindtap="viewAll" hover-class="clickHover" style="background-color:#0089dd" class="weui-btn weui-btn_primary">清除选定项目</button> -->
+</view>
