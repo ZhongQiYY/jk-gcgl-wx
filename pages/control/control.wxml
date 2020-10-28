@@ -17,7 +17,7 @@
 				<van-grid-item badge="{{}}" bind:click="toZljc" icon="/images/tjzljc.png" text="提交质量检查" />
 				<van-grid-item badge="{{}}" bind:click="toDbsx" icon="/images/tjdbsx.png" text="提交督办事项" />
 				<van-grid-item badge="{{}}" bind:click="toQzsp" icon="/images/tjqzsp.png" text="提交签证审批" />
-				<van-grid-item badge="{{}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="提交问题建议" />
+				<van-grid-item badge="{{allRedDotNum.problemPlanNum}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="提交问题建议" />
 				<van-grid-item badge="{{}}" bind:click="toJdxx" icon="/images/txjdxx.png" text="填写进度信息" />
 				<van-grid-item badge="{{}}" bind:click="toHtgl" icon="/images/tjhtgl.png" text="提交合同管理" />
 				<van-grid-item badge="{{}}" bind:click="toTzwj" icon="/images/tjtzwj.png" text="提交图纸文件" />

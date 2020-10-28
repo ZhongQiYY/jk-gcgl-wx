@@ -63,12 +63,22 @@
 
 									<!-- 按钮 -->
 									<view slot="footer">
-										<van-grid icon-size="20px" square clickable column-num="5" border="{{false}}">
-											<van-grid-item badge="{{}}" bind:click="gotoAqjc" icon="/images/aqjc.png" text="安全检查" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
-											<van-grid-item badge="{{}}" bind:click="gotoZljc" icon="/images/zljc.png" text="质量检查" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
-											<van-grid-item badge="{{}}" bind:click="gotoQzsp" icon="/images/qzsp.png" text="签证审批" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
-											<van-grid-item badge="{{}}" bind:click="gotoDbsx" icon="/images/dbsx.png" text="督办事项" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
-											<van-grid-item badge="{{}}" bind:click="gotoTxsx" icon="/images/txsx.png" text="提醒事项" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}" />
+										<van-grid icon-size="45rpx" square clickable column-num="5" border="{{false}}" use-slot>
+											<van-grid-item badge="{{}}" bind:click="gotoAqjc" icon="/images/aqjc.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+												<view slot="text" class="iconText">安全检查</view>
+											</van-grid-item>
+											<van-grid-item badge="{{}}" bind:click="gotoZljc" icon="/images/zljc.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+												<view slot="text" class="iconText">质量检查</view>
+											</van-grid-item>
+											<van-grid-item badge="{{}}" bind:click="gotoQzsp" icon="/images/qzsp.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+												<view slot="text" class="iconText">签证审批</view>
+											</van-grid-item>
+											<van-grid-item badge="{{}}" bind:click="gotoDbsx" icon="/images/dbsx.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+												<view slot="text" class="iconText">督办事项</view>
+											</van-grid-item>
+											<van-grid-item badge="{{item.problemPlanNum==0?'':item.problemPlanNum}}" bind:click="gotoWtjy" icon="/images/txsx.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+												<view slot="text" class="iconText">问题建议</view>
+											</van-grid-item>
 										</van-grid>
         					</view>
 

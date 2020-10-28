@@ -60,6 +60,10 @@ page{
   width: 20%;
 }
 
+.iconText{
+  font-size: 20rpx;
+}
+
 
 
 

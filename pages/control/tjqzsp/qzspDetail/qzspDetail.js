@@ -1,6 +1,4 @@
-// pages/control/tjwtjy/commitRecord/commitRecord.js
-const app = getApp();
-var basePath = app.globalData.basePath;
+// pages/control/tjqzsp/qzspDetail/qzspDetail.js
 Page({
 
   /**
@@ -9,8 +7,6 @@ Page({
   data: {
 
   },
-
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -30,20 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.request({
-      url: basePath + "/api/control/wtjy/commitProblemPlanRecord", //请求路径
-      method: 'post',
-      data: {
 
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success(res) {
-        
-      }
-    });
   },
 
   /**

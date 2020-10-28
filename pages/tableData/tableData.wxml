@@ -13,18 +13,18 @@
 			<!-- 模糊横线 -->
 			<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
 			<van-grid square clickable column-num="3" border="{{false}}">
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toNdjh" icon="/images/ndjh.png" text="年度计划" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toYdxx" icon="/images/ydxx.png" text="月度形象" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toZjjk" icon="/images/zjjk.png" text="造价监控" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toAqjc" icon="/images/aqjc.png" text="安全检查" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toZljc" icon="/images/zljc.png" text="质量检查" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toSjtj" icon="/images/sjtj.png" text="数据统计" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toDbsx" icon="/images/dbsx.png" text="督办事项" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toQzsp" icon="/images/qzsp.png" text="签证审批" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toHtgl" icon="/images/htgl.png" text="合同管理" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toTzwj" icon="/images/tzwj2.png" text="图纸文件" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toTptx" icon="/images/tptx.png" text="图片图像" />
-				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toTxsx" icon="/images/txsx.png" text="提醒事项" />
+				<van-grid-item badge="{{}}" bind:click="toNdjh" icon="/images/ndjh.png" text="年度计划" />
+				<van-grid-item badge="{{}}" bind:click="toYdxx" icon="/images/ydxx.png" text="月度形象" />
+				<van-grid-item badge="{{}}" bind:click="toZjjk" icon="/images/zjjk.png" text="造价监控" />
+				<van-grid-item badge="{{}}" bind:click="toAqjc" icon="/images/aqjc.png" text="安全检查" />
+				<van-grid-item badge="{{}}" bind:click="toZljc" icon="/images/zljc.png" text="质量检查" />
+				<van-grid-item badge="{{}}" bind:click="toSjtj" icon="/images/sjtj.png" text="数据统计" />
+				<van-grid-item badge="{{}}" bind:click="toDbsx" icon="/images/dbsx.png" text="督办事项" />
+				<van-grid-item badge="{{}}" bind:click="toQzsp" icon="/images/qzsp.png" text="签证审批" />
+				<van-grid-item badge="{{}}" bind:click="toHtgl" icon="/images/htgl.png" text="合同管理" />
+				<van-grid-item badge="{{}}" bind:click="toTzwj" icon="/images/tzwj2.png" text="图纸文件" />
+				<van-grid-item badge="{{}}" bind:click="toTptx" icon="/images/tptx.png" text="图片图像" />
+				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toTxsx" icon="/images/txsx.png" text="问题建议" />
 			</van-grid>
 		</view>
 	</view>

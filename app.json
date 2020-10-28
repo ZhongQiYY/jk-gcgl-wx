@@ -57,7 +57,8 @@
     "pages/control/tjwtjy/commitRecord/commitRecord",
     "pages/tableData/datapages/dbsx/dbsx",
     "pages/control/tjwtjy/wtjyDetail/wtjyDetail",
-    "pages/control/tjaqjc/aqjcDetail/aqjcDetail"
+    "pages/control/tjaqjc/aqjcDetail/aqjcDetail",
+    "pages/control/tjqzsp/qzspDetail/qzspDetail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

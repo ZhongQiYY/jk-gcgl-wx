@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    allRedDotNum: {},
     haveNameList: false,
     notShowLimit: false,
     projectName: "",
@@ -39,9 +40,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this;
     if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
@@ -73,12 +71,32 @@ Page({
         }
       });
     }
+
+    // 获取所有红点数
+    that.getAllRedDotNum();
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
+
+  // 获取所有红点数
+  getAllRedDotNum: function(){
+    var that = this;
+    wx.request({
+      url: basePath+"/api/control/getAllRedDotNum", //请求路径
+      method: 'post',
+      data: {
+        
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if(res.data.code === 200){
+          that.setData({
+            allRedDotNum: res.data.data
+          })
+        }
+      }
+    });
   },
 
 

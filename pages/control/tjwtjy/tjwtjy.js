@@ -16,72 +16,12 @@ Page({
     projectName:"",//项目名称
     
     active: 0,//tabbar索引
-    showOther: true,
-    activeNames: ['1'],
-    problemPlanList:[
-      {
-        unitName: "综保区", projectName: "标准厂房三期", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-08-27", commitName: "刘杭"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-09-27", commitName: "缪隽峰"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
-        ]
-      },
-      {
-        unitName: "满园", projectName: "水韵康居四期项目", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-08-27", commitName: "刘杭"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-09-27", commitName: "缪隽峰"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
-        ]
-      },
-      {
-        unitName: "满园", projectName: "香江棚户区改造安居小区", timeNameList: [
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-09-27", commitName: "缪隽峰"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
-        ]
-      },
-      {
-        unitName: "西城", projectName: "工业路（客家大道-赣丰路）", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-        ]
-      },
-      {
-        unitName: "中恒工业", projectName: "金凤智谷一期项目", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-        ]
-      },
-      {
-        unitName: "中恒商业", projectName: "蟠龙返乡创业基地项目西地块", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-        ]
-      },
-      {
-        unitName: "磊昇", projectName: "赣州经济技术开发区第一中学新建工程", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-        ]
-      },
-    ],
+    showOther: true,//tabbar切换显示
+    activeNames: ['1'],//折叠面板开关
+
+    showSubmitTips: false,
+
+    problemPlanCommitList:[],
   },
   //输入问题建议时
   inputProblem: function (e) {
@@ -95,11 +35,12 @@ Page({
     if (e.detail.length > this.data.maxPlanLength) return;
     this.setData({
       currentPlan: e.detail
-    })
+    });
   },
   //提交问题和计划
   submitProblemPlan: function () {
     var that = this;
+    var nolock = true;
     //获取当前时间
     var year = new Date().getFullYear();//获取年份 
     var month = new Date().getMonth() + 1;//获取月份
@@ -112,52 +53,51 @@ Page({
     }else if(that.data.currentPlan == ""){
       Toast.fail('请描述下一步工作计划');
     }else{
-      wx.request({
-        url: basePath + "/api/control/submitProblemPlan", //请求路径
-        method: 'post',
-        data: {
-          status: 1,
-          projectId: that.data.projectId,
-          existProblem: that.data.currentProblem,
-          nextPlan: that.data.currentPlan,
-          submitYear: year,
-          submitMonth: month,
-          submitTime: submitTime,
-          projectName: that.data.projectName,
-          unitName: app.globalData.userInfo.company
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'thirdSession': app.globalData.thirdSession
-        },
-        success(res) {
-          if (res.data === "success") {
-            Toast.success('提交成功');
-            that.setData({
-              currentProblem: "",
-              currentPlan: "",
-            })
-          }else{
-            Toast.fail('提交失败，服务器错误');
+      if(nolock){
+        that.setData({
+          showSubmitTips: true
+        })
+        nolock = false;
+        wx.request({
+          url: basePath + "/api/control/wtjy/submitProblemPlan", //请求路径
+          method: 'post',
+          data: {
+            status: 1,
+            projectId: app.globalData.pId,
+            existProblem: that.data.currentProblem,
+            nextPlan: that.data.currentPlan,
+            submitYear: year,
+            submitMonth: month,
+            submitTime: submitTime,
+            projectName: that.data.projectName,
+            unitName: app.globalData.userInfo.company
+          },
+          header: {
+            'content-type': 'application/json', // 默认值
+            'thirdSession': app.globalData.thirdSession
+          },
+          success(res) {
+            if (res.data.code === 200) {
+              Toast.success('提交成功');
+              that.setData({
+                showSubmitTips: false,
+                currentProblem: "",
+                currentPlan: "",
+              });
+              nolock = true;
+            }else{
+              that.setData({
+                showSubmitTips: false,
+              })
+              Toast.fail('提交失败，服务器错误');
+              nolock = true;
+            }
           }
-        }
-      });
+        });
+      }
     }
   },
 
-
-  tabbarChange: function(e){
-    var that = this;
-    that.setData({
-      active: e.detail,
-      showOther: !that.data.showOther
-    })
-  },
-  collapseChange: function(e){
-    this.setData({
-      activeNames: e.detail,
-    });
-  },
 
   // 提交记录
   submitRecord: function(e){
@@ -166,19 +106,54 @@ Page({
     }) 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this;
     that.setData({
       projectName: app.globalData.pName
     })
   },
+
+  onLoad: function(){
+    var that = this;
+    wx.request({
+      url: basePath + "/api/control/wtjy/getProblemPlanCommit", //请求路径
+      method: 'post',
+      data: {
+        
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success(res) {
+        if (res.data.code === 200) {
+          that.setData({
+            problemPlanCommitList: res.data.data
+          })
+        }else{
+          Toast.fail('失败，服务器错误');
+        }
+      }
+    });
+  },
+
+  gotoDetail: function(e){
+    e.currentTarget.dataset.id;
+  },
   
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  tabbarChange: function(e){
+    var that = this;
+    that.setData({
+      active: e.detail,
+      showOther: !that.data.showOther
+    });
+    if(!that.data.showOther){
+      that.onLoad();
+    }
+  },
+  collapseChange: function(e){
+    this.setData({
+      activeNames: e.detail,
+    });
   },
 })

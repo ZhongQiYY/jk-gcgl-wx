@@ -68,9 +68,11 @@ Page({
         'thirdSession': app.globalData.thirdSession
       },
       success(res) {
-        that.setData({
-          redMap: res.data
-        })
+        if(res.data.code === 200){
+          that.setData({
+            redMap: res.data.data
+          })
+        }
       }
     });
   },

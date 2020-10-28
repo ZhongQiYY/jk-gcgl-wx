@@ -1,5 +1,7 @@
 <import src="/template/commitRecord/commitRecord.wxml" />
 <van-toast id="van-toast" />
+<view style="position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);z-index:9999"><van-loading wx:if="{{showSubmitTips}}" color="#0089dd" size="30px">提交中...</van-loading></view>
+
 
 <view style="padding-bottom: 100rpx">
 
@@ -32,7 +34,7 @@
 					required
 					show-word-limit
 					maxlength="{{maxPlanLength}}"
-					bind:input="{{inputPlan}}"
+					bind:input="inputPlan"
 					border="{{true}}"
 				/>
 
@@ -49,23 +51,22 @@
 	<view wx:if="{{!showOther}}">
 		<van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
 
-			<block wx:for="{{problemPlanList}}" wx:key="index">
+			<block wx:for="{{problemPlanCommitList}}" wx:key="index">
 				<van-collapse-item name="{{index}}" value="{{item.unitName}}">
 
 					<view slot="title">
 						<view class="van-cell-text">{{item.projectName}}</view>
-						<van-tag type="danger">{{item.timeNameList.length}}</van-tag>
+						<van-tag type="danger">{{item.timeNameDTOS.length}}</van-tag>
 					</view>
 
 					<van-cell-group >
-						<block wx:for="{{item.timeNameList}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
+						<block wx:for="{{item.timeNameDTOS}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
 							<van-cell 
 								title="{{item1.submitTime}}"
 								value="{{item1.commitName}}" 
 								border="{{ true }}" 
 								is-link 
-								bind:click=""
-								url="/pages/control/tjwtjy/wtjyDetail/wtjyDetail">
+								url="/pages/control/tjwtjy/wtjyDetail/wtjyDetail?id={{item1.id}}&projectId={{item.projectId}}&projectName={{item.projectName}}&unitName={{item.unitName}}&commitName={{item1.commitName}}&submitTime={{item1.submitTime}}&existProblem={{item1.existProblem}}&nextPlan={{item1.nextPlan}}">
 							</van-cell>
 						</block>
 					</van-cell-group>
@@ -81,5 +82,5 @@
 <!-- 底部菜单 -->
 <van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
   <van-tabbar-item icon="records">提交信息</van-tabbar-item>
-  <van-tabbar-item icon="chat-o" info="40">查看信息</van-tabbar-item>
+  <van-tabbar-item icon="chat-o" info="">查看信息</van-tabbar-item>
 </van-tabbar>

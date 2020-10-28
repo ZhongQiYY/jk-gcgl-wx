@@ -70,5 +70,5 @@
 <!-- 底部菜单 -->
 <van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
   <van-tabbar-item icon="records">提交信息</van-tabbar-item>
-  <van-tabbar-item icon="chat-o" info="40">查看信息</van-tabbar-item>
+  <van-tabbar-item icon="chat-o" info="">查看信息</van-tabbar-item>
 </van-tabbar>

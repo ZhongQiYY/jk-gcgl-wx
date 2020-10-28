@@ -63,7 +63,6 @@ Page({
   gotoAqjc:function(e){
     var that = this;
     that.setProjectNameCategoryId(e);
-
   },
   // 跳转质量监控
   gotoZljc:function(e){
@@ -83,10 +82,11 @@ Page({
       url: '/pages/tableData/datapages/dbsx/dbsx',
     })
   },
-  // 跳转提醒事项
-  gotoTxsx:function(e){
+  // 跳转问题建议
+  gotoWtjy:function(e){
     var that = this;
     that.setProjectNameCategoryId(e);
+    
   },
 
 
@@ -352,13 +352,11 @@ Page({
     if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
       //在微信未登录，点击了微信登录后再次回来会触发此函数
       if(app.globalData.clickLoginBtn){
-    
         that.setData({
           notShowLimit: true,
           projectList: [],
           loadingHidden: false
         });
-
         that.onLoad();
       }
     }else{
