@@ -42,7 +42,7 @@
 							autosize
 							show-word-limit
 							maxlength="{{maxOpinionLength}}"
-							bind:input="{{inputOpinion}}"
+							bind:input="inputOpinion"
 							border="{{true}}"
 						/>
 					</van-cell-group>

@@ -12,10 +12,12 @@ page{
 
 /* 项目名称 */
 .title-class{
+  font-size: 27rpx;
   padding-left: var(--padding-left);
 }
 /* 建设单位，负责人名字 */
 .desc-class{
+  color:rgba(150, 151, 153);
   padding-left: var(--padding-left);
 }
 /* 进度项名称标签 */

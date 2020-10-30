@@ -86,7 +86,9 @@ Page({
   gotoWtjy:function(e){
     var that = this;
     that.setProjectNameCategoryId(e);
-    
+    wx.navigateTo({
+      url: '/pages/tableData/datapages/wtjy/wtjy',
+    })
   },
 
 

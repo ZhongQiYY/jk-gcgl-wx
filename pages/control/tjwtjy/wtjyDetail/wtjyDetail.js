@@ -1,6 +1,7 @@
 // pages/control/tjwtjy/wtjyDetail/wtjyDetail.js
 const app = getApp();
 var basePath = app.globalData.basePath;
+var dateTime = require('../../../../utils/getDateTime.js');
 import Toast from '@vant/weapp/toast/toast';
 Page({
   /**
@@ -18,21 +19,24 @@ Page({
     if (e.detail.length > this.data.maxOpinionLength) return;
     this.setData({
       opinion: e.detail
-    })
+    });
   },
 
   // 点击已阅
   haveRead: function(){
     var that = this;
+    //获取当前时间
+    var replierTime = dateTime.getymdhms(new Date(), '-', ':');
     // 传入值为表添加批示内容，并更新状态为已阅
     wx.request({
       url: basePath + "/api/control/wtjy/updateOpinion", //请求路径
       method: 'post',
       data: {
+        status: 2,
         id: that.data.problemPlanInfo.id,
         projectId: that.data.problemPlanInfo.projectId,
-        status: 2,
-        opinion: that.data.opinion
+        opinion: that.data.opinion,
+        replierTime: replierTime
       },
       header: {
         'content-type': 'application/json', // 默认值

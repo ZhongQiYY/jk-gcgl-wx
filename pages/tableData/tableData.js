@@ -1,4 +1,4 @@
-// pages/tableData/tableData.js
+import Toast from '@vant/weapp/toast/toast';
 var app = getApp();
 var basePath = app.globalData.basePath;
 Page({
@@ -77,9 +77,7 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad: function (options) {
     var list = app.globalData.projectNameList;
     if (list.length <= 0) {
@@ -100,9 +98,6 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this;
     if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
@@ -118,74 +113,85 @@ Page({
     }
   },
 
+  //问题建议
+  toWtjy: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/wtjy/wtjy',
+      })
+    } else Toast.fail("未选择项目");
+  },
+
+  
+
+  //督办事项
+  toDbsx: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/dbsx/dbsx',
+      })
+    } else Toast.fail("未选择项目");
+  },
+
+  
+  //图纸文件
+  toTzwj: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/tzwj/tzwj',
+      })
+    } else Toast.fail("未选择项目"); 
+  },
+  //合同管理
+  toHtgl: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/htgl/htgl',
+      })
+    } else Toast.fail("未选择项目"); 
+  },
+  //图片图像
+  toTptx: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/tptx/tptx',
+      })
+    } else Toast.fail("未选择项目"); 
+  },
+
   //年度计划
   toNdjh: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/annualplan/annualplan',
       })
-    } else app.showToast("请先选定项目");
+    } else Toast.fail("未选择项目");
   },
-
-  //督办事项
-  toDbsx: function () {
-    wx.navigateTo({
-      url: '/pages/control/dcdb/dcdb',
-    })
-  },
-
-  //图纸文件
-  toTzwj: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tzwj/tzwj',
-    })
-  },
-
-  //合同管理
-  toHtgl: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/htgl/htgl',
-    })
-  },
-
-  //图片图像
-  toTptx: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/tptx',
-    })
-  },
-
-  //造价监控
-  toZjjk: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/zjjk/zjjk',
-      })
-    } else app.showToast("请先选定项目");
-  },
-
-  //数据统计
-  toSjtj: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/sjtj/sjtj',
-      })
-    } else app.showToast("请先选定项目");
-  },
-
   //月度形象
   toYdxx: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/ydxx/ydxx',
       })
-    } else app.showToast("请先选定项目");
+    } else Toast.fail("未选择项目");
   },
+  //造价监控
+  toZjjk: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/zjjk/zjjk',
+      })
+    } else Toast.fail("未选择项目");
+  },
+  //数据统计
+  toSjtj: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/sjtj/sjtj',
+      })
+    } else Toast.fail("未选择项目");
+  },
+  
 
-  //提醒事项
-  toTxsx: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/txsx/txsx',
-    })
-  },
+  
 })
