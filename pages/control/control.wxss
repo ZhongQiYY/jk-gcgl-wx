@@ -1,4 +1,6 @@
-/* pages/tableData/tableData.wxss */
+page{
+  background-color: rgba(241, 241, 241);
+}
 
 .weui-grid {
   background-color: white;

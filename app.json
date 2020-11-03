@@ -13,7 +13,7 @@
     "pages/control/dcdb/dcdb",
     "pages/control/dcdb/details/details",
     "pages/control/dcdb/add/add",
-    "pages/control/txjdxx/txjdxx",
+    "pages/control/txxmxx/txxmxx",
     "pages/control/tjaqjc/tjaqjc",
     "pages/control/tjzljc/tjzljc",
     "pages/control/tjdbsx/tjdbsx",
@@ -58,7 +58,9 @@
     "pages/tableData/datapages/dbsx/dbsx",
     "pages/control/tjwtjy/wtjyDetail/wtjyDetail",
     "pages/control/tjaqjc/aqjcDetail/aqjcDetail",
-    "pages/control/tjqzsp/qzspDetail/qzspDetail"
+    "pages/control/tjqzsp/qzspDetail/qzspDetail",
+    "pages/control/txxmxx/txPlan/txPlan",
+    "pages/control/txxmxx/txSchedule/txSchedule"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -1,0 +1,29 @@
+<view style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;">
+  <view style="padding-bottom: 100rpx;width:60%;">
+
+    <view class="suspension-card-external-page" hover-class="plan-schedule-hover">
+      <view class="suspension-card-internal-page shadow-blur">
+        <text class="plan-schedule-font">计\n划\n填\n写</text>
+      </view>
+    </view>
+
+    <view class="suspension-card-external-page" hover-class="plan-schedule-hover">
+      <view class="suspension-card-internal-page shadow-blur">
+        <text class="plan-schedule-font">进\n度\n填\n写</text>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+
+
+
+
+<!-- 底部菜单 -->
+<van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
+  <van-tabbar-item icon="notes-o">进度/计划</van-tabbar-item>
+  <van-tabbar-item icon="">待定</van-tabbar-item>
+  <van-tabbar-item icon="">待定</van-tabbar-item>
+  <van-tabbar-item icon="">待定</van-tabbar-item>
+</van-tabbar>

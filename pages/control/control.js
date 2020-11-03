@@ -100,9 +100,9 @@ Page({
   },
 
 
-  toJdxx: function () {
+  toXmxx: function () {
     wx.navigateTo({
-      url: '/pages/control/txjdxx/txjdxx',
+      url: '/pages/control/txxmxx/txxmxx',
     })
   },
   toAqjc: function () {

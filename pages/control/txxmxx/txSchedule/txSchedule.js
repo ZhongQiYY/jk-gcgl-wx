@@ -1,4 +1,4 @@
-// pages/control/txjdxx/txjdxx.js
+// pages/control/txxmxx/txSchedule/txSchedule.js
 Page({
 
   /**
