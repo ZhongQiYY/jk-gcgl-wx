@@ -1,6 +1,6 @@
 <import src="/template/commitRecord/commitRecord.wxml" />
 <van-toast id="van-toast" />
-<view style="position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);z-index:9999"><van-loading wx:if="{{showSubmitTips}}" color="#0089dd" size="30px">提交中...</van-loading></view>
+<view class="loading-position-center"><van-loading wx:if="{{showSubmitTips}}" color="#0089dd" size="30px">提交中...</van-loading></view>
 
 
 <view style="padding-bottom: 100rpx">

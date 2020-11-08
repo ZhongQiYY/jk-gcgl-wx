@@ -81,20 +81,13 @@ Page({
   onLoad: function (options) {
     var list = app.globalData.projectNameList;
     if (list.length <= 0) {
-      wx.request({
-        url: basePath + "/api/project/nameList", //请求路径
-        method: 'post',
-        data: {
-
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'thirdSession': app.globalData.thirdSession
-        },
-        success(res) {
-          app.globalData.projectNameList = res.data
-        }
-      });
+      request.post(requestValue.nameList, {}).then(res => {
+        app.globalData.projectNameList = res.data.projectNameList;
+        app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;    
+      }).catch(err => {
+        
+      })
+      
     }
   },
 

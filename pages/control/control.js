@@ -1,6 +1,8 @@
 // pages/control/control.js
 const app = getApp();
 var basePath = app.globalData.basePath;
+var request = app.globalData.request;
+var requestValue = app.globalData.requestValue;
 Page({
 
   /**
@@ -53,23 +55,15 @@ Page({
     }
     var list = app.globalData.projectNameList;
     if(list.length <= 0 && !that.data.haveNameList && app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
-      wx.request({
-        url: basePath+"/api/project/nameList", //请求路径
-        method: 'post',
-        data: {
-          
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'thirdSession': app.globalData.thirdSession
-        },
-        success (res) {
-          app.globalData.projectNameList = res.data  
-          that.setData({
-            haveNameList: true
-          })
-        }
-      });
+      request.post(requestValue.nameList, {}).then(res => {
+        app.globalData.projectNameList = res.data.projectNameList;
+        app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;  
+        that.setData({
+          haveNameList: true
+        })
+      }).catch(err => {
+        
+      })
     }
 
     // 获取所有红点数

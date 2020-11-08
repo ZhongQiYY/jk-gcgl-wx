@@ -1,0 +1,14 @@
+
+
+/* 悬浮卡片-外部 */
+.suspension-card-external-page{
+  margin-bottom:-10rpx;/* 让多个卡片上下之间相差10rpx */
+  padding:20rpx;/* 让卡片离页面上下左右20rpx的距离 */
+}
+/* 悬浮卡片-内部 */
+.suspension-card-internal-page{
+  border-radius: 6rpx; /* 卡片圆角弧度 */
+  background-color: #ffffff;/* 卡片背景颜色 */
+  /* color: #666666; */ /* 卡片内文字颜色 */
+  /* box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.4); */
+}

@@ -60,7 +60,8 @@
     "pages/control/tjaqjc/aqjcDetail/aqjcDetail",
     "pages/control/tjqzsp/qzspDetail/qzspDetail",
     "pages/control/txxmxx/txPlan/txPlan",
-    "pages/control/txxmxx/txSchedule/txSchedule"
+    "pages/control/txxmxx/txSchedule/txSchedule",
+    "pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -8,6 +8,15 @@ Page({
     showPlanSchedule: true,//展示进度计划
 
   },
+  // 跳转到填写计划
+  totxPlan: function(){
+    wx.navigateTo({
+      url: '/pages/control/txxmxx/txPlan/txPlan',
+    })
+  },
+
+
+
 
   tabbarChange: function(e){
     var that = this;

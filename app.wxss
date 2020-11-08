@@ -5,6 +5,7 @@
 
 page {
   font-size: 11pt;
+  background-color: rgba(241, 241, 241);
 }
 
 /* 悬浮卡片-外部 */
@@ -19,6 +20,15 @@ page {
   /* color: #666666; */ /* 卡片内文字颜色 */
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.4);/* 阴影 */
 }
+
+.loading-position-center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index:9999
+}
+
 /* 点击效果 */
 .clickHover{
   opacity: 0.5;
