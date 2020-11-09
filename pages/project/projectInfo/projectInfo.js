@@ -24,7 +24,7 @@ Page({
 
   //跳转到数据表界面
   toTableData: function () {
-    app.globalData.pName = this.data.projectName;
+    app.globalData.projectName = this.data.projectName;
     wx.switchTab({
       url: '/pages/tableData/tableData'
     });
@@ -105,8 +105,9 @@ Page({
     var that = this;
     wx.stopPullDownRefresh();
     that.setData({
-      projectName: app.globalData.pName,
+      projectName: app.globalData.projectName,
       categoryType: app.globalData.categoryType,
+      loadingHidden: false
     })
     wx.request({
       url: basePath + "/api/project/projectBaseInfo", //请求路径
@@ -168,12 +169,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
 
   /**
    * 页面上拉触底事件的处理函数

@@ -1,4 +1,4 @@
-// pages/tableData/tableData.js
+import Toast from '@vant/weapp/toast/toast';
 var app = getApp();
 var basePath = app.globalData.basePath;
 Page({
@@ -14,79 +14,6 @@ Page({
     notShowLimit: false,
     redMap: {}
   },
-
-  toPlan: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/annualplan/annualplan',
-      })
-    }
-  },
-
-  toDb: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/control/dcdb/dcdb',
-      })
-    }
-  },
-
-  toSwInstruction: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/tzwj/tzwj',
-      })
-    }
-  },
-
-  toHtgl: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/htgl/htgl',
-      })
-    }
-  },
-
-  toTptx: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/tptx/tptx',
-      })
-    }
-  },
-
-  toZjjk: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/zjjk/zjjk',
-      })
-    }
-  },
-
-  toSjtj: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/sjtj/sjtj',
-      })
-    }
-  },
-
-  toYdxx: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/ydxx/ydxx',
-      })
-    }
-  },
-
-  toTxsx: function () {
-    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
-      wx.navigateTo({
-        url: '/pages/tableData/datapages/txsx/txsx',
-      })
-    }
-  },
-
 
   //搜索框组件返回的方法 @@
   inputTyping: function (e) {
@@ -106,12 +33,13 @@ Page({
   },
   //搜索框组件返回的方法 
   selectProject: function (e) {
-    app.globalData.pName = e.detail.projectName;
+    app.globalData.projectName = e.detail.projectName;
     app.globalData.projectId = e.detail.projectId;
     app.globalData.categoryType = e.detail.categoryType;
     this.setData({
       projectName: e.detail.projectName
     });
+    this.getRedDotNum();
   },
 
   // 查看所有项目
@@ -119,7 +47,7 @@ Page({
     var that = this;
     app.globalData.projectId = 0;
     app.globalData.categoryType = 0;
-    app.globalData.pName = "";
+    app.globalData.projectName = "";
     that.setData({
       projectName: ""
     });
@@ -140,91 +68,123 @@ Page({
         'thirdSession': app.globalData.thirdSession
       },
       success(res) {
-        that.setData({
-          redMap: res.data
-        })
+        if(res.data.code === 200){
+          that.setData({
+            redMap: res.data.data
+          })
+        }
       }
     });
   },
 
-
-  // -------生命周期函数---------
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad: function (options) {
     var list = app.globalData.projectNameList;
     if (list.length <= 0) {
-      wx.request({
-        url: basePath + "/api/project/nameList", //请求路径
-        method: 'post',
-        data: {
-
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'thirdSession': app.globalData.thirdSession
-        },
-        success(res) {
-          app.globalData.projectNameList = res.data
-        }
-      });
+      request.post(requestValue.nameList, {}).then(res => {
+        app.globalData.projectNameList = res.data.projectNameList;
+        app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;    
+      }).catch(err => {
+        
+      })
+      
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this;
-    if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
+    if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
       this.setData({
-        projectName: app.globalData.pName,
+        projectName: app.globalData.projectName,
         notShowLimit: true
       });
       that.getRedDotNum();
+    } else {
+      that.setData({
+        notShowLimit: false
+      })
     }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //问题建议
+  toWtjy: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/wtjy/wtjy',
+      })
+    } else Toast.fail("未选择项目");
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+  
 
+  //督办事项
+  toDbsx: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/dbsx/dbsx',
+      })
+    } else Toast.fail("未选择项目");
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  
+  //图纸文件
+  toTzwj: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/tzwj/tzwj',
+      })
+    } else Toast.fail("未选择项目"); 
+  },
+  //合同管理
+  toHtgl: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/htgl/htgl',
+      })
+    } else Toast.fail("未选择项目"); 
+  },
+  //图片图像
+  toTptx: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/tptx/tptx',
+      })
+    } else Toast.fail("未选择项目"); 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  //年度计划
+  toNdjh: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/annualplan/annualplan',
+      })
+    } else Toast.fail("未选择项目");
   },
+  //月度形象
+  toYdxx: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/ydxx/ydxx',
+      })
+    } else Toast.fail("未选择项目");
+  },
+  //造价监控
+  toZjjk: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/zjjk/zjjk',
+      })
+    } else Toast.fail("未选择项目");
+  },
+  //数据统计
+  toSjtj: function () {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/sjtj/sjtj',
+      })
+    } else Toast.fail("未选择项目");
+  },
+  
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  
 })

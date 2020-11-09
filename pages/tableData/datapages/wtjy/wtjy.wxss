@@ -1,0 +1,17 @@
+page{
+  background-color: #f1f1f1;
+}
+.card{
+  flex-direction: column;
+  background-color: #fff;
+  margin: 60rpx 20rpx;
+  padding: 20rpx 30rpx;
+  border-radius: 15rpx;
+  border: 1rpx solid #ddd;
+}
+
+.cardHover{
+  opacity: 0.5;
+  transition: 3s;
+  background-color: gray;
+}

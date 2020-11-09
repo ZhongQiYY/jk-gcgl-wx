@@ -1,12 +1,5 @@
-/* pages/tableData/tableData.wxss */
-
-#pname {
-  display: flex;
-}
-
-.searchicon {
-  position: absolute;
-  right: 30rpx;
+page{
+  background-color: rgba(241, 241, 241);
 }
 
 .weui-grid {

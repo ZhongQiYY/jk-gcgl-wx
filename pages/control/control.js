@@ -1,100 +1,102 @@
 // pages/control/control.js
 const app = getApp();
 var basePath = app.globalData.basePath;
+var request = app.globalData.request;
+var requestValue = app.globalData.requestValue;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    allRedDotNum: {},
     haveNameList: false,
-    notShowLimit: false
+    notShowLimit: false,
+    projectName: "",
+    projectNames: [], //@@
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
+  //搜索框组件返回的方法 @@
+  inputTyping: function (e) {
+    var inputVal = e.detail.inputVal;
+    var projectNames1 = [];
+    if (inputVal.length > 0) {
+      for (const nl of app.globalData.projectNameList) {
+        var projectName = nl.projectName;
+        if (projectName.indexOf(inputVal) != -1) {
+          projectNames1.push(nl);
+        }
+      }
+    }
+    this.setData({
+      projectNames: projectNames1
+    })
+  },
+  //搜索框组件返回的方法 @@
+  selectProject: function (e) {
+    app.globalData.pName = e.detail.projectName;
+    app.globalData.pId = e.detail.projectId;
+    app.globalData.cType = e.detail.categoryType;
+    this.setData({
+      projectName: e.detail.projectName
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this;
     if(app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
-      this.setData({
-        notShowLimit: true
-      });
+        this.setData({
+          notShowLimit: true
+        });
+    }else{
+      that.setData({
+        notShowLimit: false
+      })
     }
-
     var list = app.globalData.projectNameList;
     if(list.length <= 0 && !that.data.haveNameList && app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
-      wx.request({
-        url: basePath+"/api/project/nameList", //请求路径
-        method: 'post',
-        data: {
-          
-        },
-        header: {
-          'content-type': 'application/json', // 默认值
-          'thirdSession': app.globalData.thirdSession
-        },
-        success (res) {
-          app.globalData.projectNameList = res.data  
+      request.post(requestValue.nameList, {}).then(res => {
+        app.globalData.projectNameList = res.data.projectNameList;
+        app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;  
+        that.setData({
+          haveNameList: true
+        })
+      }).catch(err => {
+        
+      })
+    }
+
+    // 获取所有红点数
+    that.getAllRedDotNum();
+  },
+
+  // 获取所有红点数
+  getAllRedDotNum: function(){
+    var that = this;
+    wx.request({
+      url: basePath+"/api/control/getAllRedDotNum", //请求路径
+      method: 'post',
+      data: {
+        
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if(res.data.code === 200){
           that.setData({
-            haveNameList: true
+            allRedDotNum: res.data.data
           })
         }
-      });
-    }
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  toJdxx: function () {
+  toXmxx: function () {
     wx.navigateTo({
-      url: '/pages/control/txjdxx/txjdxx',
+      url: '/pages/control/txxmxx/txxmxx',
     })
   },
   toAqjc: function () {

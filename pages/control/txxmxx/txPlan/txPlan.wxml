@@ -1,0 +1,13 @@
+<view class="loading-position-center"><van-loading wx:if="{{showLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">加载中...</text></van-loading></view>
+
+<!-- 悬浮块展示 -->
+<view wx:for="{{projectNameListByCategory}}" wx:key="index" class="suspension-card-external">
+	<view class="suspension-card-internal">
+    <van-cell-group title="{{item.name}}">
+      <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
+        title="{{item1.projectName}}" 
+        url="/pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}" 
+        wx:for-item="item1" wx:for-index="index1" is-link />
+    </van-cell-group>
+  </view>
+</view>

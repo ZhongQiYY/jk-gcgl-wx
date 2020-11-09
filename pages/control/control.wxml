@@ -1,69 +1,41 @@
 <!-- 无权限展示页 -->
 <limitPage notShowLimit="{{notShowLimit}}"></limitPage>
+<!-- 搜索框 -->
+<controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
+</controlSearch>
 
-<view class="page" data-weui-theme="{{theme}}" wx:if="{{notShowLimit}}">
-	<view class="weui-grids">
-		<a class="weui-grid" bindtap="toJdxx">
-			<view class="weui-grid__icon">
-				<image src="/images/txjdxx.png" alt></image>
-			</view>
-			<view class="weui-grid__label">填写进度信息</view>
-		</a>
-		<a class="weui-grid" bindtap="toAqjc">
-			<view class="weui-grid__icon">
-				<image src="/images/aqjc.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交安全检查</view>
-		</a>
-		<a class="weui-grid" bindtap="toZljc">
-			<view class="weui-grid__icon">
-				<image src="/images/tjzljc.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交质量检查</view>
-		</a>
-		<a class="weui-grid" bindtap="toDbsx">
-			<view class="weui-grid__icon">
-				<image src="/images/tjdbsx.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交督办事项</view>
-		</a>
-		<a class="weui-grid" bindtap="toQzsp">
-			<view class="weui-grid__icon">
-				<image src="/images/tjqzsp.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交签证审批</view>
-		</a>
-		<a class="weui-grid" bindtap="toHtgl">
-			<view class="weui-grid__icon">
-				<image src="/images/tjhtgl.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交合同管理</view>
-		</a>
+<view wx:if="{{notShowLimit}}">
+	<view class="suspension-card-external">
+		<view class="suspension-card-internal">
+			<!-- 当前项目名称 -->
+			<view style="text-align:center;width:100%;color:#0089dd">{{projectName}}</view>
+			<!-- 模糊横线 -->
+			<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
+			
+			<van-grid square clickable column-num="3" border="{{false}}">
+				<van-grid-item badge="{{}}" bind:click="toAqjc" icon="/images/aqjc.png" text="提交安全检查" />
+				<van-grid-item badge="{{}}" bind:click="toZljc" icon="/images/tjzljc.png" text="提交质量检查" />
+				<van-grid-item badge="{{}}" bind:click="toDbsx" icon="/images/tjdbsx.png" text="提交督办事项" />
+				<van-grid-item badge="{{}}" bind:click="toQzsp" icon="/images/tjqzsp.png" text="提交签证审批" />
+				<van-grid-item badge="{{allRedDotNum.problemPlanNum}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="提交问题建议" />
+				<van-grid-item badge="{{}}" bind:click="toXmxx" icon="/images/txjdxx.png" text="填写项目信息" />
+				<van-grid-item badge="{{}}" bind:click="toHtgl" icon="/images/tjhtgl.png" text="提交合同管理" />
+				<van-grid-item badge="{{}}" bind:click="toTzwj" icon="/images/tjtzwj.png" text="提交图纸文件" />
+				<van-grid-item badge="{{}}" bind:click="toTptx" icon="/images/tjtptx.png" text="提交图片图像" />
+			</van-grid>
+
+		</view>
 	</view>
-	<view class="weui-grids">
-		<a class="weui-grid" bindtap="toTzwj">
-			<view class="weui-grid__icon">
-				<image src="/images/tjtzwj.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交图纸文件</view>
-		</a>
-		<a class="weui-grid" bindtap="toTptx">
-			<view class="weui-grid__icon">
-				<image src="/images/tjtptx.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交图片图像</view>
-		</a>
-		<a class="weui-grid" bindtap="toWtjy">
-			<view class="weui-grid__icon">
-				<image src="/images/tjwtjy.png" alt></image>
-			</view>
-			<view class="weui-grid__label">提交问题建议</view>
-		</a>
-		<a class="weui-grid" bindtap="toSjbsc">
-			<view class="weui-grid__icon">
-				<image src="/images/sjbsc.png" alt></image>
-			</view>
-			<view class="weui-grid__label">输出数据报表</view>
-		</a>
+</view>
+
+<view wx:if="{{notShowLimit}}">
+	<view class="suspension-card-external">
+		<view class="suspension-card-internal">
+
+			<van-grid square clickable column-num="3" border="{{false}}">
+				<van-grid-item badge="{{}}" bind:click="toSjbsc" icon="/images/sjbsc.png" text="输出数据报表" />
+			</van-grid>
+
+		</view>
 	</view>
 </view>

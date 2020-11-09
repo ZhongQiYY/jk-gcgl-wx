@@ -1,3 +1,5 @@
+var requestValue = require('./api/api.js');
+var request = require('./utils/request.js');
 //app.js
 //获取应用实例
 const app = getApp();
@@ -11,11 +13,23 @@ globalData: {
   // basePath: "https://test.xizinet.com/jk-gcgl",
   imageRootPath: "https://test.xizinet.com",
   // imageRootPath: "https://telecom1.xizinet.com:4433",
-  pName: "",
+  projectName: "",//全局项目名称
   projectId: 0,//全局项目id
-  pId: 0,
   categoryType: 0,//全局项目类型
-  projectNameList:[],//用于搜索框搜索项目
+
+  requestValue: requestValue,//请求的url
+  request: request,//封装的请求模板
+
+
+  pId: 0,//全局项目id --操作台使用
+  pName: "",//全局项目名称 --操作台使用
+  cType: 0,//全局项目类型 --操作台使用
+  
+  clickLoginBtn: false,//点击了微信登录后会修改一次值
+
+  projectNameList:[],//名称集合，所有项目名称，用于搜索框搜索项目
+  projectNameListByCategory:[],//名称集合，所有项目名称以项目类别为组分好
+
   projectBaseInfo: {},//用于数据统计内展示统计信息
   userInfo: {},
   hasUserInfo: false,

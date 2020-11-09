@@ -1,4 +1,3 @@
-var base64 = require("../../../../dist/example/images/base64");
 var dateTimePicker1 = require('../../../../utils/dateTimePicker.js');
 var dateTimePicker2 = require('../../../../utils/dateTimePicker.js');
 var dateTimePicker3 = require('../../../../utils/dateTimePicker.js');

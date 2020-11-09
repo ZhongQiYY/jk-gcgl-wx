@@ -12,6 +12,7 @@ Page({
     projectListShow: true,
     projectInfoShow: false,
     loadingHidden: true,
+    showOverlay:false,//是否展示遮罩层
     titleList: [
       // {columnName: 'integrated', title: '综合排名'},
       { columnName: 'projectNum', title: '项目个数', data: [] },
@@ -106,17 +107,18 @@ Page({
               }
             }
             that.setData({
+              showOverlay:false,
               rankData: res.data.data,
               titleList: titleList,
               loadingHidden: true,
             })
           } else {
-            that.setData({
-              loadingHidden: false,
+            that.setData({ 
+              loadingHidden: false
             });       
           }
-        }
-        
+        } 
+
       }
     });
   },
@@ -160,7 +162,7 @@ Page({
   //跳转到数据表界面
   toTableData: function (e) {
     console.log(e.currentTarget.dataset)
-    app.globalData.pName = e.currentTarget.dataset.text;
+    app.globalData.projectName = e.currentTarget.dataset.text;
     app.globalData.projectId = e.currentTarget.dataset.id;
     app.globalData.categoryType = e.currentTarget.dataset.categorytype;
     wx.switchTab({
@@ -173,20 +175,35 @@ Page({
     });
   },
 
+  // 隐藏遮罩层
+  onClickHide:function(){
+    this.onLoad();
+  },
+
   // -------------------- 生命周期函数区域 --------------------
   onLoad: function (options) {
     var that = this;
     if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
+      wx.stopPullDownRefresh();
       that.getRankData();
+    }else{
+      that.setData({
+        showOverlay:true
+      })
     }
     
   },
 
   onShow: function () {
+    var that = this;
     if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
-      this.setData({
-        notShowLimit: true
-      });
+        that.setData({
+          notShowLimit: true
+        });
+    }else{
+      that.setData({
+        notShowLimit: false
+      })
     }
   }
   

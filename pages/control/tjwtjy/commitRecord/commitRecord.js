@@ -31,7 +31,7 @@ Page({
    */
   onShow: function () {
     wx.request({
-      url: basePath + "/api/control/commitProblemPlanRecord", //请求路径
+      url: basePath + "/api/control/wtjy/commitProblemPlanRecord", //请求路径
       method: 'post',
       data: {
 
@@ -41,7 +41,7 @@ Page({
         'thirdSession': app.globalData.thirdSession
       },
       success(res) {
-
+        
       }
     });
   },

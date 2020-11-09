@@ -1,0 +1,25 @@
+{
+  "name": "-jk-gcgl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhongQiYY/-jk-gcgl.git"
+  },
+  "keywords": [
+    "ypypuiuig678YY"
+  ],
+  "author": "ZhongQiYY",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZhongQiYY/-jk-gcgl/issues"
+  },
+  "homepage": "https://github.com/ZhongQiYY/-jk-gcgl#readme",
+  "dependencies": {
+    "@vant/weapp": "^1.5.2"
+  }
+}

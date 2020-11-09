@@ -1,7 +1,10 @@
 {
   "usingComponents": {
     "controlSearch": "/components/search/controlSearch/controlSearch",
-    "limitPage": "/components/limitPage/limitPage"
+    "limitPage": "/components/limitPage/limitPage",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "数据表"
 }

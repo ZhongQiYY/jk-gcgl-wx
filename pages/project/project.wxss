@@ -1,3 +1,74 @@
+page{
+  background-color: rgba(241, 241, 241);
+  /* 项目卡片中文字信息位置定位 */
+  --padding-left: 20%;
+  /* 进度条总宽度 */
+  --progress-width: 707rpx;
+  /* 进度条滑块高度 */
+  --progress-scroll-height: 100rpx;
+  /* 单个进度条宽度 */
+  --single-progress-width: 100rpx
+}
+
+/* 项目名称 */
+.title-class{
+  font-size: 27rpx;
+  padding-left: var(--padding-left);
+}
+/* 建设单位，负责人名字 */
+.desc-class{
+  color:rgba(150, 151, 153);
+  padding-left: var(--padding-left);
+}
+/* 进度项名称标签 */
+.tags-class{
+  padding-left: var(--padding-left);
+}
+/* 红点 */
+.tag-class{
+  position: absolute; 
+  top: -0.4em; 
+  right: -0.5em;
+}
+
+
+
+/* 进度条外层view样式 */
+.progress-frame{
+  width: var(--progress-width);
+  margin:auto;
+  background-color:white
+}
+/* 进度条滑块view样式 */
+.progress-scroll{
+  height: var(--progress-scroll-height);
+  white-space:nowrap;
+  width:100%
+}
+/* 单个进度条样式 */
+.single-progress{
+  width: var(--single-progress-width);
+}
+/* 卡片图标红点样式 */
+.van-icon-tip{
+  /* margin-left: 38rpx;
+  margin-right: 41rpx; */
+  width: 20%;
+}
+
+.van-icon-click{
+  /* margin-left: 38rpx;
+  margin-right: 41rpx; */
+  width: 20%;
+}
+
+.iconText{
+  font-size: 20rpx;
+}
+
+
+
+
 /* 搜索框固定在上部的样式 */
 .search {
   position: fixed;
@@ -5,168 +76,14 @@
   left: 0;
   right: 0;
   z-index: 10;
-  background-color: white;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
-}
-
-.search1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background-color: white;
-  padding-top: 0rpx;
-  padding-bottom: 0rpx;
-}
-
-/* 按时间搜索和筛选框的样式 */
-.search-date,
-.search-type {
-  text-align: center;
-  height: 60rpx;
-  padding-top: 20rpx;
-}
-
-.search-date image,
-.search-type image {
-  height: 40rpx;
-  width: 40rpx;
-  margin-right: 20rpx;
-  vertical-align: text-bottom;
-}
-
-/* 搜索栏竖线 */
-.middle {
-  border: 1rpx solid rgb(233, 222, 222);
-  height: 65rpx;
-  margin-top: 15rpx;
 }
 
 /* 进度分割竖线 */
 .proMiddle {
-  width: 3rpx;
-  /* border: 3rpx solid black; */
-  /* height: 40rpx; */
-  /* margin-top: 48rpx; */
+  width: 2rpx;
 }
 
-/* 审核列表的样式，主要是为了让上下两个固定框不遮挡列表内容 */
-.chekc-record-list {
-  margin-top: 105rpx;
-  margin-bottom: 20rpx;
-}
-
-.application-name {
-  width: 170rpx;
-}
-
-.application-date {
-  font-size: x-small;
-  line-height: 15rpx;
-}
-
-.application-state {
-  font-size: x-small;
-  line-height: 20rpx;
-}
-
-.application-name image {
-  width: 30rpx;
-  height: 30rpx;
-  /* vertical-align: middle; */
-}
-.weui-btn {
-  width: 100%;
-  padding: 25rpx 0rpx;
-}
-
-/* 项目库集合整体page样式 */
-.project-list-info {
-  padding-top: 100rpx;
-}
-
-.placeholder {
-  /* margin: 5px; */
-  /* padding: 0 10px; */
-  text-align: center;
-  background-color: #EBEBEB;
-  height: 2.3em;
-  line-height: 2.3em;
-  color: #cfcfcf;
-}
-
-
-/* 详情表格样式 */
-.table {
-  border: 0px solid darkgray;
-}
-.tr {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  height: 3rem;
-  align-items: center;
-
-  /* 也可以不定高度auto,不过对动画效果有影响 */
-  transition: all .5s ease;
-  opacity:1
-}
-.showBorder{
-  border: 1px solid gray;
-}
-.hide {
-  height: 0;
-  opacity:0;
-  position: relative;
-  z-index: 10;
-}
-.td {
-  border: 1px solid gray;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  height: 3rem;
-  align-items: center;
-}
-.bg-w{
-  border: 1px solid gray;
-  background: snow;
-  position: relative;
-  z-index: 100;
-}
-.bg-g{
-  background: #f0f0f0;
-}
-.th {
-  width: 100%;
-  justify-content: center;
-  background: #cccccc;
-  /* color: #fff; */
-  display: flex;
-  height: 3rem;
-  align-items: center;
-}
-
-.wsui-btn__hover_list {
-  opacity: 0.5;
-  background: #f7f7f7;
-}
-
-#projectImage {
-  width: 100%;
-  text-align: center;
-  height: 490rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.projectBack {
-  background-color: #0089dd;
-}
-
+/* 上拉加载分页数据提示 */
 .data-loading {  
   height: 100rpx;  
   line-height: 100rpx;  

@@ -3,12 +3,60 @@
 @import './dist/app.wxss';
 @import './dist/style/weui.wxss';
 
-/* 底部固定栏的样式 */
-.weui-tabbar{position:fixed;bottom:0;left:0;right:0}
-
 page {
   font-size: 11pt;
+  background-color: rgba(241, 241, 241);
 }
+
+/* 悬浮卡片-外部 */
+.suspension-card-external{
+  margin-bottom:-10rpx;/* 让多个卡片上下之间相差10rpx */
+  padding:20rpx;/* 让卡片离页面上下左右20rpx的距离 */
+}
+/* 悬浮卡片-内部 */
+.suspension-card-internal{
+  border-radius: 6rpx; /* 卡片圆角弧度 */
+  background-color: #ffffff;/* 卡片背景颜色 */
+  /* color: #666666; */ /* 卡片内文字颜色 */
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.4);/* 阴影 */
+}
+
+.loading-position-center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index:9999
+}
+
+/* 点击效果 */
+.clickHover{
+  opacity: 0.5;
+}
+
+/* panel面板标题样式 */
+.van-panel-mytitle{
+  color:#0089dd;
+  padding-left:30rpx;
+  padding-top:30rpx;
+  width:70%;
+}
+/* panel面板描述信息样式 */
+.van-panel-mydesc{
+  font-size:27rpx;
+  color:rgba(150, 151, 153);
+  padding-left:30rpx
+}
+/* panel面板右侧状态样式 */
+.van-panel-mystatus{
+  width:30%;
+  text-align:right;
+  padding-right:30rpx;
+  padding-top:30rpx;
+}
+
+
+
 
 .domes_title {
   font-size: 20pt;
@@ -19,76 +67,6 @@ page {
   font-weight: 400;
 }
 
-.ui_flex {
-  position: relative;
-}
-.ui_flex:before {
-  content: '';
-  height: 2rpx;
-  background: #eee;
-  clear: both;
-  display: block;
-}
-
-.ui_flex_item {
-  position: relative;
-  width: 33.3%;
-  height: 250rpx;
-  float: left;
-  border-right: 2rpx solid #eee;
-  border-bottom: 2rpx solid #eee;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.ui_flex_content {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100%;
-  height: 100rpx;
-}
-
-.ui_flex_content image {
-  width: 56rpx;
-  height: 56rpx;
-  margin: 0 auto;
-}
-
-.ui_flex_content view {
-  height: 44rpx;
-}
-/* button */
-.ui_btn{
-  font-size: 13pt;
-  height: 90rpx;
-  line-height: 90rpx;
-  width: 85%;
-  text-align: center;
-  border-radius: 15rpx;
-  margin: 20rpx auto;
-}
-
-.ui_btn_default{
-  border: 2rpx solid #d9d9d9;
-  background: #fff;
-}
-.ui_btn_primary{
-   border: 2rpx solid #09bb07;
-   background: #09bb07;
-   color: #fff;
-}
-.ui_btn_warn{
-   border: 2rpx solid #e64340;
-   background: #e64340;
-   color: #fff;
-}
-.ui-btn_disabled{
-  opacity: 0.3;
-}
 /* cell */
 .ui_cell{
   display: flex;
@@ -206,208 +184,8 @@ page {
 .ui_cell_toRight{
   animation: fnToRight 0.5s forwards;
 }
-@keyframes fnToLeft{
-  from{transform:translate3d(0rpx, 0px, 0px)}
-  to{transform:translate3d(-240rpx, 0px, 0px)}
-}
-@keyframes fnToRight{
-  from{transform:translate3d(-240rpx, 0px, 0px)}
-  to{transform:translate3d(0rpx, 0px, 0px)}
-}
-.ui_panel{
-  position: relative;
-  padding: 30rpx;
-  display: flex;
-  border-bottom: 2rpx solid #eee;
-}
-.ui_panel_hd{
-  margin-right: 20rpx;
-  width: 120rpx;
-  height: 120rpx;
-  line-height: 120rpx;
-  text-align: center;
-}
-.ui_panel_hd image{
-  width: 100%;
-  background: #eee;
-  max-height: 100%;
-  vertical-align: top;
-}
-.ui_panel_bd{
- flex: 1;
-}
-/* form */
-textarea{
-  position: relative;
-  padding: 20rpx 30rpx;
-  width:100%;
-  margin: 40rpx 0;
-  box-sizing: border-box;
-  border-top: 2rpx solid #eee;
-  border-bottom: 2rpx solid #eee;
-}
-textarea text{
-  position: absolute;
-  right: 40rpx;
-  bottom: 40rpx;
-  color: #d9d9d9;
-}
-.ui_agree{
-  display: flex;
-  font-size: 9pt;
-  height: 70rpx;
-  line-height: 50rpx;
-  padding: 10rpx 30rpx;
-  box-sizing: border-box;
-}
-.ui_agree_text{
-  line-height: 60rpx;
-}
-.ui_agree_text text{
-  color: #586c94;
-}
 
 
-checkbox .wx-checkbox-input {
-  border-radius: 50%;
-  background: #fff;
-  box-sizing: border-box;
-}
-
-/* checkbox选中时样式 */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
-  border-radius: 50%;
-  background: #586c94;
-  color: #fff;
-  width: 70rpx;
-  height: 70rpx;
-  line-height: 70rpx;
-  text-align: center;
-  border: none;
-}
-
-/* pages/dialog/dialog.wxss */
-.ui_mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  visibility: hidden;
-}
-
-.ui_mask_visible {
-  opacity: 0.5;
-  visibility: visible;
-}
-
-.ui_dialog {
-  z-index: 999;
-  opacity: 0;
-  width: 80%;
-  max-width: 600rpx;
-  position: fixed;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  border-radius: 6rpx;
-  visibility: hidden;
-  transition-duration: 0.1s;
-  overflow: hidden;
-  text-align: center;
-}
-
-.ui_dialog_visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.ui_dialog_hd {
-  padding: 40rpx 30rpx 10rpx 30rpx;
-}
-
-.ui_dialog_bd {
-  padding: 20rpx 30rpx 20rpx 30rpx;
-  min-height: 80rpx;
-  line-height: 1.3;
-  word-wrap: break-word;
-  word-break: break-all;
-  color: #999;
-}
-
-.ui_dialog_input {
-  padding: 8rpx 12rpx;
-  border: 2rpx solid #ccc;
-  box-sizing: border-box;
-  height: 70rpx;
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 20rpx;
-}
-
-.ui_dialog_ft {
-  position: relative;
-  line-height: 96rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  border-top: 2rpx solid #d5d5d6;
-}
-
-.ui_dialog_cancel {
-  flex: 1;
-  font-size: 13pt;
-  color: #5f646e;
-}
-
-.ui_dialog_sure {
-  flex: 1;
-  font-size: 13pt;
-  color: #3cc51f;
-  border-left: 2rpx solid #d5d5d6;
-}
-
-.ui_dialog_title {
-  font-size: 14pt;
-  font-weight: 400;
-}
-
-.ui_nomore {
-  position: relative;
-  width: 65%;
-  margin: 0 auto;
-  border-top: 2rpx solid #e5e5e5;
-  text-align: center;
-  margin-top: 40rpx;
-  height: 60rpx;
-}
-
-.ui_nomore_content {
-  position: relative;
-  top: -30rpx;
-  padding: 0 15rpx;
-  background-color: #fff;
-  color: #999;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.ui_nomore_bit {
-  position: absolute;
-  top: -10rpx;
-  left: 50%;
-  margin-left: -13rpx;
-  border: 8rpx solid #fff;
-  background-color: #999;
-  width: 10rpx;
-  height:10rpx;
-  border-radius: 50%;
-}
 /* uploader */
 .ui_uploader_cell {
   width: 100%;
@@ -467,104 +245,10 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   width: 100%;
   height: 100%;
 }
-/* pages/topTabar/topTabar.wxss */
-.ui_tab{
-  position: relative;
-  border-top:2rpx solid #ccc; 
-}
-.ui_navbar{
-  display: flex;
-  position: relative;
-}
-.ui_navbar_item{
-  flex: 1;
-  text-align: center;
-  padding: 20rpx 0;
-  border-bottom:2rpx solid #ccc; 
-  border-right:2rpx solid #ccc; 
-}
-.ui_navbar_item_on{
-  color: #666;
-  background: #f1f1f1;
-}
-/* search */
-.ui_searchBox{
-  height: 100rpx;
-  width: 100%;
-  position: relative;
-  padding: 20rpx 0;
-  box-sizing: border-box;
-}
-.ui_search{
-  display: flex;
-  width: 75%;
-  margin: 0 auto;
-  height: 60rpx;
-  line-height: 60rpx;
-  border: 1px solid #ddd;
-  border-radius: 30rpx;
-  background: #fff;
-}
-.ui_searchIcon{
-  padding: 15rpx 30rpx 0 15rpx;
-  box-sizing: border-box;
-}
-.ui_searchInput{
-  width: 80%;
-  height: 100%;
-  padding: 5rpx;
-  box-sizing: border-box;
-}
-
-
 
 .hide{
   display: none;
 }
 .show{
   display: block;
-}
-.priceColor{
-  color: #ea0014;
-}
-.moneyColor{
-  color: #E3D21A;
-}
-/* 灰的 */
-.eColor{
-  color:#999
-}
-/* 字体大小 */
-.size7{
-  font-size:7pt;
-}
-.size9{
-  font-size:9pt;
-}
-.size10{
-  font-size:10pt;
-}
-.size11{
-  font-size:11pt;
-}
-.size13{
-  font-size:13pt;
-}
-.size16{
-  font-size:16pt;
-}
-.size18{
-  font-size:18pt;
-}
-/* 字数限制 */
-.limit{
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.limit2{
-  display: -webkit-box;
--webkit-box-orient: vertical;
--webkit-line-clamp: 2;
-overflow: hidden;
 }

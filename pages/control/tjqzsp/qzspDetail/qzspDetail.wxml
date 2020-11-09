@@ -1,0 +1,39 @@
+<view>
+  <van-panel title="标准厂房" desc="西城    张三    2020-10-28" use-footer-slot>
+
+    <van-cell-group >
+      <van-field clearable label="签证编号" value="001" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />
+      <van-field clearable label="实施情况" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      /> 
+      <van-field clearable label="踏勘人" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />
+      <van-field clearable label="变更部位" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />  
+      <van-field clearable label="变更原因" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />
+      <van-field clearable label="变更金额" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />
+      <van-field clearable label="变更性质" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />
+      <van-field clearable label="变更内容" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />
+      <van-field clearable label="批示" value="{{value}}" placeholder="" border="{{true}}}"
+        bind:change="onChange"
+      />
+    </van-cell-group>
+      
+
+    <view slot="footer">
+      <van-button color="#0089dd" size="small">完成</van-button>
+    </view>
+  </van-panel>
+</view>

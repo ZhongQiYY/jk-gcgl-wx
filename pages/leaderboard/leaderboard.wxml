@@ -1,9 +1,18 @@
 <!-- 无权限展示页 -->
 <limitPage notShowLimit="{{notShowLimit}}"></limitPage>
+
+<!-- 遮罩提示层 -->
+<van-overlay show="{{showOverlay}}" bind:click="onClickHide">
+  <view style="display: flex;align-items: center;justify-content: center;height: 100%;">
+    <view style="color:#fff" >请点击重试</view>
+  </view>
+</van-overlay>
+
 <view wx:if="{{notShowLimit}}">
 	<loading hidden="{{loadingHidden}}">
 		加载中...
 	</loading>
+
 	<view class='table-module'>
 		<!-- 左侧固定 -->
 		<view class='left-policy-type'>
@@ -34,4 +43,5 @@
 			</view>
 		</view>
 	</view>
+
 </view>

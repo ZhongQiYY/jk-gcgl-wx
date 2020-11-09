@@ -1,0 +1,385 @@
+<view class="loading-position-center"><van-loading wx:if="{{showUpLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">上传中...</text></van-loading></view>
+<view class="loading-position-center"><van-loading wx:if="{{showLoadLoading}}" size="35px" color="#0089dd" vertical><text sewtyle="color:#0089dd">加载中...</text></van-loading></view>
+
+<!-- 房建类 -->
+<van-collapse wx:if="{{categoryType==1}}" accordion value="{{ activeName }}" bind:change="collapseChange">
+
+  <view class="suspension-card-external-page"  wx:for="{{timeNode}}" wx:key="index">
+    <view class="suspension-card-internal-page">
+      <van-collapse-item disabled="{{(showCollapseHelp && showCollapse!=index)}}" title="{{item.startTime}} 至 {{item.endTime}}" name="{{index}}" clickable>
+        
+        <van-tabs wx:if="{{showTab==index}}" swipe-threshold="3" line-width="60px" color="#0089dd">
+          
+          <!-- 前期工程 -->
+          <van-tab title="前期工作">
+            <van-cell-group title="立项批复">
+              <van-field data-id="{{planInfoMap.qqlxpf.id}}" data-tag="qqlxpf" data-step_name="前期工作" data-node_name="立项批复" bind:blur="percentageBlur" value="{{planInfoMap.qqlxpf.percentage}}" label="百分比" placeholder="请输入完成情况"/>
+              <van-field value="{{planInfoMap.qqlxpf.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="方案审批">
+              <van-field data-id="{{planInfoMap.qqfasp.id}}" data-tag="qqfasp" data-step_name="前期工作" data-node_name="方案审批" bind:blur="percentageBlur" value="{{planInfoMap.qqfasp.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.qqfasp.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="施工图图审">
+              <van-field data-id="{{planInfoMap.qqsgtts.id}}" data-tag="qqsgtts" data-step_name="前期工作" data-node_name="施工图图审" bind:blur="percentageBlur" value="{{planInfoMap.qqsgtts.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.qqsgtts.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="预算审核">
+              <van-field data-id="{{planInfoMap.qqyssh.id}}" data-tag="qqyssh" data-step_name="前期工作" data-node_name="预算审核" bind:blur="percentageBlur" value="{{planInfoMap.qqyssh.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.qqyssh.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="施工招标">
+              <van-field data-id="{{planInfoMap.qqsgzb.id}}" data-tag="qqsgzb" data-step_name="前期工作" data-node_name="施工招标" bind:blur="percentageBlur" value="{{planInfoMap.qqsgzb.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.qqsgzb.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="施工证办理">
+              <van-field data-id="{{planInfoMap.qqsgzbl.id}}" data-tag="qqsgzbl" data-step_name="前期工作" data-node_name="施工证办理" bind:blur="percentageBlur" value="{{planInfoMap.qqsgzbl.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.qqsgzbl.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="三通一平">
+              <van-field data-id="{{planInfoMap.qqstyp.id}}" data-tag="qqstyp" data-step_name="前期工作" data-node_name="三通一平" bind:blur="percentageBlur" value="{{planInfoMap.qqstyp.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.qqstyp.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+          </van-tab>
+          <!-- 地下室工程 -->
+          <van-tab title="地下室工程">
+            <van-cell-group title="土方工程">
+              <van-field data-id="{{planInfoMap.dxstfgc.id}}" data-tag="dxstfgc" data-step_name="地下室工程" data-node_name="土方工程" bind:blur="percentageBlur" value="{{planInfoMap.dxstfgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.dxstfgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="支护工程">
+              <van-field data-id="{{planInfoMap.dxszhgc.id}}" data-tag="dxszhgc" data-step_name="地下室工程" data-node_name="支护工程" bind:blur="percentageBlur" value="{{planInfoMap.dxszhgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.dxszhgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="基础工程">
+              <van-field data-id="{{planInfoMap.dxsjcgc.id}}" data-tag="dxsjcgc" data-step_name="地下室工程" data-node_name="基础工程" bind:blur="percentageBlur" value="{{planInfoMap.dxsjcgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.dxsjcgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="垫层工程">
+              <van-field data-id="{{planInfoMap.dxsdcgc.id}}" data-tag="dxsdcgc" data-step_name="地下室工程" data-node_name="垫层工程" bind:blur="percentageBlur" value="{{planInfoMap.dxsdcgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.dxsdcgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="底板工程">
+              <van-field data-id="{{planInfoMap.dxsdibgc.id}}" data-tag="dxsdibgc" data-step_name="地下室工程" data-node_name="底板工程" bind:blur="percentageBlur" value="{{planInfoMap.dxsdibgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.dxsdibgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="墙柱工程">
+              <van-field data-id="{{planInfoMap.dxsqzgc.id}}" data-tag="dxsqzgc" data-step_name="地下室工程" data-node_name="墙柱工程" bind:blur="percentageBlur" value="{{planInfoMap.dxsqzgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.dxsqzgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="顶板工程">
+              <van-field data-id="{{planInfoMap.dxsdingbgc.id}}" data-tag="dxsdingbgc" data-step_name="地下室工程" data-node_name="顶板工程" bind:blur="percentageBlur" value="{{planInfoMap.dxsdingbgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.dxsdingbgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+          </van-tab>
+          <!-- 主体工程 -->
+          <van-tab title="主体工程">
+            <van-cell-group title="{{item.ztName}}" wx:for="{{planInfoMap.ztList}}" wx:key="index">
+              <van-field data-id="{{item.id}}" data-tag="zt" data-step_name="主体工程" data-node_name="{{item.ztName}}" bind:blur="percentageBlur" value="{{item.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{item.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+          </van-tab>
+          <!-- 装饰装修工程 -->
+          <van-tab title="装饰装修工程">
+            <van-cell-group title="砌墙抹灰">
+              <van-field data-id="{{planInfoMap.zszxqqmh.id}}" data-tag="zszxqqmh" data-step_name="装饰装修工程" data-node_name="砌墙抹灰" bind:blur="percentageBlur" value="{{planInfoMap.zszxqqmh.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.zszxqqmh.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="门窗安装">
+              <van-field data-id="{{planInfoMap.zszxmcan.id}}" data-tag="zszxmcan" data-step_name="装饰装修工程" data-node_name="门窗安装" bind:blur="percentageBlur" value="{{planInfoMap.zszxmcan.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.zszxmcan.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="扶手栏杆">
+              <van-field data-id="{{planInfoMap.zszxfslg.id}}" data-tag="zszxfslg" data-step_name="装饰装修工程" data-node_name="扶手栏杆" bind:blur="percentageBlur" value="{{planInfoMap.zszxfslg.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.zszxfslg.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="外墙面层">
+              <van-field data-id="{{planInfoMap.zszxwqmc.id}}" data-tag="zszxwqmc" data-step_name="装饰装修工程" data-node_name="外墙面层" bind:blur="percentageBlur" value="{{planInfoMap.zszxwqmc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.zszxwqmc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="电梯安装">
+              <van-field data-id="{{planInfoMap.zszxdtaz.id}}" data-tag="zszxdtaz" data-step_name="装饰装修工程" data-node_name="电梯安装" bind:blur="percentageBlur" value="{{planInfoMap.zszxdtaz.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.zszxdtaz.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="消防安装">
+              <van-field data-id="{{planInfoMap.zszxxfaz.id}}" data-tag="zszxxfaz" data-step_name="装饰装修工程" data-node_name="消防安装" bind:blur="percentageBlur" value="{{planInfoMap.zszxxfaz.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.zszxxfaz.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="楼地面散水">
+              <van-field data-id="{{planInfoMap.zszxldmss.id}}" data-tag="zszxldmss" data-step_name="装饰装修工程" data-node_name="楼地面散水" bind:blur="percentageBlur" value="{{planInfoMap.zszxldmss.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.zszxldmss.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+          </van-tab>
+          <!-- 配套工程 -->
+          <van-tab title="配套工程">
+            <van-cell-group title="供水工程">
+              <van-field data-id="{{planInfoMap.ptgsgc.id}}" data-tag="ptgsgc" data-step_name="配套工程" data-node_name="供水工程" bind:blur="percentageBlur" value="{{planInfoMap.ptgsgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptgsgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="供电工程">
+              <van-field data-id="{{planInfoMap.ptgdgc.id}}" data-tag="ptgdgc" data-step_name="配套工程" data-node_name="供电工程" bind:blur="percentageBlur" value="{{planInfoMap.ptgdgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptgdgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="供气工程">
+              <van-field data-id="{{planInfoMap.ptgqgc.id}}" data-tag="ptgqgc" data-step_name="配套工程" data-node_name="供气工程" bind:blur="percentageBlur" value="{{planInfoMap.ptgqgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptgqgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="排水排污">
+              <van-field data-id="{{planInfoMap.ptpspw.id}}" data-tag="ptpspw" data-step_name="配套工程" data-node_name="排水排污" bind:blur="percentageBlur" value="{{planInfoMap.ptpspw.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptpspw.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="道路铺装">
+              <van-field data-id="{{planInfoMap.ptdlpz.id}}" data-tag="ptdlpz" data-step_name="配套工程" data-node_name="道路铺装" bind:blur="percentageBlur" value="{{planInfoMap.ptdlpz.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptdlpz.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="绿化工程">
+              <van-field data-id="{{planInfoMap.ptlvhgc.id}}" data-tag="ptlvhgc" data-step_name="配套工程" data-node_name="绿化工程" bind:blur="percentageBlur" value="{{planInfoMap.ptlvhgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptlvhgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="亮化工程">
+              <van-field data-id="{{planInfoMap.ptlianghgc.id}}" data-tag="ptlianghgc" data-step_name="配套工程" data-node_name="亮化工程" bind:blur="percentageBlur" value="{{planInfoMap.ptlianghgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptlianghgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+          </van-tab>
+          <!-- 竣工交付 -->
+          <van-tab title="竣工交付">
+            <van-cell-group title="竣工初验">
+              <van-field data-id="{{planInfoMap.jgjgcy.id}}" data-tag="jgjgcy" data-step_name="竣工交付" data-node_name="竣工初验" bind:blur="percentageBlur" value="{{planInfoMap.jgjgcy.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.jgjgcy.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="规划等专项验收">
+              <van-field data-id="{{planInfoMap.jgghdzxys.id}}" data-tag="jgghdzxys" data-step_name="竣工交付" data-node_name="规划等专项验收" bind:blur="percentageBlur" value="{{planInfoMap.jgghdzxys.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.jgghdzxys.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="竣工验收">
+              <van-field data-id="{{planInfoMap.jgjgys.id}}" data-tag="jgjgys" data-step_name="竣工交付" data-node_name="竣工验收" bind:blur="percentageBlur" value="{{planInfoMap.jgjgys.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.jgjgys.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="档案验收">
+              <van-field data-id="{{planInfoMap.jgdays.id}}" data-tag="jgdays" data-step_name="竣工交付" data-node_name="档案验收" bind:blur="percentageBlur" value="{{planInfoMap.jgdays.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.jgdays.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="竣工备案">
+              <van-field data-id="{{planInfoMap.jgjgba.id}}" data-tag="jgjgba" data-step_name="竣工交付" data-node_name="竣工备案" bind:blur="percentageBlur" value="{{planInfoMap.jgjgba.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.jgjgba.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="交付使用">
+              <van-field data-id="{{planInfoMap.jgjfsy.id}}" data-tag="jgjfsy" data-step_name="竣工交付" data-node_name="交付使用" bind:blur="percentageBlur" value="{{planInfoMap.jgjfsy.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.jgjfsy.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+            <van-cell-group title="不动产登记">
+              <van-field data-id="{{planInfoMap.jgbdcdj.id}}" data-tag="jgbdcdj" data-step_name="竣工交付" data-node_name="不动产登记" bind:blur="percentageBlur" value="{{planInfoMap.jgbdcdj.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.jgbdcdj.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+            </van-cell-group>
+          </van-tab>
+       
+        </van-tabs>
+
+      </van-collapse-item>
+    </view>
+  </view>
+</van-collapse>
+
+
+<!-- 园林类 -->
+<van-collapse wx:if="{{categoryType==2}}" accordion value="{{ activeName }}" bind:change="collapseChange">
+
+<view class="suspension-card-external-page"  wx:for="{{timeNode}}" wx:key="index">
+  <view class="suspension-card-internal-page">
+    <van-collapse-item disabled="{{(showCollapseHelp && showCollapse!=index)}}" title="{{item.startTime}} 至 {{item.endTime}}" name="{{index}}" clickable>
+      
+      <van-tabs wx:if="{{showTab==index}}" swipe-threshold="3" line-width="60px" color="#0089dd">
+        
+        <!-- 前期工程 -->
+        <van-tab title="前期工作">
+          <van-cell-group title="立项批复">
+            <van-field data-id="{{planInfoMap.qqlxpf.id}}" data-tag="qqlxpf" data-step_name="前期工作" data-node_name="立项批复" bind:blur="percentageBlur" value="{{planInfoMap.qqlxpf.percentage}}" label="百分比" placeholder="请输入完成情况"/>
+            <van-field value="{{planInfoMap.qqlxpf.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="方案审批">
+            <van-field data-id="{{planInfoMap.qqfasp.id}}" data-tag="qqfasp" data-step_name="前期工作" data-node_name="方案审批" bind:blur="percentageBlur" value="{{planInfoMap.qqfasp.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.qqfasp.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="施工图图审">
+            <van-field data-id="{{planInfoMap.qqsgtts.id}}" data-tag="qqsgtts" data-step_name="前期工作" data-node_name="施工图图审" bind:blur="percentageBlur" value="{{planInfoMap.qqsgtts.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.qqsgtts.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="预算审核">
+            <van-field data-id="{{planInfoMap.qqyssh.id}}" data-tag="qqyssh" data-step_name="前期工作" data-node_name="预算审核" bind:blur="percentageBlur" value="{{planInfoMap.qqyssh.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.qqyssh.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="施工招标">
+            <van-field data-id="{{planInfoMap.qqsgzb.id}}" data-tag="qqsgzb" data-step_name="前期工作" data-node_name="施工招标" bind:blur="percentageBlur" value="{{planInfoMap.qqsgzb.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.qqsgzb.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="施工证办理">
+            <van-field data-id="{{planInfoMap.qqsgzbl.id}}" data-tag="qqsgzbl" data-step_name="前期工作" data-node_name="施工证办理" bind:blur="percentageBlur" value="{{planInfoMap.qqsgzbl.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.qqsgzbl.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="三通一平">
+            <van-field data-id="{{planInfoMap.qqstyp.id}}" data-tag="qqstyp" data-step_name="前期工作" data-node_name="三通一平" bind:blur="percentageBlur" value="{{planInfoMap.qqstyp.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.qqstyp.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+        </van-tab>
+        <!-- 园区工程 -->
+        <van-tab title="园区工程">
+          <van-cell-group title="地形造型">
+            <van-field data-id="{{planInfoMap.yqdxzx.id}}" data-tag="yqdxzx" data-step_name="园区工程" data-node_name="地形造型" bind:blur="percentageBlur" value="{{planInfoMap.yqdxzx.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.yqdxzx.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="给排水工程">
+            <van-field data-id="{{planInfoMap.yqjpsgc.id}}" data-tag="yqjpsgc" data-step_name="园区工程" data-node_name="给排水工程" bind:blur="percentageBlur" value="{{planInfoMap.yqjpsgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.yqjpsgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="绿化种植">
+            <van-field data-id="{{planInfoMap.yqlhzz.id}}" data-tag="yqlhzz" data-step_name="园区工程" data-node_name="绿化种植" bind:blur="percentageBlur" value="{{planInfoMap.yqlhzz.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.yqlhzz.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="景观小品">
+            <van-field data-id="{{planInfoMap.yqjgxp.id}}" data-tag="yqjgxp" data-step_name="园区工程" data-node_name="景观小品" bind:blur="percentageBlur" value="{{planInfoMap.yqjgxp.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.yqjgxp.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="路灯照明">
+            <van-field data-id="{{planInfoMap.yqldzm.id}}" data-tag="yqldzm" data-step_name="园区工程" data-node_name="路灯照明" bind:blur="percentageBlur" value="{{planInfoMap.yqldzm.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.yqldzm.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="监控智能">
+            <van-field data-id="{{planInfoMap.yqjkzn.id}}" data-tag="yqjkzn" data-step_name="园区工程" data-node_name="监控智能" bind:blur="percentageBlur" value="{{planInfoMap.yqjkzn.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.yqjkzn.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="零星工程">
+            <van-field data-id="{{planInfoMap.yqlxgc.id}}" data-tag="yqlxgc" data-step_name="园区工程" data-node_name="零星工程" bind:blur="percentageBlur" value="{{planInfoMap.yqlxgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.yqlxgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+        </van-tab>
+        <!-- 路场工程 -->
+        <van-tab title="路场工程">
+          <van-cell-group title="土方工程">
+              <van-field data-id="{{planInfoMap.lctfgc.id}}" data-tag="lctfgc" data-step_name="路场工程" data-node_name="土方工程" bind:blur="percentageBlur" value="{{planInfoMap.lctfgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.lctfgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="园路整形">
+              <van-field data-id="{{planInfoMap.lcylzx.id}}" data-tag="lcylzx" data-step_name="路场工程" data-node_name="园路整形" bind:blur="percentageBlur" value="{{planInfoMap.lcylzx.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.lcylzx.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="园路铺装">
+              <van-field data-id="{{planInfoMap.lcylpz.id}}" data-tag="lcylpz" data-step_name="路场工程" data-node_name="园路铺装" bind:blur="percentageBlur" value="{{planInfoMap.lcylpz.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.lcylpz.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="道路整形">
+              <van-field data-id="{{planInfoMap.lcdlzx.id}}" data-tag="lcdlzx" data-step_name="路场工程" data-node_name="道路整形" bind:blur="percentageBlur" value="{{planInfoMap.lcdlzx.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.lcdlzx.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="道路硬化">
+              <van-field data-id="{{planInfoMap.lcdlyh.id}}" data-tag="lcdlyh" data-step_name="路场工程" data-node_name="道路硬化" bind:blur="percentageBlur" value="{{planInfoMap.lcdlyh.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.lcdlyh.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="停车（广）场整形">
+              <van-field data-id="{{planInfoMap.lctcczx.id}}" data-tag="lctcczx" data-step_name="路场工程" data-node_name="停车（广）场整形" bind:blur="percentageBlur" value="{{planInfoMap.dxsqzgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.lctcczx.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="停车（广）场铺装">
+              <van-field data-id="{{planInfoMap.lctccpz.id}}" data-tag="lctccpz" data-step_name="路场工程" data-node_name="停车（广）场铺装" bind:blur="percentageBlur" value="{{planInfoMap.dxsdingbgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.lctccpz.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+        </van-tab>
+        <!-- 配套用房 -->
+        <van-tab title="配套用房">
+          <van-cell-group title="土方工程">
+              <van-field data-id="{{planInfoMap.pttfgc.id}}" data-tag="pttfgc" data-step_name="配套用房" data-node_name="土方工程" bind:blur="percentageBlur" value="{{planInfoMap.pttfgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.pttfgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="基础工程">
+              <van-field data-id="{{planInfoMap.ptjcgc.id}}" data-tag="ptjcgc" data-step_name="配套用房" data-node_name="基础工程" bind:blur="percentageBlur" value="{{planInfoMap.ptjcgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptjcgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="主体工程">
+              <van-field data-id="{{planInfoMap.ptztgc.id}}" data-tag="ptztgc" data-step_name="配套用房" data-node_name="主体工程" bind:blur="percentageBlur" value="{{planInfoMap.ptztgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptztgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="装饰装修">
+              <van-field data-id="{{planInfoMap.ptzszx.id}}" data-tag="ptzszx" data-step_name="配套用房" data-node_name="装饰装修" bind:blur="percentageBlur" value="{{planInfoMap.ptzszx.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptzszx.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="供水供电">
+              <van-field data-id="{{planInfoMap.ptgsgd.id}}" data-tag="ptgsgd" data-step_name="配套用房" data-node_name="供水供电" bind:blur="percentageBlur" value="{{planInfoMap.ptgsgd.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptgsgd.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="排水排污">
+              <van-field data-id="{{planInfoMap.ptpspw.id}}" data-tag="ptpspw" data-step_name="配套用房" data-node_name="排水排污" bind:blur="percentageBlur" value="{{planInfoMap.ptpspw.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptpspw.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="零星工程">
+              <van-field data-id="{{planInfoMap.ptlxgc.id}}" data-tag="ptlxgc" data-step_name="配套用房" data-node_name="零星工程" bind:blur="percentageBlur" value="{{planInfoMap.ptlxgc.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.ptlxgc.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+        </van-tab>
+        <!-- 文化景观 -->
+        <van-tab title="文化景观">
+          <van-cell-group title="水系整理">
+              <van-field data-id="{{planInfoMap.whsxzl.id}}" data-tag="whsxzl" data-step_name="文化景观" data-node_name="水系整理" bind:blur="percentageBlur" value="{{planInfoMap.whsxzl.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.whsxzl.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="木栈道">
+              <van-field data-id="{{planInfoMap.whmzd.id}}" data-tag="whmzd" data-step_name="文化景观" data-node_name="木栈道" bind:blur="percentageBlur" value="{{planInfoMap.whmzd.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.whmzd.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="景观桥">
+              <van-field data-id="{{planInfoMap.whjgq.id}}" data-tag="whjgq" data-step_name="文化景观" data-node_name="景观桥" bind:blur="percentageBlur" value="{{planInfoMap.whjgq.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.whjgq.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="艺术小品">
+              <van-field data-id="{{planInfoMap.whysxp.id}}" data-tag="whysxp" data-step_name="文化景观" data-node_name="艺术小品" bind:blur="percentageBlur" value="{{planInfoMap.whysxp.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.whysxp.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="文化雕塑">
+              <van-field data-id="{{planInfoMap.whwhds.id}}" data-tag="whwhds" data-step_name="文化景观" data-node_name="文化雕塑" bind:blur="percentageBlur" value="{{planInfoMap.whwhds.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.whwhds.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="美化刻画">
+              <van-field data-id="{{planInfoMap.whmhkh.id}}" data-tag="whmhkh" data-step_name="文化景观" data-node_name="美化刻画" bind:blur="percentageBlur" value="{{planInfoMap.whmhkh.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.whmhkh.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="业态布展">
+              <van-field data-id="{{planInfoMap.whytbz.id}}" data-tag="whytbz" data-step_name="文化景观" data-node_name="业态布展" bind:blur="percentageBlur" value="{{planInfoMap.whytbz.percentage}}" label="百分比" placeholder="请输入完成情况" />
+              <van-field value="{{planInfoMap.whytbz.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+        </van-tab>
+        <!-- 竣工交付 -->
+        <van-tab title="竣工交付">
+          <van-cell-group title="竣工初验">
+            <van-field data-id="{{planInfoMap.jgjgcy.id}}" data-tag="jgjgcy" data-step_name="竣工交付" data-node_name="竣工初验" bind:blur="percentageBlur" value="{{planInfoMap.jgjgcy.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.jgjgcy.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="规划等专项验收">
+            <van-field data-id="{{planInfoMap.jgghdzxys.id}}" data-tag="jgghdzxys" data-step_name="竣工交付" data-node_name="规划等专项验收" bind:blur="percentageBlur" value="{{planInfoMap.jgghdzxys.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.jgghdzxys.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="竣工验收">
+            <van-field data-id="{{planInfoMap.jgjgys.id}}" data-tag="jgjgys" data-step_name="竣工交付" data-node_name="竣工验收" bind:blur="percentageBlur" value="{{planInfoMap.jgjgys.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.jgjgys.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="档案验收">
+            <van-field data-id="{{planInfoMap.jgdays.id}}" data-tag="jgdays" data-step_name="竣工交付" data-node_name="档案验收" bind:blur="percentageBlur" value="{{planInfoMap.jgdays.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.jgdays.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="竣工备案">
+            <van-field data-id="{{planInfoMap.jgjgba.id}}" data-tag="jgjgba" data-step_name="竣工交付" data-node_name="竣工备案" bind:blur="percentageBlur" value="{{planInfoMap.jgjgba.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.jgjgba.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="交付使用">
+            <van-field data-id="{{planInfoMap.jgjfsy.id}}" data-tag="jgjfsy" data-step_name="竣工交付" data-node_name="交付使用" bind:blur="percentageBlur" value="{{planInfoMap.jgjfsy.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.jgjfsy.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+          <van-cell-group title="不动产登记">
+            <van-field data-id="{{planInfoMap.jgbdcdj.id}}" data-tag="jgbdcdj" data-step_name="竣工交付" data-node_name="不动产登记" bind:blur="percentageBlur" value="{{planInfoMap.jgbdcdj.percentage}}" label="百分比" placeholder="请输入完成情况" />
+            <van-field value="{{planInfoMap.jgbdcdj.outputValue}}" label="产值" readonly placeholder="请输入产值" />
+          </van-cell-group>
+        </van-tab>
+     
+      </van-tabs>
+
+    </van-collapse-item>
+  </view>
+</view>
+</van-collapse>
