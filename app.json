@@ -61,7 +61,8 @@
     "pages/control/tjqzsp/qzspDetail/qzspDetail",
     "pages/control/txxmxx/txPlan/txPlan",
     "pages/control/txxmxx/txSchedule/txSchedule",
-    "pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan"
+    "pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan",
+    "pages/control/txxmxx/txPlan/txProjectSchedule/txProjectSchedule"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -9,13 +9,12 @@ Page({
 
   },
   // 跳转到填写计划
-  totxPlan: function(){
+  totxPlan: function(e){
+   var tag = e.currentTarget.dataset.tag
     wx.navigateTo({
-      url: '/pages/control/txxmxx/txPlan/txPlan',
+      url: '/pages/control/txxmxx/txPlan/txPlan?tag='+tag,
     })
   },
-
-
 
 
   tabbarChange: function(e){
