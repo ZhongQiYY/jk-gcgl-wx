@@ -61,11 +61,7 @@
     "pages/control/txxmxx/txPlan/txPlan",
     "pages/control/txxmxx/txSchedule/txSchedule",
     "pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan",
-<<<<<<< HEAD
-    "pages/control/txxmxx/txBase/txBase"
-=======
     "pages/control/txxmxx/txPlan/txProjectSchedule/txProjectSchedule"
->>>>>>> 280516c77ae1670597a710933bd71a0f660d2c98
   ],
   "window": {
     "backgroundTextStyle": "dark",

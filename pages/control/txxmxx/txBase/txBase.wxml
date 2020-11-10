@@ -1,2 +1,45 @@
-<!--pages/control/txxmxx/txBase/txBase.wxml-->
-<text>pages/control/txxmxx/txBase/txBase.wxml</text>
+
+<view style="padding-bottom: 100rpx;">
+
+  <!-- 基本信息 -->
+  <view wx:if="{{showBasics == active}}" class="suspension-card-external-page">
+		<view class="suspension-card-internal-page">
+      <van-field label="建设单位" value="{{projectInfo.unitName}}" placeholder="请输入" />
+      
+    </view>
+  </view>
+  
+  <!-- 五方信息 -->
+  <view wx:if="{{showFive == active}}" class="suspension-card-external-page">
+		<view class="suspension-card-internal-page">
+      <van-field label="" value="{{}}" placeholder="请输入" />
+      
+    </view>
+  </view>
+
+  <!-- 资金信息 -->
+  <view wx:if="{{showMoney == active}}" class="suspension-card-external-page">
+		<view class="suspension-card-internal-page">
+      <van-field label="" value="{{}}" placeholder="请输入" />
+      
+    </view>
+  </view>
+
+  <!-- 单体情况 -->
+  <view wx:if="{{showPart == active}}" class="suspension-card-external-page">
+		<view class="suspension-card-internal-page">
+      <van-field label="" value="{{}}" placeholder="请输入" />
+      
+    </view>
+  </view>
+
+</view>
+
+
+<!-- 底部菜单 -->
+<van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
+  <van-tabbar-item icon="newspaper-o">基本信息</van-tabbar-item>
+  <van-tabbar-item icon="coupon-o">五方信息</van-tabbar-item>
+  <van-tabbar-item icon="bill-o">资金信息</van-tabbar-item>
+  <van-tabbar-item wx:if="{{categoryType==1}}" icon="coupon-o">单体情况</van-tabbar-item>
+</van-tabbar>
