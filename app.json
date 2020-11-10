@@ -61,7 +61,10 @@
     "pages/control/txxmxx/txPlan/txPlan",
     "pages/control/txxmxx/txSchedule/txSchedule",
     "pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan",
-    "pages/control/txxmxx/txPlan/txProjectSchedule/txProjectSchedule"
+    "pages/control/txxmxx/txPlan/txProjectSchedule/txProjectSchedule",
+    "pages/control/txxmxx/txGqxx/txGqxx",
+    "pages/control/tjzjxx/tjzjxx",
+    "pages/tableData/datapages/gqxx/gqxx"
   ],
   "window": {
     "backgroundTextStyle": "dark",

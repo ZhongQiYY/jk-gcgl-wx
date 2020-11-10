@@ -1,7 +1,8 @@
 
+
 <!-- 计划和进度 -->
 <view wx:if="{{showPlanSchedule==active}}" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;">
-  <view style="padding-bottom: 100rpx;width:60%;">
+  <view style="width:60%;padding-bottom: 100rpx;">
 
     <view bindtap="totxPlan" data-tag='1'  class="suspension-card-external-page" hover-class="plan-schedule-hover">
       <view class="suspension-card-internal-page shadow-blur">
@@ -19,23 +20,31 @@
 </view>
 
 <!-- 项目信息 -->
-<view wx:if="{{showProjectInfo==active}}">
-  <view style="padding-bottom: 100rpx;">
-
-    <!-- 悬浮块展示 -->
-    <view wx:for="{{projectNameListByCategory}}" wx:key="index" class="suspension-card-external">
-      <view class="suspension-card-internal">
-        <van-cell-group title="{{item.name}}">
-          <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
-            title="{{item1.projectName}}" 
-            url="/pages/control/txxmxx/txBase/txBase?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}" 
-            wx:for-item="item1" wx:for-index="index1" is-link />
-        </van-cell-group>
-      </view>
-    </view>
-
+<view wx:for="{{projectNameListByCategory}}" wx:if="{{showProjectInfo==active}}" wx:key="index" class="suspension-card-external" style="padding-bottom: 100rpx;">
+  <view class="suspension-card-internal">
+    <van-cell-group title="{{item.name}}">
+      <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
+        title="{{item1.projectName}}" 
+        url="/pages/control/txxmxx/txBase/txBase?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}" 
+        wx:for-item="item1" wx:for-index="index1" is-link />
+    </van-cell-group>
   </view>
 </view>
+
+
+<!-- 工期信息 -->
+<view wx:for="{{projectNameListByCategory}}" wx:if="{{showTimeLimitInfo==active}}" wx:key="index" class="suspension-card-external" style="padding-bottom: 100rpx;">
+  <view class="suspension-card-internal">
+    <van-cell-group title="{{item.name}}">
+      <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
+        title="{{item1.projectName}}" 
+        url="/pages/control/txxmxx/txGqxx/txGqxx?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}" 
+        wx:for-item="item1" wx:for-index="index1" is-link />
+    </van-cell-group>
+  </view>
+</view>
+
+
 
 
 
@@ -44,7 +53,6 @@
 <!-- 底部菜单 -->
 <van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
   <van-tabbar-item icon="notes-o">进度/计划</van-tabbar-item>
+  <van-tabbar-item icon="todo-list-o">工期信息</van-tabbar-item>
   <van-tabbar-item icon="description">项目信息</van-tabbar-item>
-  <van-tabbar-item icon="">待定</van-tabbar-item>
-  <van-tabbar-item icon="">待定</van-tabbar-item>
 </van-tabbar>

@@ -16,7 +16,7 @@
 					<van-grid-item badge="{{}}" bind:click="toXmxx" icon="/images/txjdxx.png" text="填写项目信息" />
 					<van-grid-item badge="{{}}" bind:click="toHtgl" icon="/images/tjhtgl.png" text="提交合同管理" />
 					<van-grid-item badge="{{}}" bind:click="toTzwj" icon="/images/tjtzwj.png" text="提交图纸文件" />
-					<van-grid-item badge="{{}}" bind:click="toGqxx" icon="" text="提交工期信息" />
+					<van-grid-item badge="{{}}" bind:click="toZjxx" icon="/images/zjxx.png" text="提交造价信息" />
 				</van-grid>
 			</van-cell-group>
 		</view>

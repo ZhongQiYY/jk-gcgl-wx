@@ -101,4 +101,9 @@ Page({
       url: '/pages/control/sjbsc/sjbsc',
     })
   },
+  toZjxx: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjzjxx/tjzjxx',
+    })
+  },
 })

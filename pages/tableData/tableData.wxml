@@ -20,7 +20,7 @@
 				<van-grid-item badge="{{}}" bind:click="toZjjk" icon="/images/zjjk.png" text="造价监控" />
 				<van-grid-item badge="{{}}" bind:click="toAqjc" icon="/images/aqjc.png" text="安全检查" />
 				<van-grid-item badge="{{}}" bind:click="toZljc" icon="/images/zljc.png" text="质量检查" />
-				<van-grid-item badge="{{}}" bind:click="toSjtj" icon="/images/sjtj.png" text="数据统计" />
+				<van-grid-item badge="{{}}" bind:click="toGqxx" icon="/images/gqxx.png" text="工期信息" />
 				<van-grid-item badge="{{}}" bind:click="toDbsx" icon="/images/dbsx.png" text="督办事项" />
 				<van-grid-item badge="{{}}" bind:click="toQzsp" icon="/images/qzsp.png" text="签证审批" />
 				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toWtjy" icon="/images/txsx.png" text="问题建议" />

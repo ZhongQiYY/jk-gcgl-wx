@@ -178,14 +178,14 @@ Page({
       })
     } else Toast.fail("未选择项目");
   },
-  //数据统计
-  toSjtj: function () {
+  //工期信息
+  toGqxx: function(){
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
-        url: '/pages/tableData/datapages/sjtj/sjtj',
+        url: '/pages/tableData/datapages/gqxx/gqxx',
       })
     } else Toast.fail("未选择项目");
-  },
+  }
   
 
   

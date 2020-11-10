@@ -7,7 +7,9 @@ Page({
     projectNameListByCategory: [],
     active: 0,//tabbar索引
     showPlanSchedule: 0,//展示进度计划
-    showProjectInfo: 1,//展示项目信息
+    showTimeLimitInfo: 1,//工期信息
+    showProjectInfo: 2,//展示项目信息
+    
   },
 
   onLoad: function(e){
