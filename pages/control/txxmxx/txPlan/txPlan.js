@@ -1,6 +1,6 @@
 var app = getApp();
 var request = app.globalData.request;
-var requestValue = app.globalData.requestValue;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   /**

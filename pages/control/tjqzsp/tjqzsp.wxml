@@ -1,73 +1,91 @@
 <import src="/template/commitRecord/commitRecord.wxml" />
-<view style="padding-bottom: 100rpx">
-
-  <view wx:if="{{showOther}}">
-    <van-cell-group >
-      <van-field clearable label="签证编号" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="实施情况" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      /> 
-      <van-field clearable label="踏勘人" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更部位" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />  
-      <van-field clearable label="变更原因" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更金额" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更性质" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更内容" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-    </van-cell-group>
-    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
-
-    <button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
-				class="weui-btn weui-btn_primary">提交</button>
-			<!-- 提交记录 -->
-			<template is="commitRecord"></template>
-  </view>
 
 
-  <view wx:if="{{!showOther}}">
-    <van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
+  <view style="padding-bottom: 100rpx">
 
-      <block wx:for="{{problemPlanList}}" wx:key="index">
-        <van-collapse-item name="{{index}}" value="{{item.unitName}}">
+    <!-- 提交部分 -->
+    <view wx:if="{{showOther}}">
+      <!-- 搜索框 -->
+      <controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
+      </controlSearch>
 
-          <view slot="title">
-            <view class="van-cell-text">{{item.projectName}}</view>
-            <van-tag type="danger">{{item.timeNameList.length}}</van-tag>
-          </view>
+      <view class="suspension-card-external-page">
+		    <view class="suspension-card-internal-page">
+        <!-- 当前项目名称 -->
+        <view style="text-align:center;width:100%;color:#0089dd">{{projectName}}</view>
+        <!-- 模糊横线 -->
+        <view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
+        <!-- 提交的内容区域 -->
+        <van-cell-group >
+          <van-field clearable label="签证编号" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          />
+          <van-field clearable label="实施情况" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          /> 
+          <van-field clearable label="踏勘人" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          />
+          <van-field clearable label="变更部位" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          />  
+          <van-field clearable label="变更原因" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          />
+          <van-field clearable label="变更金额" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          />
+          <van-field clearable label="变更性质" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          />
+          <van-field clearable label="变更内容" value="{{value}}" placeholder="" border="{{true}}}"
+            bind:change="onChange"
+          />
+        </van-cell-group>
+        <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+            
+        <button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
+        class="weui-btn weui-btn_primary">提交</button>
+        <!-- 提交记录按钮 -->
+        <template is="commitRecord"></template>
 
-          <van-cell-group >
-            <block wx:for="{{item.timeNameList}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
-              <van-cell 
-                title="{{item1.submitTime}}"
-                value="{{item1.commitName}}" 
-                border="{{ true }}" 
-                is-link 
-                bind:click=""
-                url="/pages/control/tjqzsp/qzspDetail/qzspDetail">
-              </van-cell>
+        </view>
+      </view>
+    </view>
+
+    <!-- 查看部分 -->
+    <view wx:if="{{!showOther}}">
+          <van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
+
+            <block wx:for="{{problemPlanList}}" wx:key="index">
+              <van-collapse-item name="{{index}}" value="{{item.unitName}}">
+
+                <view slot="title">
+                  <view class="van-cell-text">{{item.projectName}}</view>
+                  <van-tag type="danger">{{item.timeNameList.length}}</van-tag>
+                </view>
+
+                <van-cell-group >
+                  <block wx:for="{{item.timeNameList}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
+                    <van-cell 
+                      title="{{item1.submitTime}}"
+                      value="{{item1.commitName}}" 
+                      border="{{ true }}" 
+                      is-link 
+                      bind:click=""
+                      url="/pages/control/tjqzsp/qzspDetail/qzspDetail">
+                    </van-cell>
+                  </block>
+                </van-cell-group>
+
+              </van-collapse-item>
             </block>
-          </van-cell-group>
 
-        </van-collapse-item>
-      </block>
+          </van-collapse>
+    </view>
 
-    </van-collapse>
   </view>
-
-</view>
+  
 
 <!-- 底部菜单 -->
 <van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">

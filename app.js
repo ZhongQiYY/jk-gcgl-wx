@@ -1,4 +1,4 @@
-var requestValue = require('./api/api.js');
+var requestUrl = require('./api/api.js');
 var request = require('./utils/request.js');
 //app.js
 //获取应用实例
@@ -17,7 +17,7 @@ globalData: {
   projectId: 0,//全局项目id
   categoryType: 0,//全局项目类型
 
-  requestValue: requestValue,//请求的url
+  requestUrl: requestUrl,//请求的url
   request: request,//封装的请求模板
 
 
