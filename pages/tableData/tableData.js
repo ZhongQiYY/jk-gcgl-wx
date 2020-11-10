@@ -1,6 +1,8 @@
 import Toast from '@vant/weapp/toast/toast';
 var app = getApp();
 var basePath = app.globalData.basePath;
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   mixins: [require('../../dist/mixin/themeChanged')],
@@ -81,7 +83,7 @@ Page({
   onLoad: function (options) {
     var list = app.globalData.projectNameList;
     if (list.length <= 0) {
-      request.post(requestValue.nameList, {}).then(res => {
+      request.post(requestUrl.nameList, {}).then(res => {
         app.globalData.projectNameList = res.data.projectNameList;
         app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;    
       }).catch(err => {

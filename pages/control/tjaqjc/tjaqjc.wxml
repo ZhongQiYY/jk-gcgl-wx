@@ -1,10 +1,22 @@
 <import src="/template/commitRecord/commitRecord.wxml" />
+
 <view style="padding-bottom: 100rpx">
 
-
+	<!-- 提交信息区域 -->
 	<view wx:if="{{showOther}}">
 		
 		<view style="width:100%;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
+			<!-- 搜索框 -->
+      <controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
+			</controlSearch>
+			
+			<view class="suspension-card-external-page">
+		    <view class="suspension-card-internal-page">
+        <!-- 当前项目名称 -->
+				<view style="text-align:center;width:100%;color:#0089dd">{{projectName}}</view>
+				<!-- 模糊横线 -->
+				<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
+				
 				<van-field
 					required
 					value="{{currentProblem}}"
@@ -18,15 +30,28 @@
 					border="{{true}}"
 				/>
 
+				<van-field
+					required
+					value="{{currentScore}}"
+					label="扣分"
+					type="textarea"
+					placeholder="请输入扣分数"
+					autosize
+					bind:input="inputScore"
+					border="{{true}}"
+				/>
+
 				<van-cell title="整改期限" value="{{date}}" bind:click="onDisplay" is-link/>
 				<van-calendar show="{{show}}" bind:close="onClose" bind:confirm="onConfirm" />
 
 				<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
 
-			<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
-				class="weui-btn weui-btn_primary">提交</button>
-			<!-- 提交记录 -->
-			<template is="commitRecord"></template>
+					<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
+						class="weui-btn weui-btn_primary">提交</button>
+					<!-- 提交记录 -->
+					<template is="commitRecord"></template>
+				</view>
+			</view>
 		</view>
 		
 	</view>

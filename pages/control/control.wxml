@@ -1,41 +1,58 @@
 <!-- 无权限展示页 -->
 <limitPage notShowLimit="{{notShowLimit}}"></limitPage>
 <!-- 搜索框 -->
-<controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
-</controlSearch>
+<!-- <controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
+</controlSearch> -->
 
 <view wx:if="{{notShowLimit}}">
+
+	<!-- 建设单位 -->
 	<view class="suspension-card-external">
 		<view class="suspension-card-internal">
-			<!-- 当前项目名称 -->
-			<view style="text-align:center;width:100%;color:#0089dd">{{projectName}}</view>
-			<!-- 模糊横线 -->
-			<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
-			
-			<van-grid square clickable column-num="3" border="{{false}}">
-				<van-grid-item badge="{{}}" bind:click="toAqjc" icon="/images/aqjc.png" text="提交安全检查" />
-				<van-grid-item badge="{{}}" bind:click="toZljc" icon="/images/tjzljc.png" text="提交质量检查" />
-				<van-grid-item badge="{{}}" bind:click="toDbsx" icon="/images/tjdbsx.png" text="提交督办事项" />
-				<van-grid-item badge="{{}}" bind:click="toQzsp" icon="/images/tjqzsp.png" text="提交签证审批" />
-				<van-grid-item badge="{{allRedDotNum.problemPlanNum}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="提交问题建议" />
-				<van-grid-item badge="{{}}" bind:click="toXmxx" icon="/images/txjdxx.png" text="填写项目信息" />
-				<van-grid-item badge="{{}}" bind:click="toHtgl" icon="/images/tjhtgl.png" text="提交合同管理" />
-				<van-grid-item badge="{{}}" bind:click="toTzwj" icon="/images/tjtzwj.png" text="提交图纸文件" />
-				<van-grid-item badge="{{}}" bind:click="toTptx" icon="/images/tjtptx.png" text="提交图片图像" />
-			</van-grid>
-
+			<van-cell-group title="建设单位操作区">
+				<van-grid square clickable column-num="3" border="{{false}}">
+					<van-grid-item badge="{{}}" bind:click="toQzsp" icon="/images/tjqzsp.png" text="提交签证审批" />
+					<van-grid-item badge="{{allRedDotNum.problemPlanNum}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="提交问题建议" />
+					<van-grid-item badge="{{}}" bind:click="toXmxx" icon="/images/txjdxx.png" text="填写项目信息" />
+					<van-grid-item badge="{{}}" bind:click="toHtgl" icon="/images/tjhtgl.png" text="提交合同管理" />
+					<van-grid-item badge="{{}}" bind:click="toTzwj" icon="/images/tjtzwj.png" text="提交图纸文件" />
+				</van-grid>
+			</van-cell-group>
 		</view>
 	</view>
-</view>
 
-<view wx:if="{{notShowLimit}}">
+	<!-- 总工办 -->
 	<view class="suspension-card-external">
 		<view class="suspension-card-internal">
-
-			<van-grid square clickable column-num="3" border="{{false}}">
-				<van-grid-item badge="{{}}" bind:click="toSjbsc" icon="/images/sjbsc.png" text="输出数据报表" />
-			</van-grid>
-
+			<van-cell-group title="总工办操作区">
+				<van-grid square clickable column-num="3" border="{{false}}">
+					<van-grid-item badge="{{}}" bind:click="toAqjc" icon="/images/aqjc.png" text="提交安全检查" />
+					<van-grid-item badge="{{}}" bind:click="toTptx" icon="/images/tjtptx.png" text="提交图片图像" />
+				</van-grid>
+			</van-cell-group>
 		</view>
 	</view>
+
+	<!-- 督察部 -->
+	<view class="suspension-card-external">
+		<view class="suspension-card-internal">
+			<van-cell-group title="督察部操作区">
+				<van-grid square clickable column-num="3" border="{{false}}">
+					<van-grid-item badge="{{}}" bind:click="toZljc" icon="/images/tjzljc.png" text="提交质量检查" />
+				</van-grid>
+			</van-cell-group>
+		</view>
+	</view>
+
+	<!-- 各公司/部门一人 -->
+	<view class="suspension-card-external">
+		<view class="suspension-card-internal">
+			<van-cell-group title="各公司/部门操作区">
+				<van-grid square clickable column-num="3" border="{{false}}">
+					<van-grid-item badge="{{}}" bind:click="toSjbsc" icon="/images/sjbsc.png" text="输出数据报表" />
+				</van-grid>
+			</van-cell-group>
+		</view>
+	</view>
+
 </view>

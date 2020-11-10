@@ -1,6 +1,6 @@
 var app = getApp();
 var request = app.globalData.request;
-var requestValue = app.globalData.requestValue;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   /**
@@ -84,7 +84,7 @@ Page({
         showCollapseHelp: true
       });
       // 获取到计划信息map
-      request.post(requestValue.getPlanInfoMap, {startTime:that.data.startTime,projectId:that.data.projectId,categoryType:that.data.categoryType}).then(res => {
+      request.post(requestUrl.getPlanInfoMap, {startTime:that.data.startTime,projectId:that.data.projectId,categoryType:that.data.categoryType}).then(res => {
         that.setData({
           planInfoMap: res.data
         })
@@ -99,7 +99,7 @@ Page({
           showUpLoadLoading: true
         });
         //提交计划信息
-        request.post(requestValue.insertPlanList, {startTime:that.data.startTime,endTime:that.data.endTime,planList:that.data.planList,projectId:that.data.projectId}).then(res => {
+        request.post(requestUrl.insertPlanList, {startTime:that.data.startTime,endTime:that.data.endTime,planList:that.data.planList,projectId:that.data.projectId}).then(res => {
           that.setData({
             planList: [],
             showUpLoadLoading: false
@@ -122,7 +122,7 @@ Page({
   //计划进度时间填写节点
   getTimeNode: function(e){
     var that = this;
-    request.post(requestValue.getTimeNode, {}).then(res => {
+    request.post(requestUrl.getTimeNode, {}).then(res => {
       that.setData({
         timeNode: res.data,
         showLoadLoading: false

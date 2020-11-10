@@ -1,3 +1,9 @@
-page{
-  background-color: rgba(241, 241, 241);
+/* 悬浮卡片-外部 */
+.suspension-card-external-page{
+  padding:0 20rpx;
+}
+/* 悬浮卡片-内部 */
+.suspension-card-internal-page{
+  border-radius: 6rpx; /* 卡片圆角弧度 */
+  background-color: #ffffff;/* 卡片背景颜色 */
 }
