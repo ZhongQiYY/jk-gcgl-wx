@@ -43,7 +43,8 @@
     "pages/control/txxmxx/txPlan/txProjectSchedule/txProjectSchedule",
     "pages/control/txxmxx/txGqxx/txGqxx",
     "pages/control/tjzjxx/tjzjxx",
-    "pages/tableData/datapages/gqxx/gqxx"
+    "pages/tableData/datapages/gqxx/gqxx",
+    "pages/control/tjtptx/tjtptx"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -82,18 +83,10 @@
       {
         "pagePath": "pages/self/self",
         "text": "我",
-        "iconPath": "images/myinfo1.png",
-        "selectedIconPath": "images/myinfo.png"
+        "iconPath": "assets/tabBar/myinfo1.png",
+        "selectedIconPath": "assets/tabBar/myinfo.png"
       }
     ]
   },
-  "subPackages": [
-    {
-      "root": "pages/control/tjtptx/",
-      "pages": [
-        "tjtptx"
-      ]
-    }
-  ],
   "sitemapLocation": "sitemap.json"
 }
