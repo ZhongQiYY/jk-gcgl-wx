@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tag: '',
     projectNameListByCategory: [],
     showLoading: true,
     projectId: 0,
@@ -18,7 +19,8 @@ Page({
 
     that.setData({
       projectNameListByCategory: app.globalData.projectNameListByCategory,
-      showLoading: false
+      showLoading: false,
+      tag: e.tag
     });
   },
 

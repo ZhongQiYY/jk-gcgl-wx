@@ -13,12 +13,14 @@ Page({
     showProjectInfo: false,//展示项目信息
   },
   // 跳转到填写计划
-  totxPlan: function(){
+  totxPlan: function(e){
+   var tag = e.currentTarget.dataset.tag
     wx.navigateTo({
-      url: '/pages/control/txxmxx/txPlan/txPlan',
+      url: '/pages/control/txxmxx/txPlan/txPlan?tag='+tag,
     })
   },
 
+<<<<<<< HEAD
   onLoad: function(e){
     var that = this;
     that.setData({
@@ -27,6 +29,8 @@ Page({
     });
   },
 
+=======
+>>>>>>> 280516c77ae1670597a710933bd71a0f660d2c98
 
   tabbarChange: function(e){
     var that = this;
