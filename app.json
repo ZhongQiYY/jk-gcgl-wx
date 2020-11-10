@@ -7,7 +7,6 @@
     "pages/self/self",
     "pages/self/info/info",
     "pages/control/control",
-    "pages/searchbar/searchbar",
     "pages/tableData/datapages/annualplan/annualplan",
     "pages/project/projectInfo/projectInfo",
     "pages/control/dcdb/dcdb",
@@ -61,7 +60,8 @@
     "pages/control/tjqzsp/qzspDetail/qzspDetail",
     "pages/control/txxmxx/txPlan/txPlan",
     "pages/control/txxmxx/txSchedule/txSchedule",
-    "pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan"
+    "pages/control/txxmxx/txPlan/txProjectPlan/txProjectPlan",
+    "pages/control/txxmxx/txBase/txBase"
   ],
   "window": {
     "backgroundTextStyle": "dark",
