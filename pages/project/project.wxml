@@ -76,7 +76,7 @@
 											<van-grid-item badge="{{}}" bind:click="gotoDbsx" icon="/images/dbsx.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
 												<view slot="text" class="iconText">督办事项</view>
 											</van-grid-item>
-											<van-grid-item badge="{{item.problemPlanNum==0?'':item.problemPlanNum}}" bind:click="gotoWtjy" icon="/images/txsx.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
+											<van-grid-item badge="{{item.problemPlanNum==0?'':item.problemPlanNum}}" bind:click="gotoWtjy" icon="/images/tjwtjy.png" data-text="{{item.projectName}}" data-id="{{item.id}}" data-categoryType="{{item.categoryType}}">
 												<view slot="text" class="iconText">问题建议</view>
 											</van-grid-item>
 										</van-grid>
