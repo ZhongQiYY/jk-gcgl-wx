@@ -8,7 +8,7 @@
 
   <view class="suspension-card-external-page"  wx:for="{{timeNode}}" wx:key="index">
     <view class="suspension-card-internal-page">
-      <van-collapse-item disabled="{{(showCollapseHelp && showCollapse!=index)}}" title="{{item.startTime}} 至 {{item.endTime}}" name="{{index}}" clickable>
+      <van-collapse-item disabled="{{true}}" title="{{item.startTime}} 至 {{item.endTime}}" name="{{index}}" clickable>
         
         <van-tabs wx:if="{{showTab==index}}" swipe-threshold="3" line-width="60px" color="#0089dd">
           
@@ -16,7 +16,7 @@
           <van-tab title="前期工作">
             <van-cell-group title="立项批复">
               <van-field data-id="{{planInfoMap.qqlxpf.id}}" data-tag="qqlxpf" data-step_name="前期工作" data-node_name="立项批复" bind:blur="percentageBlur" value="{{planInfoMap.qqlxpf.percentage}}" label="百分比" placeholder="请输入完成情况"/>
-              <van-field value="{{planInfoMap.qqlxpf.outputValue}}" label="产值" readonly="{{false}}" placeholder="请输入产值" />
+              <van-field value="{{planInfoMap.qqlxpf.outputValue}}" label="产值" readonly placeholder="请输入产值" />
             </van-cell-group>
             <van-cell-group title="方案审批">
               <van-field data-id="{{planInfoMap.qqfasp.id}}" data-tag="qqfasp" data-step_name="前期工作" data-node_name="方案审批" bind:blur="percentageBlur" value="{{planInfoMap.qqfasp.percentage}}" label="百分比" placeholder="请输入完成情况" />

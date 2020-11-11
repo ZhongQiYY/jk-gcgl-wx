@@ -7,7 +7,7 @@
 	<!-- 建设单位 -->
 	<view wx:if="{{showBuildUnit || showCost}}" class="suspension-card-external">
 		<view class="suspension-card-internal">
-			<van-cell-group title="建设单位操作区">
+			<van-cell-group>
 				<van-grid square clickable column-num="3" border="{{false}}">
 					<van-grid-item wx:if="{{showBuildUnit}}" badge="{{}}" bind:click="toQzsp" icon="/images/qzsp.png" text="提交签证审批" />
 					<van-grid-item wx:if="{{showBuildUnit}}" badge="{{allRedDotNum.problemPlanNum}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="提交问题建议" />
@@ -23,7 +23,7 @@
 	<!-- 总工办 -->
 	<view wx:if="{{showZongGongBan}}" class="suspension-card-external">
 		<view class="suspension-card-internal">
-			<van-cell-group title="总工办操作区">
+			<van-cell-group>
 				<van-grid square clickable column-num="3" border="{{false}}">
 					<van-grid-item badge="{{}}" bind:click="toAqjc" icon="/images/aqjc.png" text="提交安全检查" />
 					<van-grid-item badge="{{}}" bind:click="toTptx" icon="/images/tptx.png" text="提交图片图像" />
@@ -35,7 +35,7 @@
 	<!-- 督察部 -->
 	<view wx:if="{{showDuChaBu}}" class="suspension-card-external">
 		<view class="suspension-card-internal">
-			<van-cell-group title="督察部操作区">
+			<van-cell-group>
 				<van-grid square clickable column-num="3" border="{{false}}">
 					<van-grid-item badge="{{}}" bind:click="toZljc" icon="/images/zljc.png" text="提交质量检查" />
 				</van-grid>
@@ -46,7 +46,7 @@
 	<!-- 各公司/部门一人 -->
 	<view class="suspension-card-external">
 		<view class="suspension-card-internal">
-			<van-cell-group title="各公司/部门操作区">
+			<van-cell-group>
 				<van-grid square clickable column-num="3" border="{{false}}">
 					<van-grid-item badge="{{}}" bind:click="toSjbsc" icon="/images/sjbsc.png" text="输出数据报表" />
 				</van-grid>
