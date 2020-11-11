@@ -15,8 +15,8 @@ Page({
   },
 
   onLoad: function(e){
+    console.log(e);
     var that = this;
-
     that.setData({
       projectNameListByCategory: app.globalData.projectNameListByCategory,
       showLoading: false,

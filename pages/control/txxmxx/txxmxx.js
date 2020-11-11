@@ -20,11 +20,11 @@ Page({
   },
 
   
-  // 跳转到填写计划
+  // 跳转到填写
   totxPlan: function(e){
    var tag = e.currentTarget.dataset.tag
     wx.navigateTo({
-      url: '/pages/control/txxmxx/txPlan/txPlan?tag='+tag,
+      url: '/pages/control/txxmxx/txPlanSchedule/txPlanSchedule?tag='+tag,
     })
   },
 
