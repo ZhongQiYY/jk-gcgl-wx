@@ -1,5 +1,6 @@
 /* 悬浮卡片-外部 */
 .suspension-card-external-page{
+  /* 上 右 下 左 */
   padding:20rpx;
 }
 /* 悬浮卡片-内部 */

@@ -8,8 +8,8 @@
 <view wx:if="{{notShowLimit}}">
 
 	<!-- 筛选区域 -->
-	<van-dropdown-menu class="search">
-		<van-dropdown-item bind:change="bindBuildChange" wx:if="{{!isBuildUnit}}" value="{{buildValue}}" options="{{buildArray}}" />
+	<van-dropdown-menu class="search"> 
+		<van-dropdown-item bind:change="bindBuildChange" wx:if="{{showBuildUnit}}" value="{{buildValue}}" options="{{buildArray}}" />
 		<van-dropdown-item bind:change="bindCategoryChange" value="{{categoryValue}}" options="{{categoryArray}}" />
 	</van-dropdown-menu>
 

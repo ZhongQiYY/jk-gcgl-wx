@@ -2,8 +2,7 @@
 
 /* 悬浮卡片-外部 */
 .suspension-card-external-page{
-  margin-bottom:-10rpx;/* 让多个卡片上下之间相差10rpx */
-  padding:20rpx;/* 让卡片离页面上下左右20rpx的距离 */
+  padding:0rpx 20rpx 10rpx 20rpx;/* 让卡片离页面上下左右20rpx的距离 */
 }
 /* 悬浮卡片-内部 */
 .suspension-card-internal-page{

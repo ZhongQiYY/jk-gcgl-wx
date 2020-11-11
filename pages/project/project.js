@@ -5,11 +5,9 @@ var basePath = app.globalData.basePath;
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
- 
-
   data: {
     buildArray: [
-      {text:'全部建设单位', value:'全部建设单位'},
+      {text:'建设单位', value:'建设单位'},
       {text:'科技城', value:'科技城'},
       {text:'满园', value:'满园'},
       {text:'西城', value:'西城'},
@@ -20,7 +18,7 @@ Page({
       {text:'工建', value:'工建'}
     ],
     categoryArray: [
-      {text:'全部类别', value:'全部类别'},
+      {text:'类别', value:'类别'},
       {text:'返迁棚改', value:'1'},
       {text:'工业厂房', value:'2'},
       {text:'商业地产', value:'3'},
@@ -28,14 +26,14 @@ Page({
       {text:'公园绿化', value:'5'},
       {text:'市政桥梁', value:'6'}
     ],
-    buildValue: '全部建设单位',
-    categoryValue: '全部类别',
+    buildValue: '建设单位',
+    categoryValue: '类别',
     rootPath: app.globalData.imageRootPath,
     projectList: [],//项目列表信息
     loadingHidden: false,
     imageSize:{width: '260rpx',height: '160rpx'},//图片宽高
     iconSize: '50rpx',//图标大小
-    isBuildUnit: true,//是否是建设单位
+    showBuildUnit: false,//是否是建设单位
     notShowLimit: false, //是否展示无权限遮罩页
     errorInfo: true, //展示隐藏错误提示
     dataHidden: true, //上滑触底显示数据加载中
@@ -307,7 +305,7 @@ Page({
                 pageNumber: that.data.pageNumber+1,
                 loadingHidden: true,
                 errorInfo: true,
-                isBuildUnit: auth.isBuildUnit(app.globalData.userInfo)
+                showBuildUnit: auth.showBuildUnit(app.globalData.userInfo)
               });
               
             },
@@ -361,6 +359,8 @@ Page({
         });
         that.onLoad();
       }
+
+
     }else{
       that.setData({
         notShowLimit: false

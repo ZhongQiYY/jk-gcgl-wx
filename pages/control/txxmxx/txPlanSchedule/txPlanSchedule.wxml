@@ -7,7 +7,7 @@
       <van-cell-group title="{{item.name}}">
         <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
           title="{{item1.projectName}}" 
-          url="/pages/control/txxmxx/txPlanSchedule/txProjectPlan/txProjectPlan?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}" 
+          url="/pages/control/txxmxx/txPlanSchedule/txProjectPlan/txProjectPlan?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}&projectName={{item1.projectName}}" 
           wx:for-item="item1" wx:for-index="index1" is-link />
       </van-cell-group>
     </view>
@@ -20,7 +20,7 @@
       <van-cell-group title="{{item.name}}">
         <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
           title="{{item1.projectName}}" 
-          url="/pages/control/txxmxx/txPlanSchedule/txProjectSchedule/txProjectSchedule?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}" 
+          url="/pages/control/txxmxx/txPlanSchedule/txProjectSchedule/txProjectSchedule?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}&projectName={{item1.projectName}}" 
           wx:for-item="item1" wx:for-index="index1" is-link />
       </van-cell-group>
     </view>
