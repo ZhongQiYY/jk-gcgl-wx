@@ -147,5 +147,21 @@ Page({
       url: '/pages/control/sjbsc/sjbsc',
     })
   },
+<<<<<<< HEAD
   
+=======
+
+  toZjxx: function () {
+    wx.navigateTo({
+      url: '/pages/control/tjzjxx/tjzjxx',
+    })
+  },
+
+  toGqxx: function() {
+    wx.navigateTo({
+      url: '/pages/control/tjgqxx/tjgqxx',
+    })
+  }
+
+>>>>>>> 63336b01fe6f2d2d8c19e145ad0ac45d7b5fd1c5
 })

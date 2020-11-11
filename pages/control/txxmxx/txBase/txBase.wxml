@@ -5,36 +5,112 @@
   <view wx:if="{{showBasics == active}}" class="suspension-card-external-page">
 		<view class="suspension-card-internal-page">
       <van-field label="建设单位" value="{{projectInfo.unitName}}" placeholder="请输入" />
-      
+      <van-field label="项目名称" value="{{projectInfo.projectName}}" placeholder="请输入" />
+      <van-field label="占地面积" value="{{projectInfo.coverArea}}" placeholder="请输入" />
+      <van-field label="总建筑面积" value="{{projectInfo.totalArea}}" placeholder="请输入" />
+      <block wx:if="{{categoryType==1}}">
+        <van-field label="楼栋数" value="{{projectInfo.buildNum}}" placeholder="请输入" />
+        <van-field label="住宅套数" value="{{projectInfo.houseNum}}" placeholder="请输入" />
+        <van-field label="店面简述" value="{{projectInfo.storeNum}}" placeholder="请输入" />
+        <van-field label="商业面积" value="{{projectInfo.businessArea}}" placeholder="请输入" />
+        <van-field label="住宅面积" value="{{projectInfo.houseArea}}" placeholder="请输入" />
+      </block>
+      <block wx:if="{{categoryType==2}}">
+        <van-field label="园路面积" value="{{projectInfo.pathArea}}" placeholder="请输入" />
+        <van-field label="铺装面积" value="{{projectInfo.paveArea}}" placeholder="请输入" />
+        <van-field label="景观桥(座)" value="{{projectInfo.landscapeBridge}}" placeholder="请输入" />
+        <van-field label="乔木数(颗)" value="{{projectInfo.treeNum}}" placeholder="请输入" />
+        <van-field label="亮化数(盏)" value="{{projectInfo.brightenNum}}" placeholder="请输入" />
+      </block>
+      <block wx:if="{{categoryType==3}}">
+        <van-field label="道路长" value="{{projectInfo.roadLength}}" placeholder="请输入" />
+        <van-field label="道路宽" value="{{projectInfo.roadWidth}}" placeholder="请输入" />
+        <van-field label="行车道宽" value="{{projectInfo.carriagewayWidth}}" placeholder="请输入" />
+        <van-field label="人行道宽" value="{{projectInfo.sidewalkWidth}}" placeholder="请输入" />
+        <van-field label="花池宽" value="{{projectInfo.pondWidth}}" placeholder="请输入" />
+      </block>
+      <van-field label="建设地点" value="{{projectInfo.buildSite}}" placeholder="请输入" />
+      <van-field label="建设年限" value="{{projectInfo.buildYear}}" placeholder="请输入" />
+      <van-field label="新建续建" value="{{projectInfo.buildType}}" placeholder="请输入" />
+      <van-field label="是否完成征地拆迁" value="{{projectInfo.isExpropriation}}" placeholder="请输入" />
+      <van-field label="是否列入市级调度" value="{{projectInfo.isDispatch}}" placeholder="请输入" />
+      <van-field label="挂点领导" value="{{projectInfo.leaderName}}" placeholder="请输入" />
+      <van-field label="责任单位" value="{{projectInfo.responsibleUnits}}" placeholder="请输入" />
+      <van-field label="招标方式 " value="{{projectInfo.biddingType}}" placeholder="请输入" />
     </view>
   </view>
   
   <!-- 五方信息 -->
   <view wx:if="{{showFive == active}}" class="suspension-card-external-page">
 		<view class="suspension-card-internal-page">
-      <van-field label="" value="{{}}" placeholder="请输入" />
-      
+      <van-field label="项目业主" value="{{projectInfo.ownerCompanyName}}" placeholder="请输入" />
+      <van-field label="项目负责人" value="{{projectInfo.ownerProjectLeader}}" placeholder="请输入" />
+      <van-field label="电话" value="{{projectInfo.ownerPhone}}" placeholder="请输入" />
+      <van-field label="施工单位" value="{{projectInfo.constructionCompanyName}}" placeholder="请输入" />
+      <van-field label="项目负责人" value="{{projectInfo.constructionProjectLeader}}" placeholder="请输入" />
+      <van-field label="电话" value="{{projectInfo.constructionPhone}}" placeholder="请输入" />
+      <van-field label="监理单位" value="{{projectInfo.supervisionCompanyName}}" placeholder="请输入" />
+      <van-field label="总监" value="{{projectInfo.supervisionDirectorName}}" placeholder="请输入" />
+      <van-field label="电话" value="{{projectInfo.supervisionPhone}}" placeholder="请输入" />
+      <van-field label="设计单位" value="{{projectInfo.designCompanyName}}" placeholder="请输入" />
+      <van-field label="项目负责人" value="{{projectInfo.designProjectLeader}}" placeholder="请输入" />
+      <van-field label="电话" value="{{projectInfo.designPhone}}" placeholder="请输入" />
+      <van-field label="勘察单位" value="{{projectInfo.surveyCompanyName}}" placeholder="请输入" />
+      <van-field label="项目负责人" value="{{projectInfo.surveyProjectLeader}}" placeholder="请输入" />
+      <van-field label="电话" value="{{projectInfo.surveyPhone}}" placeholder="请输入" />
     </view>
   </view>
 
   <!-- 资金信息 -->
   <view wx:if="{{showMoney == active}}" class="suspension-card-external-page">
 		<view class="suspension-card-internal-page">
-      <van-field label="" value="{{}}" placeholder="请输入" />
-      
+      <van-field  label="项目总投资" value="{{projectInfo.totalMoney}}" placeholder="请输入" />
+      <van-field  label="本年投资" value="{{projectInfo.totalMoney1}}" placeholder="请输入" />
+      <van-field  label="第二年年度投资" value="{{projectInfo.totalMoney2}}" placeholder="请输入" />
+      <van-field  label="第三年年度投资" value="{{projectInfo.totalMoney3}}" placeholder="请输入" />
+      <van-field label="工程建安费" value="{{projectInfo.jiananCost}}" placeholder="请输入" />
+      <block wx:if="{{categoryType==1}}">
+        <van-field label="房建造价" value="{{projectInfo.houseBuildCost}}" placeholder="请输入" />
+        <van-field label="配套造价" value="{{projectInfo.supportCost}}" placeholder="请输入" />
+        <van-field label="供水造价" value="{{projectInfo.waterCost}}" placeholder="请输入" />
+        <van-field label="供电造价" value="{{projectInfo.electricityCost}}" placeholder="请输入" />
+        <van-field label="供气造价" value="{{projectInfo.airCost}}" placeholder="请输入" />
+      </block>
+      <block wx:if="{{categoryType==2}}">
+        <van-field label="园林造价" value="{{projectInfo.parkCost}}" placeholder="请输入" />
+        <van-field label="配套用房造价" value="{{projectInfo.supportHouseCost}}" placeholder="请输入" />
+        <van-field label="路场工程造价" value="{{projectInfo.roadCost}}" placeholder="请输入" />
+        <van-field label="文化景观造价" value="{{projectInfo.culturalCost}}" placeholder="请输入" />
+      </block>
+      <block wx:if="{{categoryType==3}}">
+        <van-field label="市政造价" value="{{projectInfo.municipalCost}}" placeholder="请输入" />
+        <van-field label="桥梁造价" value="{{projectInfo.bridgeCost}}" placeholder="请输入" />
+        <van-field label="给排水造价" value="{{projectInfo.drainageCost}}" placeholder="请输入" />
+        <van-field label="交通工程造价" value="{{projectInfo.trafficCost}}" placeholder="请输入" />
+      </block>
+      <van-field label="设计费用" value="{{projectInfo.designCost}}" placeholder="请输入" />
+      <van-field label="勘察费用" value="{{projectInfo.surveyCost}}" placeholder="请输入" />
+      <van-field label="检测费用" value="{{projectInfo.checkCost}}" placeholder="请输入" />
+      <van-field label="监理费用" value="{{projectInfo.supervisionCost}}" placeholder="请输入" />
+      <van-field label="图审费用" value="{{projectInfo.drawCost}}" placeholder="请输入" />
+      <van-field label="其他费用" value="{{projectInfo.otherCost}}" placeholder="请输入" />
     </view>
   </view>
 
   <!-- 单体情况 -->
-  <view wx:if="{{showPart == active}}" class="suspension-card-external-page">
-		<view class="suspension-card-internal-page">
-      <van-field label="" value="{{}}" placeholder="请输入" />
-      
+  <block wx:if="{{categoryType==1}}">
+    <view wx:if="{{showPart == active}}" class="suspension-card-external-page">
+    <view class="suspension-card-internal-page">
+      <block wx:for="{{projectInfo.list}}">
+        <van-field  label="楼栋号" value="{{item.ztName}}" placeholder="请输入" />
+        <van-field  label="工程造价" value="{{item.projectCost}}" placeholder="请输入" />
+        <van-field  label="建筑面积" value="{{item.buildArea}}" placeholder="请输入" />
+        <van-field  label="层数" value="{{item.floors}}" placeholder="请输入" />
+      </block>  
     </view>
   </view>
-
+  </block>
 </view>
-
 
 <!-- 底部菜单 -->
 <van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
