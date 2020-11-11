@@ -1,4 +1,6 @@
 const app = getApp();
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   data: {
@@ -14,10 +16,22 @@ Page({
 
   onLoad: function (e) {
     var that = this;
+    console.log(e)
     that.setData({
       projectId: e.projectId,
       categoryType: e.categoryType
     });
+    request.post(requestUrl.projectInformation, {projectId:that.data.projectId,categoryType:that.data.categoryType}).then(res => {
+      console.log(res)
+      that.setData({
+        projectInfo: res.data,
+        showLoadLoading: false
+      });
+    }).catch(err => {
+      that.setData({
+        showLoadLoading: false
+      })
+    })
   },
 
   tabbarChange: function(e){
