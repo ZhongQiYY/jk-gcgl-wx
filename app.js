@@ -179,15 +179,7 @@ userInfoSetInSQL: function (userInfo, callback) {
               console.log('userinfo更新成功');
               console.log(userInfo)
               console.log(res.data);
-              page.globalData.userInfo = userInfo;
-              page.globalData.userInfo.name = res.data.data.name;
-              page.globalData.userInfo.company = res.data.data.company;
-              page.globalData.userInfo.state = res.data.data.state;
-              page.globalData.userInfo.stateText = res.data.data.stateText;
-              // page.globalData.userInfo.roles = res.data.data.roles;
-              page.globalData.userInfo.roleId = res.data.data.roleId;
-              page.globalData.userInfo.role = res.data.data.role;
-              // page.globalData.companies = res.data.data.companies;
+              page.globalData.userInfo = res.data.data;
               page.globalData.hasUserInfo = true;
               // page.loadData(false, callback);
               typeof callback == 'function' && callback();
