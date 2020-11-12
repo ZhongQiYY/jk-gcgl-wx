@@ -39,25 +39,43 @@
 </view>
 
 <!-- 五方信息 -->
-<view wx:if="{{showFive == active}}" class="suspension-card-external-page">
+<block wx:if="{{showFive == active}}">
+  <view class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
     <van-field label="项目业主" value="{{projectInfo.ownerCompanyName}}" placeholder="请输入" />
     <van-field label="项目负责人" value="{{projectInfo.ownerProjectLeader}}" placeholder="请输入" />
     <van-field label="电话" value="{{projectInfo.ownerPhone}}" placeholder="请输入" />
+  </view>
+  </view>
+  <view class="suspension-card-external-page">
+  <view class="suspension-card-internal-page">
     <van-field label="施工单位" value="{{projectInfo.constructionCompanyName}}" placeholder="请输入" />
     <van-field label="项目负责人" value="{{projectInfo.constructionProjectLeader}}" placeholder="请输入" />
     <van-field label="电话" value="{{projectInfo.constructionPhone}}" placeholder="请输入" />
+  </view>
+  </view>
+  <view class="suspension-card-external-page">
+  <view class="suspension-card-internal-page">
     <van-field label="监理单位" value="{{projectInfo.supervisionCompanyName}}" placeholder="请输入" />
     <van-field label="总监" value="{{projectInfo.supervisionDirectorName}}" placeholder="请输入" />
     <van-field label="电话" value="{{projectInfo.supervisionPhone}}" placeholder="请输入" />
+  </view>
+  </view>
+  <view class="suspension-card-external-page">
+  <view class="suspension-card-internal-page">
     <van-field label="设计单位" value="{{projectInfo.designCompanyName}}" placeholder="请输入" />
     <van-field label="项目负责人" value="{{projectInfo.designProjectLeader}}" placeholder="请输入" />
     <van-field label="电话" value="{{projectInfo.designPhone}}" placeholder="请输入" />
+  </view>
+  </view>
+  <view class="suspension-card-external-page">
+  <view class="suspension-card-internal-page">
     <van-field label="勘察单位" value="{{projectInfo.surveyCompanyName}}" placeholder="请输入" />
     <van-field label="项目负责人" value="{{projectInfo.surveyProjectLeader}}" placeholder="请输入" />
     <van-field label="电话" value="{{projectInfo.surveyPhone}}" placeholder="请输入" />
   </view>
-</view>
+  </view>
+</block>
 
 <!-- 资金信息 -->
 <view wx:if="{{showMoney == active}}" class="suspension-card-external-page">
@@ -96,14 +114,12 @@
 </view>
 
 <!-- 单体情况 -->
-<view wx:if="{{showPart==active && categoryType==1}}" class="suspension-card-external-page">
+<view wx:if="{{showPart==active && categoryType==1}}" wx:for="{{projectInfo.list}}" wx:key="index" class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <block wx:for="{{projectInfo.list}}" wx:key="index">
-      <van-field label="楼栋号" value="{{item.ztName}}" placeholder="请输入" />
-      <van-field label="工程造价" value="{{item.projectCost}}" placeholder="请输入" />
-      <van-field label="建筑面积" value="{{item.buildArea}}" placeholder="请输入" />
-      <van-field label="层数" value="{{item.floors}}" placeholder="请输入" />
-    </block>
+    <van-field label="楼栋号" value="{{item.ztName}}" placeholder="请输入" />
+    <van-field label="工程造价" value="{{item.projectCost}}" placeholder="请输入" />
+    <van-field label="建筑面积" value="{{item.buildArea}}" placeholder="请输入" />
+    <van-field label="层数" value="{{item.floors}}" placeholder="请输入" />
   </view>
 </view>
 </view>

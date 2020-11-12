@@ -1,17 +1,17 @@
 var requestUrl = require('./api/api.js');
 var request = require('./utils/request.js');
-//app.js
-//获取应用实例
-const app = getApp();
-const RootPath = "http://localhost:16000/jk-gcgl";
-// const RootPath = "https://test.xizinet.com/jk-gcgl";
-App({
 
-// -------------------- 存储共享数据区域 --------------------
+// const RootPath = "http://localhost:16000/jk-gcgl";
+const RootPath = "https://test.xizinet.com/jk-gcgl";
+// const RootPath = "https://gcgl.xizinet.com/jk-gcgl";
+App({
 globalData: {
-  basePath: "http://localhost:16000/jk-gcgl",
-  // basePath: "https://test.xizinet.com/jk-gcgl",
-  imageRootPath: "https://test.xizinet.com",
+  // basePath: "http://localhost:16000/jk-gcgl",
+  basePath: "https://test.xizinet.com/jk-gcgl",
+  // basePath: "https://gcgl.xizinet.com/jk-gcgl",
+
+  imageRootPath: "https://gcgl.xizinet.com",
+  // imageRootPath: "https://test.xizinet.com",
   // imageRootPath: "https://telecom1.xizinet.com:4433",
   projectName: "",//全局项目名称
   projectId: 0,//全局项目id
@@ -19,7 +19,6 @@ globalData: {
 
   requestUrl: requestUrl,//请求的url
   request: request,//封装的请求模板
-
 
   pId: 0,//全局项目id --操作台使用
   pName: "",//全局项目名称 --操作台使用

@@ -1,7 +1,4 @@
-<!--pages/project/projectInfo/projectInfo.wxml-->
-<loading hidden="{{loadingHidden}}">
-        加载中...
-</loading>
+<loading hidden="{{loadingHidden}}">加载中...</loading>
 <!-- 项目详情页 -->
 	<block>
 		<!-- <view class="page__bd"> -->

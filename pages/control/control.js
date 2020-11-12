@@ -14,7 +14,6 @@ Page({
     showDuChaBu: false,//督察部操作
     showCost: false,//财务部
     allRedDotNum: {},
-    haveNameList: false,
     notShowLimit: false,
     roleRealId: '',
   },
@@ -55,13 +54,10 @@ Page({
       })
     }
     var list = app.globalData.projectNameList;
-    if(list.length <= 0 && !that.data.haveNameList && app.globalData.hasUserInfo && app.globalData.userInfo.state == 1){
+    if(list.length <= 0){
       request.post(requestUrl.nameList, {}).then(res => {
         app.globalData.projectNameList = res.data.projectNameList;
         app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;  
-        that.setData({
-          haveNameList: true
-        })
       }).catch(err => {})
     }
     // 获取所有红点数
