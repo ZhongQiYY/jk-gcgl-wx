@@ -1,0 +1,88 @@
+<!--pages/control/tjgqxx/tjgqxx.wxml-->
+<import src="/template/commitRecord/commitRecord.wxml" />
+
+
+<view class="project-name">{{ projectName }}</view>
+
+<van-collapse value="{{ activeNames }}" bind:change="onChange">
+	<van-collapse-item title="工期管理" name="1">
+		<van-cell-group>
+			<van-field value="{{ pmScheduleManageRecord.contractDuration }}" bind:input="inputContractDuration" bind required clearable label="合同工期" type="number" placeholder="请输入合同工期"  />
+
+			<van-field value="{{ pmScheduleManageRecord.contractCost }}" bind:input="inputContractCost" required clearable type="number" label="合同造价" placeholder="请输入合同造价" required border="{{ false }}" />
+		</van-cell-group>
+
+        <view class="btn-wrapper">
+			<van-button icon="passed" bind:click="submitGqXx" size="mini" type="info">保存</van-button>
+		</view>
+	</van-collapse-item>
+	<van-collapse-item custom-class="van-collapse-item-bgc" title="开工信息" name="2" wx:if="{{ hasRecord }}">
+		<view class="btn-wrapper">
+			<van-button icon="plus" size="mini" type="info">添加</van-button>
+		</view>
+
+		<view class="kg-msg-list">
+			<view class="kg-msg-list-item">
+       <view class="num">1、</view>
+				<view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">开工内容：</view>
+					<view class="kg-msg-list-item-val">打地基</view>
+				</view>
+
+				<view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">开工时间：</view>
+					<view class="kg-msg-list-item-val">2020-11-10</view>
+				</view>
+				<view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">造价点比：</view>
+					<view class="kg-msg-list-item-val">0.9</view>
+				</view>
+        <view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">造价：</view>
+					<view class="kg-msg-list-item-val">10</view>
+				</view>
+			</view>
+
+      <view class="kg-msg-list-item">
+      <view class="num">2、</view>
+				<view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">开工内容：</view>
+					<view class="kg-msg-list-item-val">打地基</view>
+				</view>
+
+				<view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">开工时间：</view>
+					<view class="kg-msg-list-item-val">2020-11-10</view>
+				</view>
+				<view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">造价点比：</view>
+					<view class="kg-msg-list-item-val">0.9</view>
+				</view>
+        <view class="kg-msg-list-item-row">
+					<view class="kg-msg-list-item-key">造价：</view>
+					<view class="kg-msg-list-item-val">10</view>
+				</view>
+			</view>
+		</view>
+	</van-collapse-item>
+
+	<van-collapse-item title="工期影响" name="3"  wx:if="{{ hasRecord }}">
+  		<view class="btn-wrapper">
+			<van-button icon="plus" size="mini" type="info">添加</van-button>
+		</view>
+		<view class="gqyx-list">
+      <view class="gqyx-list-item">
+         <view class="gqyx-list-item-row">
+					<view class="gqyx-list-item-key">1、 2020-11-11</view>
+					<view class="gqyx-list-item-val">阻工</view>
+				</view>
+      </view>
+      <view class="gqyx-list-item">
+         <view class="gqyx-list-item-row">
+					<view class="gqyx-list-item-key">2、 2020-11-11</view>
+					<view class="gqyx-list-item-val">停水停电停工</view>
+				</view>
+      </view>
+    </view>
+	</van-collapse-item>
+</van-collapse>

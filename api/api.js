@@ -1,5 +1,6 @@
 const requestUrl = {
   nameList: '/api/project/nameList', //获取名称集合(还会有其他信息)，用作列表展示使用
+  nameListForTable: '/api/project/nameListForTable', //数据表搜索框list集合
   
   getAllRedDotNum: '/api/control/getAllRedDotNum', //获取所有操作台内的红点数
   getTimeNode: '/api/control/xmxx/getTimeNode', //获取计划进度填写时间节点信息
@@ -8,6 +9,9 @@ const requestUrl = {
 
   commitProblem: '/api/control/aqjc/commitProblem', // 安全检查提交问题
   listProblem: '/api/control/aqjc/listProblem', // 安全检查问题列表
+  projectInformation: '/api/baseInformation/baseInformation/list',//获取项目信息
+  GetGqXx: '/api/gqxx', //根据项目id获取工期信息
+  SaveGqXx: '/api/gqxx/save', //保存工期信息
 }
 
 

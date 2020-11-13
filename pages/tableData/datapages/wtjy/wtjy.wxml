@@ -60,7 +60,7 @@
 
 
 <!-- 底部菜单 -->
-<van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
+<van-tabbar z-index="999" active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
   <van-tabbar-item icon="todo-list-o" info="{{unprocessedInfo.length}}">未处理</van-tabbar-item>
   <van-tabbar-item icon="sign">已处理</van-tabbar-item>
 </van-tabbar>

@@ -1,17 +1,17 @@
 var requestUrl = require('./api/api.js');
 var request = require('./utils/request.js');
-//app.js
-//获取应用实例
-const app = getApp();
+
 const RootPath = "http://localhost:16000/jk-gcgl";
 // const RootPath = "https://test.xizinet.com/jk-gcgl";
+// const RootPath = "https://gcgl.xizinet.com/jk-gcgl";
 App({
-
-// -------------------- 存储共享数据区域 --------------------
 globalData: {
   basePath: "http://localhost:16000/jk-gcgl",
   // basePath: "https://test.xizinet.com/jk-gcgl",
-  imageRootPath: "https://test.xizinet.com",
+  // basePath: "https://gcgl.xizinet.com/jk-gcgl",
+
+  imageRootPath: "https://gcgl.xizinet.com",
+  // imageRootPath: "https://test.xizinet.com",
   // imageRootPath: "https://telecom1.xizinet.com:4433",
   projectName: "",//全局项目名称
   projectId: 0,//全局项目id
@@ -19,7 +19,6 @@ globalData: {
 
   requestUrl: requestUrl,//请求的url
   request: request,//封装的请求模板
-
 
   pId: 0,//全局项目id --操作台使用
   pName: "",//全局项目名称 --操作台使用
@@ -179,15 +178,7 @@ userInfoSetInSQL: function (userInfo, callback) {
               console.log('userinfo更新成功');
               console.log(userInfo)
               console.log(res.data);
-              page.globalData.userInfo = userInfo;
-              page.globalData.userInfo.name = res.data.data.name;
-              page.globalData.userInfo.company = res.data.data.company;
-              page.globalData.userInfo.state = res.data.data.state;
-              page.globalData.userInfo.stateText = res.data.data.stateText;
-              // page.globalData.userInfo.roles = res.data.data.roles;
-              page.globalData.userInfo.roleId = res.data.data.roleId;
-              page.globalData.userInfo.role = res.data.data.role;
-              // page.globalData.companies = res.data.data.companies;
+              page.globalData.userInfo = res.data.data;
               page.globalData.hasUserInfo = true;
               // page.loadData(false, callback);
               typeof callback == 'function' && callback();

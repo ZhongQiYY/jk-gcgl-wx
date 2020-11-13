@@ -20,14 +20,16 @@ Page({
     projectId: '',
     categoryType: '',
     startTime:'',
-    endTime:''
+    endTime:'',
+    projectName: ''
   },
 
   onLoad: function(e){
     var that = this;
     that.setData({
       projectId: e.projectId,
-      categoryType: e.categoryType
+      categoryType: e.categoryType,
+      projectName: e.projectName
     });
     that.getTimeNode();
   },

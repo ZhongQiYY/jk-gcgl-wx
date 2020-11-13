@@ -12,17 +12,19 @@ Page({
    */
   data: {
     projectNames: [], //@@
+    projectNameList: [],
     projectName: "",
     notShowLimit: false,
     redMap: {}
   },
 
-  //搜索框组件返回的方法 @@
+  //搜索框组件返回的方法 @@ 不通用，据情况改造
   inputTyping: function (e) {
+    var that = this;
     var inputVal = e.detail.inputVal;
     var projectNames1 = [];
     if (inputVal.length > 0) {
-      for (const nl of app.globalData.projectNameList) {
+      for (const nl of that.data.projectNameList) {
         var projectName = nl.projectName;
         if (projectName.indexOf(inputVal) != -1) {
           projectNames1.push(nl);
@@ -81,30 +83,31 @@ Page({
 
   
   onLoad: function (options) {
-    var list = app.globalData.projectNameList;
-    if (list.length <= 0) {
-      request.post(requestUrl.nameList, {}).then(res => {
-        app.globalData.projectNameList = res.data.projectNameList;
-        app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;    
-      }).catch(err => {
-        
-      })
-      
-    }
+    
   },
 
   onShow: function () {
     var that = this;
     if (app.globalData.hasUserInfo && app.globalData.userInfo.state == 1) {
-      this.setData({
-        projectName: app.globalData.projectName,
-        notShowLimit: true
-      });
-      that.getRedDotNum();
+      if(!that.data.notShowLimit){
+        this.setData({
+          projectName: app.globalData.projectName,
+          notShowLimit: true
+        });
+        that.getRedDotNum();   
+      }
     } else {
       that.setData({
         notShowLimit: false
       })
+    }
+
+    if (that.data.projectNameList.length <= 0) {
+      request.post(requestUrl.nameListForTable, {}).then(res => {
+        that.setData({
+          projectNameList: res.data.projectNameList
+        }) 
+      }).catch(err => {}) 
     }
   },
 

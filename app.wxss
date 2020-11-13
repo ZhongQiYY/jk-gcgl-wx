@@ -21,6 +21,15 @@ page {
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.4);/* 阴影 */
 }
 
+.project-name{
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 10rpx;
+  color: #323233;
+}
+
 .loading-position-center{
   position: absolute;
   left: 50%;

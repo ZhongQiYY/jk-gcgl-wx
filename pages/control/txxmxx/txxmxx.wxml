@@ -38,7 +38,7 @@
     <van-cell-group title="{{item.name}}">
       <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
         title="{{item1.projectName}}" 
-        url="/pages/control/txxmxx/txGqxx/txGqxx?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}" 
+        url="/pages/control/txxmxx/txGqxx/txGqxx?categoryType={{item1.categoryType}}&projectId={{item1.projectId}}&projectName={{item1.projectName}}" 
         wx:for-item="item1" wx:for-index="index1" is-link />
     </van-cell-group>
   </view>
@@ -51,7 +51,7 @@
 
 
 <!-- 底部菜单 -->
-<van-tabbar active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
+<van-tabbar z-index="999" active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
   <van-tabbar-item icon="notes-o">进度/计划</van-tabbar-item>
   <van-tabbar-item icon="todo-list-o">工期信息</van-tabbar-item>
   <van-tabbar-item icon="description">项目信息</van-tabbar-item>
