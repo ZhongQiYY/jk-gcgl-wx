@@ -154,5 +154,48 @@ Page({
       date: this.formatDate(e.detail),
     });
   },
-  
+  // 提交问题
+  submitProblemPlan() {
+    var that = this
+    var data = {
+      projectId: Number(that.data.projectId),
+      description: that.data.currentProblem,
+      score: Number(that.data.currentScore),
+      finalTime: that.data.date,
+      imageList: [
+        {
+          imageName: 'photo.jpg',
+          imageUrl: 'http://localhost:16000/photo.jpg'
+        }
+      ],
+    }
+    request.post(requestUrl.commitQuality, data)
+      .then(res => { 
+        console.log(res)
+        if(res.code == 200) {
+          console.log('请求成功')
+        } else {
+          console.log('请求失败')
+        }
+      })
+      .catch(err => { })
+  },
+
+  // 图片上传
+  afterRead(event) {
+    const { file } = event.detail;
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    wx.uploadFile({
+      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
+      filePath: file.path,
+      name: 'file',
+      formData: { user: 'test' },
+      success(res) {
+        // 上传完成需要更新 fileList
+        const { fileList = [] } = this.data;
+        fileList.push({ ...file, url: res.data });
+        this.setData({ fileList });
+      },
+    });
+  },
 })
