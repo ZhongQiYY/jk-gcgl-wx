@@ -22,7 +22,7 @@
 		</view>
 
 		<view class="kg-msg-list">
-		<block wx:for="{{scheduleManageMsgRecordList}}" wx:for-index="idx" wx:for-item="item">
+		<block wx:for="{{scheduleManageMsgRecordList}}" wx:for-index="idx" wx:for-item="item" wx:key="index">
 			<van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
 				<!-- <view slot="left">选择</view> -->
 				<view class="kg-msg-list-item">
