@@ -2,6 +2,8 @@
 var auth = require("../../utils/getAuthInfo");
 var app = getApp();
 var basePath = app.globalData.basePath;
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
@@ -266,7 +268,7 @@ Page({
     }  
   },
 
-  //--------------------------生命周期函数------------------------------
+
   onLoad: function (options) {
     var that = this;
     wx.stopPullDownRefresh();
@@ -284,45 +286,30 @@ Page({
             loadingHidden: false,
             errorInfo: true,
             notShowLimit: true
-          })
-          wx.request({
-            url: basePath + "/api/project/list", //请求路径
-            method: 'post',
-            data: {
-              unitName: that.data.buildValue,
-              categoryId: that.data.categoryValue,
-              pageNumber: that.data.pageNumber,
-              pageLimit: that.data.pageLimit
-            },
-            header: {
-              'content-type': 'application/json', // 默认值
-              'thirdSession': app.globalData.thirdSession
-            },
-            success(res) {
-              app.globalData.clickLoginBtn = false;
-              that.setData({
-                projectList: res.data,
-                pageNumber: that.data.pageNumber+1,
-                loadingHidden: true,
-                errorInfo: true,
-                showBuildUnit: auth.showBuildUnit(app.globalData.userInfo)
-              });
-              
-            },
-            fail() {
-              app.globalData.clickLoginBtn = false;
-              that.setData({
-                loadingHidden: false,
-                errorInfo: true
-              })
-              setTimeout(function () {
-                that.setData({
-                  loadingHidden: true,
-                  errorInfo: false
-                })
-              }, 10000);
-            }
           });
+          request.post(requestUrl.projectCardList, {unitName:that.data.buildValue,categoryId:that.data.categoryValue,pageNumber:that.data.pageNumber,pageLimit: that.data.pageLimit}).then(res => {
+            app.globalData.clickLoginBtn = false;
+            that.setData({
+              projectList: res.data,
+              pageNumber: that.data.pageNumber+1,
+              loadingHidden: true,
+              errorInfo: true,
+              showBuildUnit: auth.showBuildUnit(app.globalData.userInfo)
+            });
+          }).catch(err => {
+            app.globalData.clickLoginBtn = false;
+            that.setData({
+              loadingHidden: false,
+              errorInfo: true
+            })
+            setTimeout(function () {
+              that.setData({
+                loadingHidden: true,
+                errorInfo: false
+              })
+            }, 10000);
+          });
+          
         } else {
           that.setData({
             loadingHidden: false,
@@ -359,8 +346,6 @@ Page({
         });
         that.onLoad();
       }
-
-
     }else{
       that.setData({
         notShowLimit: false
