@@ -1,11 +1,13 @@
-// pages/tableData/datapages/tptx/tptx.js
+const app = getApp();
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    projectId: "", 
   },
 
   /**
