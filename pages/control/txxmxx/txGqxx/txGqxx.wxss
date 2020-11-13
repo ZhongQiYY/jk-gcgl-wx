@@ -25,14 +25,17 @@
   
 }
 .kg-msg-list .kg-msg-list-item{
-  padding: 10rpx 20rpx 10rpx 70rpx;
+  padding: 10rpx 20rpx 10rpx 0rpx;
   border-bottom: 1rpx solid #efefef;
   position: relative;
 }
 .kg-msg-list .kg-msg-list-item .num{
-  position: absolute;
-  left: 0rpx;
-  top: 75rpx;
+  /* position: absolute; */
+  /* left: 0rpx; */
+  /* top: 75rpx; */
+  float: left;
+  line-height: 150rpx;
+  margin-right: 70rpx;
 }
 .kg-msg-list .kg-msg-list-item .kg-msg-list-item-title{
   height: 60rpx;
@@ -60,6 +63,11 @@
   border-bottom: 1rpx solid #efefef;
   position: relative;
 }
+.gqyx-list .gqyx-list-item .kg-msg-list-item-row-wrapper{
+  line-height: 150rpx;
+  float: left;
+  /* margin-left: 70rpx; */
+}
 .gqyx-list .gqyx-list-item .gqyx-list-item-row{
   display: flex;
 }
@@ -69,4 +77,19 @@
 .gqyxg-list .gqyx-list-item .gqyx-list-item-row .gqyx-list-item-val{
   flex: 7;
   text-align: right;
+}
+.delete-btn{
+  line-height: 200rpx;
+  background-color: #EE0A24;
+  color: #fff;
+  padding: 0 20rpx;
+}
+.delete-effect-btn{
+  line-height: 70rpx;
+  background-color: #EE0A24;
+  color: #fff;
+  padding: 0 20rpx;
+}
+.van-popup{
+  padding-bottom: 20rpx !important;
 }
