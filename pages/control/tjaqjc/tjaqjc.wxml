@@ -42,7 +42,7 @@
 				/>
 
 				<van-cell title="整改期限" value="{{date}}" bind:click="onDisplay" is-link/>
-				<van-calendar show="{{show}}" bind:close="onClose" bind:confirm="onConfirm" />
+				<van-calendar show="{{show}}" show-confirm="{{ false }}" bind:close="onClose" bind:confirm="onConfirm" />
 
 				<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead"/>
 
