@@ -1,0 +1,19 @@
+	<view class="suspension-card-internal">
+		<text class="title">安全检查</text>
+		<view class="table">
+			<view class="tr bg-w">
+				<view class="th">已提交</view>
+				<view class="th">整改回复</view>
+				<view class="th">同意</view>
+				<view class="th">不同意</view>
+			</view>
+			<block>
+				<view class="tr">
+					<view class="td" bindtap="toSubmitted">{{submitted}}</view>
+					<view class="td" bindtap="toReply">{{reply}}</view>
+					<view class="td" bindtap="toAgree">{{agree}}</view>
+					<view class="td" bindtap="toDisagree">{{disagree}}</view>
+				</view>
+			</block>
+		</view>
+	</view>

@@ -34,7 +34,7 @@
 					required
 					value="{{currentScore}}"
 					label="扣分"
-					type="textarea"
+					type="digit"
 					placeholder="请输入扣分数"
 					autosize
 					bind:input="inputScore"
@@ -44,7 +44,7 @@
 				<van-cell title="整改期限" value="{{date}}" bind:click="onDisplay" is-link/>
 				<van-calendar show="{{show}}" bind:close="onClose" bind:confirm="onConfirm" />
 
-				<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+				<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead"/>
 
 					<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
 						class="weui-btn weui-btn_primary">提交</button>
