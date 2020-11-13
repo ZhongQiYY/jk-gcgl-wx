@@ -10,7 +10,12 @@ Page({
     categoryType: '',//项目类别
     projectName: '',  //工程名
     pmScheduleManageRecord: {},
+    scheduleManageMsgRecordList: [],
     hasRecord: false,
+    showKgXxPopup: false,
+    kgDate: '',
+    kgContent:'',
+    costPoint: '',
   },
 
 
@@ -36,8 +41,15 @@ Page({
     request.get(requestUrl.GetGqXx + '/' + projectId).then(res => {
       console.log(res)
       if (res.data) {
+        let scheduleManageMsgRecordList = res.data.scheduleManageMsgRecordList
+        if (scheduleManageMsgRecordList && scheduleManageMsgRecordList.length > 0) {
+          for(let i =0;i<scheduleManageMsgRecordList.length;i++) {
+            scheduleManageMsgRecordList[i].date = scheduleManageMsgRecordList[i].date.substring(0, 10)
+          }
+        }
         that.setData({
-          pmScheduleManageRecord: res.data,
+          pmScheduleManageRecord: res.data.pmScheduleManageRecord,
+          scheduleManageMsgRecordList: res.data.scheduleManageMsgRecordList,
           hasRecord: true
         })
       } else {
@@ -76,12 +88,12 @@ Page({
     request.post(requestUrl.SaveGqXx, requestBody).then(res => {
       console.log(res)
       if (res.code == 200) {
-        that.setData({
-          hasRecord: true
-        })
         wx.showToast({
           icon: 'success',
           title: '保存成功',
+        })
+        that.setData({
+          hasRecord: true,
         })
       }else {
         wx.showToast({
@@ -92,8 +104,90 @@ Page({
     }).catch(err => {
       
     })
-    
-  }
+  },
+  showKgXxPopup() {
+    this.setData({ showKgXxPopup: true });
+  },
+  closeKgXxPopup() {
+    this.setData({ showKgXxPopup: false });
+  },
+  bindKgDateChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      kgDate: e.detail.value
+    })
+  },
+  // 保存开工信息
+  saveKgXx() {
+    // kgDate: '',
+    // kgContent:'',
+    // costPoint: '',
+    console.log(this.data.kgDate)
+    console.log(this.data.kgContent)
+    console.log(this.data.costPoint)
+    if (!this.data.kgDate) {
+      wx.showToast({
+        icon: 'none',
+        title: '开工时间不能为空',
+      })
+      return
+    }
+    if (!this.data.kgContent) {
+      wx.showToast({
+        icon: 'none',
+        title: '开工内容不能为空',
+      })
+      return
+    }
+    if (!this.data.costPoint) {
+      wx.showToast({
+        icon: 'none',
+        title: '造价点比不能为空',
+      })
+      return
+    }
+    let that = this
+    request.post(requestUrl.SaveKgMsg, {
+      content: this.data.kgContent,
+      costPoint: this.data.costPoint,
+      date: this.data.kgDate,
+      projectId: this.data.projectId
 
+    } ).then(res => {
+      if (res.code == 200) {
+        res.data.date = res.data.date.substring(0,10)
+        that.data.scheduleManageMsgRecordList.push(res.data)
+        that.setData({
+          showKgXxPopup: false,
+          scheduleManageMsgRecordList: that.data.scheduleManageMsgRecordList
+        })
+        wx.showToast({
+          icon: 'success',
+          title: '保存成功',
+        })
+      }
+    }).catch(err => {
+      
+    })
+  },
+   deleteKgXx(e) {
+     console.log(e)
+     let index = e.currentTarget.id
+
+     let that = this
+    request.post(requestUrl.DeleteKgMsg + '/' +this.data.scheduleManageMsgRecordList[index].id).then(res => {
+      if (res.code == 200) {
+        that.data.scheduleManageMsgRecordList.splice(index, 1)
+        that.setData({
+          scheduleManageMsgRecordList: that.data.scheduleManageMsgRecordList
+        })
+        wx.showToast({
+          title: '删除成功',
+        })
+      }
+    }).catch(err => {
+      
+    })
+   }
   
 })

@@ -9,6 +9,8 @@ const requestUrl = {
   projectInformation: '/api/baseInformation/baseInformation/list',//获取项目信息
   GetGqXx: '/api/gqxx', //根据项目id获取工期信息
   SaveGqXx: '/api/gqxx/save', //保存工期信息
+  SaveKgMsg: '/api/gqxx/kg-msg/save', //保存开工信息
+  DeleteKgMsg: '/api/gqxx/kg-msg/delete', //删除开工信息
 }
 
 
