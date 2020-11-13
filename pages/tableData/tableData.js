@@ -188,8 +188,15 @@ Page({
         url: '/pages/tableData/datapages/gqxx/gqxx',
       })
     } else Toast.fail("未选择项目");
-  }
-  
+  },
+  // 安全检查
+  toAqjc: function() {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/aqjc/aqjc',
+      })
+    } else Toast.fail("未选择项目");
+  },
 
   
 })

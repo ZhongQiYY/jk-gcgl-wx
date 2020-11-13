@@ -42,7 +42,9 @@
     "pages/control/txxmxx/txGqxx/txGqxx",
     "pages/control/tjzjxx/tjzjxx",
     "pages/tableData/datapages/gqxx/gqxx",
-    "pages/control/tjtptx/tjtptx"
+    "pages/control/tjtptx/tjtptx",
+    "pages/tableData/datapages/aqjc/aqjc",
+    "pages/tableData/datapages/aqjc/aqjcView/aqjcView"
   ],
   "window": {
     "backgroundTextStyle": "dark",
