@@ -1,15 +1,20 @@
+<view class="loading-position-center"><van-loading wx:if="{{showLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">加载中...</text></van-loading></view>
+<view class="loading-position-center"><van-loading wx:if="{{showUpLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">上传中...</text></van-loading></view>
+
 <view style="padding-bottom: 100rpx">
 <!-- 基本信息 -->
 <view wx:if="{{showBasics == active}}" class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <van-field label="建设单位" value="{{projectInfo.unitName}}" placeholder="请输入" />
+    <form bindsubmit="baseFormSubmit">
+      
+    <van-field label="建设单位" name="unitName" value="{{projectInfo.unitName}}" placeholder="请输入" />
     <van-field label="项目名称" value="{{projectInfo.projectName}}" placeholder="请输入" />
     <van-field label="占地面积" value="{{projectInfo.coverArea}}" placeholder="请输入" />
     <van-field label="总建筑面积" value="{{projectInfo.totalArea}}" placeholder="请输入" />
     <block wx:if="{{categoryType==1}}">
       <van-field label="楼栋数" value="{{projectInfo.buildNum}}" placeholder="请输入" />
       <van-field label="住宅套数" value="{{projectInfo.houseNum}}" placeholder="请输入" />
-      <van-field label="店面简述" value="{{projectInfo.storeNum}}" placeholder="请输入" />
+      <van-field label="店面间数" value="{{projectInfo.storeNum}}" placeholder="请输入" />
       <van-field label="商业面积" value="{{projectInfo.businessArea}}" placeholder="请输入" />
       <van-field label="住宅面积" value="{{projectInfo.houseArea}}" placeholder="请输入" />
     </block>
@@ -27,14 +32,19 @@
       <van-field label="人行道宽" value="{{projectInfo.sidewalkWidth}}" placeholder="请输入" />
       <van-field label="花池宽" value="{{projectInfo.pondWidth}}" placeholder="请输入" />
     </block>
-    <van-field label="建设地点" value="{{projectInfo.buildSite}}" placeholder="请输入" />
+    <van-field label="建设地点" value="{{projectInfo.buildSite}}" type="textarea" placeholder="请输入" />
     <van-field label="建设年限" value="{{projectInfo.buildYear}}" placeholder="请输入" />
-    <van-field label="新建续建" value="{{projectInfo.buildType}}" placeholder="请输入" />
-    <van-field label="是否完成征地拆迁" value="{{projectInfo.isExpropriation}}" placeholder="请输入" />
-    <van-field label="是否列入市级调度" value="{{projectInfo.isDispatch}}" placeholder="请输入" />
+    <van-field label="新建续建" value="{{projectInfo.buildType==0?'新建':'续建'}}" placeholder="请输入" />
+    <van-field label="是否完成征地拆迁" value="{{projectInfo.isExpropriation==0?'否':'是'}}" placeholder="请输入" />
+    <van-field label="是否列入市级调度" value="{{projectInfo.isDispatch==0?'否':'是'}}" placeholder="请输入" />
     <van-field label="挂点领导" value="{{projectInfo.leaderName}}" placeholder="请输入" />
     <van-field label="责任单位" value="{{projectInfo.responsibleUnits}}" placeholder="请输入" />
-    <van-field label="招标方式 " value="{{projectInfo.biddingType}}" placeholder="请输入" />
+    <van-field label="招标方式 " value="{{projectInfo.biddingType==0?'公开招标':'直接委托'}}" placeholder="请输入"/>
+    <van-field label="年度攻坚目标" value="{{projectInfo.annualTarget}}" type="textarea" placeholder="请输入" maxlength="255" show-word-limit bind:change="baseChange"/>
+
+    <button wx:if="{{showBaseButton}}" size="mini" hover-class="clickHover" class="submit-button" formType="submit">提交</button>
+
+  </form>
   </view>
 </view>
 
@@ -129,5 +139,5 @@
   <van-tabbar-item icon="newspaper-o">基本信息</van-tabbar-item>
   <van-tabbar-item icon="coupon-o">五方信息</van-tabbar-item>
   <van-tabbar-item icon="bill-o">资金信息</van-tabbar-item>
-  <van-tabbar-item wx:if="{{categoryType==1}}" icon="coupon-o">单体情况</van-tabbar-item>
+  <van-tabbar-item wx:if="{{categoryType==1}}" icon="comment-o">单体情况</van-tabbar-item>
 </van-tabbar>

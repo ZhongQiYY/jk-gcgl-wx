@@ -8,3 +8,10 @@
   border-radius: 6rpx; /* 卡片圆角弧度 */
   background-color: #ffffff;/* 卡片背景颜色 */
 }
+.submit-button{
+  position:fixed;
+  top:50%;
+  right:0;
+  background-color:#0089dd;
+  color:#fff
+}
