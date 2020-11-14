@@ -36,7 +36,6 @@ Page({
 
   //失去焦点触发，比切换折叠面板先一步触发
   percentageBlur(e){
-    if(e.detail.value=='')return;
     var b = true;
     var planMap = {};
     planMap.id = e.currentTarget.dataset.id;

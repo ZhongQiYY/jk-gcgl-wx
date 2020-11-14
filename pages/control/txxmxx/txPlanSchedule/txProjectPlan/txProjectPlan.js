@@ -1,6 +1,7 @@
 var app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -36,7 +37,6 @@ Page({
 
   //失去焦点触发，比切换折叠面板先一步触发
   percentageBlur(e){
-    if(e.detail.value=='')return;
     var b = true;
     var planMap = {};
     planMap.id = e.currentTarget.dataset.id;
@@ -44,6 +44,10 @@ Page({
     planMap.nodeName = e.currentTarget.dataset.node_name;
     planMap.tag = e.currentTarget.dataset.tag;
     planMap.percentage = e.detail.value;
+    if(planMap.percentage!=='' && typeof(planMap.percentage)!=="number"){
+      Toast.fail(planMap.nodeName+"：请填数字");
+      return;
+    }
 
     //判断该项是否已存在于planList内
     for(var item of this.data.planList){

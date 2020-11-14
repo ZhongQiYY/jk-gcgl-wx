@@ -1,6 +1,6 @@
 <view class="loading-position-center"><van-loading wx:if="{{showUpLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">上传中...</text></van-loading></view>
 <view class="loading-position-center"><van-loading wx:if="{{showLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">加载中...</text></van-loading></view>
-
+<van-toast id="van-toast" />
 <view class="project-name">{{projectName}}</view>
 
 <!-- 房建类 -->

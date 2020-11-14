@@ -2,8 +2,11 @@ const requestUrl = {
   nameList: '/api/project/nameList', //获取名称集合(还会有其他信息)，用作列表展示使用
   nameListForTable: '/api/project/nameListForTable', //数据表搜索框list集合
   projectCardList: '/api/project/list', //项目卡片信息
+
   updateBaseInfo: '/api/control/xmxx/updateBaseInfo', //修改项目基本信息
-  
+  updateFiveInfo: '/api/control/xmxx/updateFiveInfo', //修改项目五方信息
+  updateMoneyInfo: '/api/control/xmxx/updateMoneyInfo', //修改项目资金信息
+
   getAllRedDotNum: '/api/control/getAllRedDotNum', //获取所有操作台内的红点数
   getTimeNode: '/api/control/jhjd/getTimeNode', //获取计划进度填写时间节点信息
   getPlanInfoMap: '/api/control/jhjd/getPlanInfoMap', //根据时间节点获取集合信息
