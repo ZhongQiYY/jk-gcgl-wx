@@ -20,8 +20,13 @@ Page({
     projectInfo: {},//项目信息
   },
 
+  //提交基本信息
   baseFormSubmit: function(e){
-    console.log(e);
+    request.post(requestUrl.updateBaseInfo, {}).then(res => {
+      
+    }).catch(err => {
+      
+    })
   },
   baseChange:function(e){
     this.setData({
