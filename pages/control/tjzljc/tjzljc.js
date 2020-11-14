@@ -18,67 +18,68 @@ Page({
     currentProblem: '',//当前输入的问题描述
 
     currentScore: '',//当前输入的扣分数
-    problemPlanList:[
+    fileList: [], // 图片文件
+    problemPlanList: [
       {
         unitName: "综保区", projectName: "标准厂房三期", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-08-27", commitName: "刘杭"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-09-27", commitName: "缪隽峰"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
+          { submitTime: "2020-09-27", commitName: "钟祺" },
+          { submitTime: "2020-08-27", commitName: "刘杭" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
+          { submitTime: "2020-09-27", commitName: "缪隽峰" },
+          { submitTime: "2020-12-27", commitName: "温龙飞" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-12-27", commitName: "温龙飞" },
         ]
       },
       {
         unitName: "满园", projectName: "水韵康居四期项目", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-08-27", commitName: "刘杭"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-09-27", commitName: "缪隽峰"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
+          { submitTime: "2020-09-27", commitName: "钟祺" },
+          { submitTime: "2020-08-27", commitName: "刘杭" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
+          { submitTime: "2020-09-27", commitName: "缪隽峰" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-12-27", commitName: "温龙飞" },
         ]
       },
       {
         unitName: "满园", projectName: "香江棚户区改造安居小区", timeNameList: [
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-09-27", commitName: "缪隽峰"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-12-27", commitName: "温龙飞"},
+          { submitTime: "2020-11-27", commitName: "高镪" },
+          { submitTime: "2020-09-27", commitName: "缪隽峰" },
+          { submitTime: "2020-12-27", commitName: "温龙飞" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-12-27", commitName: "温龙飞" },
         ]
       },
       {
         unitName: "西城", projectName: "工业路（客家大道-赣丰路）", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
+          { submitTime: "2020-09-27", commitName: "钟祺" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
         ]
       },
       {
         unitName: "中恒工业", projectName: "金凤智谷一期项目", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
+          { submitTime: "2020-09-27", commitName: "钟祺" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
         ]
       },
       {
         unitName: "中恒商业", projectName: "蟠龙返乡创业基地项目西地块", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
+          { submitTime: "2020-09-27", commitName: "钟祺" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
         ]
       },
       {
         unitName: "磊昇", projectName: "赣州经济技术开发区第一中学新建工程", timeNameList: [
-          {submitTime: "2020-09-27", commitName: "钟祺"},
-          {submitTime: "2020-06-27", commitName: "吴忠喜"},
-          {submitTime: "2020-11-27", commitName: "高镪"},
+          { submitTime: "2020-09-27", commitName: "钟祺" },
+          { submitTime: "2020-06-27", commitName: "吴忠喜" },
+          { submitTime: "2020-11-27", commitName: "高镪" },
         ]
       },
     ],
@@ -110,7 +111,7 @@ Page({
   },
 
   // 输入问题描述时
-  inputProblem: function(e){
+  inputProblem: function (e) {
     var that = this;
     that.setData({
       currentProblem: e.detail
@@ -118,21 +119,21 @@ Page({
   },
 
   // 输入扣分数时
-  inputScore: function(e){
+  inputScore: function (e) {
     var that = this;
     that.setData({
       currentScore: e.detail
     })
   },
 
-  tabbarChange: function(e){
+  tabbarChange: function (e) {
     var that = this;
     that.setData({
       active: e.detail,
       showOther: !that.data.showOther
     })
   },
-  collapseChange: function(e){
+  collapseChange: function (e) {
     this.setData({
       activeNames: e.detail,
     });
@@ -146,7 +147,7 @@ Page({
   },
   formatDate(date) {
     date = new Date(date);
-    return dateTime.getymdhms(date, '-', ':');
+    return dateTime.getymd(date, '-');
   },
   onConfirm(e) {
     this.setData({
@@ -154,6 +155,7 @@ Page({
       date: this.formatDate(e.detail),
     });
   },
+
   // 提交问题
   submitProblemPlan() {
     var that = this
@@ -198,4 +200,5 @@ Page({
       },
     });
   },
+
 })
