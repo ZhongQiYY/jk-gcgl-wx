@@ -4,7 +4,13 @@ var requestUrl = app.globalData.requestUrl;
 Page({
 
   data: {
+    showBaseButton: false,
+    moneyUnit: "万元",
+    buildArea: "万平米",
+    coverArea: "亩",
     active: 0,//tabbar索引
+    showLoadLoading: true,
+    showUpLoadLoading: false,
     projectId:'',
     categoryType:'',
     showBasics: 0,
@@ -14,15 +20,22 @@ Page({
     projectInfo: {},//项目信息
   },
 
+  baseFormSubmit: function(e){
+    console.log(e);
+  },
+  baseChange:function(e){
+    this.setData({
+      showBaseButton: true
+    })
+  },
+
   onLoad: function (e) {
     var that = this;
-    console.log(e)
     that.setData({
       projectId: e.projectId,
       categoryType: e.categoryType
     });
     request.post(requestUrl.projectInformation, {projectId:that.data.projectId,categoryType:that.data.categoryType}).then(res => {
-      console.log(res)
       that.setData({
         projectInfo: res.data,
         showLoadLoading: false
@@ -37,7 +50,8 @@ Page({
   tabbarChange: function(e){
     var that = this;
     that.setData({
-      active: e.detail
+      active: e.detail,
+      showBaseButton: false
     })
   }
 })
