@@ -11,6 +11,9 @@ const requestUrl = {
 
   commitProblem: '/api/control/aqjc/commitProblem', // 安全检查提交问题
   listProblem: '/api/control/aqjc/listProblem', // 安全检查问题列表
+  
+  commitQuality: '/api/control/zljc/commitQuality', // 质量检查提交问题
+  listQuality: '/api/control/zljc/listQuality', // 质量检查问题列表
   projectInformation: '/api/baseInformation/baseInformation/list',//获取项目信息
   GetGqXx: '/api/gqxx', //根据项目id获取工期信息
   SaveGqXx: '/api/gqxx/save', //保存工期信息
