@@ -18,7 +18,6 @@ Page({
     console.log(e)
     const page = this;
     if (e.detail.userInfo) {
-      console.log(e.detail.userInfo);
       app.userInfoSetInSQL(e.detail.userInfo, function () {
         console.log('callback');
         page.setData({
@@ -53,8 +52,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('---------------------------')
-    console.log(app.globalData.userInfo)
     this.setData({
       scrollViewHeight: wx.getSystemInfoSync().windowHeight,
       userInfo: app.globalData.userInfo,

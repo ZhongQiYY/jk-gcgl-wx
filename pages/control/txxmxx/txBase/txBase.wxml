@@ -2,9 +2,9 @@
 <view class="loading-position-center"><van-loading wx:if="{{showUpLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">上传中...</text></van-loading></view>
 <van-toast id="van-toast" />
 
-<view class="project-name">{{projectInfo.projectName}}</view>
+<view class="project-name-page">{{projectInfo.projectName}}</view>
 
-<view style="padding-bottom: 100rpx">
+<view style="margin-bottom: 100rpx;padding-top:70rpx">
 <!-- 基本信息 -->
 <view hidden="{{!(showBasics == active)}}" class="suspension-card-external-page">
   <view class="suspension-card-internal-page">

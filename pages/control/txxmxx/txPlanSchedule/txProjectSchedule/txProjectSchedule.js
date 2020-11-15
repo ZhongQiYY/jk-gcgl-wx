@@ -27,7 +27,8 @@ Page({
     endTime:'',
     projectName: '',
     roleRealId:'',
-    scheduleShow: false
+    scheduleShow: false,
+    showSchedulePopup: false
   },
 
   onLoad: function(e){
@@ -142,6 +143,7 @@ Page({
     request.post(requestUrl.getTimeNode, {}).then(res => {
       let timeNode = res.data;
       var now = new Date(dateTime.getymd(new Date(), '-'));
+      // var now = new Date("2021-12-09");
       var min = new Date(timeNode[0].startTime);
       var max = new Date(timeNode[timeNode.length-1].endTime);
 
@@ -176,4 +178,9 @@ Page({
       showOther: !that.data.showOther
     })
   },
+
+  // 添加进度
+  addSchedule: function(e){
+    
+  }
 })
