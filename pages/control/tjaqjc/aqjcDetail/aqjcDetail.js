@@ -1,18 +1,37 @@
-// pages/control/tjaqjc/aqjcDetail/aqjcDetail.js
+var dateTime = require('../../../../utils/getDateTime.js');
+const app = getApp();
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: '', // 安全检查问题id
+    finalTime: '',
+    problem: {}, // 安全检查提问
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    this.setData({
+      id: options.id
+    });
+    request.get(requestUrl.getProblemById, {'id':that.data.id}).then(res => {
+      if(res.code == 200) {
+        console.log(res)
+        that.setData({
+          problem: res.data,
+          finalTime: dateTime.getymd(new Date(res.data.finalTime), '-')
+        })
+      }
+    }).catch(
+      
+    );
   },
 
   /**

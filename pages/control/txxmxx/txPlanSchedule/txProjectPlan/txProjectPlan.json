@@ -11,5 +11,6 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-loading": "@vant/weapp/loading/index",
     "van-toast": "@vant/weapp/toast/index"
-  }
+  },
+  "navigationBarTitleText": "计划信息"
 }

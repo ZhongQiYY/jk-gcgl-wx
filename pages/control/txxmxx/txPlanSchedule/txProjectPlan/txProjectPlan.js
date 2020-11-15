@@ -22,16 +22,24 @@ Page({
     categoryType: '',
     startTime:'',
     endTime:'',
-    projectName: ''
+    projectName: '',
+    roleRealId: '',
+    planShow: false
   },
 
   onLoad: function(e){
     var that = this;
     that.setData({
+      roleRealId: app.globalData.userInfo.roleRealId,
       projectId: e.projectId,
       categoryType: e.categoryType,
       projectName: e.projectName
     });
+    if(that.data.roleRealId==8){
+      that.setData({
+        planShow: true
+      })
+    }
     that.getTimeNode();
   },
 
@@ -44,7 +52,7 @@ Page({
     planMap.nodeName = e.currentTarget.dataset.node_name;
     planMap.tag = e.currentTarget.dataset.tag;
     planMap.percentage = e.detail.value;
-    if(planMap.percentage!=='' && typeof(planMap.percentage)!=="number"){
+    if(planMap.percentage!=='' && isNaN(Number(scheduleMap.percentage))){
       Toast.fail(planMap.nodeName+"：请填数字");
       return;
     }

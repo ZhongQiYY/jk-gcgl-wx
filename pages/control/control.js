@@ -13,6 +13,7 @@ Page({
     showZongGongBan: false,//总工办操作
     showDuChaBu: false,//督察部操作
     showCost: false,//财务部
+    planShow:false,//计划统计部
     allRedDotNum: {},
     notShowLimit: false,
     roleRealId: '',
@@ -30,6 +31,11 @@ Page({
         if(roleRealId==11){
           that.setData({
             showCost: true
+          });
+        }
+        if(roleRealId==8){
+          that.setData({
+            planShow: true
           });
         }
         if(roleRealId==10 || roleRealId==6 || roleRealId==2 || roleRealId==1){
@@ -111,7 +117,7 @@ Page({
     }else Toast.fail('无权限');
   },
   toXmxx: function () {
-    if(roleRealId==10 || roleRealId==1){
+    if(roleRealId==10 || roleRealId==1 || roleRealId==8){
       wx.navigateTo({
         url: '/pages/control/txxmxx/txxmxx',
       })

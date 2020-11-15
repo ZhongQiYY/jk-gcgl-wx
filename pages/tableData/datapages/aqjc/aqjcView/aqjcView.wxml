@@ -1,23 +1,37 @@
 <view style="padding-bottom: 100rpx">
-	<van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
+	<van-collapse
+	 accordion
+	 value="{{activeNames}}"
+	 bind:change="collapseChange"
+	>
+		<van-collapse-item value="{{unitName}}">
 
-		<block wx:for="{{problemList}}" wx:key="index">
-			<van-collapse-item name="{{index}}" value="{{item.unitName}}">
+			<view slot="title">
+				<view class="van-cell-text">{{projectName}}</view>
+				<van-tag type="danger">{{timeNameList.length}}</van-tag>
+			</view>
 
-				<view slot="title">
-					<view class="van-cell-text">{{item.projectName}}</view>
-					<van-tag type="danger">{{item.timeNameList.length}}</van-tag>
-				</view>
+			<van-cell-group>
+				<block
+				 wx:for="{{timeNameList}}"
+				 wx:for-index="index"
+				 wx:for-item="item"
+				 wx:key="index"
+				>
+					<van-cell
+					 title="{{item.commitTime}}"
+					 value="{{item.submitter}}"
+					 border="{{ true }}"
+					 is-link
+					 bind:click=""
+					 url="/pages/control/tjaqjc/aqjcDetail/aqjcDetail?id={{item.id}}"
+					>
+					</van-cell>
+				</block>
+			</van-cell-group>
 
-				<van-cell-group>
-					<block wx:for="{{item.timeNameList}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
-						<van-cell title="{{item1.submitTime}}" value="{{item1.commitName}}" border="{{ true }}" is-link bind:click="" url="/pages/control/tjaqjc/aqjcDetail/aqjcDetail">
-						</van-cell>
-					</block>
-				</van-cell-group>
-
-			</van-collapse-item>
-		</block>
+		</van-collapse-item>
 
 	</van-collapse>
 </view>
+

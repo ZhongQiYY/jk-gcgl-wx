@@ -40,7 +40,12 @@ globalData: {
     userInfo:  RootPath+"/api/wechat/userInfo",
     userData:  RootPath+"/api/wechat/userData",
     auth: RootPath+"/api/wechat/auth",
-  }
+  },
+
+  submittedList:[], // 安全检查已提交
+  replyList:[], // 安全检查整改回复
+  agreeList:[], // 安全检查同意
+  disagreeList:[] // 安全检查不同意
 },
 
 userLogin: function (callback, fail) {

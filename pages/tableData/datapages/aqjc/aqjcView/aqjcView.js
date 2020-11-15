@@ -1,3 +1,6 @@
+const app = getApp();
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   /**
@@ -5,22 +8,9 @@ Page({
    */
   data: {
     activeNames: ['1'],
-    problemList: [
-      {
-        unitName: "综保区", projectName: "标准厂房三期", timeNameList: [
-          { submitTime: "2020-09-27", commitName: "钟祺" },
-          { submitTime: "2020-08-27", commitName: "刘杭" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-          { submitTime: "2020-09-27", commitName: "缪隽峰" },
-          { submitTime: "2020-12-27", commitName: "温龙飞" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-12-27", commitName: "温龙飞" },
-        ]
-      },
-    ],
-
+    unitName: '', 
+    projectName: '',
+    timeNameList: [],
   },
 
   collapseChange: function (e) {
@@ -29,11 +19,29 @@ Page({
     });
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    let data = {
+      'status': options.status,
+      'projectId': app.globalData.projectId
+    }
+    request.get(requestUrl.listProblemByStatus, data).then(res => {
+      if(res.code == 200) {
+        if(res.data.length > 0) {
+          that.setData({
+            unitName: res.data[0].project.unitName,
+            projectName: res.data[0].project.projectName,
+            timeNameList: res.data
+          })
+        }
+      }
+    }).catch(
+    
+    );
   },
 
   /**

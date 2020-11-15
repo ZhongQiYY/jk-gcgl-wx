@@ -38,7 +38,7 @@
 							<view class="kg-msg-list-item-val">{{ item.date }}</view>
 						</view>
 						<view class="kg-msg-list-item-row">
-							<view class="kg-msg-list-item-key">造价点比：</view>
+							<view class="kg-msg-list-item-key">造价占比：</view>
 							<view class="kg-msg-list-item-val">{{ item.costPoint }}</view>
 						</view>
 						<view class="kg-msg-list-item-row">
@@ -104,9 +104,9 @@
 
 
 	<van-field
-		label="造价点比"
+		label="造价占比"
     model:value="{{ costPoint }}"
-    placeholder="请输入造价点比"
+    placeholder="请输入造价占比"
     border="{{ false }}"
   />
 	<van-button block type="info" bind:click="saveKgXx">保存</van-button>
