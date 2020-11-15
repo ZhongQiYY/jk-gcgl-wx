@@ -1,5 +1,5 @@
 <import src="/template/commitRecord/commitRecord.wxml" />
-
+<van-toast id="van-toast" />
 <view style="padding-bottom: 100rpx">
 
 	<!-- 提交信息区域 -->
@@ -43,6 +43,7 @@
 
 				<van-cell title="整改期限" value="{{date}}" bind:click="onDisplay" is-link/>
 				<van-calendar show="{{show}}" show-confirm="{{ false }}" bind:close="onClose" bind:confirm="onConfirm" />
+				
 				<view class='ui_uploader_cell'>
 					<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
 						<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />

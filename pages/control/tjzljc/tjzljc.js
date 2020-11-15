@@ -4,7 +4,7 @@ var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
 // var basePath = app.globalData.imageRootPath;
 var basePath = app.globalData.basePath;
-
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   data: {
@@ -190,9 +190,24 @@ Page({
       .then(res => { 
         console.log(res)
         if(res.code == 200) {
-          console.log('请求成功')
+          Toast.success('提交成功');
+          that.setData({
+            projectId: "",
+            projectName: "",
+            currentProblem: "",
+            currentScore: "",
+            date: "",
+            files1: [],
+          });
         } else {
-          console.log('请求失败')
+          that.setData({
+            projectId: "",
+            projectNames: "",
+            currentScore: "",
+            date: "",
+            files1: [],
+          });
+          Toast.fail('提交失败，服务器错误');
         }
       })
       .catch(err => { })

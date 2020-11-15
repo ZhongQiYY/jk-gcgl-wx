@@ -4,6 +4,7 @@
     "van-calendar": "@vant/weapp/calendar/index",
     "van-field": "@vant/weapp/field/index",
     "van-cell": "@vant/weapp/cell/index",
+    "van-toast": "@vant/weapp/toast/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
