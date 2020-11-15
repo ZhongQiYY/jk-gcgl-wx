@@ -9,14 +9,21 @@ Page({
     showPlanSchedule: 0,//展示进度计划
     showTimeLimitInfo: 1,//工期信息
     showProjectInfo: 2,//展示项目信息
-    
+    roleRealId: '',
+    jhNotShow: true
   },
 
   onLoad: function(e){
     var that = this;
     that.setData({
+      roleRealId: app.globalData.userInfo.roleRealId,
       projectNameListByCategory: app.globalData.projectNameListByCategory,
     });
+    if(that.data.roleRealId==8){
+      that.setData({
+        jhNotShow: false
+      })
+    }
   },
 
   

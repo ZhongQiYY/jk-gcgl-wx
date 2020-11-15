@@ -5,13 +5,13 @@
 <view wx:if="{{notShowLimit}}">
 
 	<!-- 建设单位 -->
-	<view wx:if="{{showBuildUnit || showCost}}" class="suspension-card-external">
+	<view wx:if="{{showBuildUnit || showCost || planShow}}" class="suspension-card-external">
 		<view class="suspension-card-internal">
 			<van-cell-group>
 				<van-grid square clickable column-num="3" border="{{false}}">
 					<van-grid-item wx:if="{{showBuildUnit}}" badge="{{}}" bind:click="toQzsp" icon="/images/qzsp.png" text="提交签证审批" />
 					<van-grid-item wx:if="{{showBuildUnit}}" badge="{{allRedDotNum.problemPlanNum}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="提交问题建议" />
-					<van-grid-item wx:if="{{showBuildUnit}}" badge="{{}}" bind:click="toXmxx" icon="/images/txjdxx.png" text="填写项目信息" />
+					<van-grid-item wx:if="{{showBuildUnit || planShow}}" badge="{{}}" bind:click="toXmxx" icon="/images/txjdxx.png" text="填写项目信息" />
 					<van-grid-item wx:if="{{showBuildUnit}}" badge="{{}}" bind:click="toHtgl" icon="/images/htgl.png" text="提交合同管理" />
 					<van-grid-item wx:if="{{showBuildUnit}}" badge="{{}}" bind:click="toTzwj" icon="/images/tzwj2.png" text="提交图纸文件" />
 					<van-grid-item wx:if="{{showBuildUnit || showCost}}" badge="{{}}" bind:click="toZjxx" icon="/images/zjxx.png" text="提交造价信息" />
@@ -44,7 +44,7 @@
 	</view>
 
 	<!-- 各公司/部门一人 -->
-	<view class="suspension-card-external">
+	<view wx:if="{{false}}" class="suspension-card-external">
 		<view class="suspension-card-internal">
 			<van-cell-group>
 				<van-grid square clickable column-num="3" border="{{false}}">
