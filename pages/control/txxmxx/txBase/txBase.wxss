@@ -13,5 +13,6 @@
   top:50%;
   right:0;
   background-color:#0089dd;
-  color:#fff
+  color:#fff;
+  z-index:999
 }

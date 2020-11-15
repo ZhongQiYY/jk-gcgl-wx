@@ -1,45 +1,51 @@
 <view class="loading-position-center"><van-loading wx:if="{{showLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">加载中...</text></van-loading></view>
 <view class="loading-position-center"><van-loading wx:if="{{showUpLoadLoading}}" size="35px" color="#0089dd" vertical><text style="color:#0089dd">上传中...</text></van-loading></view>
+<van-toast id="van-toast" />
+
+<view class="project-name">{{projectInfo.projectName}}</view>
 
 <view style="padding-bottom: 100rpx">
 <!-- 基本信息 -->
-<view wx:if="{{showBasics == active}}" class="suspension-card-external-page">
+<view hidden="{{!(showBasics == active)}}" class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
     <form bindsubmit="baseFormSubmit">
-      
-    <van-field label="建设单位" value="{{projectInfo.unitName}}" placeholder="请输入" name="unitName" />
-    <van-field label="项目名称" value="{{projectInfo.projectName}}" placeholder="请输入" name="projectName" />
-    <van-field label="占地面积" value="{{projectInfo.coverArea}}" placeholder="请输入" name="coverArea" />
-    <van-field label="总建筑面积" value="{{projectInfo.totalArea}}" placeholder="请输入" name="totalArea" />
+    <input name="id" value="{{projectInfo.id}}" hidden="true" />
+    <input name="specialId" value="{{projectInfo.specialId}}" hidden="true" />
+    <input name="categoryType" value="{{projectInfo.categoryType}}" hidden="true" />
+    <van-field label="建设单位" value="{{projectInfo.unitName}}" placeholder="请输入" name="unitName"  bind:change="baseChange"/>
+    <van-field label="项目名称" value="{{projectInfo.projectName}}" placeholder="请输入" name="projectName"  bind:change="baseChange"/>
+    <van-field label="占地面积" value="{{projectInfo.coverArea}}" placeholder="请输入" name="coverArea"  bind:change="baseChange"/>
+    <van-field label="总建筑面积" value="{{projectInfo.totalArea}}" placeholder="请输入" name="totalArea"  bind:change="baseChange"/>
     <block wx:if="{{categoryType==1}}">
-      <van-field label="楼栋数" value="{{projectInfo.buildNum}}" placeholder="请输入" name="buildNum" />
-      <van-field label="住宅套数" value="{{projectInfo.houseNum}}" placeholder="请输入" name="houseNum" />
-      <van-field label="店面间数" value="{{projectInfo.storeNum}}" placeholder="请输入" name="storeNum" />
-      <van-field label="商业面积" value="{{projectInfo.businessArea}}" placeholder="请输入" name="businessArea" />
-      <van-field label="住宅面积" value="{{projectInfo.houseArea}}" placeholder="请输入" name="houseArea" />
+      <van-field label="楼栋数" value="{{projectInfo.pmSpecialBuild.buildNum}}" placeholder="请输入" name="buildNum"  bind:change="baseChange"/>
+      <van-field label="住宅套数" value="{{projectInfo.pmSpecialBuild.houseNum}}" placeholder="请输入" name="houseNum"  bind:change="baseChange"/>
+      <van-field label="店面间数" value="{{projectInfo.pmSpecialBuild.storeNum}}" placeholder="请输入" name="storeNum"  bind:change="baseChange"/>
+      <van-field label="商业面积" value="{{projectInfo.pmSpecialBuild.businessArea}}" placeholder="请输入" name="businessArea"  bind:change="baseChange"/>
+      <van-field label="住宅面积" value="{{projectInfo.pmSpecialBuild.houseArea}}" placeholder="请输入" name="houseArea"  bind:change="baseChange"/>
     </block>
     <block wx:if="{{categoryType==2}}">
-      <van-field label="园路面积" value="{{projectInfo.pathArea}}" placeholder="请输入" name="pathArea" />
-      <van-field label="铺装面积" value="{{projectInfo.paveArea}}" placeholder="请输入" name="paveArea" />
-      <van-field label="景观桥(座)" value="{{projectInfo.landscapeBridge}}" placeholder="请输入" name="landscapeBridge" />
-      <van-field label="乔木数(颗)" value="{{projectInfo.treeNum}}" placeholder="请输入" name="treeNum" />
-      <van-field label="亮化数(盏)" value="{{projectInfo.brightenNum}}" placeholder="请输入" name="brightenNum" />
+      <van-field label="园路面积" value="{{projectInfo.pmSpecialPark.pathArea}}" placeholder="请输入" name="pathArea"  bind:change="baseChange"/>
+      <van-field label="铺装面积" value="{{projectInfo.pmSpecialPark.paveArea}}" placeholder="请输入" name="paveArea"  bind:change="baseChange"/>
+      <van-field label="景观桥(座)" value="{{projectInfo.pmSpecialPark.landscapeBridge}}" placeholder="请输入" name="landscapeBridge"  bind:change="baseChange"/>
+      <van-field label="乔木数(颗)" value="{{projectInfo.pmSpecialPark.treeNum}}" placeholder="请输入" name="treeNum"  bind:change="baseChange"/>
+      <van-field label="亮化数(盏)" value="{{projectInfo.pmSpecialPark.brightenNum}}" placeholder="请输入" name="brightenNum"  bind:change="baseChange"/>
     </block>
     <block wx:if="{{categoryType==3}}">
-      <van-field label="道路长" value="{{projectInfo.roadLength}}" placeholder="请输入" name="roadLength" />
-      <van-field label="道路宽" value="{{projectInfo.roadWidth}}" placeholder="请输入" name="roadWidth" />
-      <van-field label="行车道宽" value="{{projectInfo.carriagewayWidth}}" placeholder="请输入" name="carriagewayWidth" />
-      <van-field label="人行道宽" value="{{projectInfo.sidewalkWidth}}" placeholder="请输入" name="sidewalkWidth" />
-      <van-field label="花池宽" value="{{projectInfo.pondWidth}}" placeholder="请输入" name="pondWidth" />
+      <van-field label="道路长" value="{{projectInfo.pmSpecialMunicipal.roadLength}}" placeholder="请输入" name="roadLength"  bind:change="baseChange"/>
+      <van-field label="道路宽" value="{{projectInfo.pmSpecialMunicipal.roadWidth}}" placeholder="请输入" name="roadWidth"  bind:change="baseChange"/>
+      <van-field label="行车道宽" value="{{projectInfo.pmSpecialMunicipal.carriagewayWidth}}" placeholder="请输入" name="carriagewayWidth"  bind:change="baseChange"/>
+      <van-field label="人行道宽" value="{{projectInfo.pmSpecialMunicipal.sidewalkWidth}}" placeholder="请输入" name="sidewalkWidth"  bind:change="baseChange"/>
+      <van-field label="花池宽" value="{{projectInfo.pmSpecialMunicipal.pondWidth}}" placeholder="请输入" name="pondWidth"  bind:change="baseChange"/>
     </block>
-    <van-field label="建设地点" value="{{projectInfo.buildSite}}" type="textarea" placeholder="请输入" name="buildSite" />
+    <van-field label="建设地点" value="{{projectInfo.buildSite}}" type="textarea" placeholder="请输入" name="buildSite"  bind:change="baseChange"/>
     <van-field label="建设年限" value="{{projectInfo.buildYear}}" placeholder="请输入" name="buildYear" />
-    <van-field label="新建续建" value="{{projectInfo.buildType==0?'新建':'续建'}}" placeholder="请输入" name="buildType" />
-    <van-field label="是否完成征地拆迁" value="{{projectInfo.isExpropriation==0?'否':'是'}}" placeholder="请输入" name="isExpropriation" />
-    <van-field label="是否列入市级调度" value="{{projectInfo.isDispatch==0?'否':'是'}}" placeholder="请输入" name="isDispatch" />
-    <van-field label="挂点领导" value="{{projectInfo.leaderName}}" placeholder="请输入" name="leaderName" />
-    <van-field label="责任单位" value="{{projectInfo.responsibleUnits}}" placeholder="请输入" name="responsibleUnits" />
-    <van-field label="招标方式 " value="{{projectInfo.biddingType==0?'公开招标':'直接委托'}}" placeholder="请输入" name="biddingType"/>
+    <van-field label="新建续建" readonly value="{{projectInfo.buildType==0?'新建':'续建'}}" placeholder="请输入" name="buildType"  bind:change="baseChange"/>
+    <van-field label="是否完成征地拆迁" readonly value="{{projectInfo.isExpropriation==0?'否':'是'}}" placeholder="请输入" name="isExpropriation"  bind:change="baseChange"/>
+    <van-field label="是否列入市级调度" readonly value="{{projectInfo.isDispatch==0?'否':'是'}}" placeholder="请输入" name="isDispatch"  bind:change="baseChange"/>
+    <van-field label="挂点领导" value="{{projectInfo.leaderName}}" placeholder="请输入" name="leaderName"  bind:change="baseChange"/>
+    <van-field label="责任单位" value="{{projectInfo.responsibleUnits}}" placeholder="请输入" name="responsibleUnits" bind:change="baseChange" />
+    <van-field label="招标方式" readonly value="{{projectInfo.biddingType==0?'公开招标':'直接委托'}}" placeholder="请输入" name="biddingType" bind:change="baseChange"/>
+    <van-field label="资金来源" value="{{projectInfo.sourcesFund}}" type="textarea" placeholder="请输入" name="sourcesFund" bind:change="baseChange"/>
     <van-field label="年度攻坚目标" value="{{projectInfo.annualTarget}}" type="textarea" placeholder="请输入" name="annualTarget" maxlength="255" show-word-limit bind:change="baseChange"/>
 
     <button wx:if="{{showBaseButton}}" size="mini" hover-class="clickHover" class="submit-button" formType="submit">提交</button>
@@ -49,87 +55,112 @@
 </view>
 
 <!-- 五方信息 -->
-<block wx:if="{{showFive == active}}">
+
+  <form bindsubmit="fiveFormSubmit" hidden="{{!(showFive == active)}}">
+  <input name="id" value="{{projectInfo.id}}" hidden="true" />
   <view class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <van-field label="项目业主" value="{{projectInfo.ownerCompanyName}}" placeholder="请输入" name="ownerCompanyName" />
-    <van-field label="项目负责人" value="{{projectInfo.ownerProjectLeader}}" placeholder="请输入" name="ownerProjectLeader" />
-    <van-field label="电话" value="{{projectInfo.ownerPhone}}" placeholder="请输入" name="ownerPhone" />
-  </view>
-  </view>
-  <view class="suspension-card-external-page">
-  <view class="suspension-card-internal-page">
-    <van-field label="施工单位" value="{{projectInfo.constructionCompanyName}}" placeholder="请输入" name="constructionCompanyName" />
-    <van-field label="项目负责人" value="{{projectInfo.constructionProjectLeader}}" placeholder="请输入" name="constructionProjectLeader" />
-    <van-field label="电话" value="{{projectInfo.constructionPhone}}" placeholder="请输入" name="constructionPhone" />
+    <van-field label="项目业主" value="{{projectInfo.ownerCompanyName}}" placeholder="请输入" name="ownerCompanyName" bind:change="fiveChange" />
+    <van-field label="项目负责人" value="{{projectInfo.ownerProjectLeader}}" placeholder="请输入" name="ownerProjectLeader" bind:change="fiveChange" />
+    <van-field label="电话" value="{{projectInfo.ownerPhone}}" placeholder="请输入" name="ownerPhone" bind:change="fiveChange" />
   </view>
   </view>
   <view class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <van-field label="监理单位" value="{{projectInfo.supervisionCompanyName}}" placeholder="请输入" name="supervisionCompanyName" />
-    <van-field label="总监" value="{{projectInfo.supervisionDirectorName}}" placeholder="请输入" name="supervisionDirectorName" />
-    <van-field label="电话" value="{{projectInfo.supervisionPhone}}" placeholder="请输入" name="supervisionPhone" />
+    <van-field label="施工单位" value="{{projectInfo.constructionCompanyName}}" placeholder="请输入" name="constructionCompanyName" bind:change="fiveChange" />
+    <van-field label="项目负责人" value="{{projectInfo.constructionProjectLeader}}" placeholder="请输入" name="constructionProjectLeader" bind:change="fiveChange" />
+    <van-field label="电话" value="{{projectInfo.constructionPhone}}" placeholder="请输入" name="constructionPhone" bind:change="fiveChange" />
   </view>
   </view>
   <view class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <van-field label="设计单位" value="{{projectInfo.designCompanyName}}" placeholder="请输入" name="designCompanyName" />
-    <van-field label="项目负责人" value="{{projectInfo.designProjectLeader}}" placeholder="请输入" name="designProjectLeader" />
+    <van-field label="监理单位" value="{{projectInfo.supervisionCompanyName}}" placeholder="请输入" name="supervisionCompanyName" bind:change="fiveChange" />
+    <van-field label="总监" value="{{projectInfo.supervisionDirectorName}}" placeholder="请输入" name="supervisionDirectorName" bind:change="fiveChange" />
+    <van-field label="电话" value="{{projectInfo.supervisionPhone}}" placeholder="请输入" name="supervisionPhone" bind:change="fiveChange" />
+  </view>
+  </view>
+  <view class="suspension-card-external-page">
+  <view class="suspension-card-internal-page">
+    <van-field label="设计单位" value="{{projectInfo.designCompanyName}}" placeholder="请输入" name="designCompanyName" bind:change="fiveChange" />
+    <van-field label="项目负责人" value="{{projectInfo.designProjectLeader}}" placeholder="请输入" name="designProjectLeader" bind:change="fiveChange" />
     <van-field label="电话" value="{{projectInfo.designPhone}}" placeholder="请输入" name="designPhone" />
   </view>
   </view>
   <view class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <van-field label="勘察单位" value="{{projectInfo.surveyCompanyName}}" placeholder="请输入" name="surveyCompanyName" />
-    <van-field label="项目负责人" value="{{projectInfo.surveyProjectLeader}}" placeholder="请输入" name="surveyProjectLeader" />
-    <van-field label="电话" value="{{projectInfo.surveyPhone}}" placeholder="请输入" name="surveyPhone" />
+    <van-field label="勘察单位" value="{{projectInfo.surveyCompanyName}}" placeholder="请输入" name="surveyCompanyName" bind:change="fiveChange" />
+    <van-field label="项目负责人" value="{{projectInfo.surveyProjectLeader}}" placeholder="请输入" name="surveyProjectLeader" bind:change="fiveChange"/>
+    <van-field label="电话" value="{{projectInfo.surveyPhone}}" placeholder="请输入" name="surveyPhone" bind:change="fiveChange"/>
   </view>
   </view>
-</block>
+
+  <button wx:if="{{showFiveButton}}" size="mini" hover-class="clickHover" class="submit-button" formType="submit">提交</button>
+  </form>
+
 
 <!-- 资金信息 -->
-<view wx:if="{{showMoney == active}}" class="suspension-card-external-page">
+<view hidden="{{!(showMoney == active)}}" class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <van-field label="项目总投资" value="{{projectInfo.totalMoney}}" placeholder="请输入" name="totalMoney" />
-    <van-field label="本年投资" value="{{projectInfo.totalMoney1}}" placeholder="请输入" name="totalMoney1" />
-    <van-field label="第二年年度投资" value="{{projectInfo.totalMoney2}}" placeholder="请输入" name="totalMoney2" />
-    <van-field label="第三年年度投资" value="{{projectInfo.totalMoney3}}" placeholder="请输入" name="totalMoney3" />
-    <van-field label="工程建安费" value="{{projectInfo.jiananCost}}" placeholder="请输入" name="jiananCost" />
+    <!-- 投资这里需求不清晰，待定 -->
+    <van-field label="项目总投资" value="{{projectInfo.totalMoney}}" placeholder="暂不开放" name="totalMoney" readonly  bind:change="zjChange"/>
+    <van-field label="本年投资" value="{{projectInfo.totalMoney1}}" placeholder="暂不开放" name="totalMoney1" readonly  bind:change="zjChange"/>
+    <van-field label="第二年年度投资" value="{{projectInfo.totalMoney2}}" placeholder="暂不开放" name="totalMoney2" readonly bind:change="zjChange" />
+    <van-field label="第三年年度投资" value="{{projectInfo.totalMoney3}}" placeholder="暂不开放" name="totalMoney3" readonly  bind:change="zjChange"/>
+
+    <form bindsubmit="zjFormSubmit">
     <block wx:if="{{categoryType==1}}" wx:key="index">
-      <van-field label="房建造价" value="{{projectInfo.houseBuildCost}}" placeholder="请输入" name="houseBuildCost" />
-      <van-field label="配套造价" value="{{projectInfo.supportCost}}" placeholder="请输入" name="supportCost" />
-      <van-field label="供水造价" value="{{projectInfo.waterCost}}" placeholder="请输入" name="waterCost" />
-      <van-field label="供电造价" value="{{projectInfo.electricityCost}}" placeholder="请输入" name="electricityCost" />
-      <van-field label="供气造价" value="{{projectInfo.airCost}}" placeholder="请输入" name="airCost" />
+      <input name="id" value="{{projectInfo.pmBuildCost.id}}" hidden="true" />
+      <van-field label="工程建安费" value="{{projectInfo.pmBuildCost.jiananCost}}" placeholder="请输入" name="jiananCost"  bind:change="zjChange"/>
+      <van-field label="房建造价" value="{{projectInfo.pmBuildCost.houseBuildCost}}" placeholder="请输入" name="houseBuildCost"  bind:change="zjChange"/>
+      <van-field label="配套造价" value="{{projectInfo.pmBuildCost.supportCost}}" placeholder="请输入" name="supportCost"  bind:change="zjChange"/>
+      <van-field label="供水造价" value="{{projectInfo.pmBuildCost.waterCost}}" placeholder="请输入" name="waterCost"  bind:change="zjChange"/>
+      <van-field label="供电造价" value="{{projectInfo.pmBuildCost.electricityCost}}" placeholder="请输入" name="electricityCost"  bind:change="zjChange"/>
+      <van-field label="供气造价" value="{{projectInfo.pmBuildCost.airCost}}" placeholder="请输入" name="airCost"  bind:change="zjChange"/>
+      <van-field label="设计费用" value="{{projectInfo.pmBuildCost.designCost}}" placeholder="请输入" name="designCost"  bind:change="zjChange"/>
+    <van-field label="勘察费用" value="{{projectInfo.pmBuildCost.surveyCost}}" placeholder="请输入" name="surveyCost"  bind:change="zjChange"/>
+    <van-field label="检测费用" value="{{projectInfo.pmBuildCost.checkCost}}" placeholder="请输入" name="checkCost"  bind:change="zjChange"/>
+    <van-field label="监理费用" value="{{projectInfo.pmBuildCost.supervisionCost}}" placeholder="请输入" name="supervisionCost"  bind:change="zjChange"/>
+    <van-field label="图审费用" value="{{projectInfo.pmBuildCost.drawCost}}" placeholder="请输入" name="drawCost"  bind:change="zjChange"/>
+    <van-field label="其他费用" value="{{projectInfo.pmBuildCost.otherCost}}" placeholder="请输入" name="otherCost"  bind:change="zjChange"/>
     </block>
     <block wx:if="{{categoryType==2}}" wx:key="index">
-      <van-field label="园林造价" value="{{projectInfo.parkCost}}" placeholder="请输入" name="parkCost" />
-      <van-field label="配套用房造价" value="{{projectInfo.supportHouseCost}}" placeholder="请输入" name="supportHouseCost" />
-      <van-field label="路场工程造价" value="{{projectInfo.roadCost}}" placeholder="请输入" name="roadCost" />
-      <van-field label="文化景观造价" value="{{projectInfo.culturalCost}}" placeholder="请输入" name="culturalCost" />
+      <van-field label="工程建安费" value="{{projectInfo.pmParkCost.jiananCost}}" placeholder="请输入" name="jiananCost"  bind:change="zjChange"/>
+      <van-field label="园林造价" value="{{projectInfo.pmParkCost.parkCost}}" placeholder="请输入" name="parkCost"   bind:change="zjChange"/>
+      <van-field label="配套用房造价" value="{{projectInfo.pmParkCost.supportHouseCost}}" placeholder="请输入" name="supportHouseCost"  bind:change="zjChange"/>
+      <van-field label="路场工程造价" value="{{projectInfo.pmParkCost.roadCost}}" placeholder="请输入" name="roadCost"  bind:change="zjChange"/>
+      <van-field label="文化景观造价" value="{{projectInfo.pmParkCost.culturalCost}}" placeholder="请输入" name="culturalCost"  bind:change="zjChange"/>
+      <van-field label="设计费用" value="{{projectInfo.pmParkCost.designCost}}" placeholder="请输入" name="designCost"  bind:change="zjChange"/>
+    <van-field label="勘察费用" value="{{projectInfo.pmParkCost.surveyCost}}" placeholder="请输入" name="surveyCost"  bind:change="zjChange"/>
+    <van-field label="检测费用" value="{{projectInfo.pmParkCost.checkCost}}" placeholder="请输入" name="checkCost"  bind:change="zjChange"/>
+    <van-field label="监理费用" value="{{projectInfo.pmParkCost.supervisionCost}}" placeholder="请输入" name="supervisionCost"  bind:change="zjChange"/>
+    <van-field label="图审费用" value="{{projectInfo.pmParkCost.drawCost}}" placeholder="请输入" name="drawCost"  bind:change="zjChange"/>
+    <van-field label="其他费用" value="{{projectInfo.pmParkCost.otherCost}}" placeholder="请输入" name="otherCost"  bind:change="zjChange"/>
     </block>
     <block wx:if="{{categoryType==3}}" wx:key="index">
-      <van-field label="市政造价" value="{{projectInfo.municipalCost}}" placeholder="请输入" name="municipalCost" />
-      <van-field label="桥梁造价" value="{{projectInfo.bridgeCost}}" placeholder="请输入" name="bridgeCost" />
-      <van-field label="给排水造价" value="{{projectInfo.drainageCost}}" placeholder="请输入" name="drainageCost" />
-      <van-field label="交通工程造价" value="{{projectInfo.trafficCost}}" placeholder="请输入" name="trafficCost" />
+      <van-field label="工程建安费" value="{{projectInfo.pmMunicipalCost.jiananCost}}" placeholder="请输入" name="jiananCost"  bind:change="zjChange"/>
+      <van-field label="市政造价" value="{{projectInfo.pmMunicipalCost.municipalCost}}" placeholder="请输入" name="municipalCost"  bind:change="zjChange"/>
+      <van-field label="桥梁造价" value="{{projectInfo.pmMunicipalCost.bridgeCost}}" placeholder="请输入" name="bridgeCost"  bind:change="zjChange"/>
+      <van-field label="给排水造价" value="{{projectInfo.pmMunicipalCost.drainageCost}}" placeholder="请输入" name="drainageCost"  bind:change="zjChange"/>
+      <van-field label="交通工程造价" value="{{projectInfo.pmMunicipalCost.trafficCost}}" placeholder="请输入" name="trafficCost"  bind:change="zjChange"/>
+      <van-field label="设计费用" value="{{projectInfo.pmMunicipalCost.designCost}}" placeholder="请输入" name="designCost"  bind:change="zjChange"/>
+    <van-field label="勘察费用" value="{{projectInfo.pmMunicipalCost.surveyCost}}" placeholder="请输入" name="surveyCost"  bind:change="zjChange"/>
+    <van-field label="检测费用" value="{{projectInfo.pmMunicipalCost.checkCost}}" placeholder="请输入" name="checkCost"  bind:change="zjChange"/>
+    <van-field label="监理费用" value="{{projectInfo.pmMunicipalCost.supervisionCost}}" placeholder="请输入" name="supervisionCost"  bind:change="zjChange"/>
+    <van-field label="图审费用" value="{{projectInfo.pmMunicipalCost.drawCost}}" placeholder="请输入" name="drawCost"  bind:change="zjChange"/>
+    <van-field label="其他费用" value="{{projectInfo.pmMunicipalCost.otherCost}}" placeholder="请输入" name="otherCost"  bind:change="zjChange"/>
     </block>
-    <van-field label="设计费用" value="{{projectInfo.designCost}}" placeholder="请输入" name="designCost" />
-    <van-field label="勘察费用" value="{{projectInfo.surveyCost}}" placeholder="请输入" name="surveyCost" />
-    <van-field label="检测费用" value="{{projectInfo.checkCost}}" placeholder="请输入" name="checkCost" />
-    <van-field label="监理费用" value="{{projectInfo.supervisionCost}}" placeholder="请输入" name="supervisionCost" />
-    <van-field label="图审费用" value="{{projectInfo.drawCost}}" placeholder="请输入" name="drawCost" />
-    <van-field label="其他费用" value="{{projectInfo.otherCost}}" placeholder="请输入" name="otherCost" />
+    <button wx:if="{{showZjButton}}" size="mini" hover-class="clickHover" class="submit-button" formType="submit">提交</button>
+    </form>
   </view>
 </view>
 
 <!-- 单体情况 -->
-<view wx:if="{{showPart==active && categoryType==1}}" wx:for="{{projectInfo.list}}" wx:key="index" class="suspension-card-external-page">
+<view hidden="{{!(showPart==active && categoryType==1)}}" wx:for="{{projectInfo.list}}" wx:key="index" class="suspension-card-external-page">
   <view class="suspension-card-internal-page">
-    <van-field label="楼栋号" value="{{item.ztName}}" placeholder="请输入" name="ztName" />
-    <van-field label="工程造价" value="{{item.projectCost}}" placeholder="请输入" name="projectCost" />
-    <van-field label="建筑面积" value="{{item.buildArea}}" placeholder="请输入" name="buildArea" />
-    <van-field label="层数" value="{{item.floors}}" placeholder="请输入" name="floors" />
+    <van-field readonly label="楼栋号" value="{{item.ztName}}" placeholder="请输入" name="ztName" />
+    <van-field readonly label="工程造价" value="{{item.projectCost}}" placeholder="请输入" name="projectCost" />
+    <van-field readonly label="建筑面积" value="{{item.buildArea}}" placeholder="请输入" name="buildArea" />
+    <van-field readonly label="层数" value="{{item.floors}}" placeholder="请输入" name="floors" />
   </view>
 </view>
 </view>
