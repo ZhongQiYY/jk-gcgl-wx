@@ -11,6 +11,10 @@ Page({
     reply:0, // 整改回复
     agree:0, // 同意
     disagree:0, // 不同意
+    submittedList:[],
+    replyList:[],
+    agreeList:[],
+    disagreeList:[]
   },
 
   toSubmitted: function() {
@@ -21,19 +25,19 @@ Page({
 
   toReply: function() {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/aqjc/aqjcView/aqjcView?status=1',
+      url: '/pages/tableData/datapages/aqjc/aqjcView/aqjcView?status=2',
     })
   },
 
   toAgree: function() {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/aqjc/aqjcView/aqjcView?status=1',
+      url: '/pages/tableData/datapages/aqjc/aqjcView/aqjcView?status=3',
     })
   },
 
   toDisagree: function() {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/aqjc/aqjcView/aqjcView?status=1',
+      url: '/pages/tableData/datapages/aqjc/aqjcView/aqjcView?status=4',
     })
   },
 
@@ -56,7 +60,7 @@ Page({
    */
   onShow: function () {
     var that = this
-    request.get(requestUrl.listProblem, {})
+    request.get(requestUrl.listProblem, {'projectId':app.globalData.projectId})
       .then(res => { 
         console.log(res)
         if(res.code == 200) {
@@ -65,8 +69,17 @@ Page({
             submitted: data.submitted.length,  // 已提交
             reply: data.reply.length, // 整改回复
             agree: data.agree.length, // 同意
-            disagree: data.disagree.length // 不同意
-          })
+            disagree: data.disagree.length, // 不同意
+            submittedList: data.submitted,
+            replyList: data.reply,
+            agreeList: data.agree,
+            disagreeList: data.disagree
+          });
+          // 设置全局变量
+          app.globalData.submittedList = data.submitted
+          app.globalData.replyList = data.reply
+          app.globalData.agreeList = data.agree
+          app.globalData.disagreeList = data.disagree
         }
       }).catch()
   },
