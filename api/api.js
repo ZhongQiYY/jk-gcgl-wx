@@ -14,12 +14,9 @@ const requestUrl = {
   insertScheduleList: '/api/control/jhjd/insertScheduleList',//插入进度情况
   commitProblem: '/api/control/aqjc/commitProblem', // 安全检查提交问题
   listProblem: '/api/control/aqjc/listProblem', // 安全检查问题列表
-<<<<<<< HEAD
-=======
   listProblemByStatus: '/api/control/aqjc/listProblemByStatus', // 根据状态获取安全检查问题列表
   getProblemById: '/api/control/aqjc/getProblemById', // 根据id获取安全检查提问列表
   
->>>>>>> aa545c7e031b2636d1e812e3a071b3242cdcd326
   commitQuality: '/api/control/zljc/commitQuality', // 质量检查提交问题
   listQuality: '/api/control/zljc/listQuality', // 质量检查问题列表
 
