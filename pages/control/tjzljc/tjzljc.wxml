@@ -43,8 +43,14 @@
 
 				<van-cell title="整改期限" value="{{date}}" bind:click="onDisplay" is-link/>
 				<van-calendar show="{{show}}" show-confirm="{{ false }}" bind:close="onClose" bind:confirm="onConfirm" />
-
-				<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+				<view class='ui_uploader_cell'>
+					<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
+						<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+						<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+					</view>
+					<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+				</view>
+				<!-- <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" /> -->
 
 					<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
 						class="weui-btn weui-btn_primary">提交</button>
