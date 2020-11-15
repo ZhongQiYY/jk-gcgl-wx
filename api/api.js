@@ -7,11 +7,16 @@ const requestUrl = {
   updateFiveInfo: '/api/control/xmxx/updateFiveInfo', //修改项目五方信息
   updateMoneyInfo: '/api/control/xmxx/updateMoneyInfo', //修改项目资金信息
   getAllRedDotNum: '/api/control/getAllRedDotNum', //获取所有操作台内的红点数
+
   getTimeNode: '/api/control/jhjd/getTimeNode', //获取计划进度填写时间节点信息
   getPlanInfoMap: '/api/control/jhjd/getPlanInfoMap', //根据时间节点获取计划集合信息
   getScheduleInfoMap: '/api/control/jhjd/getScheduleInfoMap',//根据时间节点获取进度集合信息
   insertPlanList: '/api/control/jhjd/insertPlanList', //插入计划完成情况
   insertScheduleList: '/api/control/jhjd/insertScheduleList',//插入进度情况
+  getStepAndNodeName: '/api/control/jhjd/getStepAndNodeName',//获取6大步骤42节点名称
+  insertSchedulePast: '/api/control/jhjd/insertSchedulePast',//插入往期的进度数据
+  getPastSchedulePlanList: '/api/control/jhjd/getPastSchedulePlanList',
+
   commitProblem: '/api/control/aqjc/commitProblem', // 安全检查提交问题
   listProblem: '/api/control/aqjc/listProblem', // 安全检查问题列表
   listProblemByStatus: '/api/control/aqjc/listProblemByStatus', // 根据状态获取安全检查问题列表

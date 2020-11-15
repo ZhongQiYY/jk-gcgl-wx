@@ -138,7 +138,7 @@ Page({
     var that = this;
     request.post(requestUrl.getTimeNode, {}).then(res => {
       that.setData({
-        timeNode: res.data,
+        timeNode: res.data.timeNode,
         showLoadLoading: false
       });
     }).catch(err => {

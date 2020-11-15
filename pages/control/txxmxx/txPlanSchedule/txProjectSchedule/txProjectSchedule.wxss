@@ -19,3 +19,13 @@
   /* color: #666666; */ /* 卡片内文字颜色 */
   /* box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.4); */
 }
+
+/* 悬浮卡片-外部 */
+.suspension-card-external-page-s{
+  padding:0rpx 0rpx 20rpx 0rpx;/* 让卡片离页面上下左右20rpx的距离 */
+}
+/* 悬浮卡片-内部 */
+.suspension-card-internal-page-s{
+  border-radius: 6rpx; /* 卡片圆角弧度 */
+  background-color: #ffffff;/* 卡片背景颜色 */
+}
