@@ -14,6 +14,8 @@ const requestUrl = {
 
   commitProblem: '/api/control/aqjc/commitProblem', // 安全检查提交问题
   listProblem: '/api/control/aqjc/listProblem', // 安全检查问题列表
+  listProblemByStatus: '/api/control/aqjc/listProblemByStatus', // 根据状态获取安全检查问题列表
+  getProblemById: '/api/control/aqjc/getProblemById', // 根据id获取安全检查提问列表
   
   commitQuality: '/api/control/zljc/commitQuality', // 质量检查提交问题
   listQuality: '/api/control/zljc/listQuality', // 质量检查问题列表
