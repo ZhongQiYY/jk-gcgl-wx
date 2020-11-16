@@ -1,10 +1,10 @@
+<van-toast id="van-toast" />
 <view>
 	<van-panel
 	 title="{{problem.project.projectName}}"
 	 desc="{{problem.project.unitName}}    {{problem.submitter}}    {{problem.commitTime}}"
 	 use-footer-slot
 	>
-
 		<van-cell-group>
 			<van-field
 			 readonly
@@ -18,7 +18,6 @@
 			 bind:input="inputProblem"
 			 border="{{true}}"
 			/>
-
 			<van-cell
 			 title="整改期限"
 			 value="{{finalTime}}"
@@ -41,27 +40,30 @@
 		</van-cell-group>
 	</van-panel>
 
-		<view style="background-color: #fff; height: 250px;" >
-			<van-divider contentPosition="center">回复</van-divider>
-				<van-field
-				value=""
-				label="整改回复"
-				type="textarea"
-				placeholder="请输入"
-				autosize
-				show-word-limit
-				maxlength="{{maxPlanLength}}"
-				bind:input="{{inputPlan}}"
-				border="{{true}}"
-				/>
-				<view class='ui_uploader_cell'>
-					<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
-						<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
-						<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
-					</view>
-					<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+	<view style="background-color: #fff;height: 250px;" >
+		<van-divider contentPosition="center">回复</van-divider>
+
+			<van-field
+			value="{{reply}}"
+			label="整改回复"
+			type="textarea"
+			placeholder="请输入"
+			autosize
+			show-word-limit
+			maxlength="{{maxPlanLength}}"
+			bind:input="{{inputAnswer}}"
+			border="{{true}}"
+			/>
+			<view class='ui_uploader_cell'>
+				<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
+					<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+					<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
 				</view>
-			<van-button color="#0089dd" size="small">完成</van-button>
+				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+			</view>
+			<view>
+				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成</van-button>
+			</view>
 	</view>
 </view>
 
