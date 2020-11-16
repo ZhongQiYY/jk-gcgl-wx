@@ -1,5 +1,5 @@
 <view class="suspension-card-internal">
-		<text class="title">安全检查</text>
+		<text class="title">质量检查</text>
 		<view class="table">
 			<view class="tr bg-w">
 				<view class="th">已提交</view>
