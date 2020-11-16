@@ -100,39 +100,33 @@ Page({
       haveNoData: false,
       pageNumber: 1
     });
-    wx.request({
-      url: basePath + "/api/project/list", //请求路径
-      method: 'post',
-      data: {
-        unitName: that.data.buildValue,
-        categoryId: that.data.categoryValue,
-        pageNumber: that.data.pageNumber,
-        pageLimit: that.data.pageLimit
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success(res) {
-        if(res.data.length > 0) {
+
+    request.post(requestUrl.projectCardList, {
+      unitName: that.data.buildValue,
+      categoryId: that.data.categoryValue,
+      pageNumber: that.data.pageNumber,
+      pageLimit: that.data.pageLimit
+    }).then(res => {
+      console.log(res.data)
+      if(res.data.length > 0) {
+        that.setData({
+          dataHidden: true,
+          pageNumber: that.data.pageNumber+1,
+          projectList: res.data,
+        });
+      }else {
+        that.setData({
+          dataHidden: true,
+          dataHidden_last: false,
+        });
+        setTimeout(function () {
           that.setData({
-            dataHidden: true,
-            pageNumber: that.data.pageNumber+1,
-            projectList: res.data,
-          });
-        }else {
-          that.setData({
-            dataHidden: true,
-            dataHidden_last: false,
-          });
-          setTimeout(function () {
-            that.setData({
-              dataHidden_last: true,
-            })
-          }, 3000);
-        }
+            dataHidden_last: true,
+          })
+        }, 3000);
       }
-    });
+    }).catch(err => {});
+
   },
   // 选择项目类别
   bindCategoryChange: function (e) {
@@ -142,39 +136,31 @@ Page({
       haveNoData: false,
       pageNumber: 1
     });
-    wx.request({
-      url: basePath + "/api/project/list", //请求路径
-      method: 'post',
-      data: {
-        unitName: this.data.buildValue,
-        categoryId: this.data.categoryValue,
-        pageNumber: that.data.pageNumber,
-        pageLimit: that.data.pageLimit
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success(res) {
-        if(res.data.length > 0) {
+
+    request.post(requestUrl.projectCardList, {
+      unitName: that.data.buildValue,
+      categoryId: that.data.categoryValue,
+      pageNumber: that.data.pageNumber,
+      pageLimit: that.data.pageLimit
+    }).then(res => {
+      if(res.data.length > 0) {
+        that.setData({
+          dataHidden: true,
+          pageNumber: that.data.pageNumber+1,
+          projectList: res.data,
+        });
+      }else {
+        that.setData({
+          dataHidden: true,
+          dataHidden_last: false,
+        });
+        setTimeout(function () {
           that.setData({
-            dataHidden: true,
-            pageNumber: that.data.pageNumber+1,
-            projectList: res.data,
-          });
-        }else {
-          that.setData({
-            dataHidden: true,
-            dataHidden_last: false,
-          });
-          setTimeout(function () {
-            that.setData({
-              dataHidden_last: true,
-            })
-          }, 3000);
-        }
+            dataHidden_last: true,
+          })
+        }, 3000);
       }
-    });
+    }).catch(err => {});
   },
 
   //显示项目详情
@@ -206,53 +192,43 @@ Page({
       if(that.data.errorInfo && that.data.loadingHidden){
         that.setData({
           dataHidden: false
-        })
-        wx.request({
-          url: basePath + "/api/project/list", //请求路径
-          method: 'post',
-          data: {
-            unitName: that.data.buildValue,
-            categoryId: that.data.categoryValue,
-            pageNumber: that.data.pageNumber,
-            pageLimit: that.data.pageLimit
-          },
-          header: {
-            'content-type': 'application/json', // 默认值
-            'thirdSession': app.globalData.thirdSession
-          },
-          success(res) {
-            if(res.data.length > 0) {
-              that.setData({
-                dataHidden: true,
-                pageNumber: that.data.pageNumber+1,
-                projectList: that.data.projectList.concat(res.data),
-              });
-            }else {
-              that.setData({
-                dataHidden: true,
-                dataHidden_last: false,
-              });
-              setTimeout(function () {
-                that.setData({
-                  dataHidden_last: true,
-                  haveNoData: true
-                })
-              }, 3000);
-            }
-            
-          },
-          fail() {
+        });
+
+        request.post(requestUrl.projectCardList, {
+          unitName: that.data.buildValue,
+          categoryId: that.data.categoryValue,
+          pageNumber: that.data.pageNumber,
+          pageLimit: that.data.pageLimit
+        }).then(res => {
+          if(res.data.length > 0) {
             that.setData({
-              loadingHidden: false,
-              errorInfo: true
-            })
+              dataHidden: true,
+              pageNumber: that.data.pageNumber+1,
+              projectList: that.data.projectList.concat(res.data),
+            });
+          }else {
+            that.setData({
+              dataHidden: true,
+              dataHidden_last: false,
+            });
             setTimeout(function () {
               that.setData({
-                loadingHidden: true,
-                errorInfo: false
+                dataHidden_last: true,
+                haveNoData: true
               })
-            }, 10000);
+            }, 3000);
           }
+        }).catch(err => {
+          that.setData({
+            loadingHidden: false,
+            errorInfo: true
+          })
+          setTimeout(function () {
+            that.setData({
+              loadingHidden: true,
+              errorInfo: false
+            })
+          }, 10000);
         });
       }
     }else{

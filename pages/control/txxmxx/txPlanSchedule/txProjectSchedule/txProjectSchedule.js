@@ -77,7 +77,15 @@ Page({
     scheduleMap.tag = e.currentTarget.dataset.tag;
     scheduleMap.percentage = e.detail.value;
     if(scheduleMap.percentage!=='' && isNaN(Number(scheduleMap.percentage))){
-      Toast.fail(scheduleMap.nodeName+"：请填数字");
+      Toast.fail(scheduleMap.nodeName+"：百分比请填数字");
+      return;
+    }
+    if(0>Number(scheduleMap.percentage) || Number(scheduleMap.percentage)>100){
+      Toast.fail(scheduleMap.nodeName+"：百分比值太大");
+      return;
+    }
+    if(scheduleMap.percentage.split(".")[1].length>2){
+      Toast.fail(scheduleMap.nodeName+"：百分比最多两位小数");
       return;
     }
 
