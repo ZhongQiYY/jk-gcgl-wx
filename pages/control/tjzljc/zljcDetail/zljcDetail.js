@@ -2,8 +2,8 @@ var dateTime = require('../../../../utils/getDateTime.js');
 const app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
-// var basePath = app.globalData.imageRootPath;
-var basePath = app.globalData.basePath;
+var basePath = app.globalData.imageRootPath;
+// var basePath = app.globalData.basePath;
 import Toast from '@vant/weapp/toast/toast';
 Page({
 
@@ -14,7 +14,7 @@ Page({
     id: '', // 质量检查问题id
     finalTime: '',
     problem: {}, // 质量检查提问
-
+    answerList: [], //质量检查列表
     hasPicture1: 0,
     picUrls1: [],
     files1: [],
@@ -34,6 +34,7 @@ Page({
         console.log(res)
         that.setData({
           problem: res.data,
+          answerList: res.data.answerList,
           finalTime: dateTime.getymd(new Date(res.data.finalTime), '-'),
         })
       }
@@ -179,5 +180,37 @@ previewImage1:function(e){
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  // 输入回复
+  inputAnswer: function(e){
+    var that = this
+    that.setData({
+      reply: e.detail,
+    })
+  },
+
+  // 提交回复
+  commitAnswerQuality: function () {
+    var that = this
+    let data = {
+      pmQualityCheckId: this.data.id,
+      reply: this.data.reply,
+      imageList: this.data.imageList
+    }
+    request.post(requestUrl.commitAnswerQuality, data).then(res => {
+      console.log(res.data)
+      if (res.code == 200) {
+        Toast.success("提交成功")
+        // 置空数据
+        that.setData({
+          reply: '',
+          files1: []
+        })
+      } else if(res.code == 500){
+        Toast.fail(res.msg);
+      } else {
+        Toast.fail('提交失败，服务器错误');
+      }
+    }).catch(err => { });
+  },
 })

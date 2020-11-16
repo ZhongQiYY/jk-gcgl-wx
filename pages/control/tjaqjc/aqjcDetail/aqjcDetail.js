@@ -2,7 +2,8 @@ var dateTime = require('../../../../utils/getDateTime.js');
 const app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
-var basePath = app.globalData.basePath;
+// var basePath = app.globalData.basePath;
+var basePath = app.globalData.imageRootPath;
 import Toast from '@vant/weapp/toast/toast';
 Page({
 
@@ -15,6 +16,7 @@ Page({
     problem: {}, // 安全检查提问
     reply: '', // 整改回复
     imageList: [], // 回复图片
+    answerList: [],//回复列表
     hasPicture1: 0,
     picUrls1: [],
     files1: [],
@@ -34,6 +36,7 @@ Page({
         console.log(res)
         that.setData({
           problem: res.data,
+          answerList: res.data.answerList,
           finalTime: dateTime.getymd(new Date(res.data.finalTime), '-')
         })
       }
@@ -148,7 +151,6 @@ previewImage1:function(e){
   // 输入回复
   inputAnswer: function(e){
     var that = this
-    console.log(e)
     that.setData({
       reply: e.detail,
     })

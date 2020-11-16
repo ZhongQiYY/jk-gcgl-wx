@@ -1,11 +1,11 @@
 <van-toast id="van-toast" />
 <view>
+	<!--已提交start-->
 	<van-panel
 	 title="{{problem.project.projectName}}"
 	 desc="{{problem.project.unitName}}    {{problem.submitter}}    {{problem.commitTime}}"
 	 use-footer-slot
 	>
-
 		<van-cell-group>
 			<van-field
 			 readonly
@@ -44,19 +44,47 @@
 			
 		</van-cell-group>
 	</van-panel>
+	<!--已提交end-->
 
+	<!--回复列表 start-->
+	<block wx:for="{{answerList}}">
+		<view style="background-color: #fff;height: 250px;" >
+			<van-divider contentPosition="center">回复</van-divider>
+				<van-field
+				value="{{item.reply}}"
+				label="整改回复"
+				type="textarea"
+				autosize
+				show-word-limit
+				maxlength="{{maxPlanLength}}"
+				border="{{true}}"
+				/>
+				<block wx:for="{{item.imageList}}" wx:key="index">
+					<van-image
+				width="100"
+				height="100"
+				lazy-load
+				src="{{index.imageUrl?'http://localhost:16000'+index.imageUrl:''}}"
+				/>
+				</block>
+		</view>
+	</block>
+	<!--回复列表 end-->
+
+<!--上传图片及回复start-->
+<block wx:if="{{problem.status == 1}}">
 	<view style="background-color: #fff;height: 250px;" >
 		<van-divider contentPosition="center">回复</van-divider>
 
 			<van-field
-			value=""
+			value="{{reply}}"
 			label="整改回复"
 			type="textarea"
 			placeholder="请输入"
 			autosize
 			show-word-limit
 			maxlength="{{maxPlanLength}}"
-			bind:input="{{inputPlan}}"
+			bind:input="inputAnswer"
 			border="{{true}}"
 			/>
 			<view class='ui_uploader_cell'>
@@ -67,8 +95,16 @@
 				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
 			</view>
 			<view>
-				<van-button color="#0089dd" size="small">完成</van-button>
+				<van-button color="#0089dd" size="small" bindtap="commitAnswerQuality">完成</van-button>
 			</view>
 	</view>
-</view>
+</block>
+<!--上传图片及回复end-->
 
+<!--同意不同意按钮 start-->
+<block wx:if="{{problem.status == 2}}">
+	<van-button round type="primary" bindtap="agree">同意</van-button>
+	<van-button round type="danger" bindtap="disagree">拒绝</van-button>
+</block>
+<!--同意不同意按钮 end-->
+</view>
