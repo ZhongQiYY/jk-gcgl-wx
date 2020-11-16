@@ -35,7 +35,7 @@ const requestUrl = {
   SaveKgMsg: '/api/gqxx/kg-msg/save', //保存开工信息
   DeleteKgMsg: '/api/gqxx/kg-msg/delete', //删除开工信息
 
-  tptxList: '/api/tptx/pmTptx/list', //图片图像
+  tptxList: '/api/tptx/pmTptx/list'  //图片图像
 }
 
 
