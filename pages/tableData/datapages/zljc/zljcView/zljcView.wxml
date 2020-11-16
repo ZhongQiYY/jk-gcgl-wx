@@ -1,0 +1,37 @@
+<view style="padding-bottom: 100rpx">
+	<van-collapse
+	 accordion
+	 value="{{activeNames}}"
+	 bind:change="collapseChange"
+	>
+		<van-collapse-item value="{{unitName}}">
+
+			<view slot="title">
+				<view class="van-cell-text">{{projectName}}</view>
+				<van-tag type="danger">{{timeNameList.length}}</van-tag>
+			</view>
+
+			<van-cell-group>
+				<block
+				 wx:for="{{timeNameList}}"
+				 wx:for-index="index"
+				 wx:for-item="item"
+				 wx:key="index"
+				>
+					<van-cell
+					 title="{{item.commitTime}}"
+					 value="{{item.submitter}}"
+					 border="{{ true }}"
+					 is-link
+					 bind:click=""
+					 url="/pages/control/tjzljc/zljcDetail/zljcDetail?id={{item.id}}"
+					>
+					</van-cell>
+				</block>
+			</van-cell-group>
+
+		</van-collapse-item>
+
+	</van-collapse>
+</view>
+
