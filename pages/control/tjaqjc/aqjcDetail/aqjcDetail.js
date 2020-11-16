@@ -2,8 +2,8 @@ var dateTime = require('../../../../utils/getDateTime.js');
 const app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
-// var basePath = app.globalData.basePath;
-var basePath = app.globalData.imageRootPath;
+var basePath = app.globalData.basePath;
+// var basePath = app.globalData.imageRootPath;
 import Toast from '@vant/weapp/toast/toast';
 Page({
 
@@ -77,7 +77,7 @@ upload1: function(res) {
   var that = this;
   console.log(res.tempFilePaths);
     const uploadTask = wx.uploadFile({
-      url: basePath + '/api/control/zljc/upload/fileUpload?dir=image',
+      url: basePath + '/api/control/aqjc/upload/fileUpload?dir=image',
       filePath: res.tempFilePaths[0],
       name: 'file',
       header: { 
@@ -159,10 +159,23 @@ previewImage1:function(e){
   // 提交回复
   commitAnswer: function () {
     var that = this
+    var picUrls1 = that.data.picUrls1
+    var imageList = [];
+    var map = {};
+    var imageName = '';
+    var imageUrl = '';
+    for(var i = 0;i < picUrls1.length;i++){
+      imageName = picUrls1[i].split("/")[5];
+      map.imageName = imageName;
+      imageUrl =  picUrls1[i];
+      map.imageUrl = imageUrl;
+      imageList[i]= map
+    }
+    console.log(imageList)
     let data = {
       pmSafeCheckId: this.data.id,
       reply: this.data.reply,
-      imageList: this.data.imageList
+      imageList: imageList
     }
     request.post(requestUrl.commitAnswer, data).then(res => {
       console.log(res.data)

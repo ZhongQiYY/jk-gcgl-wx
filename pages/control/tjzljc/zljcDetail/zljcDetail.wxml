@@ -59,12 +59,12 @@
 				maxlength="{{maxPlanLength}}"
 				border="{{true}}"
 				/>
-				<block wx:for="{{item.imageList}}" wx:key="index">
+				<block wx:for="{{item.imageList}}" wx:for-item="image">
 					<van-image
 				width="100"
 				height="100"
 				lazy-load
-				src="{{index.imageUrl?'http://localhost:16000'+index.imageUrl:''}}"
+				src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}"
 				/>
 				</block>
 		</view>
@@ -75,7 +75,6 @@
 <block wx:if="{{problem.status == 1}}">
 	<view style="background-color: #fff;height: 250px;" >
 		<van-divider contentPosition="center">回复</van-divider>
-
 			<van-field
 			value="{{reply}}"
 			label="整改回复"
