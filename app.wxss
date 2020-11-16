@@ -21,7 +21,11 @@ page {
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.4);/* 阴影 */
 }
 
-.project-name{
+.project-name-page{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
   height: 70rpx;
   line-height: 70rpx;
   text-align: center;

@@ -27,7 +27,20 @@ Page({
     endTime:'',
     projectName: '',
     roleRealId:'',
-    scheduleShow: false
+    scheduleShow: false,
+    showSchedulePopup: false,
+
+    nodeEndtime: '',
+    stepName:'',
+    nodeName:'',
+    startTimePicker:'',
+    endTimePicker:'',
+    percentage:'',
+    step:[],
+    stepIndex:'',
+    node:[],
+
+    pastSchedulePlanList:[]
   },
 
   onLoad: function(e){
@@ -44,6 +57,14 @@ Page({
       })
     }
     that.getTimeNode();
+    that.getPastSchedulePlanList();
+    request.post(requestUrl.getStepAndNodeName, {projectId:that.data.projectId,categoryType:that.data.categoryType}).then(res => {
+      that.setData({
+        step:res.data.step,
+        node:res.data.node
+      })
+    }).catch(err => {})
+
   },
 
   //失去焦点触发，比切换折叠面板先一步触发
@@ -140,8 +161,8 @@ Page({
   getTimeNode: function(e){
     var that = this;
     request.post(requestUrl.getTimeNode, {}).then(res => {
-      let timeNode = res.data;
-      var now = new Date(dateTime.getymd(new Date(), '-'));
+      let timeNode = res.data.timeNode;
+      var now = new Date(res.data.now);
       var min = new Date(timeNode[0].startTime);
       var max = new Date(timeNode[timeNode.length-1].endTime);
 
@@ -159,6 +180,7 @@ Page({
       }
 
       that.setData({
+        nodeEndtime: res.data.timeNode[0].startTime,
         timeNode: timeNode,
         showLoadLoading: false
       });
@@ -176,4 +198,78 @@ Page({
       showOther: !that.data.showOther
     })
   },
+
+// ================================
+  stepNamePicker: function(e){
+    var that = this;
+    this.setData({
+      stepIndex:e.detail.value,
+      stepName:that.data.step[e.detail.value]
+    })
+  },
+  nodeNamePicker: function(e){
+    var that = this;
+    this.setData({
+      nodeName:that.data.node[that.data.stepIndex][e.detail.value]
+    })
+  },
+  startTimePicker: function(e){
+    this.setData({
+      startTimePicker:e.detail.value
+    })
+  },
+  endTimePicker: function(e){
+    this.setData({
+      endTimePicker:e.detail.value
+    })
+  },
+
+  closeSchedulePopup: function(e){
+    this.setData({
+      showSchedulePopup: false
+    })
+  },
+  // 点击添加进度按钮
+  addSchedule: function(e){
+    this.setData({
+      showSchedulePopup: true
+    })
+  },
+  insertSchedule:function(e){
+    var that = this;
+    if(that.data.stepName===''||that.data.nodeName===''||that.data.startTimePicker===''||that.data.endTimePicker===''||that.data.percentage===''){
+      Toast.fail("缺少数据，所有项为必填");
+    }
+    request.post(requestUrl.insertSchedulePast, {
+      projectId:that.data.projectId,
+      stepName: that.data.stepName,
+      nodeName: that.data.nodeName,
+      startTime: that.data.startTimePicker,
+      endTime: that.data.endTimePicker,
+      percentage: that.data.percentage,
+    }).then(res => {
+      that.setData({
+        showSchedulePopup: false,
+        stepName:'',
+        nodeName:'',
+        startTimePicker:'',
+        endTimePicker:'',
+        percentage:'',
+        stepIndex:'',
+      })
+      Toast.success("保存成功");
+      that.getPastSchedulePlanList();
+    }).catch(err => {
+      Toast.fail("保存失败");
+      that.getPastSchedulePlanList();
+    })
+  },
+  getPastSchedulePlanList: function(){
+    var that = this;
+    request.post(requestUrl.getPastSchedulePlanList, {projectId:that.data.projectId}).then(res => {
+      that.setData({
+        pastSchedulePlanList: res.data
+      })
+    }).catch(err => {})
+  }
 })
