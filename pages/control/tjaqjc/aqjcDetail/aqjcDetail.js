@@ -169,7 +169,7 @@ previewImage1:function(e){
         // 置空数据
         that.setData({
           reply: '',
-          imageList: []
+          files1: []
         })
       } else if(res.code == 500){
         Toast.fail(res.msg);

@@ -51,7 +51,7 @@
 			autosize
 			show-word-limit
 			maxlength="{{maxPlanLength}}"
-			bind:input="{{inputAnswer}}"
+			bind:input="inputAnswer"
 			border="{{true}}"
 			/>
 			<view class='ui_uploader_cell'>
