@@ -1,61 +1,54 @@
+<van-toast id="van-toast" />
 <view>
-	<van-panel
-	 title="{{problem.project.projectName}}"
-	 desc="{{problem.project.unitName}}    {{problem.submitter}}    {{problem.commitTime}}"
-	 use-footer-slot
-	>
-
+	<!--已提交 start-->
+	<van-panel title="{{problem.project.projectName}}" desc="{{problem.project.unitName}}    {{problem.submitter}}    {{problem.commitTime}}" use-footer-slot>
 		<van-cell-group>
-			<van-field
-			 readonly
-			 value="{{problem.description}}"
-			 label="问题描述"
-			 type="textarea"
-			 placeholder="请输入存在问题"
-			 autosize
-			 show-word-limit
-			 maxlength="{{maxProblemLength}}"
-			 bind:input="inputProblem"
-			 border="{{true}}"
-			/>
+			<van-field readonly value="{{problem.description}}" label="问题描述" type="textarea" placeholder="请输入存在问题" autosize show-word-limit maxlength="{{maxProblemLength}}" bind:input="inputProblem" border="{{true}}" />
+			<van-cell title="整改期限" value="{{finalTime}}" bind:click="onDisplay" is-link />
+			<van-calendar show="{{show}}" bind:close="onClose" bind:confirm="onConfirm" />
 
-			<van-cell
-			 title="整改期限"
-			 value="{{finalTime}}"
-			 bind:click="onDisplay"
-			 is-link
-			/>
-			<van-calendar
-			 show="{{show}}"
-			 bind:close="onClose"
-			 bind:confirm="onConfirm"
-			/>
-			<van-image
-			 width="100"
-			 height="100"
-			 lazy-load
-			 src="https://img.yzcdn.cn/vant/cat.jpeg"
-			/>
-
-			<van-divider contentPosition="center">回复</van-divider>
-
-			<van-field
-			 value=""
-			 label="整改回复"
-			 type="textarea"
-			 placeholder="请输入"
-			 autosize
-			 show-word-limit
-			 maxlength="{{maxPlanLength}}"
-			 bind:input="{{inputPlan}}"
-			 border="{{true}}"
-			/>
+			<block wx:for="{{problem.imageList}}">
+				<van-image width="100" height="100" lazy-load src="{{item.imageUrl?'http://localhost:16000'+item.imageUrl:''}}" />
+			</block>
 		</van-cell-group>
-		<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
-
-		<view slot="footer">
-			<van-button color="#0089dd" size="small">完成</van-button>
-		</view>
 	</van-panel>
-</view>
+	<!--已提交 end-->
 
+	<!--回复列表 start-->
+	<block wx:for="{{answerList}}">
+		<view style="background-color: #fff;height: 250px;">
+			<van-divider contentPosition="center">回复</van-divider>
+			<van-field value="{{item.reply}}" label="整改回复" type="textarea" autosize show-word-limit maxlength="{{maxPlanLength}}" border="{{true}}" />
+			<block wx:for="{{item.imageList}}" wx:for-item="image">
+				<van-image width="100" height="100" lazy-load src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}" />
+			</block>
+		</view>
+	</block>
+	<!--回复列表 end-->
+
+	<!--上传图片及回复start-->
+	<block wx:if="{{problem.status == 1}}">
+		<view style="background-color: #fff;height: 250px;">
+			<van-divider contentPosition="center">回复</van-divider>
+			<van-field value="{{reply}}" label="整改回复" type="textarea" placeholder="请输入" autosize show-word-limit maxlength="{{maxPlanLength}}" bind:input="inputAnswer" border="{{true}}" />
+			<view class='ui_uploader_cell'>
+				<view class='ui_uploader_item' wx:for="{{files1}}" wx:for-key="{{index}}">
+					<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+					<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+				</view>
+				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+			</view>
+			<view>
+				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成</van-button>
+			</view>
+		</view>
+	</block>
+	<!--上传图片及回复end-->
+
+	<!--同意不同意按钮 start-->
+	<block wx:if="{{problem.status == 2}}">
+		<van-button round type="primary" bindtap="agree">同意</van-button>
+		<van-button round type="danger" bindtap="disagree">拒绝</van-button>
+	</block>
+	<!--同意不同意按钮 end-->
+</view>

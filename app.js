@@ -45,7 +45,12 @@ globalData: {
   submittedList:[], // 安全检查已提交
   replyList:[], // 安全检查整改回复
   agreeList:[], // 安全检查同意
-  disagreeList:[] // 安全检查不同意
+  disagreeList:[], // 安全检查不同意
+
+  submittedQualityList:[], // 质量检查已提交
+  replyQualityList:[], // 质量检查整改回复
+  agreeQualityList:[], // 质量检查同意
+  disagreeQualityList:[] // 质量检查不同意
 },
 
 userLogin: function (callback, fail) {

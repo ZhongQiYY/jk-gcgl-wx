@@ -35,6 +35,7 @@
     "pages/tableData/datapages/dbsx/dbsx",
     "pages/control/tjwtjy/wtjyDetail/wtjyDetail",
     "pages/control/tjaqjc/aqjcDetail/aqjcDetail",
+    "pages/control/tjzljc/zljcDetail/zljcDetail",
     "pages/control/tjqzsp/qzspDetail/qzspDetail",
     "pages/control/txxmxx/txPlanSchedule/txPlanSchedule",
     "pages/control/txxmxx/txPlanSchedule/txProjectPlan/txProjectPlan",
@@ -44,7 +45,9 @@
     "pages/tableData/datapages/gqxx/gqxx",
     "pages/control/tjtptx/tjtptx",
     "pages/tableData/datapages/aqjc/aqjc",
-    "pages/tableData/datapages/aqjc/aqjcView/aqjcView"
+    "pages/tableData/datapages/aqjc/aqjcView/aqjcView",
+    "pages/tableData/datapages/zljc/zljc",
+    "pages/tableData/datapages/zljc/zljcView/zljcView"
   ],
   "window": {
     "backgroundTextStyle": "dark",

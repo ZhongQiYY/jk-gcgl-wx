@@ -198,5 +198,13 @@ Page({
     } else Toast.fail("未选择项目");
   },
 
+  // 质量检查
+  toZljc: function() {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/zljc/zljc',
+      })
+    } else Toast.fail("未选择项目");
+  },
   
 })

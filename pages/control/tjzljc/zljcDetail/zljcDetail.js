@@ -2,8 +2,8 @@ var dateTime = require('../../../../utils/getDateTime.js');
 const app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
-var basePath = app.globalData.basePath;
 // var basePath = app.globalData.imageRootPath;
+var basePath = app.globalData.basePath;
 import Toast from '@vant/weapp/toast/toast';
 Page({
 
@@ -11,12 +11,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: '', // 安全检查问题id
+    id: '', // 质量检查问题id
     finalTime: '',
-    problem: {}, // 安全检查提问
-    reply: '', // 整改回复
-    imageList: [], // 回复图片
-    answerList: [],//回复列表
+    problem: {}, // 质量检查提问
+    answerList: [], //质量检查列表
     hasPicture1: 0,
     picUrls1: [],
     files1: [],
@@ -31,20 +29,21 @@ Page({
     this.setData({
       id: options.id
     });
-    request.get(requestUrl.getProblemById, { 'id': that.data.id }).then(res => {
-      if (res.code == 200) {
+    request.get(requestUrl.getQualityById, {'id':that.data.id}).then(res => {
+      if(res.code == 200) {
         console.log(res)
         that.setData({
           problem: res.data,
           answerList: res.data.answerList,
-          finalTime: dateTime.getymd(new Date(res.data.finalTime), '-')
+          finalTime: dateTime.getymd(new Date(res.data.finalTime), '-'),
         })
       }
     }).catch(
-
+      
     );
   },
-//选择图片
+
+  //选择图片
 chooseImage1: function(e) {
   var that = this;
   if(this.data.files1.length>9){
@@ -77,7 +76,7 @@ upload1: function(res) {
   var that = this;
   console.log(res.tempFilePaths);
     const uploadTask = wx.uploadFile({
-      url: basePath + '/api/control/aqjc/upload/fileUpload?dir=image',
+      url: basePath + '/api/control/zljc/upload/fileUpload?dir=image',
       filePath: res.tempFilePaths[0],
       name: 'file',
       header: { 
@@ -148,6 +147,40 @@ previewImage1:function(e){
 
   },
 
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
   // 输入回复
   inputAnswer: function(e){
     var that = this
@@ -157,7 +190,7 @@ previewImage1:function(e){
   },
 
   // 提交回复
-  commitAnswer: function () {
+  commitAnswerQuality: function () {
     var that = this
     var picUrls1 = that.data.picUrls1
     var imageList = [];
@@ -173,11 +206,11 @@ previewImage1:function(e){
     }
     console.log(imageList)
     let data = {
-      pmSafeCheckId: this.data.id,
+      pmQualityCheckId: this.data.id,
       reply: this.data.reply,
       imageList: imageList
     }
-    request.post(requestUrl.commitAnswer, data).then(res => {
+    request.post(requestUrl.commitAnswerQuality, data).then(res => {
       console.log(res.data)
       if (res.code == 200) {
         Toast.success("提交成功")
@@ -193,5 +226,4 @@ previewImage1:function(e){
       }
     }).catch(err => { });
   },
-
 })
