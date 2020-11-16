@@ -1,3 +1,4 @@
+<van-toast id="van-toast" />
 <view>
 	<van-panel
 	 title="{{problem.project.projectName}}"
@@ -30,32 +31,41 @@
 			 bind:close="onClose"
 			 bind:confirm="onConfirm"
 			/>
-			<van-image
+			<block wx:for="{{problem.imageList}}">
+				<van-image
 			 width="100"
 			 height="100"
 			 lazy-load
-			 src="https://img.yzcdn.cn/vant/cat.jpeg"
+			 src="{{item.imageUrl?'http://localhost:16000'+item.imageUrl:''}}"
 			/>
+			</block>
+		
 
-			<van-divider contentPosition="center">回复</van-divider>
-
-			<van-field
-			 value=""
-			 label="整改回复"
-			 type="textarea"
-			 placeholder="请输入"
-			 autosize
-			 show-word-limit
-			 maxlength="{{maxPlanLength}}"
-			 bind:input="{{inputPlan}}"
-			 border="{{true}}"
-			/>
+			
 		</van-cell-group>
-		<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
-
-		<view slot="footer">
-			<van-button color="#0089dd" size="small">完成</van-button>
-		</view>
 	</van-panel>
+
+	<view style="background-color: #fff" >
+		<van-divider contentPosition="center">回复</van-divider>
+			<van-field
+			value=""
+			label="整改回复"
+			type="textarea"
+			placeholder="请输入"
+			autosize
+			show-word-limit
+			maxlength="{{maxPlanLength}}"
+			bind:input="{{inputPlan}}"
+			border="{{true}}"
+			/>
+			<view class='ui_uploader_cell'>
+				<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
+					<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+					<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+				</view>
+				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+			</view>
+	<van-button color="#0089dd" size="small">完成</van-button>
+	</view>
 </view>
 

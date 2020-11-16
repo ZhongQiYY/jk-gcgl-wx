@@ -23,8 +23,8 @@ const requestUrl = {
   getProblemById: '/api/control/aqjc/getProblemById', // 根据id获取安全检查提问列表
   commitAnswer: '/api/control/aqjc/commitAnswer', // 提交回复
   
-  listQualityByStatus: '/api/control/aqjc/listQualityByStatus', // 根据状态获取质量检查问题列表
-  getQualityById: '/api/control/aqjc/getQualityById', // 根据id获取质量检查提问列表
+  listQualityByStatus: '/api/control/zljc/listQualityByStatus', // 根据状态获取质量检查问题列表
+  getQualityById: '/api/control/zljc/getQualityById', // 根据id获取质量检查提问列表
   commitQuality: '/api/control/zljc/commitQuality', // 质量检查提交问题
   listQuality: '/api/control/zljc/listQuality', // 质量检查问题列表
 
