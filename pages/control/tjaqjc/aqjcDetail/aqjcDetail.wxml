@@ -55,12 +55,12 @@
 				maxlength="{{maxPlanLength}}"
 				border="{{true}}"
 				/>
-				<block wx:for="{{item.imageList}}" wx:key="index">
+				<block wx:for="{{item.imageList}}" wx:for-item="image">
 					<van-image
 				width="100"
 				height="100"
 				lazy-load
-				src="{{index.imageUrl?'http://localhost:16000'+index.imageUrl:''}}"
+				src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}"
 				/>
 				</block>
 		</view>
@@ -82,7 +82,7 @@
 			border="{{true}}"
 			/>
 			<view class='ui_uploader_cell'>
-				<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
+				<view class='ui_uploader_item' wx:for="{{files1}}" wx:for-key="{{index}}">
 					<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
 					<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
 				</view>
