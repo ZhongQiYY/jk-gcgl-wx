@@ -52,8 +52,16 @@ Page({
     planMap.nodeName = e.currentTarget.dataset.node_name;
     planMap.tag = e.currentTarget.dataset.tag;
     planMap.percentage = e.detail.value;
-    if(planMap.percentage!=='' && isNaN(Number(scheduleMap.percentage))){
-      Toast.fail(planMap.nodeName+"：请填数字");
+    if(planMap.percentage!=='' && isNaN(Number(planMap.percentage))){
+      Toast.fail(planMap.nodeName+"：百分比请填数字");
+      return;
+    }
+    if(0>Number(planMap.percentage) || Number(planMap.percentage)>100){
+      Toast.fail(planMap.nodeName+"：百分比值太大");
+      return;
+    }
+    if(planMap.percentage.split(".")[1].length>2){
+      Toast.fail(planMap.nodeName+"：百分比最多两位小数");
       return;
     }
 

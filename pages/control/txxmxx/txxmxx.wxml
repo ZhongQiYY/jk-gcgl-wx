@@ -20,7 +20,8 @@
 </view>
 
 <!-- 项目信息 -->
-<view wx:for="{{projectNameListByCategory}}" wx:if="{{showProjectInfo==active}}" wx:key="index" class="suspension-card-external" style="padding-bottom: 100rpx;">
+<view wx:if="{{showProjectInfo==active}}">
+<view wx:for="{{projectNameListByCategory}}" wx:key="index" class="suspension-card-external" style="padding-bottom: 100rpx;">
   <view class="suspension-card-internal">
     <van-cell-group title="{{item.name}}">
       <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
@@ -30,10 +31,11 @@
     </van-cell-group>
   </view>
 </view>
-
+</view>
 
 <!-- 工期信息 -->
-<view wx:for="{{projectNameListByCategory}}" wx:if="{{showTimeLimitInfo==active}}" wx:key="index" class="suspension-card-external" style="padding-bottom: 100rpx;">
+<view wx:if="{{showTimeLimitInfo==active}}">
+<view wx:for="{{projectNameListByCategory}}" wx:key="index" class="suspension-card-external" style="padding-bottom: 100rpx;">
   <view class="suspension-card-internal">
     <van-cell-group title="{{item.name}}">
       <van-cell wx:for="{{item.projectList}}"  wx:key="index1"
@@ -43,7 +45,7 @@
     </van-cell-group>
   </view>
 </view>
-
+</view>
 
 
 
