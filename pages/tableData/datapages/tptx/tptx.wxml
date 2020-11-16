@@ -1,1 +1,24 @@
-<van-image width="100" height="100" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+<van-steps
+  steps="{{ steps }}"
+  active="{{ active }}"
+  direction="vertical"
+  active-icon="success"
+  active-color="#38f"
+/>
+  
+  <van-steps
+  steps="{{ pmNbtstList }}"
+  active="{{ active }}"
+  direction="vertical"
+  active-icon="success"
+  active-color="#38f"
+/>
+
+  <van-steps
+  steps="{{ pmFstList }}"
+  active="{{ active }}"
+  direction="vertical"
+  active-icon="success"
+  active-color="#38f"
+/>
+
