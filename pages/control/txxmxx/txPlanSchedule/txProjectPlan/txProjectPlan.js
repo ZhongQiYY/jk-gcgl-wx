@@ -60,10 +60,6 @@ Page({
       Toast.fail(planMap.nodeName+"：百分比值太大");
       return;
     }
-    if(planMap.percentage.split(".")[1].length>2){
-      Toast.fail(planMap.nodeName+"：百分比最多两位小数");
-      return;
-    }
 
     //判断该项是否已存在于planList内
     for(var item of this.data.planList){
