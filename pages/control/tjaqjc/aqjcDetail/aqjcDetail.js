@@ -2,6 +2,7 @@ var dateTime = require('../../../../utils/getDateTime.js');
 const app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -11,6 +12,8 @@ Page({
     id: '', // 安全检查问题id
     finalTime: '',
     problem: {}, // 安全检查提问
+    reply: '', // 整改回复
+    imageList: [], // 回复图片
   },
 
   /**
@@ -21,8 +24,8 @@ Page({
     this.setData({
       id: options.id
     });
-    request.get(requestUrl.getProblemById, {'id':that.data.id}).then(res => {
-      if(res.code == 200) {
+    request.get(requestUrl.getProblemById, { 'id': that.data.id }).then(res => {
+      if (res.code == 200) {
         console.log(res)
         that.setData({
           problem: res.data,
@@ -30,7 +33,7 @@ Page({
         })
       }
     }).catch(
-      
+
     );
   },
 
@@ -48,38 +51,37 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  // 输入回复
+  inputAnswer: function(e){
+    var that = this
+    console.log(e)
+    that.setData({
+      reply: e.detail,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  // 提交回复
+  commitAnswer: function () {
+    var that = this
+    let data = {
+      pmSafeCheckId: this.data.id,
+      reply: this.data.reply,
+      imageList: this.data.imageList
+    }
+    request.post(requestUrl.commitAnswer, data).then(res => {
+      if (res.code == 200) {
+        Toast.success("提交成功")
+        // 置空数据
+        that.setData({
+          reply: '',
+          imageList: []
+        })
+      } else if(res.code == 500){
+        Toast.fail(res.msg);
+      } else {
+        Toast.fail('提交失败，服务器错误');
+      }
+    }).catch(err => { });
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

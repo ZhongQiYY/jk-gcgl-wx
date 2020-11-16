@@ -1,10 +1,10 @@
+<van-toast id="van-toast" />
 <view>
 	<van-panel
 	 title="{{problem.project.projectName}}"
 	 desc="{{problem.project.unitName}}    {{problem.submitter}}    {{problem.commitTime}}"
 	 use-footer-slot
 	>
-
 		<van-cell-group>
 			<van-field
 			 readonly
@@ -18,7 +18,6 @@
 			 bind:input="inputProblem"
 			 border="{{true}}"
 			/>
-
 			<van-cell
 			 title="整改期限"
 			 value="{{finalTime}}"
@@ -36,25 +35,28 @@
 			 lazy-load
 			 src="https://img.yzcdn.cn/vant/cat.jpeg"
 			/>
-
 			<van-divider contentPosition="center">回复</van-divider>
-
 			<van-field
-			 value=""
+			 value="{{reply}}"
 			 label="整改回复"
 			 type="textarea"
 			 placeholder="请输入"
 			 autosize
 			 show-word-limit
 			 maxlength="{{maxPlanLength}}"
-			 bind:input="{{inputPlan}}"
+			 bind:input="inputAnswer"
 			 border="{{true}}"
 			/>
 		</van-cell-group>
-		<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
 
+		<!-- <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" /> -->
 		<view slot="footer">
-			<van-button color="#0089dd" size="small">完成</van-button>
+			<van-button
+			 color="#0089dd"
+			 size="small"
+			 bindtap="commitAnswer"
+			>完成
+			</van-button>
 		</view>
 	</van-panel>
 </view>

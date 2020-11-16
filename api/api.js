@@ -21,6 +21,7 @@ const requestUrl = {
   listProblem: '/api/control/aqjc/listProblem', // 安全检查问题列表
   listProblemByStatus: '/api/control/aqjc/listProblemByStatus', // 根据状态获取安全检查问题列表
   getProblemById: '/api/control/aqjc/getProblemById', // 根据id获取安全检查提问列表
+  commitAnswer: '/api/control/aqjc/commitAnswer', // 提交回复
   
   listQualityByStatus: '/api/control/aqjc/listQualityByStatus', // 根据状态获取质量检查问题列表
   getQualityById: '/api/control/aqjc/getQualityById', // 根据id获取质量检查提问列表
