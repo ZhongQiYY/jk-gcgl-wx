@@ -41,7 +41,7 @@
 		</van-cell-group>
 	</van-panel>
 
-		<view style="background-color: #fff" >
+		<view style="background-color: #fff; height: 250px;" >
 			<van-divider contentPosition="center">回复</van-divider>
 				<van-field
 				value=""
