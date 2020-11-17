@@ -22,6 +22,7 @@ const requestUrl = {
   listProblemByStatus: '/api/control/aqjc/listProblemByStatus', // 根据状态获取安全检查问题列表
   getProblemById: '/api/control/aqjc/getProblemById', // 根据id获取安全检查提问列表
   commitAnswer: '/api/control/aqjc/commitAnswer', // 提交回复
+  reviewAnswer: '/api/control/aqjc/reviewAnswer', // 审核回复
   
   listQualityByStatus: '/api/control/zljc/listQualityByStatus', // 根据状态获取质量检查问题列表
   getQualityById: '/api/control/zljc/getQualityById', // 根据id获取质量检查提问列表

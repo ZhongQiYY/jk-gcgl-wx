@@ -226,4 +226,13 @@ previewImage1:function(e){
       }
     }).catch(err => { });
   },
+
+  // 同意整改回复
+  agree: function() {
+    
+  },
+  // 不同意整改回复
+  disagree: function() {
+
+  },
 })
