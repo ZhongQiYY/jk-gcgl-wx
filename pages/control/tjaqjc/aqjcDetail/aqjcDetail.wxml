@@ -39,7 +39,8 @@
 				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
 			</view>
 			<view>
-				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成</van-button>
+				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成
+				</van-button>
 			</view>
 		</view>
 	</block>
@@ -47,11 +48,13 @@
 
 	<!--同意不同意按钮 start-->
 	<block wx:if="{{problem.status == 2}}">
-		<view hidden="{{show}}">
-			<van-button round type="primary" bindtap="agree">同意</van-button>
-			<van-button round type="danger" bindtap="disagree">拒绝</van-button>
+		<view hidden="{{show}}" class="btn-review">
+			<van-button round type="primary" bindtap="agree">同意
+			</van-button>
+			<van-button round type="danger" bindtap="disagree">拒绝
+			</van-button>
 		</view>
-		
+
 	</block>
 	<!--同意不同意按钮 end-->
 
@@ -68,7 +71,8 @@
 				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
 			</view>
 			<view>
-				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成</van-button>
+				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成
+				</van-button>
 			</view>
 		</view>
 	</block>
