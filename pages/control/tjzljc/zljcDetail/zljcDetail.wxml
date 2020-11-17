@@ -102,8 +102,15 @@
 
 <!--同意不同意按钮 start-->
 <block wx:if="{{problem.status == 2}}">
-	<van-button round type="primary" bindtap="agree">同意</van-button>
-	<van-button round type="danger" bindtap="disagree">拒绝</van-button>
+	<view hidden="{{show}}">
+		<van-button round type="primary" bindtap="agree">同意</van-button>
+		<van-button round type="danger" bindtap="disagree">拒绝</van-button>
+	</view>
 </block>
 <!--同意不同意按钮 end-->
+	<!--定档 start-->
+	<view wx:if="{{problem.status == 3}}">
+		<van-tag type="success" size="large">已同意</van-tag>
+	</view>
+	<!--定档 end-->
 </view>

@@ -21,6 +21,7 @@ Page({
     picUrls1: [],
     files1: [],
     show1: true,
+    show: false,//是否展示同意拒绝按钮
   },
 
   /**
@@ -29,7 +30,8 @@ Page({
   onLoad: function (options) {
     var that = this
     this.setData({
-      id: options.id
+      id: options.id,
+      show: false
     });
     request.get(requestUrl.getProblemById, { 'id': that.data.id }).then(res => {
       if (res.code == 200) {
@@ -205,8 +207,14 @@ Page({
       console.log(res)
       if (res.code == 200) {
         Toast.success('提交成功');
+        that.setData({
+          show: true
+        })
       } else {
         Toast.fail('提交失败，服务器错误');
+        that.setData({
+          show: true
+        })
       }
     }).catch(err => { })
   },
@@ -222,8 +230,14 @@ Page({
       console.log(res)
       if (res.code == 200) {
         Toast.success('提交成功');
+        that.setData({
+          show: true
+        })
       } else {
         Toast.fail('提交失败，服务器错误');
+        that.setData({
+          show: true
+        })
       }
     }).catch(err => { })
   },
