@@ -2,6 +2,11 @@
 <view>
 	<!--已提交 start-->
 	<van-panel title="{{problem.project.projectName}}" desc="{{problem.project.unitName}}    {{problem.submitter}}    {{problem.commitTime}}" use-footer-slot>
+		<!--定档 start-->
+		<view wx:if="{{problem.status == 3}}" style="margin-left:40rpx">
+			<van-tag plain type="success" size="large">已同意</van-tag>
+		</view>
+		<!--定档 end-->
 		<van-cell-group>
 			<van-field readonly value="{{problem.description}}" label="问题描述" type="textarea" placeholder="请输入存在问题" autosize show-word-limit maxlength="{{maxProblemLength}}" bind:input="inputProblem" border="{{true}}" />
 			<van-cell title="整改期限" value="{{finalTime}}" bind:click="onDisplay" is-link />
@@ -77,10 +82,4 @@
 		</view>
 	</block>
 	<!--不同意页面 end-->
-
-	<!--定档 start-->
-	<view wx:if="{{problem.status == 3}}">
-		<van-tag type="success" size="large">已同意</van-tag>
-	</view>
-	<!--定档 end-->
 </view>
