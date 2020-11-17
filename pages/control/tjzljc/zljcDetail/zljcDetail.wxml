@@ -66,14 +66,14 @@
 	</block>
 	<!--上传图片及回复end-->
 
-	<!--同意不同意按钮 start-->
-	<block wx:if="{{problem.status == 2}}">
-		<view hidden="{{show}}" class="btn-review">
-			<van-button round type="primary" bindtap="agree">同意</van-button>
-			<van-button round type="danger" bindtap="disagree">拒绝</van-button>
-		</view>
-	</block>
-	<!--同意不同意按钮 end-->
+<!--同意不同意按钮 start-->
+<block wx:if="{{problem.status == 2}}">
+	<view hidden="{{show}}" class="btn-review">
+		<van-button round type="primary" bindtap="agree">同意</van-button>
+		<van-button round type="danger" bindtap="disagree">拒绝</van-button>
+	</view>
+</block>
+<!--同意不同意按钮 end-->
 
 	<!--不同意页面 start-->
 	<block wx:if="{{problem.status == 4}}">
