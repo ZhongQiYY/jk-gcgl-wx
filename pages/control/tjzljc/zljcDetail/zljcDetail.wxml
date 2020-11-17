@@ -65,6 +65,17 @@
 	<block wx:if="{{problem.status == 4}}">
 		<view style="background-color: #fff;height: 250px;">
 			<van-divider contentPosition="center">回复</van-divider>
+
+			<view wx:if="{{item.answerStatus == 3}}" style="margin-left:40rpx">
+				<van-tag plain type="success" size="large">已同意</van-tag>
+			</view>
+			<view wx:elif="{{item.answerStatus == 4}}" style="margin-left:40rpx">
+				<van-tag plain type="danger" size="large">不同意</van-tag>
+			</view>
+			<view wx:else="{{item.answerStatus == 1}}" style="margin-left:40rpx">
+				<van-tag plain type="primary" size="large">待审核</van-tag>
+			</view>
+
 			<van-field value="{{reply}}" label="整改回复" type="textarea" placeholder="请输入" autosize show-word-limit maxlength="{{maxPlanLength}}" bind:input="inputAnswer" border="{{true}}" />
 			<view class='ui_uploader_cell'>
 				<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
