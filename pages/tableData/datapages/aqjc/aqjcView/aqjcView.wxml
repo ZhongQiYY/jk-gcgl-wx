@@ -5,7 +5,6 @@
 	 bind:change="collapseChange"
 	>
 		<van-collapse-item value="{{unitName}}">
-
 			<view slot="title">
 				<view class="van-cell-text">{{projectName}}</view>
 				<van-tag type="danger">{{timeNameList.length}}</van-tag>
