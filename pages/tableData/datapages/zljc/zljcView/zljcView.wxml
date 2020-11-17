@@ -18,6 +18,9 @@
 				 wx:for-item="item"
 				 wx:key="index"
 				>
+				<view>
+					<van-count-down data-id="{{item.id}}" time="{{ item.remainTime }}" format="DD 天 HH 时 mm 分 ss 秒" bind:finish="finished"/>
+				</view>
 					<van-cell
 					 title="{{item.commitTime}}"
 					 value="{{item.submitter}}"

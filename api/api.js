@@ -30,6 +30,7 @@ const requestUrl = {
   listQuality: '/api/control/zljc/listQuality', // 质量检查问题列表
   commitAnswerQuality: '/api/control/zljc/commitAnswerQuality', // 提交回复
   reviewAnswerQuality: '/api/control/zljc/reviewAnswerQuality', // 审核回复
+  updateIsOuttimeById: '/api/control/zljc/updateIsOuttimeById', // 修改超时状态
 
   projectInformation: '/api/baseInformation/baseInformation/list',//获取项目信息
   GetGqXx: '/api/gqxx', //根据项目id获取工期信息
