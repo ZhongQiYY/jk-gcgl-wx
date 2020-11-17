@@ -42,9 +42,7 @@ Page({
           finalTime: dateTime.getymd(new Date(res.data.finalTime), '-')
         })
       }
-    }).catch(
-
-    );
+    }, err => {});
   },
   //选择图片
   chooseImage1: function (e) {

@@ -25,6 +25,20 @@
 	<block wx:for="{{answerList}}">
 		<view style="background-color: #fff;height: 250px;">
 			<van-divider contentPosition="center">回复</van-divider>
+
+			<view wx:if="{{item.answerStatus == 3}}" style="margin-left:40rpx">
+				<van-tag plain type="success" size="large">已同意</van-tag>
+			</view>
+			<view wx:elif="{{item.answerStatus == 4}}" style="margin-left:40rpx">
+				<van-tag plain type="danger" size="large">不同意</van-tag>
+			</view>
+			<view wx:else="{{item.answerStatus == 1}}" style="margin-left:40rpx">
+				<van-tag plain type="primary" size="large">待审核</van-tag>
+			</view>
+			<view style="font-size:12px; color:rgba(210, 105, 30, .8); margin-left:40rpx">
+				{{item.company}}({{item.position}}) {{item.answer}} {{item.commitTime}}
+			</view>
+
 			<van-field value="{{item.reply}}" label="整改回复" type="textarea" autosize show-word-limit maxlength="{{maxPlanLength}}" border="{{true}}" />
 			<block wx:for="{{item.imageList}}" wx:for-item="image">
 				<van-image width="100" height="100" lazy-load src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}" />
@@ -54,7 +68,7 @@
 
 	<!--同意不同意按钮 start-->
 	<block wx:if="{{problem.status == 2}}">
-		<view hidden="{{show}}">
+		<view hidden="{{show}}" class="btn-review">
 			<van-button round type="primary" bindtap="agree">同意</van-button>
 			<van-button round type="danger" bindtap="disagree">拒绝</van-button>
 		</view>
@@ -65,17 +79,6 @@
 	<block wx:if="{{problem.status == 4}}">
 		<view style="background-color: #fff;height: 250px;">
 			<van-divider contentPosition="center">回复</van-divider>
-
-			<view wx:if="{{item.answerStatus == 3}}" style="margin-left:40rpx">
-				<van-tag plain type="success" size="large">已同意</van-tag>
-			</view>
-			<view wx:elif="{{item.answerStatus == 4}}" style="margin-left:40rpx">
-				<van-tag plain type="danger" size="large">不同意</van-tag>
-			</view>
-			<view wx:else="{{item.answerStatus == 1}}" style="margin-left:40rpx">
-				<van-tag plain type="primary" size="large">待审核</van-tag>
-			</view>
-
 			<van-field value="{{reply}}" label="整改回复" type="textarea" placeholder="请输入" autosize show-word-limit maxlength="{{maxPlanLength}}" bind:input="inputAnswer" border="{{true}}" />
 			<view class='ui_uploader_cell'>
 				<view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
