@@ -19,6 +19,7 @@ Page({
     picUrls1: [],
     files1: [],
     show1 : true,
+    show: false,//是否展示同意拒绝按钮
   },
 
   /**
@@ -27,6 +28,7 @@ Page({
   onLoad: function (options) {
     var that = this
     this.setData({
+      show: false,
       id: options.id
     });
     request.get(requestUrl.getQualityById, {'id':that.data.id}).then(res => {
@@ -225,5 +227,51 @@ previewImage1:function(e){
         Toast.fail('提交失败，服务器错误');
       }
     }).catch(err => { });
+  },
+
+  // 同意整改回复
+  agree: function () {
+    var that = this
+    let data = {
+      pmQualityCheckId: this.data.id,
+      status: 3
+    }
+    request.post(requestUrl.reviewAnswerQuality, data).then(res => {
+      console.log(res)
+      if (res.code == 200) {
+        Toast.success('提交成功');
+        that.setData({
+          show: true
+        })
+      } else {
+        Toast.fail('提交失败，服务器错误');
+        that.setData({
+          show: true
+        })
+      }
+    }).catch(err => { })
+  },
+
+  // 不同意整改回复
+  disagree: function () {
+    var that = this
+    let data = {
+      pmQualityCheckId: this.data.id,
+      status: 4
+    }
+    request.post(requestUrl.reviewAnswerQuality, data).then(res => {
+      console.log(res)
+      if (res.code == 200) {
+        Toast.success('提交成功');
+        that.setData({
+          show: true
+        })
+      } else {
+        Toast.fail('提交失败，服务器错误');
+        that.setData({
+          show: true
+        })
+      }
+    }).catch(err => { })
   },
 })

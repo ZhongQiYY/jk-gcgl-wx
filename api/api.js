@@ -22,12 +22,15 @@ const requestUrl = {
   listProblemByStatus: '/api/control/aqjc/listProblemByStatus', // 根据状态获取安全检查问题列表
   getProblemById: '/api/control/aqjc/getProblemById', // 根据id获取安全检查提问列表
   commitAnswer: '/api/control/aqjc/commitAnswer', // 提交回复
+  reviewAnswer: '/api/control/aqjc/reviewAnswer', // 审核回复
   
   listQualityByStatus: '/api/control/zljc/listQualityByStatus', // 根据状态获取质量检查问题列表
   getQualityById: '/api/control/zljc/getQualityById', // 根据id获取质量检查提问列表
   commitQuality: '/api/control/zljc/commitQuality', // 质量检查提交问题
   listQuality: '/api/control/zljc/listQuality', // 质量检查问题列表
   commitAnswerQuality: '/api/control/zljc/commitAnswerQuality', // 提交回复
+  reviewAnswerQuality: '/api/control/zljc/reviewAnswerQuality', // 审核回复
+  updateIsOuttimeById: '/api/control/zljc/updateIsOuttimeById', // 修改超时状态
 
   projectInformation: '/api/baseInformation/baseInformation/list',//获取项目信息
   

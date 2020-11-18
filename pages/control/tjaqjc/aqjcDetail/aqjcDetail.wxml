@@ -2,6 +2,11 @@
 <view>
 	<!--已提交 start-->
 	<van-panel title="{{problem.project.projectName}}" desc="{{problem.project.unitName}}    {{problem.submitter}}    {{problem.commitTime}}" use-footer-slot>
+		<!--定档 start-->
+		<view wx:if="{{problem.status == 3}}" style="margin-left:40rpx">
+			<van-tag plain type="success" size="large">已同意</van-tag>
+		</view>
+		<!--定档 end-->
 		<van-cell-group>
 			<van-field readonly value="{{problem.description}}" label="问题描述" type="textarea" placeholder="请输入存在问题" autosize show-word-limit maxlength="{{maxProblemLength}}" bind:input="inputProblem" border="{{true}}" />
 			<van-cell title="整改期限" value="{{finalTime}}" bind:click="onDisplay" is-link />
@@ -18,6 +23,19 @@
 	<block wx:for="{{answerList}}">
 		<view style="background-color: #fff;height: 250px;">
 			<van-divider contentPosition="center">回复</van-divider>
+
+			<view wx:if="{{item.answerStatus == 3}}" style="margin-left:40rpx">
+				<van-tag plain type="success" size="large">已同意</van-tag>
+			</view>
+			<view wx:elif="{{item.answerStatus == 4}}" style="margin-left:40rpx">
+				<van-tag plain type="danger" size="large">不同意</van-tag>
+			</view>
+			<view wx:else="{{item.answerStatus == 1}}" style="margin-left:40rpx">
+				<van-tag plain type="primary" size="large">待审核</van-tag>
+			</view>
+			<view style="font-size:12px; color:rgba(210, 105, 30, .8); margin-left:40rpx">
+				{{item.company}}({{item.position}}) {{item.answer}} {{item.commitTime}}
+			</view>
 			<van-field value="{{item.reply}}" label="整改回复" type="textarea" autosize show-word-limit maxlength="{{maxPlanLength}}" border="{{true}}" />
 			<block wx:for="{{item.imageList}}" wx:for-item="image">
 				<van-image width="100" height="100" lazy-load src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}" />
@@ -39,7 +57,8 @@
 				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
 			</view>
 			<view>
-				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成</van-button>
+				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成
+				</van-button>
 			</view>
 		</view>
 	</block>
@@ -47,8 +66,33 @@
 
 	<!--同意不同意按钮 start-->
 	<block wx:if="{{problem.status == 2}}">
-		<van-button round type="primary" bindtap="agree">同意</van-button>
-		<van-button round type="danger" bindtap="disagree">拒绝</van-button>
+		<view hidden="{{show}}" class="btn-review">
+			<van-button round type="primary" bindtap="agree">同意
+			</van-button>
+			<van-button round type="danger" bindtap="disagree">拒绝
+			</van-button>
+		</view>
+
 	</block>
 	<!--同意不同意按钮 end-->
+
+	<!--不同意页面 start-->
+	<block wx:if="{{problem.status == 4}}">
+		<view style="background-color: #fff;height: 250px;">
+			<van-divider contentPosition="center">回复</van-divider>
+			<van-field value="{{reply}}" label="整改回复" type="textarea" placeholder="请输入" autosize show-word-limit maxlength="{{maxPlanLength}}" bind:input="inputAnswer" border="{{true}}" />
+			<view class='ui_uploader_cell'>
+				<view class='ui_uploader_item' wx:for="{{files1}}" wx:for-key="{{index}}">
+					<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+					<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+				</view>
+				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+			</view>
+			<view>
+				<van-button color="#0089dd" size="small" bindtap="commitAnswer">完成
+				</van-button>
+			</view>
+		</view>
+	</block>
+	<!--不同意页面 end-->
 </view>
