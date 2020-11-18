@@ -107,7 +107,7 @@ Page({
         that.setData({
           projectNameList: res.data.projectNameList
         }) 
-      }).catch(err => {}) 
+      })
     }
   },
 

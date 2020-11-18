@@ -63,7 +63,7 @@ Page({
         step:res.data.step,
         node:res.data.node
       })
-    }).catch(err => {})
+    })
 
   },
 
@@ -134,7 +134,7 @@ Page({
         that.setData({
           scheduleInfoMap: res.data
         })
-      }).catch(err => {})
+      })
     }else{
 
       that.setData({
@@ -150,7 +150,7 @@ Page({
             scheduleList: [],
             showUpLoadLoading: false
           })
-        }).catch(err => {
+        },err=>{
           that.setData({
             scheduleList: [],
             showUpLoadLoading: false
@@ -192,7 +192,7 @@ Page({
         timeNode: timeNode,
         showLoadLoading: false
       });
-    }).catch(err => {
+    },err=>{
       that.setData({
         showLoadLoading: false
       })
@@ -267,7 +267,7 @@ Page({
       })
       Toast.success("保存成功");
       that.getPastSchedulePlanList();
-    }).catch(err => {
+    },err=>{
       Toast.fail("保存失败");
       that.getPastSchedulePlanList();
     })
@@ -278,6 +278,6 @@ Page({
       that.setData({
         pastSchedulePlanList: res.data
       })
-    }).catch(err => {})
+    })
   }
 })

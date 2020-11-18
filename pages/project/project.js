@@ -125,7 +125,7 @@ Page({
           })
         }, 3000);
       }
-    }).catch(err => {});
+    })
 
   },
   // 选择项目类别
@@ -160,7 +160,7 @@ Page({
           })
         }, 3000);
       }
-    }).catch(err => {});
+    })
   },
 
   //显示项目详情
@@ -218,7 +218,7 @@ Page({
               })
             }, 3000);
           }
-        }).catch(err => {
+        },err=>{
           that.setData({
             loadingHidden: false,
             errorInfo: true
@@ -229,7 +229,7 @@ Page({
               errorInfo: false
             })
           }, 10000);
-        });
+        })
       }
     }else{
       that.setData({
@@ -272,7 +272,7 @@ Page({
               errorInfo: true,
               showBuildUnit: auth.showBuildUnit(app.globalData.userInfo)
             });
-          }).catch(err => {
+          },err=>{
             app.globalData.clickLoginBtn = false;
             that.setData({
               loadingHidden: false,
@@ -284,7 +284,7 @@ Page({
                 errorInfo: false
               })
             }, 10000);
-          });
+          })
           
         } else {
           that.setData({

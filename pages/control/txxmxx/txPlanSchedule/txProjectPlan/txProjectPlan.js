@@ -106,7 +106,7 @@ Page({
         that.setData({
           planInfoMap: res.data
         })
-      }).catch(err => {})
+      })
     }else{
 
       that.setData({
@@ -122,7 +122,7 @@ Page({
             planList: [],
             showUpLoadLoading: false
           })
-        }).catch(err => {
+        },err=>{
           that.setData({
             planList: [],
             showUpLoadLoading: false
@@ -140,12 +140,12 @@ Page({
   //计划进度时间填写节点
   getTimeNode: function(e){
     var that = this;
-    request.post(requestUrl.getTimeNode, {}).then(res => {
+    request.post(requestUrl.getTimeNode,{}).then(res => {
       that.setData({
         timeNode: res.data.timeNode,
         showLoadLoading: false
       });
-    }).catch(err => {
+    }, err => {
       that.setData({
         showLoadLoading: false
       })
