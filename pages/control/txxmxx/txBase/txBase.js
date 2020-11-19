@@ -74,7 +74,7 @@ Page({
         pmSpecialMunicipal:{}
       });
       Toast.success('上传成功');
-    }).catch(err => {
+    }, err=>{
       that.setData({
         showUpLoadLoading: false,
         showBaseButton: true,
@@ -103,7 +103,7 @@ Page({
         showUpLoadLoading: false
       });
       Toast.success('上传成功');
-    }).catch(err => {
+    },err=>{
       that.setData({
         showUpLoadLoading: false,
         showFiveButton: true
@@ -131,7 +131,7 @@ Page({
         showUpLoadLoading: false
       });
       Toast.success('上传成功');
-    }).catch(err => {
+    },err=>{
       that.setData({
         showUpLoadLoading: false,
         showZjButton: true
@@ -160,7 +160,7 @@ Page({
         projectInfo: res.data,
         showLoadLoading: false
       });
-    }).catch(err => {
+    },err=>{
       that.setData({
         showLoadLoading: false
       })

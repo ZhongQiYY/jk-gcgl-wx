@@ -64,7 +64,7 @@ Page({
       request.post(requestUrl.nameList, {}).then(res => {
         app.globalData.projectNameList = res.data.projectNameList;
         app.globalData.projectNameListByCategory = res.data.projectNameListByCategory;  
-      }).catch(err => {})
+      })
     }
     // 获取所有红点数
     that.getAllRedDotNum();
@@ -77,7 +77,7 @@ Page({
       that.setData({
         allRedDotNum: res.data
       })
-    }).catch(err => {})
+    })
   },
 
   // 建设单位
@@ -110,13 +110,11 @@ Page({
     // }else Toast.fail('无权限');
   },
   toWtjy: function () {
-    // if(roleRealId==10 || roleRealId==1){
-    //   wx.navigateTo({
-    //     url: '/pages/control/tjwtjy/tjwtjy',
-    //   })
-    // }else Toast.fail('无权限');
-
-    Toast.fail('该项功能修复中')
+    if(roleRealId==10 || roleRealId==1){
+      wx.navigateTo({
+        url: '/pages/control/tjwtjy/tjwtjy',
+      })
+    }else Toast.fail('无权限');
   },
   toXmxx: function () {
     if(roleRealId==10 || roleRealId==1 || roleRealId==8){

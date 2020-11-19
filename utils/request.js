@@ -19,7 +19,11 @@ const request = (options) => {
         }
       },
       fail(err){
-        console.log(err);
+        wx.showToast({
+          title: 'fail：请求中断，后台服务器或未启动',
+          icon: 'none',
+          duration: 3000
+        })
         reject(err);
       }
     });
