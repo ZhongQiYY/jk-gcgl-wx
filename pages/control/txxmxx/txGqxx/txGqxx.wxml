@@ -135,10 +135,19 @@
     <van-field
 			label="原因"
 			model:value="{{ effectMsg }}"
-			placeholder="请输入原因"
+			placeholder="原因"
 			border="{{ false }}"
 		/>
 	</picker>
+	<van-field
+	type="textarea"
+	wx:if="{{otherReason}}"
+		model:value="{{ effectMsg }}"
+		placeholder="请输入原因"
+		maxlength="50"
+		show-word-limit 
+		border="{{ false }}"
+	/>
 	
 	<van-button block type="info" bind:click="saveYxgq">保存</van-button>
 </van-cell-group>

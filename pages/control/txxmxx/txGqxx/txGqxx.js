@@ -22,6 +22,7 @@ Page({
     kgContent: '',
     costPoint: '',
 
+    otherReason:false,
     effectMsg:'',
     yxDate:''
   },
@@ -147,9 +148,19 @@ Page({
   },
   bindYxMsgChange(e){
     let that = this;
-    this.setData({ 
-      effectMsg: that.data.effectReasonList[e.detail.value] 
-    })
+    if('其他'===that.data.effectReasonList[e.detail.value]){
+      that.setData({
+        otherReason: true
+      })
+    }else{
+      that.setData({
+        otherReason: false
+      });
+      this.setData({ 
+        effectMsg: that.data.effectReasonList[e.detail.value] 
+      });
+    }
+    
   },
   // 保存工期影响
   saveYxgq(){
