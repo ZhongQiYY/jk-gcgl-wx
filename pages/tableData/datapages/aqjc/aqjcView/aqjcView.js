@@ -10,12 +10,29 @@ Page({
     activeNames: ['1'],
     unitName: '', 
     projectName: '',
+    finalTime: '',
     timeNameList: [],
+    time: 6 *1000,
   },
 
   collapseChange: function (e) {
     this.setData({
       activeNames: e.detail,
+    });
+  },
+
+  finished(e) {
+    console.log(e)
+    var that = this
+    let data = {
+      'id': e.target.dataset.id,
+    }
+    request.post(requestUrl.updateAqjcIsOuttimeById, data).then(res => {
+      if(res.code == 200) {
+        console.log("类别："+"项目id："+app.globalData.projectId+"已超时")
+      }
+    },err=>{
+
     });
   },
 
