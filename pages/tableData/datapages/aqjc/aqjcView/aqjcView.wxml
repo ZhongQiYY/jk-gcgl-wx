@@ -1,9 +1,5 @@
 <view style="padding-bottom: 100rpx">
-	<van-collapse
-	 accordion
-	 value="{{activeNames}}"
-	 bind:change="collapseChange"
-	>
+	<van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
 		<van-collapse-item value="{{unitName}}">
 			<view slot="title">
 				<view class="van-cell-text">{{projectName}}</view>
@@ -11,20 +7,11 @@
 			</view>
 
 			<van-cell-group>
-				<block
-				 wx:for="{{timeNameList}}"
-				 wx:for-index="index"
-				 wx:for-item="item"
-				 wx:key="index"
-				>
-					<van-cell
-					 title="{{item.commitTime}}"
-					 value="{{item.submitter}}"
-					 border="{{ true }}"
-					 is-link
-					 bind:click=""
-					 url="/pages/control/tjaqjc/aqjcDetail/aqjcDetail?id={{item.id}}"
-					>
+				<block wx:for="{{timeNameList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+					<view>
+						<van-count-down data-id="{{item.id}}" time="{{ item.remainTime }}" format="DD 天 HH 时 mm 分 ss 秒" bind:finish="finished" />
+					</view>
+					<van-cell title="{{item.commitTime}}" value="{{item.submitter}}" border="{{ true }}" is-link bind:click="" url="/pages/control/tjaqjc/aqjcDetail/aqjcDetail?id={{item.id}}">
 					</van-cell>
 				</block>
 			</van-cell-group>
@@ -33,4 +20,3 @@
 
 	</van-collapse>
 </view>
-
