@@ -24,9 +24,9 @@
 				<van-grid-item badge="{{}}" bind:click="toDbsx" icon="/images/dbsx.png" text="督办事项" />
 				<van-grid-item badge="{{}}" bind:click="toQzsp" icon="/images/qzsp.png" text="签证审批" />
 				<van-grid-item badge="{{redMap.problemPlanNum}}" bind:click="toWtjy" icon="/images/tjwtjy.png" text="问题建议" />
-				<van-grid-item badge="{{}}" bind:click="toTzwj" icon="/images/tzwj2.png" text="图纸文件" />
+				<van-grid-item badge="{{}}" bind:click="toTzht" icon="/images/tzwj2.png" text="图纸合同" />
 				<van-grid-item badge="{{}}" bind:click="toTptx" icon="/images/tptx.png" text="图片图像" />
-				<van-grid-item badge="{{}}" bind:click="toHtgl" icon="/images/htgl.png" text="合同管理" />
+				<van-grid-item badge="{{}}" bind:click="toSgzs" icon="/images/htgl.png" text="施工助手" />
 			</van-grid>
 		</view>
 	</view>

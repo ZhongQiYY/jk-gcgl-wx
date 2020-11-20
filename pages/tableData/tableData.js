@@ -132,16 +132,16 @@ Page({
   },
 
   
-  //图纸文件
-  toTzwj: function () {
+  //图纸合同
+  toTzht: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/tzwj/tzwj',
       })
     } else Toast.fail("未选择项目"); 
   },
-  //合同管理
-  toHtgl: function () {
+  //施工助手
+  toSgzs: function () {
     if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
       wx.navigateTo({
         url: '/pages/tableData/datapages/htgl/htgl',

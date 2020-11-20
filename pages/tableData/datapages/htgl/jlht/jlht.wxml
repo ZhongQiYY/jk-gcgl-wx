@@ -1,6 +1,0 @@
-  
-  <view >
-    <view wx:for="{{fileName}}" wx:key="item" >
-      <view bindtap="preview" data-title="{{item}}" class = 'fileName'>{{item}}</view>
-    </view>
-</view>

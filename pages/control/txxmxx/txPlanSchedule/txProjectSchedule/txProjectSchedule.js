@@ -84,10 +84,6 @@ Page({
       Toast.fail(scheduleMap.nodeName+"：百分比值太大");
       return;
     }
-    if(scheduleMap.percentage.split(".")[1].length>2){
-      Toast.fail(scheduleMap.nodeName+"：百分比最多两位小数");
-      return;
-    }
 
     //判断该项是否已存在于scheduleList内
     for(var item of this.data.scheduleList){

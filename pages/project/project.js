@@ -1,9 +1,9 @@
 // var base64 = require("../../dist/example/images/base64");
 var auth = require("../../utils/getAuthInfo");
 var app = getApp();
-var basePath = app.globalData.basePath;
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
+import Toast from '@vant/weapp/toast/toast';
 Page({
   mixins: [require('../../dist/mixin/themeChanged')],
 
@@ -107,7 +107,6 @@ Page({
       pageNumber: that.data.pageNumber,
       pageLimit: that.data.pageLimit
     }).then(res => {
-      console.log(res.data)
       if(res.data.length > 0) {
         that.setData({
           dataHidden: true,
@@ -125,6 +124,8 @@ Page({
           })
         }, 3000);
       }
+    },err=>{
+      Toast.fail(err.msg);
     })
 
   },

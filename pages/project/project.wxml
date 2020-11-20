@@ -1,5 +1,6 @@
 <!-- 无权限展示页 -->
 <limitPage notShowLimit="{{notShowLimit}}"></limitPage>
+<van-toast id="van-toast" />
 
 <!-- 加载中提示 -->
 <myMask notShowMask="{{loadingHidden}}"></myMask>
