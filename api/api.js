@@ -46,14 +46,12 @@ const requestUrl = {
   SaveKgMsg: '/api/gqxx/kg-msg/save', //保存开工信息
   SaveYxgq: '/api/gqxx/kg-effect/save',//保存影响信息
 
-<<<<<<< Updated upstream
   tptxList: '/api/tptx/pmTptx/list',  //图片图像
   commitFst: '/api/control/tptx/commitFst', //俯视图
   commitNbtst: '/api/control/tptx/commitNbtst', //俯视图
-=======
+
   tptxList: '/api/tptx/pmTptx/list'  //图片图像
 
->>>>>>> Stashed changes
 }
 
 

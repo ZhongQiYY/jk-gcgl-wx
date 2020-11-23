@@ -7,7 +7,7 @@ var basePath = app.globalData.basePath;
 import Toast from '@vant/weapp/toast/toast';
 
 // 设置锁变量
-lock = true
+var lock = true
 Page({
 
   data: {

@@ -1,4 +1,6 @@
-// pages/tableData/datapages/qzsp/qzsp.js
+const app = getApp();
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 Page({
 
   /**
@@ -12,19 +14,19 @@ Page({
 
   toSubmitted: function() {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/aqjc/qzspView/qzspView?status=1',
+      url: '/pages/tableData/datapages/qzsp/qzspView/qzspView?status=1',
     })
   },
 
   toAgree: function() {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/aqjc/qzspView/qzspView?status=2',
+      url: '/pages/tableData/datapages/qzsp/qzspView/qzspView?status=2',
     })
   },
 
   toDisagree: function() {
     wx.navigateTo({
-      url: '/pages/tableData/datapages/aqjc/qzspView/qzspView?status=3',
+      url: '/pages/tableData/datapages/qzsp/qzspView/qzspView?status=3',
     })
   },
 
