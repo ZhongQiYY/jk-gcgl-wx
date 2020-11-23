@@ -103,11 +103,11 @@ Page({
     // }else Toast.fail('无权限');
   },
   toQzsp: function () {
-    // if(roleRealId==10 || roleRealId==1){
-    //   wx.navigateTo({
-    //     url: '/pages/control/tjqzsp/tjqzsp',
-    //   })
-    // }else Toast.fail('无权限');
+    if(roleRealId==10 || roleRealId==1){
+      wx.navigateTo({
+        url: '/pages/control/tjqzsp/tjqzsp',
+      })
+    }else Toast.fail('无权限');
   },
   toWtjy: function () {
     // if(roleRealId==10 || roleRealId==1){
