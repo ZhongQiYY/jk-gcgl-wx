@@ -1,14 +1,52 @@
-<controlSearch 
-projectNames="{{projectNames}}"
-bind:inputTyping="inputTyping" 
-bind:selectProject="selectProject" 
->
+<controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
 </controlSearch>
 <view class="weui-form__text-area">
-	<h2 class="weui-form__title">{{projectName}}</h2>
+  <h2 class="weui-form__title">{{projectName}}</h2>
 </view>
-<van-uploader>
-  <van-button icon="photo" icon="star-o" type="primary">上传图片</van-button>
-</van-uploader>
-<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+<van-toast id="van-toast" />
+  <!-- <view>上传俯视图图片:</view>
+<view class='ui_uploader_cell'>
+  <view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
+    <icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+    <image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+  </view>
+  <view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 2 }}"></view>
+</view>
+<button hover-class="clickHover" bindtap="submit1" style="background-color:#0089dd;margin-top:40rpx"
+  class="weui-btn weui-btn_primary">提交</button>
 
+<view>上传南北透视图图片：</view>
+<view class='ui_uploader_cell'>
+  <view class='ui_uploader_item' wx:for="{{files2}}" wx:key="{{index}}">
+    <icon class='ui_uploader_item_icon' bindtap='clearImg2' data-index="{{index}}" type="clear" size="20" color="red" />
+    <image bindtap='previewImage2' data-index="{{index}}" src='{{item}}'></image>
+  </view>
+  <view class='ui_uploader' bindtap='chooseImage2' wx:if="{{ files2.length < 2 }}"></view>
+</view>
+<button hover-class="clickHover" bindtap="submit2" style="background-color:#0089dd;margin-top:40rpx"
+  class="weui-btn weui-btn_primary">提交</button>
+<view></view> -->
+<van-tabs  type="card" color="#0089dd">
+  <van-tab title="俯视图图片上传">
+    <view class='ui_uploader_cell'>
+  <view class='ui_uploader_item' wx:for="{{files1}}" wx:key="{{index}}">
+    <icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+    <image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+  </view>
+  <view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 2 }}"></view>
+</view>
+<button hover-class="clickHover" bindtap="submit1" style="background-color:#0089dd;margin-top:40rpx"
+  class="weui-btn weui-btn_primary">提交</button>
+  </van-tab>
+  <van-tab title="南北透视图图片上传">
+    <view class='ui_uploader_cell'>
+  <view class='ui_uploader_item' wx:for="{{files2}}" wx:key="{{index}}">
+    <icon class='ui_uploader_item_icon' bindtap='clearImg2' data-index="{{index}}" type="clear" size="20" color="red" />
+    <image bindtap='previewImage2' data-index="{{index}}" src='{{item}}'></image>
+  </view>
+  <view class='ui_uploader' bindtap='chooseImage2' wx:if="{{ files2.length < 2 }}"></view>
+</view>
+<button hover-class="clickHover" bindtap="submit2" style="background-color:#0089dd;margin-top:40rpx"
+  class="weui-btn weui-btn_primary">提交</button>
+  </van-tab>
+</van-tabs>
