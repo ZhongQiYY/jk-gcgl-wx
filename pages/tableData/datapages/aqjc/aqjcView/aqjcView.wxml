@@ -8,7 +8,7 @@
 
 			<van-cell-group>
 				<block wx:for="{{timeNameList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-					<view>
+					<view wx:if="{{item.status != 3}}">
 						<van-count-down data-id="{{item.id}}" time="{{ item.remainTime }}" format="DD 天 HH 时 mm 分 ss 秒" bind:finish="finished" />
 					</view>
 					<van-cell title="{{item.commitTime}}" value="{{item.submitter}}" border="{{ true }}" is-link bind:click="" url="/pages/control/tjaqjc/aqjcDetail/aqjcDetail?id={{item.id}}">
