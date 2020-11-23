@@ -2,11 +2,8 @@
 <limitPage notShowLimit="{{notShowLimit}}"></limitPage>
 <van-toast id="van-toast" />
 
-<!-- 加载中提示 -->
-<myMask notShowMask="{{loadingHidden}}"></myMask>
-<loading hidden="{{loadingHidden}}">加载中...</loading>
-
 <view wx:if="{{notShowLimit}}">
+	<van-empty wx:if="{{projectList.length==0}}" image="error" description="无数据" />
 
 	<!-- 筛选区域 -->
 	<van-dropdown-menu class="search"> 
@@ -15,10 +12,7 @@
 	</van-dropdown-menu>
 
 	<view style="padding-top:100rpx">
-		<!-- 错误信息提示 -->
-		<view style="text-align:center" hidden="{{errorInfo}}">
-				错误，请下拉刷新重试
-		</view>
+		
 			
 		<!-- 项目列表页 -->
 		<block wx:for="{{projectList}}" wx:key="index">
@@ -99,8 +93,6 @@
 														<!-- 单个进度条 -->
 														<view class="single-progress">
 															<view style="font-size: {{desProgress}}">{{item1.proTermName}}</view>
-															<!-- <progress percent="{{item1.proPercent}}" color="{{item1.proColor}}" active
-																duration="{{proDuration}}" stroke-width="{{proWidth}}" > -->
 															<van-progress color="{{item1.proColor}}" percentage="{{item1.proPercent}}" 
 															show-pivot="{{item1.proPercent<60?false:true}}"
 															stroke-width="{{proWidth}}" />
