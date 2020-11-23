@@ -1,25 +1,39 @@
-// pages/control/tjqzsp/qzspDetail/qzspDetail.js
+const app = getApp();
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
+var basePath = app.globalData.basePath;
+// var basePath = app.globalData.imageRootPath;
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: '', // 签证审批id
+    visaApprove: {}, // 签证审批对象
+    show: false, //是否展示同意拒绝按钮
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    var that = this
+    this.setData({
+      id: options.id,
+      show: false
+    });
+    request.get(requestUrl.getProblemById, { 'id': that.data.id }).then(res => {
+      if (res.code == 200) {
+        console.log(res)
+        that.setData({
+          problem: res.data,
+          answerList: res.data.answerList,
+          finalTime: dateTime.getymd(new Date(res.data.finalTime), '-')
+        })
+      }
+    }, err => {});
   },
 
   /**
@@ -29,38 +43,4 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

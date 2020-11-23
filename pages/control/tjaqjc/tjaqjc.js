@@ -5,6 +5,9 @@ var requestUrl = app.globalData.requestUrl;
 // var basePath = app.globalData.imageRootPath;
 var basePath = app.globalData.basePath;
 import Toast from '@vant/weapp/toast/toast';
+
+// 设置锁变量
+lock = true
 Page({
 
   data: {
@@ -24,70 +27,7 @@ Page({
     picUrls1: [],
     files1: [],
     show1 : true,
-    problemPlanList: [
-      {
-        unitName: "综保区", projectName: "标准厂房三期", timeNameList: [
-          { submitTime: "2020-09-27", commitName: "钟祺" },
-          { submitTime: "2020-08-27", commitName: "刘杭" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-          { submitTime: "2020-09-27", commitName: "缪隽峰" },
-          { submitTime: "2020-12-27", commitName: "温龙飞" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-12-27", commitName: "温龙飞" },
-        ]
-      },
-      {
-        unitName: "满园", projectName: "水韵康居四期项目", timeNameList: [
-          { submitTime: "2020-09-27", commitName: "钟祺" },
-          { submitTime: "2020-08-27", commitName: "刘杭" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-          { submitTime: "2020-09-27", commitName: "缪隽峰" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-12-27", commitName: "温龙飞" },
-        ]
-      },
-      {
-        unitName: "满园", projectName: "香江棚户区改造安居小区", timeNameList: [
-          { submitTime: "2020-11-27", commitName: "高镪" },
-          { submitTime: "2020-09-27", commitName: "缪隽峰" },
-          { submitTime: "2020-12-27", commitName: "温龙飞" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-12-27", commitName: "温龙飞" },
-        ]
-      },
-      {
-        unitName: "西城", projectName: "工业路（客家大道-赣丰路）", timeNameList: [
-          { submitTime: "2020-09-27", commitName: "钟祺" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-        ]
-      },
-      {
-        unitName: "中恒工业", projectName: "金凤智谷一期项目", timeNameList: [
-          { submitTime: "2020-09-27", commitName: "钟祺" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-        ]
-      },
-      {
-        unitName: "中恒商业", projectName: "蟠龙返乡创业基地项目西地块", timeNameList: [
-          { submitTime: "2020-09-27", commitName: "钟祺" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-        ]
-      },
-      {
-        unitName: "磊昇", projectName: "赣州经济技术开发区第一中学新建工程", timeNameList: [
-          { submitTime: "2020-09-27", commitName: "钟祺" },
-          { submitTime: "2020-06-27", commitName: "吴忠喜" },
-          { submitTime: "2020-11-27", commitName: "高镪" },
-        ]
-      },
-    ],
+    problemPlanList: []
   },
 
   //搜索框组件返回的方法 @@
@@ -163,51 +103,60 @@ Page({
 
   // 提交问题
   submitProblemPlan() {
-    var that = this
-    var picUrls1 = that.data.picUrls1
-    var imageList = [];
-    var map = {};
-    var imageName = '';
-    var imageUrl = '';
-    for(var i = 0;i < picUrls1.length;i++){
-      imageName = picUrls1[i].split("/")[5];
-      map.imageName = imageName;
-      imageUrl =  picUrls1[i];
-      map.imageUrl = imageUrl;
-      imageList[i]= map
+    if(lock){
+      lock = false
+      
+      var that = this
+      var picUrls1 = that.data.picUrls1
+      var imageList = [];
+      var map = {};
+      var imageName = '';
+      var imageUrl = '';
+      for(var i = 0;i < picUrls1.length;i++){
+        imageName = picUrls1[i].split("/")[5];
+        map.imageName = imageName;
+        imageUrl =  picUrls1[i];
+        map.imageUrl = imageUrl;
+        imageList[i]= map
+      }
+      var data = {
+        projectId: Number(that.data.projectId),
+        description: that.data.currentProblem,
+        score: Number(that.data.currentScore),
+        finalTime: that.data.date,
+        imageList: imageList,
+      }
+      request.post(requestUrl.commitProblem, data)
+        .then(res => { 
+          if(res.code == 200) {
+            Toast.success('提交成功');
+            that.setData({
+              projectId: "",
+              projectName: "",
+              currentProblem: "",
+              currentScore: "",
+              date: "",
+              files1: [],
+            });
+          } else {
+            that.setData({
+              projectId: "",
+              projectNames: "",
+              currentScore: "",
+              date: "",
+              files1: [],
+            });
+            Toast.fail('提交失败，服务器错误');
+          }
+            // 释放锁
+            lock = true
+        }, err=>{
+           // 释放锁
+           lock = true
+        });
     }
-    var data = {
-      projectId: Number(that.data.projectId),
-      description: that.data.currentProblem,
-      score: Number(that.data.currentScore),
-      finalTime: that.data.date,
-      imageList: imageList,
-    }
-    request.post(requestUrl.commitProblem, data)
-      .then(res => { 
-        if(res.code == 200) {
-          Toast.success('提交成功');
-          that.setData({
-            projectId: "",
-            projectName: "",
-            currentProblem: "",
-            currentScore: "",
-            date: "",
-            files1: [],
-          });
-        } else {
-          that.setData({
-            projectId: "",
-            projectNames: "",
-            currentScore: "",
-            date: "",
-            files1: [],
-          });
-          Toast.fail('提交失败，服务器错误');
-        }
-      })
-      .catch(err => { })
   },
+
 //选择图片
 chooseImage1: function(e) {
   var that = this;

@@ -20,6 +20,7 @@
     "pages/control/tjtzwj/tjtzwj",
     "pages/tableData/datapages/tzwj/tzwj",
     "pages/tableData/datapages/zjjk/zjjk",
+    "pages/tableData/datapages/qzsp/qzsp",
     "pages/tableData/datapages/tzwj/jzsgt/jzsgt",
     "pages/tableData/datapages/tzwj/jgsgt/jgsgt",
     "pages/tableData/datapages/tzwj/tsbb/tsbb",
@@ -45,7 +46,8 @@
     "pages/tableData/datapages/aqjc/aqjc",
     "pages/tableData/datapages/aqjc/aqjcView/aqjcView",
     "pages/tableData/datapages/zljc/zljc",
-    "pages/tableData/datapages/zljc/zljcView/zljcView"
+    "pages/tableData/datapages/zljc/zljcView/zljcView",
+    "pages/tableData/datapages/qzsp/qzspView/qzspView"
   ],
   "window": {
     "backgroundTextStyle": "dark",

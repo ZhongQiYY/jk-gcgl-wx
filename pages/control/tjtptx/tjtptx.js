@@ -5,6 +5,9 @@ var requestUrl = app.globalData.requestUrl;
 // var basePath = app.globalData.imageRootPath;
 var basePath = app.globalData.basePath;
 import Toast from '@vant/weapp/toast/toast';
+
+var lock = true
+var lock2 = true
 Page({
 
   /**
@@ -203,36 +206,43 @@ Page({
   },
   // 提交俯视图图片
   submit1() {
-    var that = this
-    if (that.data.projectId != 0 && that.data.categoryType != 0) {
-      console.log(that.data)
-      var data = {
-        projectId: Number(that.data.projectId),
-        projectName: that.data.projectName,
-        fstImgUrl: that.data.picUrls1[0],
+    if(lock){
+      lock = false
+      var that = this
+      if (that.data.projectId != 0 && that.data.categoryType != 0) {
+        console.log(that.data)
+        var data = {
+          projectId: Number(that.data.projectId),
+          projectName: that.data.projectName,
+          fstImgUrl: that.data.picUrls1[0],
+        }
+        request.post(requestUrl.commitFst, data)
+          .then(res => {
+            if (res.code == 200) {
+              Toast.success('提交成功');
+              that.setData({
+                projectId: "",
+                projectName: "",
+                files1: [],
+              });
+            } else {
+              that.setData({
+                projectId: "",
+                projectNames: "",
+                files1: [],
+              });
+              Toast.fail('提交失败，服务器错误');
+            }
+            lock = true
+          }, err => {
+            lock = true
+          });
+      } else {
+        Toast.fail("未选择项目");
+        lock = true
       }
-      request.post(requestUrl.commitFst, data)
-        .then(res => {
-          if (res.code == 200) {
-            Toast.success('提交成功');
-            that.setData({
-              projectId: "",
-              projectName: "",
-              files1: [],
-            });
-          } else {
-            that.setData({
-              projectId: "",
-              projectNames: "",
-              files1: [],
-            });
-            Toast.fail('提交失败，服务器错误');
-          }
-        })
-        .catch(err => {})
-    } else {
-      Toast.fail("未选择项目");
     }
+    
   },
 
    //选择图片2
@@ -331,35 +341,43 @@ Page({
   },
   // 提交俯视图图片
   submit2() {
-    var that = this
-    if (that.data.projectId != 0 && that.data.categoryType != 0) {
-      console.log(that.data)
-      var data = {
-        projectId: Number(that.data.projectId),
-        projectName: that.data.projectName,
-        nbtstImgUrl: that.data.picUrls2[0],
+    if(lock2){
+      lock2 = false
+
+      var that = this
+      if (that.data.projectId != 0 && that.data.categoryType != 0) {
+        console.log(that.data)
+        var data = {
+          projectId: Number(that.data.projectId),
+          projectName: that.data.projectName,
+          nbtstImgUrl: that.data.picUrls2[0],
+        }
+        request.post(requestUrl.commitNbtst, data)
+          .then(res => {
+            if (res.code == 200) {
+              Toast.success('提交成功');
+              that.setData({
+                projectId: "",
+                projectName: "",
+                files2: [],
+              });
+            } else {
+              that.setData({
+                projectId: "",
+                projectNames: "",
+                files2: [],
+              });
+              Toast.fail('提交失败，服务器错误');
+            }
+            lock2 = true
+          }, err => {
+            lock2 = true
+          });
+      } else {
+        Toast.fail("未选择项目");
+        lock2 = true
       }
-      request.post(requestUrl.commitNbtst, data)
-        .then(res => {
-          if (res.code == 200) {
-            Toast.success('提交成功');
-            that.setData({
-              projectId: "",
-              projectName: "",
-              files2: [],
-            });
-          } else {
-            that.setData({
-              projectId: "",
-              projectNames: "",
-              files2: [],
-            });
-            Toast.fail('提交失败，服务器错误');
-          }
-        })
-        .catch(err => {})
-    } else {
-      Toast.fail("未选择项目");
     }
+   
   },
 })

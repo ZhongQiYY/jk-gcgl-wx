@@ -6,9 +6,9 @@ var request = require('./utils/request.js');
 const RootPath = "https://gcgl.xizinet.com/jk-gcgl";
 App({
 globalData: {
-  // basePath: "http://localhost:16000/jk-gcgl",
+  basePath: "http://localhost:16000/jk-gcgl",
   // basePath: "https://test.xizinet.com/jk-gcgl",
-  basePath: "https://gcgl.xizinet.com/jk-gcgl",
+  // basePath: "https://gcgl.xizinet.com/jk-gcgl",
 
   imageRootPath: "https://gcgl.xizinet.com",
   // imageRootPath: "https://test.xizinet.com",

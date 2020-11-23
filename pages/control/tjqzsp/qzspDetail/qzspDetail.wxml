@@ -1,39 +1,28 @@
+<van-toast id="van-toast" />
 <view>
-  <van-panel title="标准厂房" desc="西城    张三    2020-10-28" use-footer-slot>
+	<van-panel title="{{visaApprove.project.projectName}}" desc="{{visaApprove.project.unitName}}    {{visaApprove.submitter}}    {{visaApprove.commitTime}}" use-footer-slot>
 
-    <van-cell-group >
-      <van-field clearable label="签证编号" value="001" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="实施情况" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      /> 
-      <van-field clearable label="踏勘人" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更部位" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />  
-      <van-field clearable label="变更原因" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更金额" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更性质" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更内容" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="批示" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-    </van-cell-group>
-      
+		<van-cell-group>
+			<van-field clearable label="签证编号" value="{{visaCode}}" placeholder="" border="{{true}}}" bind:change="getVisaCode" />
+			<van-field clearable label="实施情况" value="{{actualizeSituation}}" placeholder="" border="{{true}}}" bind:change="getSituation" />
+			<van-field clearable label="踏勘人" value="{{surveyor}}" placeholder="" border="{{true}}}" bind:change="getSurveyor" />
+			<van-field clearable label="变更部位" value="{{changeSite}}" placeholder="" border="{{true}}}" bind:change="getChangeSite" />
+			<van-field clearable label="变更原因" value="{{changeReason}}" placeholder="" border="{{true}}}" bind:change="getChangeReason" />
+			<van-field clearable label="变更金额" value="{{changeMoney}}" placeholder="" border="{{true}}}" bind:change="getChangeMoney" />
+			<van-field clearable label="变更性质" value="{{changeProperty}}" placeholder="" border="{{true}}}" bind:change="getChangeProperty" />
+			<van-field clearable label="变更内容" value="{{changeContent}}" placeholder="" border="{{true}}}" bind:change="getChangeContent" />
+		</van-cell-group>
 
-    <view slot="footer">
-      <van-button color="#0089dd" size="small">完成</van-button>
-    </view>
-  </van-panel>
+
+		<!--同意不同意按钮 start-->
+	<block wx:if="{{problem.status == 1}}">
+		<view hidden="{{show}}" class="btn-review">
+			<van-button round type="primary" bindtap="agree">同意
+			</van-button>
+			<van-button round type="danger" bindtap="disagree">拒绝
+			</van-button>
+		</view>
+	</block>
+	<!--同意不同意按钮 end-->
+	</van-panel>
 </view>
