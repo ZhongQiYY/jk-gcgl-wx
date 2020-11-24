@@ -1,6 +1,10 @@
 <van-toast id="van-toast" />
 <view>
 	<van-panel title="{{visaApprove.project.projectName}}" desc="{{visaApprove.project.unitName}}    {{visaApprove.submitter}}    {{visaApprove.commitTime}}" use-footer-slot>
+			<view style="font-size:13px; color:rgba(85, 85, 85, .8);backgroud-color:#fff;text-align: center;">
+				{{visaApprove.company}}({{visaApprove.position}}) {{visaApprove.submitter}} {{visaApprove.commitTime}}
+			</view>
+			<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
 		<van-cell-group>
 			<van-field clearable label="签证编号" value="{{visaApprove.visaCode}}" placeholder="" border="{{true}}}" bind:change="getVisaCode" />
 			<van-field clearable label="实施情况" value="{{visaApprove.actualizeSituation}}" placeholder="" border="{{true}}}" bind:change="getSituation" />
