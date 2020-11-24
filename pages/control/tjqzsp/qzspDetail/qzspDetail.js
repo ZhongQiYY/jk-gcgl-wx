@@ -167,36 +167,45 @@ Page({
         map.imageUrl = imageUrl;
         imageList[i] = map
       }
-      var data = {
-        id: that.data.id,
-        projectId: Number(that.data.visaApprove.projectId),
-        visaCode: that.data.visaCode,
-        actualizeSituation: that.data.actualizeSituation,
-        surveyor: that.data.surveyor,
-        changeSite: that.data.changeSite,
-        changeReason: that.data.changeReason,
-        changeMoney: Number(that.data.changeMoney),
-        changeProperty: that.data.changeProperty,
-        changeContent: that.data.changeContent,
-        imageList: imageList,
-      }
-      request.post(requestUrl.updateVisa, data)
-        .then(res => {
-          Toast.success('提交成功');
-          var pages = getCurrentPages();//获取页面栈
-          if (pages.length > 2) {
-            wx.navigateBack({         //返回上一页  
-              delta: 2
-            });
-          }
+      if (that.data.visaCode == '' && that.data.actualizeSituation == ''
+          && that.data.surveyor == '' && that.data.changeSite == ''
+          && that.data.changeReason == '' && that.data.changeMoney == ''
+          && that.data.changeProperty == '' && that.data.changeContent == ''
+          && imageList.length == 0) {
+        Toast.fail('没有可修改的内容');
+        lock = true
+      } else {
+        var data = {
+          id: that.data.id,
+          projectId: Number(that.data.visaApprove.projectId),
+          visaCode: that.data.visaCode,
+          actualizeSituation: that.data.actualizeSituation,
+          surveyor: that.data.surveyor,
+          changeSite: that.data.changeSite,
+          changeReason: that.data.changeReason,
+          changeMoney: Number(that.data.changeMoney),
+          changeProperty: that.data.changeProperty,
+          changeContent: that.data.changeContent,
+          imageList: imageList,
+        }
+        request.post(requestUrl.updateVisa, data)
+          .then(res => {
+            Toast.success('提交成功');
+            var pages = getCurrentPages();//获取页面栈
+            if (pages.length > 2) {
+              wx.navigateBack({         //返回上一页  
+                delta: 2
+              });
+            }
 
-          // 释放锁
-          lock = true
-        }, err => {
-          // 释放锁
-          lock = true
-          Toast.fail('提交失败，服务器错误');
-        });
+            // 释放锁
+            lock = true
+          }, err => {
+            // 释放锁
+            lock = true
+            Toast.fail('提交失败，服务器错误');
+          });
+      }
     }
   },
   /**
