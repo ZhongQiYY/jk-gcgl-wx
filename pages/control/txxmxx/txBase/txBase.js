@@ -13,8 +13,6 @@ Page({
     buildArea: "万平米",
     coverArea: "亩",
     active: 0,//tabbar索引
-    showLoadLoading: true,
-    showUpLoadLoading: false,
     projectId:'',
     categoryType:'',
     showBasics: 0,
@@ -25,13 +23,16 @@ Page({
     pmSpecialBuild:{},
     pmSpecialPark:{},
     pmSpecialMunicipal:{},
+    lock: true
   },
 
   //提交基本信息
   baseFormSubmit: function(e){
     var that = this;
+    if(that.data.lock){
+      that.setData({ lock:false })
+    Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
     that.setData({
-      showUpLoadLoading: true,
       showBaseButton: false
     });
     var base = e.detail.value;
@@ -68,22 +69,23 @@ Page({
     }
     request.post(requestUrl.updateBaseInfo, base).then(res => {
       that.setData({
-        showUpLoadLoading: false,
         pmSpecialBuild:{},
         pmSpecialPark:{},
-        pmSpecialMunicipal:{}
+        pmSpecialMunicipal:{},
+        lock:true
       });
       Toast.success('上传成功');
     }, err=>{
       that.setData({
-        showUpLoadLoading: false,
         showBaseButton: true,
         pmSpecialBuild:{},
         pmSpecialPark:{},
-        pmSpecialMunicipal:{}
+        pmSpecialMunicipal:{},
+        lock:true
       });
       Toast.fail('上传失败');
     })
+  }
   },
   baseChange:function(e){
     this.setData({
@@ -94,22 +96,25 @@ Page({
   //提交五方信息
   fiveFormSubmit: function(e){
     var that = this;
+    if(that.data.lock){
+      that.setData({ lock:false })
+    Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
     that.setData({
-      showUpLoadLoading: true,
       showFiveButton: false
     });
     request.post(requestUrl.updateFiveInfo, e.detail.value).then(res => {
       that.setData({
-        showUpLoadLoading: false
+        lock:true
       });
       Toast.success('上传成功');
     },err=>{
       that.setData({
-        showUpLoadLoading: false,
-        showFiveButton: true
+        showFiveButton: true,
+        lock:true
       });
       Toast.fail('上传失败');
     })
+  }
   },
   fiveChange:function(e){
     this.setData({
@@ -120,24 +125,27 @@ Page({
   // 提交资金信息
   zjFormSubmit: function(e){
     var that = this;
+    if(that.data.lock){
+      that.setData({ lock:false })
+    Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
     that.setData({
-      showUpLoadLoading: true,
       showZjButton: false
     });
     var zj = e.detail.value;
     zj.categoryType = that.data.categoryType;
     request.post(requestUrl.updateMoneyInfo, zj).then(res => {
       that.setData({
-        showUpLoadLoading: false
+        lock:true
       });
       Toast.success('上传成功');
     },err=>{
       that.setData({
-        showUpLoadLoading: false,
+        lock:true,
         showZjButton: true
       });
       Toast.fail('上传失败');
     })
+  }
   },
   zjChange:function(e){
     this.setData({
@@ -151,6 +159,7 @@ Page({
 
   onLoad: function (e) {
     var that = this;
+    Toast.loading({ duration:10000,forbidClick:true,message:'加载中',mask:true,zIndex:10000 });
     that.setData({
       projectId: e.projectId,
       categoryType: e.categoryType
@@ -158,12 +167,10 @@ Page({
     request.post(requestUrl.projectInformation, {projectId:that.data.projectId,categoryType:that.data.categoryType}).then(res => {
       that.setData({
         projectInfo: res.data,
-        showLoadLoading: false
       });
+      Toast.clear();
     },err=>{
-      that.setData({
-        showLoadLoading: false
-      })
+      Toast.clear();
     })
   },
 

@@ -1,6 +1,7 @@
 var app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
+var dateTime = require('../../../../utils/getDateTime.js');
 import Toast from '@vant/weapp/toast/toast';
 
 Page({
@@ -22,9 +23,31 @@ Page({
     kgContent: '',
     costPoint: '',
 
+    yxShow:false,
+    lock: true,
+
     otherReason:false,
     effectMsg:'',
-    yxDate:''
+    yxDate:'',
+
+    minDate: new Date(2018, 0, 1).getTime(),
+  },
+
+  yxFocus(){
+    this.setData({ yxShow:true });
+  },
+  yxClose(){
+    this.setData({ yxShow:false });
+  },
+  formatDate(date) {
+    date = new Date(date);
+    return dateTime.getymd(date, '-');
+  },
+  yxConfirm(e){
+    this.setData({ 
+      yxShow:false,
+      yxDate: this.formatDate(e.detail),
+    });
   },
 
 
@@ -41,9 +64,10 @@ Page({
 
 
   queryGqXx(projectId) {
-    let that = this
+    let that = this;
+    Toast.loading({ duration:10000,forbidClick:true,message:'加载中',mask:true,zIndex:10000 });
     request.get(requestUrl.GetGqXx + '/' + projectId).then(res => {
-      if (res.data) {
+      
         let scheduleManageMsgRecordList = res.data.scheduleManageMsgRecordList
         if (scheduleManageMsgRecordList && scheduleManageMsgRecordList.length > 0) {
           for (let i = 0; i < scheduleManageMsgRecordList.length; i++) {
@@ -57,9 +81,9 @@ Page({
           effectReasonList: res.data.effectReasonList,
           hasRecord: true
         })
-      } else {
-
-      }
+        Toast.clear();
+    },err=>{
+      Toast.clear();
     })
   },
   inputContractDuration(e) {
@@ -79,16 +103,24 @@ Page({
       Toast.fail("造价不能为空");
       return
     }
-    var requestBody = this.data.pmScheduleManageRecord
-    requestBody.projectId = this.data.projectId
-    request.post(requestUrl.SaveGqXx, requestBody).then(res => {
-      Toast.success("保存成功");
-      that.setData({
-        hasRecord: true,
+    
+    var requestBody = this.data.pmScheduleManageRecord;
+    requestBody.projectId = this.data.projectId;
+    if(that.data.lock){
+      Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
+      that.setData({ lock:false });
+      request.post(requestUrl.SaveGqXx, requestBody).then(res => {
+        Toast.success("保存成功");
+        that.setData({
+          hasRecord: true,
+          lock:true
+        })
+      }, err => {
+        Toast.fail(err.msg);
+        that.setData({ lock:true });
       })
-    }, err => {
-      Toast.fail(err.msg);
-    })
+    }
+    
   },
 
   showKgXxPopup() {
@@ -116,7 +148,11 @@ Page({
       Toast.fail("造价占比不能为空");
       return
     }
+    
     let that = this
+    if(that.data.lock){
+      Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
+      that.setData({ lock:false });
     request.post(requestUrl.SaveKgMsg, {
       content: that.data.kgContent,
       costPoint: that.data.costPoint,
@@ -127,12 +163,15 @@ Page({
       that.data.scheduleManageMsgRecordList.push(res.data)
       that.setData({
         showKgXxPopup: false,
-        scheduleManageMsgRecordList: that.data.scheduleManageMsgRecordList
+        scheduleManageMsgRecordList: that.data.scheduleManageMsgRecordList,
+        lock:true
       });
       Toast.success("保存成功");
     }, err => {
       Toast.fail(err.msg);
+      that.setData({ lock:true });
     })
+  }
   },
 
 
@@ -173,6 +212,9 @@ Page({
       Toast.fail("影响原因不能为空");
       return
     }
+    if(that.data.lock){
+      Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
+      that.setData({ lock:false });
     request.post(requestUrl.SaveYxgq, {
       effectMsg: that.data.effectMsg,
       date: that.data.yxDate,
@@ -182,12 +224,15 @@ Page({
       that.data.scheduleManageEffectRecordList.push(res.data)
       that.setData({
         showYxgqPopup: false,
-        scheduleManageEffectRecordList: that.data.scheduleManageEffectRecordList
+        scheduleManageEffectRecordList: that.data.scheduleManageEffectRecordList,
+        lock:true
       });
       Toast.success("保存成功");
     }, err => {
       Toast.fail(err.msg);
-    })
+      that.setData({ lock:true });
+    });
+  }
 
   },
 

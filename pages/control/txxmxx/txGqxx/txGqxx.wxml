@@ -9,9 +9,9 @@
 	<!-- 1、工期管理 -->
 	<van-collapse-item title="工期管理" name="1">
 		<van-cell-group>
-			<van-field value="{{ pmScheduleManageRecord.contractDuration }}" bind:input="inputContractDuration" bind required clearable label="合同工期" type="number" placeholder="请输入合同工期" />
+			<van-field value="{{ pmScheduleManageRecord.contractDuration }}" bind:input="inputContractDuration" bind required clearable label="合同工期(天)" type="number" placeholder="请输入合同工期" />
 
-			<van-field value="{{ pmScheduleManageRecord.contractCost }}" bind:input="inputContractCost" required clearable type="number" label="合同造价" placeholder="请输入合同造价" required border="{{ false }}" />
+			<van-field value="{{ pmScheduleManageRecord.contractCost }}" bind:input="inputContractCost" required clearable type="number" label="合同造价(万元)" placeholder="请输入合同造价" required border="{{ false }}" />
 		</van-cell-group>
 
 		<view class="btn-wrapper">
@@ -107,13 +107,6 @@
     border="{{ false }}"
 	/>
 	
-	<!-- <van-field
-		label="造价"
-    model:value="{{cost}}"
-    placeholder="请输入造价"
-    border="{{ false }}"
-		bind:change="inputCost" 
-  /> -->
 	<van-button block type="info" bind:click="saveKgXx">保存</van-button>
 </van-cell-group>
 </van-popup>
@@ -122,7 +115,18 @@
 <!-- 3、影响工期 -->
 <van-popup show="{{ showYxgqPopup }}" position="bottom" bind:close="closeYxgqPopup">
 <van-cell-group>
-  <picker mode="date" value="{{date}}" bindchange="bindYxDateChange">
+	<!-- <van-field
+	readonly
+	bindtap="yxFocus"
+	min-date="{{ minDate }}"
+			label="影响时间"
+			model:value="{{ yxDate }}"
+			placeholder="请输入影响时间"
+			border="{{ false }}"
+		/>
+	<van-calendar show="{{yxShow}}" show-confirm="{{ false }}" bind:close="yxClose" bind:confirm="yxConfirm" /> -->
+
+	<picker mode="date" value="{{date}}" bindchange="bindYxDateChange">
     <van-field
 			label="影响时间"
 			model:value="{{ yxDate }}"
@@ -130,6 +134,7 @@
 			border="{{ false }}"
 		/>
 	</picker>
+
 	
 	<picker mode="selector" range="{{effectReasonList}}" bindchange="bindYxMsgChange">
     <van-field

@@ -3,6 +3,10 @@ const requestUrl = {
   nameListForTable: '/api/project/nameListForTable', //数据表搜索框list集合
   projectCardList: '/api/project/list', //项目卡片信息
 
+  submitProblemPlan: '/api/control/wtjy/submitProblemPlan',//提交项目信息
+  getCommitProblemPlanRecord: '/api/control/wtjy/getCommitProblemPlanRecord',//问题建议记录
+  deleteWtjyRecord:'/api/control/wtjy/deleteWtjyRecord',//删除问题建议
+
   updateBaseInfo: '/api/control/xmxx/updateBaseInfo', //修改项目基本信息
   updateFiveInfo: '/api/control/xmxx/updateFiveInfo', //修改项目五方信息
   updateMoneyInfo: '/api/control/xmxx/updateMoneyInfo', //修改项目资金信息

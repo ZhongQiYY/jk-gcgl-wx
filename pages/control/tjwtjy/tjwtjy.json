@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "controlSearch": "/components/search/controlSearch/controlSearch",
     "van-field": "@vant/weapp/field/index",
     "van-button": "@vant/weapp/button/index",
     "van-toast": "@vant/weapp/toast/index",

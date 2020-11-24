@@ -1,4 +1,5 @@
 <van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
 
 <!-- 悬浮块展示 -->
 <view class="suspension-card-external">
@@ -6,53 +7,27 @@
 		<view>
 			<van-panel use-footer-slot>
 
-			<view slot="header">
-				<view style="display: flex">
-					<view class="van-panel-mytitle">{{problemPlanInfo.projectName}}</view>
-					<view wx:if="{{status==1}}" class="van-panel-mystatus" style="color:red;">未处理</view>
-					<view wx:if="{{status==2}}" class="van-panel-mystatus" style="color:green;">已阅</view>
+				<view slot="header">
+					<view style="display: flex">
+						<view class="van-panel-mytitle">{{problemPlanInfo.projectName}}</view>
+						<!-- <view wx:if="{{status==1}}" class="van-panel-mystatus" style="color:red;">未处理</view>
+					<view wx:if="{{status==2}}" class="van-panel-mystatus" style="color:green;">已阅</view> -->
+					</view>
+					<view class="van-panel-mydesc">{{problemPlanInfo.unitName}} {{problemPlanInfo.commitName}}
+						{{problemPlanInfo.submitTime}}</view>
 				</view>
-				<view class="van-panel-mydesc">{{problemPlanInfo.unitName}}    {{problemPlanInfo.commitName}}    {{problemPlanInfo.submitTime}}</view>
-	
-			</view>
 
-					<van-cell-group >
-						<van-field
-						readonly
-							value="{{problemPlanInfo.existProblem}}"
-							label="存在问题"
-							type="textarea"
-							autosize
-							border="{{true}}"
-						/>
-						
-						<van-field
-						readonly
-							value="{{problemPlanInfo.nextPlan}}"
-							label="下一步工作计划"
-							type="textarea"
-							autosize
-							border="{{true}}"
-						/>
-						<van-field
-							value="{{opinion}}"
-							label="批示"
-							type="textarea"
-							placeholder="请输入"
-							autosize
-							show-word-limit
-							maxlength="{{maxOpinionLength}}"
-							bind:input="inputOpinion"
-							border="{{true}}"
-						/>
-					</van-cell-group>
-					
+				<van-cell-group>
+					<van-field readonly autosize value="{{problemPlanInfo.existProblem}}" label="存在问题" type="textarea" border="{{true}}" />
+					<van-field readonly autosize value="{{problemPlanInfo.solution}}" label="解决措施" type="textarea" border="{{true}}" />
+					<van-field readonly autosize value="{{problemPlanInfo.department}}" label="涉及部门" type="textarea" border="{{true}}" />
+					<van-field readonly value="{{problemPlanInfo.timeLimit}}" label="建议时限" border="{{true}}" />
+				</van-cell-group>
 
 				<view slot="footer" style="text-align:center;">
-					<van-button bind:click="haveRead" color="#0089dd" size="small">已阅</van-button>
+					<van-button bind:click="deleteRecord" color="red" size="small">撤回</van-button>
 				</view>
 			</van-panel>
 		</view>
 	</view>
 </view>
-

@@ -1,7 +1,7 @@
 // pages/control/tjwtjy/tjwtjy.js
 const app = getApp();
-var basePath = app.globalData.basePath;
-var dateTime = require('../../../utils/getDateTime.js');
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
 import Toast from '@vant/weapp/toast/toast';
 Page({
 
@@ -10,91 +10,86 @@ Page({
    */
   data: {
     maxProblemLength: 500,//最大问题提交长度
-    maxPlanLength: 500,//最大计划提交长度
-    currentProblem: "",//当前输入的问题文字
-    currentPlan: "",//当前输入的计划文字
+    maxSolutionLength: 500,//最大计划提交长度
+
+    existProblem: "",//存在问题
+    solution: "",//解决措施
+    department: "",//涉及部门
+    timeLimit: "",//建议时限
+
+    projectNames: [], //@@
     projectName:"",//项目名称
-    
-    active: 0,//tabbar索引
-    showOther: true,//tabbar切换显示
-    activeNames: ['1'],//折叠面板开关
-
-    showSubmitTips: false,
-
-    problemPlanCommitList:[],
+    projectId: '',//项目id
+    categoryType: '',//项目类别
+    lock:true
   },
-  //输入问题建议时
-  inputProblem: function (e) {
-    if (e.detail.length > this.data.maxProblemLength) return;
+
+  //搜索框组件返回的方法 @@
+  inputTyping: function (e) {
+    var inputVal = e.detail.inputVal;
+    var projectNames1 = [];
+    if (inputVal.length > 0) {
+      for (const nl of app.globalData.projectNameList) {
+        var projectName = nl.projectName;
+        if (projectName.indexOf(inputVal) != -1) {
+          projectNames1.push(nl);
+        }
+      }
+    }
     this.setData({
-      currentProblem: e.detail
+      projectNames: projectNames1
     })
   },
-  //输入下一步工作计划时
-  inputPlan: function (e) {
-    if (e.detail.length > this.data.maxPlanLength) return;
+  //搜索框组件返回的方法 @@
+  selectProject: function (e) {
     this.setData({
-      currentPlan: e.detail
-    });
+      projectName: e.detail.projectName,
+      projectId: e.detail.projectId,
+      categoryType: e.detail.categoryType
+    })
   },
-  //提交问题和计划
+
+  bindDateChange: function (e) {
+    this.setData({
+      timeLimit: e.detail.value
+    })
+  },
+  
+  //提交问题建议
   submitProblemPlan: function () {
     var that = this;
-    var nolock = true;
-    //获取当前时间
-    var year = new Date().getFullYear();//获取年份 
-    var month = new Date().getMonth() + 1;//获取月份
-    var submitTime = dateTime.getymdhms(new Date(), '-', ':');
-
-    if(app.globalData.pId == "" || app.globalData.pId == 0){
-      Toast.fail('请选择项目');
-    }else if(that.data.currentProblem == ""){
-      Toast.fail('请描述存在的问题');
-    }else if(that.data.currentPlan == ""){
-      Toast.fail('请描述下一步工作计划');
-    }else{
-      if(nolock){
+    if(!that.data.projectId) { Toast.fail("请先选择项目"); return;}
+    if(!that.data.existProblem) { Toast.fail("存在问题不能为空"); return;}
+    if(!that.data.solution) { Toast.fail("解决措施不能为空"); return;}
+    if(!that.data.department) { Toast.fail("涉及部门不能为空"); return;}
+    if(!that.data.timeLimit) { Toast.fail("建议时限不能为空"); return;}
+    
+    if(that.data.lock){
+      Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
+      that.setData({ lock:false })
+      request.post(requestUrl.submitProblemPlan,{
+        projectId: that.data.projectId,
+        projectName: that.data.projectName,
+        unitName: app.globalData.userInfo.company,
+        existProblem: that.data.existProblem,
+        solution: that.data.solution,
+        department: that.data.department,
+        timeLimit: that.data.timeLimit
+      }).then(res => {
         that.setData({
-          showSubmitTips: true
+          lock:true,
+          existProblem: "",//存在问题
+          solution: "",//解决措施
+          department: "",//涉及部门
+          timeLimit: "",//建议时限
         })
-        nolock = false;
-        wx.request({
-          url: basePath + "/api/control/wtjy/submitProblemPlan", //请求路径
-          method: 'post',
-          data: {
-            status: 1,
-            projectId: app.globalData.pId,
-            existProblem: that.data.currentProblem,
-            nextPlan: that.data.currentPlan,
-            submitYear: year,
-            submitMonth: month,
-            submitTime: submitTime,
-            projectName: that.data.projectName,
-            unitName: app.globalData.userInfo.company
-          },
-          header: {
-            'content-type': 'application/json', // 默认值
-            'thirdSession': app.globalData.thirdSession
-          },
-          success(res) {
-            if (res.data.code === 200) {
-              Toast.success('提交成功');
-              that.setData({
-                showSubmitTips: false,
-                currentProblem: "",
-                currentPlan: "",
-              });
-              nolock = true;
-            }else{
-              that.setData({
-                showSubmitTips: false,
-              })
-              Toast.fail('提交失败，服务器错误');
-              nolock = true;
-            }
-          }
+        Toast.success("保存成功");
+      },err=>{
+        that.setData({
+          lock:true,
         });
-      }
+        Toast.fail(err.msg);
+      })
     }
   },
 
@@ -115,45 +110,7 @@ Page({
 
   onLoad: function(){
     var that = this;
-    wx.request({
-      url: basePath + "/api/control/wtjy/getProblemPlanCommit", //请求路径
-      method: 'post',
-      data: {
-        
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success(res) {
-        if (res.data.code === 200) {
-          that.setData({
-            problemPlanCommitList: res.data.data
-          })
-        }else{
-          Toast.fail('失败，服务器错误');
-        }
-      }
-    });
-  },
-
-  gotoDetail: function(e){
-    e.currentTarget.dataset.id;
   },
   
-  tabbarChange: function(e){
-    var that = this;
-    that.setData({
-      active: e.detail,
-      showOther: !that.data.showOther
-    });
-    if(!that.data.showOther){
-      that.onLoad();
-    }
-  },
-  collapseChange: function(e){
-    this.setData({
-      activeNames: e.detail,
-    });
-  },
+  
 })

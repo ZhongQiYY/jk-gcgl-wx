@@ -1,86 +1,34 @@
 <import src="/template/commitRecord/commitRecord.wxml" />
 <van-toast id="van-toast" />
-<view class="loading-position-center"><van-loading wx:if="{{showSubmitTips}}" color="#0089dd" size="30px">提交中...</van-loading></view>
 
+<!-- 搜索框 -->
+<controlSearch projectNames="{{projectNames}}" bind:inputTyping="inputTyping" bind:selectProject="selectProject">
+</controlSearch>
 
-<view style="padding-bottom: 100rpx">
+<!-- 提交问题与工作计划区域 -->
 
-	<!-- 提交问题与工作计划区域 -->
-	<view wx:if="{{showOther}}">
-		
-		<view style="width:100%;position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);">
-			<!-- 当前项目名称 -->
-			<view style="text-align:center;width:100%;color:#0089dd;margin-bottom:40rpx">{{projectName}}</view>
-			<!-- 提交问题计划区域 -->
-				<van-field
-					required
-					value="{{currentProblem}}"
-					label="存在问题"
-					type="textarea"
-					placeholder="请输入存在问题"
-					autosize
-					show-word-limit
-					maxlength="{{maxProblemLength}}"
-					bind:input="inputProblem"
-					border="{{true}}"
-				/>
-				
-				<van-field
-					value="{{currentPlan}}"
-					label="下一步工作计划"
-					type="textarea"
-					placeholder="请输入下一步工作计划"
-					autosize
-					required
-					show-word-limit
-					maxlength="{{maxPlanLength}}"
-					bind:input="inputPlan"
-					border="{{true}}"
-				/>
+<view class="suspension-card-external-page">
+	<view class="suspension-card-internal-page">
+		<!-- 当前项目名称 -->
+		<view style="text-align:center;width:100%;color:#0089dd;margin-bottom:40rpx">{{projectName}}</view>
+		<!-- 提交问题计划区域 -->
+		<van-field required autosize show-word-limit model:value="{{existProblem}}" label="存在问题" type="textarea"
+			placeholder="请输入存在问题" maxlength="{{maxProblemLength}}" border="{{true}}" />
+		<van-field required autosize show-word-limit model:value="{{solution}}" label="解决措施" type="textarea"
+			placeholder="请输入解决措施" maxlength="{{maxSolutionLength}}" border="{{true}}" />
+		<van-field required autosize show-word-limit model:value="{{department}}" label="涉及部门" type="textarea"
+			placeholder="请输入涉及部门" maxlength="100" border="{{true}}" />
 
-			<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
-				class="weui-btn weui-btn_primary">提交</button>
-			<!-- 提交记录 -->
-			<template is="commitRecord"></template>
-		</view>
+		<picker mode="date" value="{{date}}" bindchange="bindDateChange">
+			<van-field readonly required model:value="{{timeLimit}}" label="建议时限" placeholder="请输入建议时限" border="{{true}}" />
+		</picker>
+
 
 	</view>
-
-
-	<!-- 查看提交信息区域 -->
-	<view wx:if="{{!showOther}}">
-		<van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
-
-			<block wx:for="{{problemPlanCommitList}}" wx:key="index">
-				<van-collapse-item name="{{index}}" value="{{item.unitName}}">
-
-					<view slot="title">
-						<view class="van-cell-text">{{item.projectName}}</view>
-						<van-tag type="danger">{{item.timeNameDTOS.length}}</van-tag>
-					</view>
-
-					<van-cell-group >
-						<block wx:for="{{item.timeNameDTOS}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
-							<van-cell 
-								title="{{item1.submitTime}}"
-								value="{{item1.commitName}}" 
-								border="{{ true }}" 
-								is-link 
-								url="/pages/control/tjwtjy/wtjyDetail/wtjyDetail?id={{item1.id}}&projectId={{item.projectId}}&projectName={{item.projectName}}&unitName={{item.unitName}}&commitName={{item1.commitName}}&submitTime={{item1.submitTime}}&existProblem={{item1.existProblem}}&nextPlan={{item1.nextPlan}}">
-							</van-cell>
-						</block>
-					</van-cell-group>
-
-				</van-collapse-item>
-			</block>
-
-		</van-collapse>
-	</view>
-
 </view>
+<button hover-class="clickHover" bindtap="submitProblemPlan" style="background-color:#0089dd;margin-top:40rpx"
+	class="weui-btn weui-btn_primary">提交</button>
+<!-- 提交记录 -->
+<template is="commitRecord"></template>
 
-<!-- 底部菜单 -->
-<van-tabbar z-index="999" active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
-  <van-tabbar-item icon="records">提交信息</van-tabbar-item>
-  <van-tabbar-item icon="chat-o" info="">查看信息</van-tabbar-item>
-</van-tabbar>
+
