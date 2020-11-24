@@ -38,6 +38,7 @@ const requestUrl = {
   listVisaByStatus: '/api/control/visa/listVisaByStatus', // 根据状态查询签证审批列表
   getVisaById: '/api/control/visa/getVisaById', // 根据id获取签证审批列表
   updateVisaStatus: '/api/control/visa/updateVisaStatus', // 更新签证审批状态
+  updateVisa: '/api/control/visa/updateVisa', //更新签证审批
 
   projectInformation: '/api/baseInformation/baseInformation/list',//获取项目信息
   

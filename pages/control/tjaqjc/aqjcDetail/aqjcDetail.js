@@ -182,22 +182,24 @@ Page({
         imageList: imageList
       }
       request.post(requestUrl.commitAnswer, data).then(res => {
-        console.log(res.data)
-        if (res.code == 200) {
-          Toast.success("提交成功")
-          // 置空数据
-          that.setData({
-            reply: '',
-            files1: []
-          })
-        } else if (res.code == 500) {
-          Toast.fail(res.msg);
-        } else {
-          Toast.fail('提交失败，服务器错误');
-        }
+        Toast.success("提交成功")
+        // 置空数据
+        that.setData({
+          reply: '',
+          files1: []
+        })
         lock = true
+        //获取页面栈
+        var pages = getCurrentPages();
+        if (pages.length > 2) {
+          //返回
+          wx.navigateBack({
+            delta: 2
+          });
+        }
       }, err => {
         lock = true
+        Toast.fail('提交失败，服务器错误');
       });
     }
   },
@@ -210,19 +212,24 @@ Page({
       status: 3
     }
     request.post(requestUrl.reviewAnswer, data).then(res => {
-      console.log(res)
-      if (res.code == 200) {
-        Toast.success('提交成功');
-        that.setData({
-          show: true
-        })
-      } else {
-        Toast.fail('提交失败，服务器错误');
-        that.setData({
-          show: true
-        })
+      Toast.success('提交成功');
+      that.setData({
+        show: true
+      });
+      //获取页面栈
+      var pages = getCurrentPages();
+      if (pages.length > 2) {
+        //返回
+        wx.navigateBack({
+          delta: 2
+        });
       }
-    }).catch(err => { })
+    }, err => {
+      Toast.fail('提交失败，服务器错误');
+      that.setData({
+        show: true
+      })
+    });
   },
 
   // 不同意整改回复
@@ -233,18 +240,23 @@ Page({
       status: 4
     }
     request.post(requestUrl.reviewAnswer, data).then(res => {
-      console.log(res)
-      if (res.code == 200) {
-        Toast.success('提交成功');
-        that.setData({
-          show: true
-        })
-      } else {
-        Toast.fail('提交失败，服务器错误');
-        that.setData({
-          show: true
-        })
+      Toast.success('提交成功');
+      that.setData({
+        show: true
+      });
+      //获取页面栈
+      var pages = getCurrentPages();
+      if (pages.length > 2) {
+        //返回
+        wx.navigateBack({
+          delta: 2
+        });
       }
-    }).catch(err => { })
+    }, err => {
+      Toast.fail('提交失败，服务器错误');
+      that.setData({
+        show: true
+      })
+    });
   },
 })

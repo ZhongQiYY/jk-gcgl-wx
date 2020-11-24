@@ -3,26 +3,46 @@
 	<van-panel title="{{visaApprove.project.projectName}}" desc="{{visaApprove.project.unitName}}    {{visaApprove.submitter}}    {{visaApprove.commitTime}}" use-footer-slot>
 
 		<van-cell-group>
-			<van-field clearable label="签证编号" value="{{visaCode}}" placeholder="" border="{{true}}}" bind:change="getVisaCode" />
-			<van-field clearable label="实施情况" value="{{actualizeSituation}}" placeholder="" border="{{true}}}" bind:change="getSituation" />
-			<van-field clearable label="踏勘人" value="{{surveyor}}" placeholder="" border="{{true}}}" bind:change="getSurveyor" />
-			<van-field clearable label="变更部位" value="{{changeSite}}" placeholder="" border="{{true}}}" bind:change="getChangeSite" />
-			<van-field clearable label="变更原因" value="{{changeReason}}" placeholder="" border="{{true}}}" bind:change="getChangeReason" />
-			<van-field clearable label="变更金额" value="{{changeMoney}}" placeholder="" border="{{true}}}" bind:change="getChangeMoney" />
-			<van-field clearable label="变更性质" value="{{changeProperty}}" placeholder="" border="{{true}}}" bind:change="getChangeProperty" />
-			<van-field clearable label="变更内容" value="{{changeContent}}" placeholder="" border="{{true}}}" bind:change="getChangeContent" />
+			<van-field clearable label="签证编号" value="{{visaApprove.visaCode}}" placeholder="" border="{{true}}}" bind:change="getVisaCode" />
+			<van-field clearable label="实施情况" value="{{visaApprove.actualizeSituation}}" placeholder="" border="{{true}}}" bind:change="getSituation" />
+			<van-field clearable label="踏勘人" value="{{visaApprove.surveyor}}" placeholder="" border="{{true}}}" bind:change="getSurveyor" />
+			<van-field clearable label="变更部位" value="{{visaApprove.changeSite}}" placeholder="" border="{{true}}}" bind:change="getChangeSite" />
+			<van-field clearable label="变更原因" value="{{visaApprove.changeReason}}" placeholder="" border="{{true}}}" bind:change="getChangeReason" />
+			<van-field clearable label="变更金额" value="{{visaApprove.changeMoney}}" placeholder="" border="{{true}}}" bind:change="getChangeMoney" />
+			<van-field clearable label="变更性质" value="{{visaApprove.changeProperty}}" placeholder="" border="{{true}}}" bind:change="getChangeProperty" />
+			<van-field clearable label="变更内容" value="{{visaApprove.changeContent}}" placeholder="" border="{{true}}}" bind:change="getChangeContent" />
 		</van-cell-group>
 
+		<!-- <block wx:if="{{visaApprove.status == 2}}"> -->
+		<block wx:for="{{visaApprove.imageList}}" wx:for-item="image">
+			<van-image width="100" height="100" fit="fill" lazy-load src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}" />
+		</block>
+		<!-- </block> -->
 
-		<!--同意不同意按钮 start-->
-	<block wx:if="{{problem.status == 1}}">
-		<view hidden="{{show}}" class="btn-review">
-			<van-button round type="primary" bindtap="agree">同意
-			</van-button>
-			<van-button round type="danger" bindtap="disagree">拒绝
-			</van-button>
-		</view>
-	</block>
-	<!--同意不同意按钮 end-->
+				<!--同意不同意按钮 start-->
+		<block wx:if="{{visaApprove.status == 1}}">
+			<view hidden="{{show}}" class="btn-review">
+				<van-button round type="primary" bindtap="agree">同意
+				</van-button>
+				<van-button round type="danger" bindtap="disagree">拒绝
+				</van-button>
+			</view>
+		</block>
+		<!--同意不同意按钮 end-->
+
+		<block wx:if="{{visaApprove.status == 3}}">
+			<view class='ui_uploader_cell'>
+				<view class='ui_uploader_item' wx:for="{{files1}}" wx:for-key="{{index}}">
+					<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+					<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+				</view>
+				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+			</view>
+			<view>
+				<van-button color="#0089dd" size="small" bindtap="updateVisa">修改
+				</van-button>
+			</view>
+		</block>
+
 	</van-panel>
 </view>

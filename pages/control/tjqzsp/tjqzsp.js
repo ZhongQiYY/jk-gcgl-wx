@@ -50,61 +50,61 @@ Page({
     ],
   },
 
-  getVisaCode: function(e){
+  getVisaCode: function (e) {
     var that = this;
     that.setData({
       visaCode: e.detail
     })
   },
-  getSituation: function(e){
+  getSituation: function (e) {
     var that = this;
     that.setData({
       actualizeSituation: e.detail
     })
   },
-  getSurveyor: function(e){
+  getSurveyor: function (e) {
     var that = this;
     that.setData({
       surveyor: e.detail
     })
   },
-  getChangeSite: function(e){
+  getChangeSite: function (e) {
     var that = this;
     that.setData({
       changeSite: e.detail
     })
   },
-  getChangeReason: function(e){
+  getChangeReason: function (e) {
     var that = this;
     that.setData({
       changeReason: e.detail
     })
   },
-  getChangeMoney: function(e){
+  getChangeMoney: function (e) {
     var that = this;
     that.setData({
       changeMoney: e.detail
     })
   },
-  getChangeProperty: function(e){
+  getChangeProperty: function (e) {
     var that = this;
     that.setData({
       changeProperty: e.detail
     })
   },
-  getChangeContent: function(e){
+  getChangeContent: function (e) {
     var that = this;
     that.setData({
       changeContent: e.detail
     })
   },
 
-  submitVisa: function(){
-    if(lock){
+  submitVisa: function () {
+    if (lock) {
       // 上锁
-      lock = false 
+      lock = false
 
-      if(this.data.projectId == ''){
+      if (this.data.projectId == '') {
         Toast.fail('请先选择项目');
       }
       var that = this
@@ -113,12 +113,12 @@ Page({
       var map = {};
       var imageName = '';
       var imageUrl = '';
-      for(var i = 0;i < picUrls1.length;i++){
+      for (var i = 0; i < picUrls1.length; i++) {
         imageName = picUrls1[i].split("/")[5];
         map.imageName = imageName;
-        imageUrl =  picUrls1[i];
+        imageUrl = picUrls1[i];
         map.imageUrl = imageUrl;
-        imageList[i]= map
+        imageList[i] = map
       }
       var data = {
         projectId: Number(that.data.projectId),
@@ -133,48 +133,45 @@ Page({
         imageList: imageList,
       }
       request.post(requestUrl.saveVisaApprove, data)
-        .then(res => { 
-          if(res.code == 200) {
-            Toast.success('提交成功');
-            that.setData({
-              projectId: "",
-              projectName: "",
-              visaCode: "",
-              actualizeSituation: "",
-              surveyor: "",
-              changeSite: "",
-              changeReason: "",
-              changeMoney: "",
-              changeProperty: "",
-              changeContent: "",
-              files1: [],
-            });
-          } else {
-            that.setData({
-              projectId: "",
-              projectNames: "",
-              visaCode: "",
-              actualizeSituation: "",
-              surveyor: "",
-              changeSite: "",
-              changeReason: "",
-              changeMoney: "",
-              changeProperty: "",
-              changeContent: "",
-              files1: [],
-            });
-            Toast.fail('提交失败，服务器错误');
-          }
+        .then(res => {
+          Toast.success('提交成功');
+          that.setData({
+            projectId: "",
+            projectName: "",
+            visaCode: "",
+            actualizeSituation: "",
+            surveyor: "",
+            changeSite: "",
+            changeReason: "",
+            changeMoney: "",
+            changeProperty: "",
+            changeContent: "",
+            files1: [],
+          });
           // 释放锁
           lock = true
-        }, err =>{
+        }, err => {
           // 释放锁
           lock = true
+          that.setData({
+            projectId: "",
+            projectNames: "",
+            visaCode: "",
+            actualizeSituation: "",
+            surveyor: "",
+            changeSite: "",
+            changeReason: "",
+            changeMoney: "",
+            changeProperty: "",
+            changeContent: "",
+            files1: [],
+          });
+          Toast.fail('提交失败，服务器错误');
         });
     }
-   
+
   },
-  
+
   //搜索框组件返回的方法 @@
   inputTyping: function (e) {
     var inputVal = e.detail.inputVal;

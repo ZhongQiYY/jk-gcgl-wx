@@ -7,24 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    submitted:0, // 已提交
-    agree:0, // 同意
-    disagree:0, // 不同意
+    submitted: 0, // 已提交
+    agree: 0, // 同意
+    disagree: 0, // 不同意
   },
 
-  toSubmitted: function() {
+  toSubmitted: function () {
     wx.navigateTo({
       url: '/pages/tableData/datapages/qzsp/qzspView/qzspView?status=1',
     })
   },
 
-  toAgree: function() {
+  toAgree: function () {
     wx.navigateTo({
       url: '/pages/tableData/datapages/qzsp/qzspView/qzspView?status=2',
     })
   },
 
-  toDisagree: function() {
+  toDisagree: function () {
     wx.navigateTo({
       url: '/pages/tableData/datapages/qzsp/qzspView/qzspView?status=3',
     })
@@ -49,18 +49,15 @@ Page({
    */
   onShow: function () {
     var that = this
-    request.get(requestUrl.listVisa, {'projectId':app.globalData.projectId})
-      .then(res => { 
-        console.log(res)
-        if(res.code == 200) {
-          let data = res.data;
-          that.setData({
-            submitted: data.submitted,  // 已提交
-            agree: data.agree, // 同意
-            disagree: data.disagree, // 不同意
-          });
-        }
-      }, err => {}).catch()
+    request.get(requestUrl.listVisa, { 'projectId': app.globalData.projectId })
+      .then(res => {
+        let data = res.data;
+        that.setData({
+          submitted: data.submitted,  // 已提交
+          agree: data.agree, // 同意
+          disagree: data.disagree, // 不同意
+        });
+      }, err => { });
   },
 
 })
