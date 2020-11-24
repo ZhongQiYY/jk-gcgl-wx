@@ -7,3 +7,7 @@
   border-radius: 6rpx; /* 卡片圆角弧度 */
   background-color: #ffffff;/* 卡片背景颜色 */
 }
+
+.commitBtn{
+  display: flex;
+}

@@ -37,6 +37,13 @@ const requestUrl = {
   reviewAnswerQuality: '/api/control/zljc/reviewAnswerQuality', // 审核回复
   updateIsOuttimeById: '/api/control/zljc/updateIsOuttimeById', // 修改超时状态
 
+  saveVisaApprove: '/api/control/visa/saveVisaApprove', // 提交签证审批
+  listVisa: '/api/control/visa/listVisa', // 签证审批列表
+  listVisaByStatus: '/api/control/visa/listVisaByStatus', // 根据状态查询签证审批列表
+  getVisaById: '/api/control/visa/getVisaById', // 根据id获取签证审批列表
+  updateVisaStatus: '/api/control/visa/updateVisaStatus', // 更新签证审批状态
+  updateVisa: '/api/control/visa/updateVisa', //更新签证审批
+
   projectInformation: '/api/baseInformation/baseInformation/list',//获取项目信息
   
   GetGqXx: '/api/gqxx', //根据项目id获取工期信息
@@ -44,7 +51,12 @@ const requestUrl = {
   SaveKgMsg: '/api/gqxx/kg-msg/save', //保存开工信息
   SaveYxgq: '/api/gqxx/kg-effect/save',//保存影响信息
 
+  tptxList: '/api/tptx/pmTptx/list',  //图片图像
+  commitFst: '/api/control/tptx/commitFst', //俯视图
+  commitNbtst: '/api/control/tptx/commitNbtst', //俯视图
+
   tptxList: '/api/tptx/pmTptx/list'  //图片图像
+
 }
 
 

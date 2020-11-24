@@ -1,1 +1,38 @@
-/* pages/control/tjqzsp/qzspDetail/qzspDetail.wxss */
+/* 悬浮卡片-外部 */
+.suspension-card-external-page{
+  padding:0 20rpx;
+}
+/* 悬浮卡片-内部 */
+.suspension-card-internal-page{
+  border-radius: 6rpx; /* 卡片圆角弧度 */
+  background-color: #ffffff;/* 卡片背景颜色 */
+}
+
+.btn-review{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 15rpx 20rpx;
+}
+
+.seal-result {
+  width: 60px;
+  height: 60px;
+  transform: rotate(30deg);
+  border: solid 2px green;
+  border-radius: 100%;
+  text-align: center;
+  color: green;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 60px;
+  right: 5px;
+  bottom: 0px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8)
+}
+
+.seal-result-fail {
+  border-color: red;
+  color: red;
+}

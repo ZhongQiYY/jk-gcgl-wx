@@ -37,30 +37,4 @@ Page({
     })
   },
 
-  
-  /**
-   * 房建类
-   */
-  toDetailsAndFjl: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/fjl/fjl'
-    })
-  },
-  /**
-   * 公园绿化类
-   */
-  toDetailsAndGylhl: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/gylh/gylh'
-    })
-  },
-
-  /**
-   * 市政桥梁类
-   */
-  toDetailsAndSzqll: function () {
-    wx.navigateTo({
-      url: '/pages/tableData/datapages/tptx/szql/szql'
-    })
-  },
 })

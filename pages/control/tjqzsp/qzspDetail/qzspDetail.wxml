@@ -1,39 +1,55 @@
+<van-toast id="van-toast" />
 <view>
-  <van-panel title="标准厂房" desc="西城    张三    2020-10-28" use-footer-slot>
+	<van-panel title="{{visaApprove.project.projectName}}" desc="{{visaApprove.project.unitName}}    {{visaApprove.submitter}}    {{visaApprove.commitTime}}" use-footer-slot>
+			<view style="font-size:13px; color:rgba(85, 85, 85, .8);backgroud-color:#fff;text-align: center;">
+				{{visaApprove.company}}({{visaApprove.position}}) {{visaApprove.submitter}} {{visaApprove.commitTime}}
+			</view>
+			<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
+		<van-cell-group>
+			<van-field clearable label="签证编号" value="{{visaApprove.visaCode}}" placeholder="" border="{{true}}}" bind:change="getVisaCode" />
+			<van-field clearable label="实施情况" value="{{visaApprove.actualizeSituation}}" placeholder="" border="{{true}}}" bind:change="getSituation" />
+			<van-field clearable label="踏勘人" value="{{visaApprove.surveyor}}" placeholder="" border="{{true}}}" bind:change="getSurveyor" />
+			<van-field clearable label="变更部位" value="{{visaApprove.changeSite}}" placeholder="" border="{{true}}}" bind:change="getChangeSite" />
+			<van-field clearable label="变更原因" value="{{visaApprove.changeReason}}" placeholder="" border="{{true}}}" bind:change="getChangeReason" />
+			<van-field clearable label="变更金额" value="{{visaApprove.changeMoney}}" placeholder="" border="{{true}}}" bind:change="getChangeMoney" />
+			<van-field clearable label="变更性质" value="{{visaApprove.changeProperty}}" placeholder="" border="{{true}}}" bind:change="getChangeProperty" />
+			<van-field clearable label="变更内容" value="{{visaApprove.changeContent}}" placeholder="" border="{{true}}}" bind:change="getChangeContent" />
+			<block wx:if="{{visaApprove.status == 2}}">
+				<span class="seal-result">同意</span>
+			</block>
+			<block wx:if="{{visaApprove.status == 3}}">
+				<span class="seal-result seal-result-fail">不同意</span>
+			</block>
+		</van-cell-group>
 
-    <van-cell-group >
-      <van-field clearable label="签证编号" value="001" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="实施情况" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      /> 
-      <van-field clearable label="踏勘人" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更部位" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />  
-      <van-field clearable label="变更原因" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更金额" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更性质" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="变更内容" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-      <van-field clearable label="批示" value="{{value}}" placeholder="" border="{{true}}}"
-        bind:change="onChange"
-      />
-    </van-cell-group>
-      
+		<block wx:for="{{visaApprove.imageList}}" wx:for-item="image">
+			<van-image width="100" height="100" fit="fill" lazy-load src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}" />
+		</block>
 
-    <view slot="footer">
-      <van-button color="#0089dd" size="small">完成</van-button>
-    </view>
-  </van-panel>
+		<!--同意不同意按钮 start-->
+		<block wx:if="{{visaApprove.status == 1}}">
+			<view hidden="{{show}}" class="btn-review">
+				<van-button round type="primary" bindtap="agree">同意
+				</van-button>
+				<van-button round type="danger" bindtap="disagree">拒绝
+				</van-button>
+			</view>
+		</block>
+		<!--同意不同意按钮 end-->
+
+		<block wx:if="{{visaApprove.status == 3}}">
+			<view class='ui_uploader_cell'>
+				<view class='ui_uploader_item' wx:for="{{files1}}" wx:for-key="{{index}}">
+					<icon class='ui_uploader_item_icon' bindtap='clearImg1' data-index="{{index}}" type="clear" size="20" color="red" />
+					<image bindtap='previewImage1' data-index="{{index}}" src='{{item}}'></image>
+				</view>
+				<view class='ui_uploader' bindtap='chooseImage1' wx:if="{{ files1.length < 10 }}"></view>
+			</view>
+			<view>
+				<van-button color="#0089dd" size="small" bindtap="updateVisa">修改
+				</van-button>
+			</view>
+		</block>
+
+	</van-panel>
 </view>

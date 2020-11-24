@@ -5,6 +5,8 @@ var requestUrl = app.globalData.requestUrl;
 var basePath = app.globalData.basePath;
 // var basePath = app.globalData.imageRootPath;
 import Toast from '@vant/weapp/toast/toast';
+
+var lock = true
 Page({
 
   /**
@@ -42,7 +44,7 @@ Page({
           finalTime: dateTime.getymd(new Date(res.data.finalTime), '-')
         })
       }
-    }, err => {});
+    }, err => { });
   },
   //选择图片
   chooseImage1: function (e) {
@@ -158,40 +160,48 @@ Page({
 
   // 提交回复
   commitAnswer: function () {
-    var that = this
-    var picUrls1 = that.data.picUrls1
-    var imageList = [];
-    var map = {};
-    var imageName = '';
-    var imageUrl = '';
-    for (var i = 0; i < picUrls1.length; i++) {
-      imageName = picUrls1[i].split("/")[5];
-      map.imageName = imageName;
-      imageUrl = picUrls1[i];
-      map.imageUrl = imageUrl;
-      imageList[i] = map
-    }
-    console.log(imageList)
-    let data = {
-      pmSafeCheckId: this.data.id,
-      reply: this.data.reply,
-      imageList: imageList
-    }
-    request.post(requestUrl.commitAnswer, data).then(res => {
-      console.log(res.data)
-      if (res.code == 200) {
+    if (lock) {
+      lock = false
+      var that = this
+      var picUrls1 = that.data.picUrls1
+      var imageList = [];
+      var map = {};
+      var imageName = '';
+      var imageUrl = '';
+      for (var i = 0; i < picUrls1.length; i++) {
+        imageName = picUrls1[i].split("/")[5];
+        map.imageName = imageName;
+        imageUrl = picUrls1[i];
+        map.imageUrl = imageUrl;
+        imageList[i] = map
+      }
+      console.log(imageList)
+      let data = {
+        pmSafeCheckId: this.data.id,
+        reply: this.data.reply,
+        imageList: imageList
+      }
+      request.post(requestUrl.commitAnswer, data).then(res => {
         Toast.success("提交成功")
         // 置空数据
         that.setData({
           reply: '',
           files1: []
         })
-      } else if (res.code == 500) {
-        Toast.fail(res.msg);
-      } else {
+        lock = true
+        //获取页面栈
+        var pages = getCurrentPages();
+        if (pages.length > 2) {
+          //返回
+          wx.navigateBack({
+            delta: 2
+          });
+        }
+      }, err => {
+        lock = true
         Toast.fail('提交失败，服务器错误');
-      }
-    }).catch(err => { });
+      });
+    }
   },
 
   // 同意整改回复
@@ -202,19 +212,24 @@ Page({
       status: 3
     }
     request.post(requestUrl.reviewAnswer, data).then(res => {
-      console.log(res)
-      if (res.code == 200) {
-        Toast.success('提交成功');
-        that.setData({
-          show: true
-        })
-      } else {
-        Toast.fail('提交失败，服务器错误');
-        that.setData({
-          show: true
-        })
+      Toast.success('提交成功');
+      that.setData({
+        show: true
+      });
+      //获取页面栈
+      var pages = getCurrentPages();
+      if (pages.length > 2) {
+        //返回
+        wx.navigateBack({
+          delta: 2
+        });
       }
-    }).catch(err => { })
+    }, err => {
+      Toast.fail('提交失败，服务器错误');
+      that.setData({
+        show: true
+      })
+    });
   },
 
   // 不同意整改回复
@@ -225,18 +240,23 @@ Page({
       status: 4
     }
     request.post(requestUrl.reviewAnswer, data).then(res => {
-      console.log(res)
-      if (res.code == 200) {
-        Toast.success('提交成功');
-        that.setData({
-          show: true
-        })
-      } else {
-        Toast.fail('提交失败，服务器错误');
-        that.setData({
-          show: true
-        })
+      Toast.success('提交成功');
+      that.setData({
+        show: true
+      });
+      //获取页面栈
+      var pages = getCurrentPages();
+      if (pages.length > 2) {
+        //返回
+        wx.navigateBack({
+          delta: 2
+        });
       }
-    }).catch(err => { })
+    }, err => {
+      Toast.fail('提交失败，服务器错误');
+      that.setData({
+        show: true
+      })
+    });
   },
 })

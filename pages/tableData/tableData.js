@@ -206,5 +206,14 @@ Page({
       })
     } else Toast.fail("未选择项目");
   },
+
+  // 签证审批
+  toQzsp: function() {
+    if (app.globalData.projectId != 0 && app.globalData.categoryType != 0) {
+      wx.navigateTo({
+        url: '/pages/tableData/datapages/qzsp/qzsp',
+      })
+    } else Toast.fail("未选择项目");
+  },
   
 })
