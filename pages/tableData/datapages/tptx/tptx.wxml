@@ -3,7 +3,7 @@
   active="{{ active }}"
   direction="vertical"
   active-icon="success"
-  active-color="#38f"
+  active-color="#ee0a24"
 />
   
   <van-steps
@@ -11,7 +11,7 @@
   active="{{ active }}"
   direction="vertical"
   active-icon="success"
-  active-color="#38f"
+  active-color="#ee0a24"
 />
 
   <van-steps
@@ -19,6 +19,6 @@
   active="{{ active }}"
   direction="vertical"
   active-icon="success"
-  active-color="#38f"
+  active-color="#ee0a24"
 />
 

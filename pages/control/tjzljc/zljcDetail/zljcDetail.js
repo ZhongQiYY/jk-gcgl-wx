@@ -219,21 +219,22 @@ Page({
       }
       request.post(requestUrl.commitAnswerQuality, data).then(res => {
         console.log(res.data)
-        if (res.code == 200) {
           Toast.success("提交成功")
           // 置空数据
           that.setData({
             reply: '',
             files1: []
           })
-        } else if (res.code == 500) {
-          Toast.fail(res.msg);
-        } else {
-          Toast.fail('提交失败，服务器错误');
-        }
+          var pages = getCurrentPages();//获取页面栈
+          if (pages.length > 2) {
+            wx.navigateBack({         //返回上一页  
+              delta: 2
+            })
+          }
         lock = true
       }, err =>{
-        lock = true
+        lock = true;
+        Toast.fail('提交失败，服务器错误');
       });
     }
   },
@@ -247,18 +248,19 @@ Page({
     }
     request.post(requestUrl.reviewAnswerQuality, data).then(res => {
       console.log(res)
-      if (res.code == 200) {
         Toast.success('提交成功');
         that.setData({
           show: true
         })
-      } else {
-        Toast.fail('提交失败，服务器错误');
-        that.setData({
-          show: true
-        })
-      }
-    }).catch(err => { })
+        var pages = getCurrentPages();//获取页面栈
+        if (pages.length > 2) {
+          wx.navigateBack({         //返回上一页  
+            delta: 2
+          })
+        }
+    }, err =>{
+      Toast.fail('提交失败，服务器错误');
+    })
   },
 
   // 不同意整改回复
@@ -270,17 +272,18 @@ Page({
     }
     request.post(requestUrl.reviewAnswerQuality, data).then(res => {
       console.log(res)
-      if (res.code == 200) {
         Toast.success('提交成功');
         that.setData({
           show: true
         })
-      } else {
-        Toast.fail('提交失败，服务器错误');
-        that.setData({
-          show: true
-        })
+        var pages = getCurrentPages();//获取页面栈
+        if (pages.length > 2) {
+          wx.navigateBack({         //返回上一页  
+            delta: 2
+          })
       }
-    }).catch(err => { })
-  },
+      }, err =>{
+        Toast.fail('提交失败，服务器错误');
+      })
+    },
 })

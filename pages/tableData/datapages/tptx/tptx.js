@@ -10,8 +10,8 @@ Page({
   data: {
     steps: [
       {
-        desc: '步骤一',
-        text: '描述信息',
+        desc: '图片',
+        text: '2020-11-22 18:20:19',
       }
     ],
     pmNbtstList: [],
