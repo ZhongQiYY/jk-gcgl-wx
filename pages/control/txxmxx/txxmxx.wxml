@@ -6,13 +6,13 @@
 
     <view bindtap="totxPlan" data-tag='1'  class="suspension-card-external-page" hover-class="plan-schedule-hover">
       <view class="suspension-card-internal-page shadow-blur">
-        <text class="plan-schedule-font">计\n划\n填\n写</text>
+        <text class="plan-schedule-font">计\n划\n进\n度</text>
       </view>
     </view>
 
     <view bindtap="totxPlan" data-tag='2' class="suspension-card-external-page" hover-class="plan-schedule-hover">
       <view class="suspension-card-internal-page shadow-blur">
-        <text class="plan-schedule-font">进\n度\n填\n写</text>
+        <text class="plan-schedule-font">实\n际\n进\n度</text>
       </view>
     </view>
 

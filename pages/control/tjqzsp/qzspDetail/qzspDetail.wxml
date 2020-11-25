@@ -1,7 +1,10 @@
 <van-toast id="van-toast" />
 <view>
 	<van-panel title="{{visaApprove.project.projectName}}" desc="{{visaApprove.project.unitName}}    {{visaApprove.submitter}}    {{visaApprove.commitTime}}" use-footer-slot>
-
+			<view style="font-size:13px; color:rgba(85, 85, 85, .8);backgroud-color:#fff;text-align: center;">
+				{{visaApprove.company}}({{visaApprove.position}}) {{visaApprove.submitter}} {{visaApprove.commitTime}}
+			</view>
+			<view style="width:80%;border:1rpx solid gray;opacity:0.1;margin:auto"></view>
 		<van-cell-group>
 			<van-field clearable label="签证编号" value="{{visaApprove.visaCode}}" placeholder="" border="{{true}}}" bind:change="getVisaCode" />
 			<van-field clearable label="实施情况" value="{{visaApprove.actualizeSituation}}" placeholder="" border="{{true}}}" bind:change="getSituation" />
@@ -11,15 +14,19 @@
 			<van-field clearable label="变更金额" value="{{visaApprove.changeMoney}}" placeholder="" border="{{true}}}" bind:change="getChangeMoney" />
 			<van-field clearable label="变更性质" value="{{visaApprove.changeProperty}}" placeholder="" border="{{true}}}" bind:change="getChangeProperty" />
 			<van-field clearable label="变更内容" value="{{visaApprove.changeContent}}" placeholder="" border="{{true}}}" bind:change="getChangeContent" />
+			<block wx:if="{{visaApprove.status == 2}}">
+				<span class="seal-result">同意</span>
+			</block>
+			<block wx:if="{{visaApprove.status == 3}}">
+				<span class="seal-result seal-result-fail">不同意</span>
+			</block>
 		</van-cell-group>
 
-		<!-- <block wx:if="{{visaApprove.status == 2}}"> -->
 		<block wx:for="{{visaApprove.imageList}}" wx:for-item="image">
 			<van-image width="100" height="100" fit="fill" lazy-load src="{{image.imageUrl?'http://localhost:16000'+image.imageUrl:''}}" />
 		</block>
-		<!-- </block> -->
 
-				<!--同意不同意按钮 start-->
+		<!--同意不同意按钮 start-->
 		<block wx:if="{{visaApprove.status == 1}}">
 			<view hidden="{{show}}" class="btn-review">
 				<van-button round type="primary" bindtap="agree">同意

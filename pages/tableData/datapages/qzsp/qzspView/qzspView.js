@@ -8,7 +8,7 @@ Page({
    */
   data: {
     activeNames: ['1'],
-    unitName: '', 
+    unitName: '',
     projectName: '',
     timeNameList: [],
   },
@@ -29,15 +29,12 @@ Page({
       'projectId': app.globalData.projectId
     }
     request.get(requestUrl.listVisaByStatus, data).then(res => {
-      console.log(res)
-      if(res.code == 200) {
-        if(res.data.length > 0) {
-          that.setData({
-            unitName: res.data[0].project.unitName,
-            projectName: res.data[0].project.projectName,
-            timeNameList: res.data
-          })
-        }
+      if (res.data.length > 0) {
+        that.setData({
+          unitName: res.data[0].project.unitName,
+          projectName: res.data[0].project.projectName,
+          timeNameList: res.data
+        })
       }
     }, err => {
 

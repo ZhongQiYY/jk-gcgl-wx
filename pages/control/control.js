@@ -110,11 +110,11 @@ Page({
     }else Toast.fail('无权限');
   },
   toWtjy: function () {
-    // if(roleRealId==10 || roleRealId==1){
-    //   wx.navigateTo({
-    //     url: '/pages/control/tjwtjy/tjwtjy',
-    //   })
-    // }else Toast.fail('无权限');
+    if(roleRealId==10 || roleRealId==1){
+      wx.navigateTo({
+        url: '/pages/control/tjwtjy/tjwtjy',
+      })
+    }else Toast.fail('无权限');
   },
   toXmxx: function () {
     if(roleRealId==10 || roleRealId==1 || roleRealId==8){

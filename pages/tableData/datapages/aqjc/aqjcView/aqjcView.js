@@ -8,11 +8,11 @@ Page({
    */
   data: {
     activeNames: ['1'],
-    unitName: '', 
+    unitName: '',
     projectName: '',
     finalTime: '',
     timeNameList: [],
-    time: 6 *1000,
+    time: 6 * 1000,
   },
 
   collapseChange: function (e) {
@@ -28,10 +28,8 @@ Page({
       'id': e.target.dataset.id,
     }
     request.post(requestUrl.updateAqjcIsOuttimeById, data).then(res => {
-      if(res.code == 200) {
-        console.log("类别："+"项目id："+app.globalData.projectId+"已超时")
-      }
-    },err=>{
+      console.log("类别：" + "项目id：" + app.globalData.projectId + "已超时")
+    }, err => {
 
     });
   },
@@ -47,8 +45,8 @@ Page({
       'projectId': app.globalData.projectId
     }
     request.get(requestUrl.listProblemByStatus, data).then(res => {
-      if(res.code == 200) {
-        if(res.data.length > 0) {
+      if (res.code == 200) {
+        if (res.data.length > 0) {
           that.setData({
             unitName: res.data[0].project.unitName,
             projectName: res.data[0].project.projectName,
@@ -57,7 +55,7 @@ Page({
         }
       }
     }).catch(
-    
+
     );
   },
 

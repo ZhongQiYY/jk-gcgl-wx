@@ -1,7 +1,6 @@
 var app = getApp();
 var request = app.globalData.request;
 var requestUrl = app.globalData.requestUrl;
-var dateTime = require('../../../../../utils/getDateTime.js');
 import Toast from '@vant/weapp/toast/toast';
 Page({
 
@@ -39,6 +38,8 @@ Page({
     step:[],
     stepIndex:'',
     node:[],
+
+    lock: true,
 
     pastSchedulePlanList:[]
   },
@@ -244,29 +245,36 @@ Page({
     if(that.data.stepName===''||that.data.nodeName===''||that.data.startTimePicker===''||that.data.endTimePicker===''||that.data.percentage===''){
       Toast.fail("缺少数据，所有项为必填");
     }
-    request.post(requestUrl.insertSchedulePast, {
-      projectId:that.data.projectId,
-      stepName: that.data.stepName,
-      nodeName: that.data.nodeName,
-      startTime: that.data.startTimePicker,
-      endTime: that.data.endTimePicker,
-      percentage: that.data.percentage,
-    }).then(res => {
-      that.setData({
-        showSchedulePopup: false,
-        stepName:'',
-        nodeName:'',
-        startTimePicker:'',
-        endTimePicker:'',
-        percentage:'',
-        stepIndex:'',
+    Toast.loading({ duration:10000,forbidClick:true,message:'保存中',mask:true,zIndex:10000 });
+    if(that.data.lock){
+      that.setData({ lock:false });
+      request.post(requestUrl.insertSchedulePast, {
+        projectId:that.data.projectId,
+        stepName: that.data.stepName,
+        nodeName: that.data.nodeName,
+        startTime: that.data.startTimePicker,
+        endTime: that.data.endTimePicker,
+        percentage: that.data.percentage,
+      }).then(res => {
+        that.setData({
+          showSchedulePopup: false,
+          stepName:'',
+          nodeName:'',
+          startTimePicker:'',
+          endTimePicker:'',
+          percentage:'',
+          stepIndex:'',
+          lock:true,
+        })
+        Toast.success("保存成功");
+        that.getPastSchedulePlanList();
+      },err=>{
+        Toast.fail("保存失败");
+        that.getPastSchedulePlanList();
+        that.setData({ lock:true });
       })
-      Toast.success("保存成功");
-      that.getPastSchedulePlanList();
-    },err=>{
-      Toast.fail("保存失败");
-      that.getPastSchedulePlanList();
-    })
+    }
+    
   },
   getPastSchedulePlanList: function(){
     var that = this;

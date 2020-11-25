@@ -1,83 +1,35 @@
 // pages/control/tjwtjy/commitRecord/commitRecord.js
 const app = getApp();
-var basePath = app.globalData.basePath;
+var request = app.globalData.request;
+var requestUrl = app.globalData.requestUrl;
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    activeNames: ['1'],//折叠面板开关
+    problemPlanCommitList:[],
   },
 
 
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-    wx.request({
-      url: basePath + "/api/control/wtjy/commitProblemPlanRecord", //请求路径
-      method: 'post',
-      data: {
+    var that = this;
+    Toast.loading({ duration:10000,forbidClick:true,message:'加载中',mask:true,zIndex:10000 });
+    request.get(requestUrl.getCommitProblemPlanRecord).then(res => {
+      that.setData({
+        problemPlanCommitList:res.data
+      });
+      Toast.clear();
+    },err=>{ 
+      Toast.fail(err.msg); 
+      Toast.clear();
+    })
+  },
 
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'thirdSession': app.globalData.thirdSession
-      },
-      success(res) {
-        
-      }
+
+  collapseChange: function(e){
+    this.setData({
+      activeNames: e.detail,
     });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

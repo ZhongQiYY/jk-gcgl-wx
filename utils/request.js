@@ -55,7 +55,7 @@ const put = (url, data) => {
 }
 //封装remove方法
 // 不能声明DELETE（关键字）
-const remove = (url, data) => {
+const del = (url, data) => {
   return request({
     url: url,
     method: 'DELETE',
@@ -67,5 +67,5 @@ module.exports = {
   get,
   post,
   put,
-  remove
+  del
 }

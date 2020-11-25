@@ -1,27 +1,7 @@
-<view style="padding-bottom: 100rpx">
-
 
   <!-- 当前项目名称 -->
   <view style="text-align:center;width:100%;color:#0089dd;padding-top:30rpx">{{projectName}}</view>
   <van-divider />
-
-  <!-- 未处理区域 -->
-  <view wx:if="{{showOther}}">
-    <!-- 悬浮块展示 -->
-    <view class="suspension-card-external">
-      <view class="suspension-card-internal">
-        <van-cell-group>
-          <block wx:for="{{unprocessedInfo}}" wx:key="index">
-            <van-cell title="{{item.submitTime}}" value="{{item.commitName}}" is-link
-              url="/pages/control/tjwtjy/wtjyDetail/wtjyDetail?id={{item.id}}&projectId={{item.projectId}}&projectName={{item.projectName}}&unitName={{item.unitName}}&commitName={{item.commitName}}&submitTime={{item.submitTime}}&existProblem={{item.existProblem}}&nextPlan={{item.nextPlan}}" />
-          </block>
-        </van-cell-group>
-      </view>
-    </view>
-  </view>
-
-  <!-- 已处理区域 -->
-  <view wx:if="{{!showOther}}">
     <!-- 顶部显示栏 -->
     <van-cell title="总计{{processedInfo.length}}条" value="{{filterName}}" bind:click="showPopup" is-link
       arrow-direction="down" />
@@ -48,19 +28,3 @@
       </van-panel>
     </block>
 
-
-    <!-- 选择年月 -->
-    <van-popup show="{{showPopup}}" position="bottom" custom-style="height: 60%;" bind:close="popupClose">
-      <van-picker cancel-button-text="显示全部" bind:cancel="onCancel" bind:confirm="onConfirm" columns="{{pickerColumns}}"
-        visible-item-count="12" show-toolbar />
-    </van-popup>
-  </view>
-
-</view>
-
-
-<!-- 底部菜单 -->
-<van-tabbar z-index="999" active="{{active}}" bind:change="tabbarChange" active-color="#0089dd" inactive-color="#000">
-  <van-tabbar-item icon="todo-list-o" info="{{unprocessedInfo.length}}">未处理</van-tabbar-item>
-  <van-tabbar-item icon="sign">已处理</van-tabbar-item>
-</van-tabbar>

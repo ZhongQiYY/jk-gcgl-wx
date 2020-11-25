@@ -1,1 +1,27 @@
+<van-toast id="van-toast" />
 
+<van-empty wx:if="{{problemPlanCommitList.length==0}}" image="error" description="无数据" />
+
+<!-- 查看提交信息区域 -->
+<van-collapse accordion value="{{activeNames}}" bind:change="collapseChange">
+
+  <block wx:for="{{problemPlanCommitList}}" wx:key="index">
+    <van-collapse-item name="{{index}}" value="{{item.unitName}}">
+
+      <view slot="title">
+        <view class="van-cell-text">{{item.projectName}}</view>
+        <van-tag type="danger">{{item.wtjyDetailVOS.length}}</van-tag>
+      </view>
+
+      <van-cell-group>
+        <block wx:for="{{item.wtjyDetailVOS}}" wx:for-index="index1" wx:for-item="item1" wx:key="index1">
+          <van-cell title="{{item1.submitTime}}" value="{{item1.commitName}}" border="{{ true }}" is-link
+            url="/pages/control/tjwtjy/wtjyDetail/wtjyDetail?id={{item1.id}}&projectId={{item.projectId}}&projectName={{item.projectName}}&unitName={{item.unitName}}&commitName={{item1.commitName}}&submitTime={{item1.submitTime}}&existProblem={{item1.existProblem}}&solution={{item1.solution}}&department={{item1.department}}&timeLimit={{item1.timeLimit}}">
+          </van-cell>
+        </block>
+      </van-cell-group>
+
+    </van-collapse-item>
+  </block>
+
+</van-collapse>

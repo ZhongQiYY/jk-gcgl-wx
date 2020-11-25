@@ -34,7 +34,7 @@
 		
 									<!-- 进度项名称 -->
 									<view slot="tags" class="tags-class">		
-										<van-tag type="primary" wx:if="{{item.proMainName.length > 0}}">{{item.proMainName}}</van-tag>
+										压力值
 									</view>
 
 									<!-- 红点提示 -->
